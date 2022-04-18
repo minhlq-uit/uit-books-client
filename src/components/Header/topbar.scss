@@ -1,0 +1,138 @@
+#section-header {
+    background-color: #106CC0;
+    -webkit-box-shadow: 0 0 3px rgba(51, 51, 51, 0.15);
+    box-shadow: 0 0 3px rgba(51, 51, 51, 0.15);
+
+    .header-main {
+        position: relative;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .container {
+            div {
+                .navbar-brand {
+                    font-size: 24px;
+                    color: white;
+
+                    .logo {
+                        width: 3rem;
+                        margin-right: 1rem;
+                    }
+                }
+
+                .search-header {
+                    border-radius: 1rem;
+
+                    .form-control,
+                    .custom-select {
+                        border-color: transparent
+                    }
+
+                    select {
+                        -ms-flex-preferred-size: 150px !important;
+                        flex-basis: 150px !important;
+                        -webkit-box-flex: 0 !important;
+                        -ms-flex-positive: 0 !important;
+                        flex-grow: 0 !important
+                    }
+                }
+
+                .dropdown-toggle::after {
+                    content: none;
+                }
+
+            }
+        }
+    }
+
+}
+
+.widget-header {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+.widget-header .widget-view {
+    padding: 5px 7px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+.widget-header .nav-icon {
+    font-size: 35px;
+}
+
+.widget-header .icon-area {
+    font-size: 18px;
+    display: inline-block;
+    width: 36px;
+    height: 30px;
+    color: #969696
+}
+
+.widget-header .icon-area .notify {
+    position: absolute;
+    top: 0px;
+    right: 8%
+}
+
+.widget-header .icon {
+    color: #969696
+}
+
+.widget-header .icon .notify {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+.widget-header .text {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    line-height: 1.2;
+}
+
+#basic-nav-dropdown {
+    color: white;
+}
+
+.widget-header a {
+    color: #212529
+}
+
+.widget-header:hover i {
+    color: black;
+}
+
+.widgets-wrap {
+    display: flex;
+    justify-content: end;
+}
+
+.navbar {
+    background-color: #D8D8D8;
+    color: #515151;
+
+    #basic-navbar-nav {
+        .nav-icon {
+            font-size: 30px;
+        }
+
+        .dropdown-toggle::after {
+            content: none;
+        }
+
+        .user-dropdown .dropdown-menu {
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+        }
+    }
+}
