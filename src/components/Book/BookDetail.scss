@@ -1,0 +1,133 @@
+.book-container {
+    .book-main-container {
+        .book-main-intro {
+            .book-main-title {
+
+                .book-author,
+                .book-publish {
+                    color: #957857;
+                }
+
+                .book-author-name,
+                .book-publish-name {
+                    color: #106cc0;
+                }
+            }
+
+            .book-main-price {
+                .book-price-container {
+                    .book-price-current {
+                        .book-current {
+                            color: #27a811;
+                        }
+                    }
+
+                    .book-price-cover-container {
+                        .book-price-sale {
+                            .book-sale {
+                                color: #b2123e;
+                            }
+                        }
+                    }
+                }
+
+                .book-add-button {
+                    .book-add-btn {
+                        background-color: #106cc0;
+                        color: #fff;
+                    }
+
+                    .book-add-btn:hover {
+                        background-color: #07559e;
+                    }
+                }
+            }
+
+            .book-main-check {
+                .book-like-button {
+                    .book-like-btn {
+                        background-color: #fff;
+                    }
+
+                    .book-like-btn:hover {
+                        background-color: #f1f1f1;
+                        color: #b2123e;
+                    }
+                }
+            }
+        }
+    }
+
+    .book-intro {
+        .book-intro-title {
+            border-bottom: #106cc0 2px solid;
+        }
+
+        .book-name-title {
+            color: #b2123e;
+        }
+
+        .book-intro-content {
+            text-align: justify;
+        }
+    }
+
+    .book-detail {
+        .book-detail-title {
+            border-bottom: #106cc0 2px solid;
+        }
+
+        .book-add-button {
+            .book-add-btn {
+                background-color: #106cc0;
+                color: #fff;
+            }
+
+            .book-add-btn:hover {
+                background-color: #07559e;
+            }
+        }
+    }
+
+    .book-comment {
+        .book-comment-title {
+            border-bottom: #106cc0 2px solid;
+        }
+
+        .book-comment-write {
+            .book-comment-avatar {
+                color: #106cc0;
+            }
+
+            .book-comment-field {
+                .book-comment-button {
+                    .book-cmt-btn {
+                        background-color: #106cc0;
+                        color: #fff;
+                        padding: 3px 25px;
+                        cursor: pointer;
+                    }
+
+                    .book-cmt-btn:hover {
+                        background-color: #07559e;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .book-comment-others {
+            .book-comment-user {
+                .book-comment-avatar {
+                    color: #106cc0;
+                }
+
+                .book-comment-container {
+                    .book-comment-content {
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+}
