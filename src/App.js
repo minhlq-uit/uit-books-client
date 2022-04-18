@@ -1,8 +1,9 @@
+import Router from "./routes";
 
 function App() {
   return (
     <div className="App">
-      <h1>UIT Books</h1>
+      <Router />
     </div>
   );
 }
