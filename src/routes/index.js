@@ -11,6 +11,15 @@ import Book from '../pages/Book';
 import Blogs from '../pages/Blogs';
 import Blog from '../pages/Blog';
 
+import Account from "../pages/Account";
+import FavoritesBook from "../pages/FavoritesBook";
+import FavoritesPost from "../pages/FavoritesPost";
+import MyOrderShipping from "../pages/MyOrderShipping";
+import MyOrderOrdered from "../pages/MyOrderOrdered";
+import MyOrderCanceled from "../pages/MyOrderCanceled";
+import CreateBlog from "../pages/CreateBlog";
+import SignUp from "../pages/SignUp";
+
 export default function App() {
   return (
     <Router>
@@ -27,6 +36,15 @@ export default function App() {
           <Route path='/book' element={<Book />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blog' element={<Blog />} />
+
+          <Route path="/account-infor" element={<Account />} />
+          <Route path="/favorites-book" element={<FavoritesBook />} />
+          <Route path="/favorites-post" element={<FavoritesPost />} />
+          <Route path="/order-shipping" element={<MyOrderShipping />} />
+          <Route path="/order-ordered" element={<MyOrderOrdered />} />
+          <Route path="/order-canceled" element={<MyOrderCanceled />} />
+          <Route path="/create-blog" element={<CreateBlog />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </Router>
