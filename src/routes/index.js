@@ -7,6 +7,15 @@ import Return from "../pages/Return";
 import TermsOfUse from "../pages/TermsOfUse";
 import FAQs from "../pages/FAQs";
 
+import Account from "../pages/Account";
+import FavoritesBook from "../pages/FavoritesBook";
+import FavoritesPost from "../pages/FavoritesPost";
+import MyOrderShipping from "../pages/MyOrderShipping";
+import MyOrderOrdered from "../pages/MyOrderOrdered";
+import MyOrderCanceled from "../pages/MyOrderCanceled";
+import CreateBlog from "../pages/CreateBlog";
+import SignUp from "../pages/SignUp";
+
 export default function App() {
   return (
     <Router>
@@ -19,6 +28,15 @@ export default function App() {
           <Route path="/chinh-sach-doi-tra" element={<Return />} />
           <Route path="/dieu-khoan-su-dung" element={<TermsOfUse />} />
           <Route path="/cau-hoi-thuong-gap" element={<FAQs />} />
+
+          <Route path="/account-infor" element={<Account />} />
+          <Route path="/favorites-book" element={<FavoritesBook />} />
+          <Route path="/favorites-post" element={<FavoritesPost />} />
+          <Route path="/order-shipping" element={<MyOrderShipping />} />
+          <Route path="/order-ordered" element={<MyOrderOrdered />} />
+          <Route path="/order-canceled" element={<MyOrderCanceled />} />
+          <Route path="/create-blog" element={<CreateBlog />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </Router>

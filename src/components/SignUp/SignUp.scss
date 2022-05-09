@@ -1,0 +1,72 @@
+.img-welcome {
+    width: 100%;
+}
+
+.container-btn-signin {
+    text-align: right;
+
+    .btn-signup {
+        background-color: #106CC0;
+        color: white;
+    }
+
+    .btn-signup:hover {
+        color: #fff;
+        opacity: 0.8;
+    }
+    
+}
+
+.container-logo {
+    display: flex;
+}
+
+.logo {
+    width: 60px;
+}
+
+.logo-name {
+    font-weight: bold;
+    color: #106CC0;
+    font-size: 36px;
+    margin-left: 20px;
+}
+
+.form-signup {
+    background-color: #F6F6F6;
+
+    .btn-signup-footer {    
+        background-color: #27A811;
+        color: white;
+        width: 120px;
+    }
+
+    .btn-signup-footer:hover {
+        color: #fff;
+        opacity: 0.8;
+    }
+
+    .container-input {
+        margin-right: 20px;
+    }
+    
+    .input-icon {
+        background-color: white;
+    }
+    
+    .img-confirm-pass {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .switch-signin  {
+        font-size: 14px;
+        text-decoration: none;
+    }
+    
+    .switch-signin:hover {
+        outline: none;
+    }
+    
+}
+
