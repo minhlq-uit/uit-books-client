@@ -188,9 +188,9 @@ export default function Slide() {
     return (
         <div className='slider-container'>
             <Slider {...settings}>
-                {photos.map((photo) => {
+                {photos.map((photo, index) => {
                     return (
-                        <div className='slider-item'>
+                        <div className='slider-item' key={`slider-item-${index}`}>
                             <img width='100%' src={photo.url} />
                         </div>
                     )
