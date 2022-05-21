@@ -27,6 +27,13 @@ import SignUp from "../pages/SignUp";
 import Me from "../components/Me";
 import UpdateInfo from "../components/Me/UpdateInfo";
 
+import AdminUserList from '../pages/AdminUserList';
+import AdminUserNew from '../pages/AdminUserNew';
+import AdminUserEdit from '../pages/AdminUserEdit';
+import AdminBlogList from '../pages/AdminBlogList';
+import AdminBlogNew from '../pages/AdminBlogNew';
+import AdminBlogEdit from '../pages/AdminBlogEdit';
+
 export default function App() {
   return (
     <Router>
@@ -61,6 +68,14 @@ export default function App() {
 
           <Route path="/me" element={<Me />} />
           <Route path="/me/update/info" element={<UpdateInfo />} />
+
+          <Route path='/admin-user-list' element={<AdminUserList />} />
+          <Route path='/admin-user-new' element={<AdminUserNew />} />
+          <Route path='/admin-user-edit' element={<AdminUserEdit />} />
+          <Route path='/admin-blog-list' element={<AdminBlogList />} />
+          <Route path='/admin-blog-new' element={<AdminBlogNew />} />
+          <Route path='/admin-blog-edit' element={<AdminBlogEdit />} />
+
         </Routes>
       </div>
     </Router>
