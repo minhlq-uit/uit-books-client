@@ -61,7 +61,7 @@ const Books = [
 export default function BookCategories() {
     return (
         <div className='categories-container container-fluid'>
-            <div className='categories-breadcrumb ms-5 mt-2'>
+            <div className='categories-breadcrumb ms-5 mt-2 mb-5'>
                 <Breadcrumb>
                     <Breadcrumb.Item href='/'>Trang chủ</Breadcrumb.Item>
                     <Breadcrumb.Item href='/categories' className='text-capitalize'>
@@ -74,35 +74,164 @@ export default function BookCategories() {
                 <Tab.Container id='left-tabs-example' defaultActiveKey='first'>
                     <Row>
                         <Col sm={3}>
-                            <div className='categories-nav'>
-                                <h6 className='categories-nav-title p-3 mb-0 fw-bold rounded'>Danh Mục</h6>
-                                <Nav variant='pills' className='categories-nav-main flex-column text-capitalize'>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey='first' className='category-nav border'>Tiểu thuyết</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey='second' className='category-nav border'>Truyện ngắn - Tản văn</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey='third' className='category-nav border'>Thơ</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey='fourth' className='category-nav border'>Huyền bí</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey='fifth' className='category-nav border'>Giả tưởng</Nav.Link>
-                                    </Nav.Item>
-                                </Nav>
+                            <div className='categories-nav-container'>
+                                <div className='categories-nav mb-5'>
+                                    <h6 className='categories-nav-title p-3 mb-0 fw-bold rounded'>Danh Mục</h6>
+                                    <Nav variant='pills' className='categories-nav-main flex-column text-capitalize'>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey='first' className='category-nav border'>Tiểu thuyết</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey='second' className='category-nav border'>Truyện ngắn - Tản văn</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey='third' className='category-nav border'>Thơ</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey='fourth' className='category-nav border'>Huyền bí - Giả tưởng</Nav.Link>
+                                        </Nav.Item>
+                                        <Nav.Item>
+                                            <Nav.Link eventKey='fifth' className='category-nav border'>Phóng sự - Ký sự</Nav.Link>
+                                        </Nav.Item>
+                                    </Nav>
+                                </div>
+                                <div className='categories-author mb-5'>
+                                    <h6 className='categories-author-title p-3 mb-0 fw-bold rounded'>Tác giả</h6>
+                                    <div className='list-group'>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                Nguyễn Nhật Ánh
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                Nguyễn Ngọc Thạch
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                Minh Nhật
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                Phan Việt
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                An Khang
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className='categories-price mb-5'>
+                                    <h6 className='categories-price-title p-3 mb-0 fw-bold rounded'>Giá sản phẩm</h6>
+                                    <div className='list-group'>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                0đ - 50.000đ
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                50.000đ - 100.000đ
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                100.000đ - 150.000đ
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                150.000đ - 200.000đ
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                200.000đ - 500.000đ
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value=''/>
+                                                Trên 500.000đ
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-
                         </Col>
                         <Col sm={9}>
-                            <Tab.Content>
-                                <Tab.Pane eventKey='first'>
-                                    <h1>Tiểu thuyết</h1>
+                            <Tab.Content className='categories-main'>
+                                <Tab.Pane eventKey='first' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Tiểu thuyết</h3>
+                                    <div className='first-books row row-cols-4'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey='second'>
-                                    <h1>Truyện ngắn - Tản văn</h1>
+                                <Tab.Pane eventKey='second' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Truyện ngắn - Tản văn</h3>
+                                    <div className='second-books row row-cols-4'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey='third' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Thơ</h3>
+                                    <div className='third-books row row-cols-4'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey='fourth' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Huyền bí - Giả tưởng</h3>
+                                    <div className='fourth-books row row-cols-4'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey='fifth' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Phóng sự - Ký sự</h3>
+                                    <div className='fifth-books row row-cols-4'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>
