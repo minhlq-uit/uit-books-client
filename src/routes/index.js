@@ -22,7 +22,7 @@ import FavoritesPost from "../pages/FavoritesPost";
 import MyOrderShipping from "../pages/MyOrderShipping";
 import MyOrderOrdered from "../pages/MyOrderOrdered";
 import MyOrderCanceled from "../pages/MyOrderCanceled";
-import CreateBlog from "../pages/CreateBlog";
+import AddBlog from "../pages/AddBlog";
 import SignUp from "../pages/SignUp";
 import Me from "../components/Me";
 import UpdateInfo from "../components/Me/UpdateInfo";
@@ -40,6 +40,10 @@ import AdminBookNew from "../pages/AdminBookNew";
 import AdminBookEdit from "../pages/AdminBookEdit";
 import AdminCategoryNew from "../pages/AdminCategoryNew";
 import AdminCategoryEdit from "../pages/AdminCategoryEdit";
+
+import AdminOrderDetailPage from "../pages/AdminOrderDetailPage";
+import AdminOrderPage from "../pages/AdminOrderPage";
+import AdminStatisticsPage from "../pages/AdminStatisticsPage";
 
 export default function App() {
   return (
@@ -70,7 +74,7 @@ export default function App() {
           <Route path="/order-shipping" element={<MyOrderShipping />} />
           <Route path="/order-ordered" element={<MyOrderOrdered />} />
           <Route path="/order-canceled" element={<MyOrderCanceled />} />
-          <Route path="/create-blog" element={<CreateBlog />} />
+          <Route path="/addblog" element={<AddBlog />} />
           <Route path="/signup" element={<SignUp />} />
 
           <Route path="/me" element={<Me />} />
@@ -90,6 +94,11 @@ export default function App() {
           <Route path="/admin-category-list" element={<AdminCategoryList />} />
           <Route path="/admin-category-new" element={<AdminCategoryNew />} />
           <Route path="/admin-category-edit" element={<AdminCategoryEdit />} />
+
+          <Route path='/AdminOrder' element={<AdminOrderPage/>}/>
+          <Route path='/AdminOrder/edit' element={<AdminOrderDetailPage/>}/>
+          <Route path='/AdminStatistic' element={<AdminStatisticsPage/>}/>
+
         </Routes>
       </div>
     </Router>
