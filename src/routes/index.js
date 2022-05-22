@@ -34,6 +34,10 @@ import AdminBlogList from '../pages/AdminBlogList';
 import AdminBlogNew from '../pages/AdminBlogNew';
 import AdminBlogEdit from '../pages/AdminBlogEdit';
 
+import AdminOrderDetailPage from "../pages/AdminOrderDetailPage";
+import AdminOrderPage from "../pages/AdminOrderPage";
+import AdminStatisticsPage from "../pages/AdminStatisticsPage";
+
 export default function App() {
   return (
     <Router>
@@ -75,6 +79,10 @@ export default function App() {
           <Route path='/admin-blog-list' element={<AdminBlogList />} />
           <Route path='/admin-blog-new' element={<AdminBlogNew />} />
           <Route path='/admin-blog-edit' element={<AdminBlogEdit />} />
+
+          <Route path='/AdminOrder' element={<AdminOrderPage/>}/>
+          <Route path='/AdminOrder/edit' element={<AdminOrderDetailPage/>}/>
+          <Route path='/AdminStatistic' element={<AdminStatisticsPage/>}/>
 
         </Routes>
       </div>
