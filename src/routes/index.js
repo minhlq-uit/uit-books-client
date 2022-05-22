@@ -27,12 +27,19 @@ import SignUp from "../pages/SignUp";
 import Me from "../components/Me";
 import UpdateInfo from "../components/Me/UpdateInfo";
 
-import AdminUserList from '../pages/AdminUserList';
-import AdminUserNew from '../pages/AdminUserNew';
-import AdminUserEdit from '../pages/AdminUserEdit';
-import AdminBlogList from '../pages/AdminBlogList';
-import AdminBlogNew from '../pages/AdminBlogNew';
-import AdminBlogEdit from '../pages/AdminBlogEdit';
+import AdminUserList from "../pages/AdminUserList";
+import AdminUserNew from "../pages/AdminUserNew";
+import AdminUserEdit from "../pages/AdminUserEdit";
+import AdminBlogList from "../pages/AdminBlogList";
+import AdminBlogNew from "../pages/AdminBlogNew";
+import AdminBlogEdit from "../pages/AdminBlogEdit";
+
+import AdminBookList from "../pages/AdminBookList";
+import AdminCategoryList from "../pages/AdminCategoryList";
+import AdminBookNew from "../pages/AdminBookNew";
+import AdminBookEdit from "../pages/AdminBookEdit";
+import AdminCategoryNew from "../pages/AdminCategoryNew";
+import AdminCategoryEdit from "../pages/AdminCategoryEdit";
 
 import AdminOrderDetailPage from "../pages/AdminOrderDetailPage";
 import AdminOrderPage from "../pages/AdminOrderPage";
@@ -73,12 +80,20 @@ export default function App() {
           <Route path="/me" element={<Me />} />
           <Route path="/me/update/info" element={<UpdateInfo />} />
 
-          <Route path='/admin-user-list' element={<AdminUserList />} />
-          <Route path='/admin-user-new' element={<AdminUserNew />} />
-          <Route path='/admin-user-edit' element={<AdminUserEdit />} />
-          <Route path='/admin-blog-list' element={<AdminBlogList />} />
-          <Route path='/admin-blog-new' element={<AdminBlogNew />} />
-          <Route path='/admin-blog-edit' element={<AdminBlogEdit />} />
+          <Route path="/admin-user-list" element={<AdminUserList />} />
+          <Route path="/admin-user-new" element={<AdminUserNew />} />
+          <Route path="/admin-user-edit" element={<AdminUserEdit />} />
+          <Route path="/admin-blog-list" element={<AdminBlogList />} />
+          <Route path="/admin-blog-new" element={<AdminBlogNew />} />
+          <Route path="/admin-blog-edit" element={<AdminBlogEdit />} />
+
+          <Route path="/admin-book-list" element={<AdminBookList />} />
+          <Route path="/admin-book-new" element={<AdminBookNew />} />
+          <Route path="/admin-book-edit" element={<AdminBookEdit />} />
+
+          <Route path="/admin-category-list" element={<AdminCategoryList />} />
+          <Route path="/admin-category-new" element={<AdminCategoryNew />} />
+          <Route path="/admin-category-edit" element={<AdminCategoryEdit />} />
 
           <Route path='/AdminOrder' element={<AdminOrderPage/>}/>
           <Route path='/AdminOrder/edit' element={<AdminOrderDetailPage/>}/>
