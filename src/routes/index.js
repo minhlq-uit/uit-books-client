@@ -22,7 +22,7 @@ import FavoritesPost from "../pages/FavoritesPost";
 import MyOrderShipping from "../pages/MyOrderShipping";
 import MyOrderOrdered from "../pages/MyOrderOrdered";
 import MyOrderCanceled from "../pages/MyOrderCanceled";
-import CreateBlog from "../pages/CreateBlog";
+import AddBlog from "../pages/AddBlog";
 import SignUp from "../pages/SignUp";
 import Me from "../components/Me";
 import UpdateInfo from "../components/Me/UpdateInfo";
@@ -63,7 +63,7 @@ export default function App() {
           <Route path="/order-shipping" element={<MyOrderShipping />} />
           <Route path="/order-ordered" element={<MyOrderOrdered />} />
           <Route path="/order-canceled" element={<MyOrderCanceled />} />
-          <Route path="/create-blog" element={<CreateBlog />} />
+          <Route path="/addblog" element={<AddBlog />} />
           <Route path="/signup" element={<SignUp />} />
 
           <Route path="/me" element={<Me />} />

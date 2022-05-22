@@ -9,7 +9,60 @@ import { IoCheckmarkSharp, IoPersonCircleSharp } from 'react-icons/io5';
 import { FaGreaterThanEqual } from 'react-icons/fa';
 import Table from 'react-bootstrap/Table';
 import Toast from 'react-bootstrap/Toast';
-import { ToastContainer } from 'react-bootstrap';
+import { Button, ToastContainer } from 'react-bootstrap';
+import BookItem from '../Home/Books/BookItem';
+import Slider from 'react-slick';
+
+const Books = [
+    {
+        title: 'Ra Bờ Suối Ngắm Hoa Kèn Hồng',
+        author: 'Nguyễn Nhật Ánh',
+        img: 'https://drive.google.com/uc?id=1evMkN-8Yzk2FL51iREJZXawvg1-CpMVc',
+        price: '100.500 đ'
+    },
+    {
+        title: 'Làm Bạn Với Bầu Trời',
+        author: 'Nguyễn Nhật Ánh',
+        img: 'https://drive.google.com/uc?id=1f81BHRFLAE1yEddPLdRUJO3jXJ2_SQPS',
+        price: '150.500 đ'
+    },
+    {
+        title: 'Chúc Một Ngày Tốt Lành',
+        author: 'Nguyễn Nhật Ánh',
+        img: 'https://drive.google.com/uc?id=1qiStbESBEiBavZGEgTvcvoI7UHW9MKEy',
+        price: '90.500 đ'
+    },
+    {
+        title: 'Ngày Xưa Có Một Chuyện Tình',
+        author: 'Nguyễn Nhật Ánh',
+        img: 'https://drive.google.com/uc?id=1iljqkkb1hT_FPSzkZJc0y5XtwNfzNL1K',
+        price: '111.500 đ'
+    },
+    {
+        title: 'Tàn Lửa',
+        author: 'Shizukui Shusuke',
+        img: 'https://drive.google.com/uc?id=1SNwfEQMgarJBqvFH2ECYpEIxPGdGR1FG',
+        price: '111.500 đ'
+    },
+    {
+        title: 'Cảm Ơn Người Lớn',
+        author: 'Nguyễn Nhật Ánh',
+        img: 'https://drive.google.com/uc?id=1SFgK4XIgGATHp0hauLyMf_Ccbs-sDuEj',
+        price: '111.500 đ'
+    },
+    {
+        title: 'Chuyện Kể Rằng Có Nàng Và Tôi',
+        author: 'Nhiều tác giả',
+        img: 'https://drive.google.com/uc?id=15eeAUNLISuTCIDK_YRiSQwCWglfJbHZW',
+        price: '111.500 đ'
+    },
+    {
+        title: 'Cố Định Một Đám Mây',
+        author: 'Nguyễn Ngọc Tư',
+        img: 'https://drive.google.com/uc?id=1DRQUMkxDzs4ldQwJ0X746gDL9boMVW_Q',
+        price: '111.500 đ'
+    }
+]
 
 export default function BookDetail() {
     function AddButton() {
@@ -64,6 +117,32 @@ export default function BookDetail() {
             </div>
         );
     }
+
+    let settings = {
+        infinite: false,
+        speed: 1000,
+        arrows: true,
+        slidesToShow: 5,
+        slidesToScroll: 4,
+
+        responsive: [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    };
+
     return (
         <div className='book-container container-fluid'>
             <div className='book-breadcrumb ms-5 mt-2'>
@@ -291,6 +370,25 @@ export default function BookDetail() {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='book-other ms-5 me-5 pt-3'>
+                <h4 className='book-other-title text-capitalize pb-2 mt-5'>Sách cùng danh mục</h4>
+                <Slider className='first-books' {...settings}>
+                    {Books.map((item, index) => {
+                        return (
+                            <BookItem
+                                key={index}
+                                title={item.title}
+                                author={item.author}
+                                img={item.img}
+                                price={item.price}
+                            />
+                        )
+                    })}
+                </Slider>
+                <div className='book-see-more text-center mt-0'>
+                    <Button className='book-see-more-button' variant="primary">Xem thêm &rarr;</Button>
                 </div>
             </div>
         </div >
