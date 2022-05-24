@@ -10,6 +10,8 @@ import productSlice from "./features/product/productSlice";
 import productsSlice from "./features/product/productsSlice";
 import reviewSlice from "./features/product/reviewSlice";
 import userSlice from "./features/user/userSlice";
+import forgotPasswordSlice from "./features/user/forgotPasswordSlice";
+import profileUserSlice from "./features/user/profileUserSlice";
 
 export const store = configureStore({
   reducer: {
@@ -24,5 +26,7 @@ export const store = configureStore({
     productReviews: productReviewsSlice,
     review: reviewSlice,
     user: userSlice,
+    profileUser: profileUserSlice,
+    forgotPassword: forgotPasswordSlice,
   },
 });

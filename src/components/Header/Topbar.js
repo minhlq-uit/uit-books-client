@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Navbar,
   Nav,
@@ -19,62 +19,44 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import GroupsIcon from "@mui/icons-material/Groups";
 import TtyIcon from "@mui/icons-material/Tty";
-import { useDispatch } from "react-redux";
-import { createProduct } from "../../redux/features/product/newProductSlice";
-import {
-  deleteProduct,
-  updateProduct,
-} from "../../redux/features/product/productSlice";
-import { getProduct } from "../../redux/features/product/productsSlice";
-import { getProductDetails } from "../../redux/features/product/productDetailsSlice";
-import { newReview } from "../../redux/features/product/newReviewSlice";
-import { getAllReviews } from "../../redux/features/product/productReviewsSlice";
-import { deleteReviews } from "../../redux/features/product/reviewSlice";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { logoutRequest } from "../../redux/features/user/userSlice";
+import Loading from "../../more/Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Topbar(props) {
+  const { isAuthenticated, user, status } = useSelector((state) => {
+    console.log("state user", state.user);
+    return state.user;
+  });
+
   const dispatch = useDispatch();
-  const id = "6280afccc0487bf49ae38687";
-  const product = {
-    name: "book of Nguyen",
+
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logoutRequest());
+
+    if (!isAuthenticated) {
+      // toast.success(status);
+    }
   };
-  const productData = {
-    id: "6280773e3d457c3aeb906dcf",
-    info: {
-      name: "book of Nguyen",
-      author: "string",
-      publisher: "string",
-      description: "string",
-      price: 0,
-      images: {
-        url: "string",
-        public_id: "string",
-      },
-      category: "string",
-      Stock: 0,
-      pageNumber: 0,
-    },
+
+  const handleIsAuthenticated = () => {
+    if (!isAuthenticated) {
+      navigate("/signin");
+    }
   };
-  const reviewData = {
-    bookId: "6280afccc0487bf49ae38687",
-    rating: 4,
-    comment: "Nguyen provip",
+
+  const handleLinkToMe = (e) => {
+    e.preventDefault();
+    navigate("/me", { state: { ...user } });
   };
-  const idData = {
-    reviewId: "6280afccc0487bf49ae38687",
-    bookId: "6280afccc0487bf49ae38687",
-  };
-  const handleClickTest = () => {
-    dispatch(deleteProduct(id));
-  };
-  // useEffect(() => {
-  //   // dispatch(createProduct(productData));
-  //   // dispatch(getProduct());
-  //   dispatch(deleteProduct(id));
-  //   // dispatch(updateProduct(productData));
-  //   // dispatch(getProductDetails(id));
-  //   // dispatch(newReview(reviewData));
-  //   // dispatch(getAllReviews(id));
-  //   // dispatch(deleteReviews(idData));
-  // }, [dispatch]);
+
   return (
     <header id="section-header">
       <section className="header-main border-bottom">
@@ -99,7 +81,7 @@ export default function Topbar(props) {
                     placeholder="Tìm kiếm sách theo tên hoặc tác giả"
                   />
                   <div className="input-group-append">
-                    <Button variant="dark" onClick={handleClickTest}>
+                    <Button variant="dark">
                       <SearchIcon /> Tìm kiếm
                     </Button>
                   </div>
@@ -128,10 +110,8 @@ export default function Topbar(props) {
                     <NavDropdown.Item href="#action/3.3">
                       Something
                     </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">
-                      Đăng xuất
-                    </NavDropdown.Item>
+                    {/* <NavDropdown.Divider /> */}
+                    {/* <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>Đăng xuất</NavDropdown.Item> */}
                   </NavDropdown>
                 </div>
                 <div className="widget-header mr-3">
@@ -154,17 +134,18 @@ export default function Topbar(props) {
                     <NavDropdown.Item href="#action/3.3">
                       Something
                     </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">
-                      Đăng xuất
-                    </NavDropdown.Item>
+                    {/* <NavDropdown.Divider /> */}
+                    {/* <NavDropdown.Item href="#action/3.4">Đăng xuất</NavDropdown.Item> */}
                   </NavDropdown>
                 </div>
                 <div className="widget-header">
                   <NavDropdown
                     align="end"
                     title={
-                      <div className="d-flex flex-column align-items-center">
+                      <div
+                        className="d-flex flex-column align-items-center"
+                        onClick={handleIsAuthenticated}
+                      >
                         <AccountBoxIcon className="nav-icon" />
                         Tài khoản
                       </div>
@@ -172,25 +153,50 @@ export default function Topbar(props) {
                     className="user-dropdown"
                     id="basic-nav-dropdown"
                   >
-                    <NavDropdown.Item href="#action/3.1">
-                      Tài khoản
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                      Sách yêu thích
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
-                      Viết blog
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">
-                      Đăng xuất
-                    </NavDropdown.Item>
+                    {isAuthenticated ? (
+                      <>
+                        <NavDropdown.Item
+                          href="#action/3.1"
+                          onClick={handleLinkToMe}
+                        >
+                          Tài khoản
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">
+                          Sách yêu thích
+                        </NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">
+                          Viết blog
+                        </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item
+                          href="#action/3.4"
+                          onClick={handleLogout}
+                        >
+                          Đăng xuất
+                        </NavDropdown.Item>
+                      </>
+                    ) : (
+                      <>
+                        <Link to="/signin"></Link>
+                      </>
+                    )}
                   </NavDropdown>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {/* <ToastContainer
+            position="top-left"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          /> */}
       </section>
 
       <Navbar variant="light" expand="lg">
