@@ -4,7 +4,7 @@ import { userColumns, userRows } from "../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdMenuBook } from "react-icons/md";
 
 const AdminBookList = () => {
   const [data, setData] = useState(userRows);
@@ -42,7 +42,8 @@ const AdminBookList = () => {
       <div className="datatableTitle">
         Danh sách các quyển sách
         <Link to="/admin-book-new" className="link">
-          Thêm mới
+          <MdMenuBook className="icon-book-new"/>
+           Thêm mới
         </Link>
       </div>
       <DataGrid

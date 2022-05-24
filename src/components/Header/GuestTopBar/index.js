@@ -102,9 +102,9 @@ export default function GuestTopBar(props) {
                                             {/* Tài khoản */}
                                         </div>
                                     } className="user-dropdown" id="basic-nav-dropdown" >
-                                        <NavDropdown.Item href="#action/3.3">Đăng nhập</NavDropdown.Item>
+                                        <NavDropdown.Item href="/signin">Đăng nhập</NavDropdown.Item>
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4">Đăng ký</NavDropdown.Item>
+                                        <NavDropdown.Item href="/signup">Đăng ký</NavDropdown.Item>
                                     </NavDropdown>
                                 </div>
                             </div>
@@ -138,12 +138,12 @@ export default function GuestTopBar(props) {
                                 </NavDropdown>
                             </Nav.Link>
 
-                            <Nav.Link href="#share" className="d-flex menu-item">
+                            <Nav.Link href="/blogs" className="d-flex menu-item">
                                 <RssFeedIcon className="nav-icons" />
                                 Chia sẻ
                             </Nav.Link>
 
-                            <Nav.Link href="#about" className="d-flex menu-item">
+                            <Nav.Link href="/about-us" className="d-flex menu-item">
                                 <GroupsIcon className="nav-icons" />
                                 Giới thiệu
                             </Nav.Link>

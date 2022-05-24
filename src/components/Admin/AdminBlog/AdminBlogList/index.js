@@ -4,8 +4,7 @@ import { userColumns, userRows } from "./BlogData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
-import { MdDelete } from "react-icons/md";
-import { FaUserPlus } from "react-icons/fa";
+import { MdDelete, MdNoteAdd } from "react-icons/md";
 
 
 
@@ -45,7 +44,7 @@ const BlogList = () => {
             <div className="datatableTitle">
                 Danh sách bài blog
                 <Link to="/users/new" className="link">
-                    <FaUserPlus className="addBlog" />
+                    <MdNoteAdd className="addBlog" />
                     Thêm mới
                 </Link>
             </div>

@@ -4,7 +4,7 @@ import { userColumns, userRows } from "../datatablesource";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdCategory } from "react-icons/md";
 
 const AdminCategoryList = () => {
   const [data, setData] = useState(userRows);
@@ -44,6 +44,7 @@ const AdminCategoryList = () => {
       <div className="datatableTitle">
         Danh sách thể loại
         <Link to="/admin-category-new" className="link">
+          <MdCategory className="icon-category-new"/>
           Thêm mới
         </Link>
       </div>

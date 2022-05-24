@@ -54,7 +54,7 @@ export const userColumns = [
 export const userRows = [
   {
     id: 1,
-    img: "/images/admin/bookAdmin/img1.png",
+    img: "https://drive.google.com/uc?id=1qiStbESBEiBavZGEgTvcvoI7UHW9MKEy",
     bookName: "Milk and honey",
     category: "Thơ",
     author: "Rupi Kaur",
@@ -66,7 +66,7 @@ export const userRows = [
 
   {
     id: 2,
-    img: "/images/admin/bookAdmin/img2.png",
+    img: "https://drive.google.com/uc?id=1iljqkkb1hT_FPSzkZJc0y5XtwNfzNL1K",
     bookName: "Psychology Money",
     category: "Tâm lý học",
     author: "Morgan Housel",
@@ -78,7 +78,7 @@ export const userRows = [
 
   {
     id: 3,
-    img: "/images/admin/bookAdmin/img3.png",
+    img: "https://drive.google.com/uc?id=1SNwfEQMgarJBqvFH2ECYpEIxPGdGR1FG",
     bookName: "Company of One",
     category: "Kinh doanh & kinh tế",
     author: "Paul Javis",
@@ -90,7 +90,7 @@ export const userRows = [
 
   {
     id: 4,
-    img: "/images/admin/bookAdmin/img4.png",
+    img: "https://drive.google.com/uc?id=1SFgK4XIgGATHp0hauLyMf_Ccbs-sDuEj",
     bookName: "Mere Christianity",
     category: "Thơ",
     author: "Lewis",
