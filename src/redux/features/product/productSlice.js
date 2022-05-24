@@ -48,10 +48,18 @@ export const updateProduct = createAsyncThunk(
 );
 export const deleteProduct = createAsyncThunk(
   `${namespace}/deleteProduct`,
-  async (id, { rejectWithValue }) => {
-    // const { data } = await axios.delete(
-    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`
-    // );
+  // async (id, { rejectWithValue, fulfillWithValue }) => {
+  //   try {
+  //     const res = await axios.delete(
+  //       `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`
+  //     );
+  //     const data = await res.json();
+  //     return fulfillWithValue(data);
+  //   } catch (err) {
+  //     throw rejectWithValue(err);
+  //   }
+  // }
+  async (id) => {
     await axios
       .delete(
         `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`
@@ -61,15 +69,9 @@ export const deleteProduct = createAsyncThunk(
         return res.data;
       })
       .catch((err) => {
-        console.log(err.response.data.message);
-        return err.response.data.message;
-        // return err.response.data
-        // console.log(rejectWithValue(err.response.data));
-        // return rejectWithValue(err.response.data);
-        // (book is not found with this id)
+        console.log(err.response.data);
+        return err;
       });
-    // console.log({ data });
-    // return data;
   }
 );
 export const productSlice = createSlice({
@@ -92,20 +94,14 @@ export const productSlice = createSlice({
     },
     [deleteProduct.fulfilled]: (state, action) => {
       state.loading = false;
-      console.log(action.payload);
-      state.isDeleted = action.payload;
-      state.err = action.payload;
+      // console.log(action.payload);
+      // state.isDeleted = action.payload;
+      // state.err = action.payload;
     },
     [deleteProduct.rejected]: (state, action) => {
       state.loading = false;
-      // state.err = action.payload;
-      console.log(action.payload);
-      if (action.payload) {
-        // Being that we passed in ValidationErrors to rejectType in `createAsyncThunk`, the payload will be available here.
-        state.err = action.payload.errorMessage;
-      } else {
-        state.err = action.error.message;
-      }
+      console.log(action.payload.response.data.message);
+      // state.err = action.payload.response.data.message;
     },
   },
 });
