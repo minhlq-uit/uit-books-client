@@ -45,6 +45,8 @@ import AdminOrderDetailPage from "../pages/AdminOrderDetailPage";
 import AdminOrderPage from "../pages/AdminOrderPage";
 import AdminStatisticsPage from "../pages/AdminStatisticsPage";
 
+import NotFound from "../pages/404";
+
 export default function App() {
   return (
     <Router>
@@ -53,14 +55,14 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
 
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/chinh-sach-giao-hang" element={<Delivery />} />
-          <Route path="/chinh-sach-doi-tra" element={<Return />} />
-          <Route path="/dieu-khoan-su-dung" element={<TermsOfUse />} />
-          <Route path="/cau-hoi-thuong-gap" element={<FAQs />} />
+          <Route path="/delivery-policies" element={<Delivery />} />
+          <Route path="/return-policies" element={<Return />} />
+          <Route path="/terms-of-use" element={<TermsOfUse />} />
+          <Route path="/help" element={<FAQs />} />
 
-          <Route path="/gio-hang" element={<Basket />} />
-          <Route path="/xac-nhan" element={<ConfirmationPage />} />
-          <Route path="/thanh-toan" element={<PaymentPage />} />
+          <Route path="/my-basket" element={<Basket />} />
+          <Route path="/confirm-order" element={<ConfirmationPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
           <Route path="/signin" element={<PageSignIn />} />
 
           <Route path="/categories" element={<Categories />} />
@@ -68,13 +70,13 @@ export default function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog" element={<Blog />} />
 
-          <Route path="/account-infor" element={<Account />} />
-          <Route path="/favorites-book" element={<FavoritesBook />} />
-          <Route path="/favorites-post" element={<FavoritesPost />} />
-          <Route path="/order-shipping" element={<MyOrderShipping />} />
-          <Route path="/order-ordered" element={<MyOrderOrdered />} />
-          <Route path="/order-canceled" element={<MyOrderCanceled />} />
-          <Route path="/addblog" element={<AddBlog />} />
+          <Route path="/my-account" element={<Account />} />
+          <Route path="/my-favorite-book" element={<FavoritesBook />} />
+          <Route path="/my-favorite-post" element={<FavoritesPost />} />
+          <Route path="/my-order-shipping" element={<MyOrderShipping />} />
+          <Route path="/my-order-ordered" element={<MyOrderOrdered />} />
+          <Route path="/my-order-canceled" element={<MyOrderCanceled />} />
+          <Route path="/add-blog" element={<AddBlog />} />
           <Route path="/signup" element={<SignUp />} />
 
           <Route path="/me" element={<Me />} />
@@ -95,10 +97,11 @@ export default function App() {
           <Route path="/admin-category-new" element={<AdminCategoryNew />} />
           <Route path="/admin-category-edit" element={<AdminCategoryEdit />} />
 
-          <Route path='/AdminOrder' element={<AdminOrderPage/>}/>
-          <Route path='/AdminOrder/edit' element={<AdminOrderDetailPage/>}/>
-          <Route path='/AdminStatistic' element={<AdminStatisticsPage/>}/>
+          <Route path='/admin-order' element={<AdminOrderPage/>}/>
+          <Route path='/admin-order/edit' element={<AdminOrderDetailPage/>}/>
+          <Route path='/admin-statistic' element={<AdminStatisticsPage/>}/>
 
+          <Route path='/notfound' element={<NotFound/>}/>
         </Routes>
       </div>
     </Router>

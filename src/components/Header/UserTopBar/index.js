@@ -101,9 +101,9 @@ export default function UserTopBar(props) {
                                             {/* Tài khoản */}
                                         </div>
                                     } className="user-dropdown" id="basic-nav-dropdown" >
-                                        <NavDropdown.Item href="#action/3.1">Tài khoản</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.2">Danh sách yêu thích</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.3">Viết blog</NavDropdown.Item>
+                                        <NavDropdown.Item href="/my-account">Tài khoản</NavDropdown.Item>
+                                        <NavDropdown.Item href="/my-favorite-book">Danh sách yêu thích</NavDropdown.Item>
+                                        <NavDropdown.Item href="/add-blog">Viết blog</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item href="#action/3.4">Đăng xuất</NavDropdown.Item>
                                     </NavDropdown>
@@ -147,12 +147,12 @@ export default function UserTopBar(props) {
                                 </NavDropdown>
                             </Nav.Link>
 
-                            <Nav.Link href="#share" className="d-flex menu-item">
+                            <Nav.Link href="/blogs" className="d-flex menu-item">
                                 <RssFeedIcon className="nav-icons" />
                                 Chia sẻ
                             </Nav.Link>
 
-                            <Nav.Link href="#about" className="d-flex menu-item">
+                            <Nav.Link href="/about-us" className="d-flex menu-item">
                                 <GroupsIcon className="nav-icons" />
                                 Giới thiệu
                             </Nav.Link>

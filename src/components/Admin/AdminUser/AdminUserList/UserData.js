@@ -54,10 +54,10 @@ export const userRows = [
     {
         id: 2,
         account: "nqm",
-        name: "Nguyễn Quang Minh",
+        name: "Lê Quang Minh",
         email: "19520023@gm.uit.edu.vn",
         phoneNumber: "0783521256",
-        role: "Thường"
+        role: "Admin"
     },
     {
         id: 3,
@@ -94,7 +94,7 @@ export const userRows = [
     {
         id: 7,
         account: "nnmc",
-        name: "Nguyễn Ngọc Minh C",
+        name: "Nguyễn Ngọc Minh Châu",
         email: "19520023@gm.uit.edu.vn",
         phoneNumber: "0783521256",
         role: "Admin"

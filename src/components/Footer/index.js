@@ -77,10 +77,10 @@ export default function Footer(props) {
                         <div className='footer-link-wrapper'>
                             <div className='footer-link-items'>
                                 <h2>Liên Kết</h2>
-                                <a href='' > Trang chủ </a>
-                                <a href='' > Danh mục sách </a>
-                                <a href='' > Chia sẻ </a>
-                                <a href='' > Giới thiệu </a>
+                                <a href='/' > Trang chủ </a>
+                                <a href='/categories' > Danh mục sách </a>
+                                <a href='/blogs' > Chia sẻ </a>
+                                <a href='/about-us' > Giới thiệu </a>
                                 {/* <Link to='/'>Trang chủ</Link>
                         <Link to='/'>Danh mục sách</Link>
                         <Link to='/'>Chia sẻ</Link>
@@ -88,10 +88,10 @@ export default function Footer(props) {
                             </div>
                             <div className='footer-link-items'>
                                 <h2>Chính sách</h2>
-                                <a href='' > Chính sách giao hàng </a>
-                                <a href='' > Chính sách đổi trả </a>
-                                <a href='' > Câu hỏi thường gặp </a>
-                                <a href='' > Hỗ trợ </a>
+                                <a href='/delivery-policies' > Chính sách giao hàng </a>
+                                <a href='/return-policies' > Chính sách đổi trả </a>
+                                <a href='/help' > Câu hỏi thường gặp </a>
+                                <a href='/terms-of-use' > Hỗ trợ </a>
                                 {/* <Link to='/'>Chính sách</Link>
                         <Link to='/'>Câu hỏi thường gặp</Link>
                         <Link to='/'>Hỗ trợ</Link>

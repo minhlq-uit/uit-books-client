@@ -23,6 +23,13 @@
       padding: 8px;
       border-radius: 5px;
       cursor: pointer;
+      display: flex;
+        align-items: center;
+        flex-direction: row;
+      .icon-book-new {
+        font-size: 22px;
+        margin-right: 5px;
+      }
     }
   }
 
