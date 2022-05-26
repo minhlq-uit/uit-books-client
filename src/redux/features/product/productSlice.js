@@ -1,14 +1,14 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import ProductDataService from "../../../services/product";
 const namespace = "product";
 
 const initialState = {
-  loading: null,
-  product: {},
-  isDeleted: null,
-  isUpdated: null,
-  err: "",
+  // loading: null,
+  // product: {},
+  // isDeleted: null,
+  // isUpdated: null,
+  // err: "",
 };
 // export const updateProduct = createAsyncThunk(
 //   `${namespace}/updateProduct`,
@@ -60,18 +60,16 @@ export const deleteProduct = createAsyncThunk(
   //   }
   // }
   async (id) => {
-    await axios
-      .delete(
-        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`
-      )
+    const data = await ProductDataService.deleteBook(id)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       })
       .catch((err) => {
-        console.log(err.response.data);
-        return err;
+        // console.log(err.response.data);
+        return err.response.data;
       });
+    return data;
   }
 );
 export const productSlice = createSlice({
@@ -95,13 +93,13 @@ export const productSlice = createSlice({
     [deleteProduct.fulfilled]: (state, action) => {
       state.loading = false;
       // console.log(action.payload);
-      // state.isDeleted = action.payload;
-      // state.err = action.payload;
+      state.isDeleted = action.payload.success;
+      state.error = action.payload.message;
     },
     [deleteProduct.rejected]: (state, action) => {
       state.loading = false;
       console.log(action.payload.response.data.message);
-      // state.err = action.payload.response.data.message;
+      state.error = action.payload.response.data.message;
     },
   },
 });
