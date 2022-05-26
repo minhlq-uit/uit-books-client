@@ -100,7 +100,9 @@ export default function Interest() {
                     )
                 })}
             </Slider>
-            <Button className='see-more' variant="primary">Xem thêm &rarr;</Button>
+            <div className='text-center mt-0'>
+                <Button className='see-more' variant="primary">Xem thêm &rarr;</Button>
+            </div>
         </Container>
     )
 }

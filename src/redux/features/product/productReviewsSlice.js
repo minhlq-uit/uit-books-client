@@ -1,22 +1,31 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import ProductDataService from "../../../services/product";
 
 const namespace = "allReview";
 
 const initialState = {
-  loading: null,
   reviews: [],
-  err: null,
 };
 // fix object
 export const getAllReviews = createAsyncThunk(
   `${namespace}/getAllReviews`,
   async (id) => {
-    const { data } = await axios.get(
-      `https://peaceful-brushlands-80713.herokuapp.com/api/v2/reviews?id=${id}`
-    );
-    console.log(data.reviews);
-    return data.reviews;
+    // const { data } = await axios.get(
+    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/reviews?id=${id}`
+    // );
+    // console.log(data.reviews);
+    // return data.reviews;
+    const data = await ProductDataService.getAllReview(id)
+      .then((res) => {
+        // console.log(res.data);
+        return res.data;
+      })
+      .catch((err) => {
+        // console.log(err.response.data);
+        return err.response.data;
+      });
+    return data;
   }
 );
 export const productReviewsSlice = createSlice({
@@ -29,7 +38,8 @@ export const productReviewsSlice = createSlice({
     },
     [getAllReviews.fulfilled]: (state, action) => {
       state.loading = false;
-      state.reviews = action.payload;
+      state.reviews = action.payload.reviews;
+      state.error = action.payload.message;
     },
     [getAllReviews.rejected]: (state, action) => {
       state.loading = false;

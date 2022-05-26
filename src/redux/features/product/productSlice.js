@@ -33,17 +33,27 @@ export const updateProduct = createAsyncThunk(
   `${namespace}/updateProduct`,
   async (productData) => {
     const { id, info } = productData;
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
+    // const config = {
+    //   headers: { "Content-Type": "application/json" },
+    // };
 
-    const { data } = await axios.put(
-      `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`,
-      info,
-      config
-    );
-    console.log(data);
-    return data.success;
+    // const { data } = await axios.put(
+    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`,
+    //   info,
+    //   config
+    // );
+    // console.log(data);
+    // return data.success;
+    const data = await ProductDataService.updateBook(id, info)
+      .then((res) => {
+        // console.log(res.data);
+        return res.data;
+      })
+      .catch((err) => {
+        // console.log(err.response.data);
+        return err.response.data;
+      });
+    return data;
   }
 );
 export const deleteProduct = createAsyncThunk(
@@ -82,7 +92,8 @@ export const productSlice = createSlice({
     },
     [updateProduct.fulfilled]: (state, action) => {
       state.loading = false;
-      state.isUpdated = action.payload;
+      state.isUpdated = action.payload.success;
+      state.error = action.payload.message;
     },
     [updateProduct.rejected]: (state, action) => {
       state.loading = false;
@@ -98,7 +109,7 @@ export const productSlice = createSlice({
     },
     [deleteProduct.rejected]: (state, action) => {
       state.loading = false;
-      console.log(action.payload.response.data.message);
+      // console.log(action.payload.response.data.message);
       state.error = action.payload.response.data.message;
     },
   },

@@ -64,6 +64,7 @@
 
 .widget-header .nav-icon {
     font-size: 35px;
+    color: white;
 }
 
 .widget-header .icon-area {
@@ -119,11 +120,9 @@
 .navbar {
     background-color: #D8D8D8;
     color: #515151;
+    padding: 0 !important;
 
     #basic-navbar-nav {
-        .nav-icon {
-            font-size: 30px;
-        }
 
         .dropdown-toggle::after {
             content: none;
@@ -133,6 +132,80 @@
             left: 50%;
             transform: translateX(-50%);
             top: 100%;
+            transition: all .3s ease;
+        }
+
+        .nav-link {
+            font-size: 18px;
+        }
+
+        .nav-icons {
+            transform: scale(1.2);
+            margin-right: 8px;
+        }
+
+        .category-list {
+            .dropdown-menu {
+                width: 30vw;
+
+                .dropdown-item {
+                    height: 40px;
+                    line-height: 32px;
+                }
+
+                #category-divider {
+                    border-top: 0.5px solid rgba(0, 0, 0, .15);
+                    margin: 0.2rem 0;
+                    height: 0;
+                }
+            }
+
+        }
+
+        .menu-item {
+            margin: auto 0;
+            margin-right: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-brand {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .category-list {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        width: initial !important;
+    }
+
+    .telephone {
+        display: flex;
+        margin: auto;
+    }
+
+    .navbar {
+        padding: 10px !important;
+    }
+
+    .nav-right {
+        padding-top: 10px;
+    }
+
+    .header-main {
+        padding-bottom: 0 !important;
+    }
+
+
+    @media screen and (max-width: 770px) {
+        .nav-right {
+            display: flex;
+            justify-content: center;
         }
     }
 }

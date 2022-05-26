@@ -1,28 +1,36 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import ProductDataService from "../../../services/product";
 
 const namespace = "newProduct";
 
 const initialState = {
-  loading: null,
   products: {},
-  success: null,
-  err: null,
 };
 
 export const createProduct = createAsyncThunk(
   `${namespace}/createProduct`,
   async (productData) => {
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
+    // const config = {
+    //   headers: { "Content-Type": "application/json" },
+    // };
 
-    const { data } = await axios.post(
-      `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/new`,
-      productData,
-      config
-    );
-    console.log(data);
+    // const { data } = await axios.post(
+    //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/new`,
+    //   productData,
+    //   config
+    // );
+    // console.log(data);
+    // return data;
+    const data = await ProductDataService.createBook(productData)
+      .then((res) => {
+        // console.log(res.data);
+        return res.data;
+      })
+      .catch((err) => {
+        // console.log(err.response.data);
+        return err.response.data;
+      });
     return data;
   }
 );
@@ -38,6 +46,8 @@ export const newProductSlice = createSlice({
     [createProduct.fulfilled]: (state, action) => {
       state.loading = false;
       state.products = action.payload.book;
+      state.success = action.payload.success;
+      state.error = action.payload.message;
     },
     [createProduct.rejected]: (state, action) => {
       state.loading = false;
