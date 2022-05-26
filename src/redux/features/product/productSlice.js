@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ProductDataService from "../../../services/product";
 const namespace = "product";

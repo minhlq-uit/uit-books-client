@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Navbar,
   Nav,
@@ -26,6 +26,8 @@ import { logoutRequest } from "../../redux/features/user/userSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { createProduct } from "../../redux/features/product/newProductSlice";
+import { deleteProduct } from "../../redux/features/product/productSlice";
 
 export default function Topbar(props) {
   const { isAuthenticated, user, status } = useSelector((state) => {
@@ -45,7 +47,25 @@ export default function Topbar(props) {
       // toast.success(status);
     }
   };
-
+  // test
+  const productData = {
+    name: "string",
+    author: "string",
+    publisher: "string",
+    description: "string",
+    price: 0,
+    images: {
+      url: "string",
+      public_id: "string",
+    },
+    category: "string",
+    Stock: 0,
+    pageNumber: 0,
+  };
+  const id = "6280bab8c0487bf49ae386df";
+  const handleClick = (e) => {
+    console.log("123");
+  };
   const handleIsAuthenticated = () => {
     if (!isAuthenticated) {
       navigate("/signin");
@@ -81,7 +101,7 @@ export default function Topbar(props) {
                     placeholder="Tìm kiếm sách theo tên hoặc tác giả"
                   />
                   <div className="input-group-append">
-                    <Button variant="dark">
+                    <Button variant="dark" onClick={handleClick}>
                       <SearchIcon /> Tìm kiếm
                     </Button>
                   </div>

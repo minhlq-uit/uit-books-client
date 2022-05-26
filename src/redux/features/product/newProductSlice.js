@@ -1,11 +1,10 @@
-import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ProductDataService from "../../../services/product";
 
 const namespace = "newProduct";
 
 const initialState = {
-  products: {},
+  product: {},
 };
 
 export const createProduct = createAsyncThunk(
@@ -45,7 +44,7 @@ export const newProductSlice = createSlice({
     },
     [createProduct.fulfilled]: (state, action) => {
       state.loading = false;
-      state.products = action.payload.book;
+      state.product = action.payload.book;
       state.success = action.payload.success;
       state.error = action.payload.message;
     },
