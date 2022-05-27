@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import {
   Navbar,
   Nav,
@@ -30,22 +31,25 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Topbar(props) {
   const { isAuthenticated, user, status } = useSelector((state) => {
-    console.log("state user", state.user);
     return state.user;
   });
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const handleLogout = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(logoutRequest());
-    
-    if(!isAuthenticated) {
-        // toast.success(status);
-    }
   };
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      toast.success("Logout success after 3s redirect to page signin");
+      setTimeout(() => {
+        navigate("/signin");
+      }, 3000);
+    }
+  }, [isAuthenticated]);
 
   const handleIsAuthenticated = () => {
     if (!isAuthenticated) {
@@ -55,7 +59,7 @@ export default function Topbar(props) {
 
   const handleLinkToMe = (e) => {
     e.preventDefault();
-    navigate("/me", { state: { ...user } });
+    navigate("/me");
   };
 
   return (
@@ -169,10 +173,7 @@ export default function Topbar(props) {
                           Viết blog
                         </NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item
-                          href="#action/3.4"
-                          onClick={handleLogout}
-                        >
+                        <NavDropdown.Item href="" onClick={handleLogout}>
                           Đăng xuất
                         </NavDropdown.Item>
                       </>
@@ -187,17 +188,17 @@ export default function Topbar(props) {
             </div>
           </div>
         </div>
-        {/* <ToastContainer
-            position="top-left"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          /> */}
+        <ToastContainer
+          position="bottom-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </section>
 
       <Navbar variant="light" expand="lg">
@@ -227,8 +228,6 @@ export default function Topbar(props) {
           </div>
         </Container>
       </Navbar>
-
-      
     </header>
   );
 }

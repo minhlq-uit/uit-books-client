@@ -26,6 +26,8 @@ import CreateBlog from "../pages/CreateBlog";
 import SignUp from "../pages/SignUp";
 import Me from "../components/Me";
 import UpdateInfo from "../components/Me/UpdateInfo";
+import UpdatePassword from "../components/Me/UpdatePassword";
+import ResetPassword from "../components/Me/ResetPassword";
 
 export default function App() {
   return (
@@ -61,6 +63,9 @@ export default function App() {
 
           <Route path="/me" element={<Me />} />
           <Route path="/me/update/info" element={<UpdateInfo />} />
+          <Route path="/me/update/password" element={<UpdatePassword />} />
+          <Route path="/me/update/password" element={<UpdatePassword />} />
+          <Route path="/password/reset/:token" element={<ResetPassword />} />
         </Routes>
       </div>
     </Router>

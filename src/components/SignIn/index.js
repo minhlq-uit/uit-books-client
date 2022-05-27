@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 
 import { Col, Container, Form, Row, Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { loginRequest, clearErrors } from "../../redux/features/user/userSlice";
-import { forgotPassword } from "../../redux/features/user/forgotPasswordSlice";
+import { loginRequest, clear } from "../../redux/features/user/userSlice";
+import { forgotPassword, clearMessage } from "../../redux/features/user/forgotPasswordSlice";
 
 import { useNavigate } from "react-router-dom";
 
@@ -30,10 +30,9 @@ const SignIn = (props) => {
   };
 
   const { error, loading, isAuthenticated } = useSelector((state) => {
-    console.log("state user", state.user);
     return state.user;
   });
-  const { status } = useSelector(state => state.forgotPasswordSlice)
+  const { status, message } = useSelector(state => state.forgotPassword)
 
   const navigate = useNavigate();
 
@@ -42,7 +41,7 @@ const SignIn = (props) => {
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearErrors());
+      dispatch(clear());
     }
 
     if (isAuthenticated) {
@@ -52,7 +51,6 @@ const SignIn = (props) => {
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    console.log('email', email)
   };
 
   const handlePassword = (e) => {
@@ -68,6 +66,19 @@ const SignIn = (props) => {
     handleClose()
     dispatch(forgotPassword({email}))
   }
+  const handleToRegister = () => {
+    navigate('/signup')
+  }
+  useEffect(() => {
+    if(status) {
+      toast.success(message);
+      dispatch(clearMessage());
+    } 
+    if (status === false) {
+      toast.error(message);
+      dispatch(clearMessage());
+    }
+  }, [status, message])
   return (
     <>
       {loading ? (
@@ -88,7 +99,7 @@ const SignIn = (props) => {
                 </Col>
                 <Col md="6" lg="5" className="signIn__container__right">
                   <div className="signIn__container__right__button">
-                    <button>Đăng kí</button>
+                    <button onClick={handleToRegister}>Đăng kí</button>
                   </div>
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
