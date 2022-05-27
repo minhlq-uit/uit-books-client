@@ -22,12 +22,32 @@ import FavoritesPost from "../pages/FavoritesPost";
 import MyOrderShipping from "../pages/MyOrderShipping";
 import MyOrderOrdered from "../pages/MyOrderOrdered";
 import MyOrderCanceled from "../pages/MyOrderCanceled";
-import CreateBlog from "../pages/CreateBlog";
+import AddBlog from "../pages/AddBlog";
 import SignUp from "../pages/SignUp";
 import Me from "../components/Me";
 import UpdateInfo from "../components/Me/UpdateInfo";
 import UpdatePassword from "../components/Me/UpdatePassword";
 import ResetPassword from "../components/Me/ResetPassword";
+
+import AdminUserList from "../pages/AdminUserList";
+import AdminUserNew from "../pages/AdminUserNew";
+import AdminUserEdit from "../pages/AdminUserEdit";
+import AdminBlogList from "../pages/AdminBlogList";
+import AdminBlogNew from "../pages/AdminBlogNew";
+import AdminBlogEdit from "../pages/AdminBlogEdit";
+
+import AdminBookList from "../pages/AdminBookList";
+import AdminCategoryList from "../pages/AdminCategoryList";
+import AdminBookNew from "../pages/AdminBookNew";
+import AdminBookEdit from "../pages/AdminBookEdit";
+import AdminCategoryNew from "../pages/AdminCategoryNew";
+import AdminCategoryEdit from "../pages/AdminCategoryEdit";
+
+import AdminOrderDetailPage from "../pages/AdminOrderDetailPage";
+import AdminOrderPage from "../pages/AdminOrderPage";
+import AdminStatisticsPage from "../pages/AdminStatisticsPage";
+
+import NotFound from "../pages/404";
 
 export default function App() {
   return (
@@ -37,14 +57,14 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
 
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/chinh-sach-giao-hang" element={<Delivery />} />
-          <Route path="/chinh-sach-doi-tra" element={<Return />} />
-          <Route path="/dieu-khoan-su-dung" element={<TermsOfUse />} />
-          <Route path="/cau-hoi-thuong-gap" element={<FAQs />} />
+          <Route path="/delivery-policies" element={<Delivery />} />
+          <Route path="/return-policies" element={<Return />} />
+          <Route path="/terms-of-use" element={<TermsOfUse />} />
+          <Route path="/help" element={<FAQs />} />
 
-          <Route path="/gio-hang" element={<Basket />} />
-          <Route path="/xac-nhan" element={<ConfirmationPage />} />
-          <Route path="/thanh-toan" element={<PaymentPage />} />
+          <Route path="/my-basket" element={<Basket />} />
+          <Route path="/confirm-order" element={<ConfirmationPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
           <Route path="/signin" element={<PageSignIn />} />
 
           <Route path="/categories" element={<Categories />} />
@@ -52,13 +72,13 @@ export default function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog" element={<Blog />} />
 
-          <Route path="/account-infor" element={<Account />} />
-          <Route path="/favorites-book" element={<FavoritesBook />} />
-          <Route path="/favorites-post" element={<FavoritesPost />} />
-          <Route path="/order-shipping" element={<MyOrderShipping />} />
-          <Route path="/order-ordered" element={<MyOrderOrdered />} />
-          <Route path="/order-canceled" element={<MyOrderCanceled />} />
-          <Route path="/create-blog" element={<CreateBlog />} />
+          <Route path="/my-account" element={<Account />} />
+          <Route path="/my-favorite-book" element={<FavoritesBook />} />
+          <Route path="/my-favorite-post" element={<FavoritesPost />} />
+          <Route path="/my-order-shipping" element={<MyOrderShipping />} />
+          <Route path="/my-order-ordered" element={<MyOrderOrdered />} />
+          <Route path="/my-order-canceled" element={<MyOrderCanceled />} />
+          <Route path="/add-blog" element={<AddBlog />} />
           <Route path="/signup" element={<SignUp />} />
 
           <Route path="/me" element={<Me />} />
@@ -66,6 +86,28 @@ export default function App() {
           <Route path="/me/update/password" element={<UpdatePassword />} />
           <Route path="/me/update/password" element={<UpdatePassword />} />
           <Route path="/password/reset/:token" element={<ResetPassword />} />
+
+
+          <Route path="/admin-user-list" element={<AdminUserList />} />
+          <Route path="/admin-user-new" element={<AdminUserNew />} />
+          <Route path="/admin-user-edit" element={<AdminUserEdit />} />
+          <Route path="/admin-blog-list" element={<AdminBlogList />} />
+          <Route path="/admin-blog-new" element={<AdminBlogNew />} />
+          <Route path="/admin-blog-edit" element={<AdminBlogEdit />} />
+
+          <Route path="/admin-book-list" element={<AdminBookList />} />
+          <Route path="/admin-book-new" element={<AdminBookNew />} />
+          <Route path="/admin-book-edit" element={<AdminBookEdit />} />
+
+          <Route path="/admin-category-list" element={<AdminCategoryList />} />
+          <Route path="/admin-category-new" element={<AdminCategoryNew />} />
+          <Route path="/admin-category-edit" element={<AdminCategoryEdit />} />
+
+          <Route path='/admin-order' element={<AdminOrderPage/>}/>
+          <Route path='/admin-order/edit' element={<AdminOrderDetailPage/>}/>
+          <Route path='/admin-statistic' element={<AdminStatisticsPage/>}/>
+
+          <Route path='/notfound' element={<NotFound/>}/>
         </Routes>
       </div>
     </Router>

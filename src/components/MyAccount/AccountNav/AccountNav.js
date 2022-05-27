@@ -43,7 +43,7 @@ function AccountNav() {
 
                 <span className="nav-item input-group d-flex ">
                   <NavLink
-                    to="/account-infor"
+                    to="/my-account"
                     activeclassname="active-account"
                     className="nav-link-account"
                   >
@@ -57,12 +57,12 @@ function AccountNav() {
 
                 <span className="nav-item input-group d-flex ">
                   <NavLink
-                    to="/order-shipping"
+                    to="/my-order-shipping"
                     activeclassname="active-account"
                     className={`nav-link-account ${
-                      pathname === "/order-ordered" ? "active" : ""
+                      pathname === "/my-order-ordered" ? "active" : ""
                     }
-                    ${pathname === "/order-canceled" ? "active" : ""}`}
+                    ${pathname === "/my-order-canceled" ? "active" : ""}`}
                   >
                     {/* <i className="bi bi-journal-check"></i>  */}
                     <span className="nav-item-icon-link">
@@ -74,13 +74,13 @@ function AccountNav() {
 
                 <span className={`nav-item input-group d-flex`}>
                   <NavLink
-                    to="/favorites-book"
+                    to="/my-favorite-book"
                     // isActive={() =>
                     //   ["/favorites-book", "/favorites-post"].includes(pathname)
                     // }
                     activeclassname="active-account"
                     className={`nav-link-account 
-                    ${pathname === "/favorites-post" ? "active" : ""} `}
+                    ${pathname === "/my-favorite-post" ? "active" : ""} `}
                   >
                     {/* <i className="bi bi-heart"></i>  */}
                     <span className="nav-item-icon-link">
@@ -92,7 +92,7 @@ function AccountNav() {
 
                 <span className="nav-item input-group d-flex ">
                   <NavLink
-                    to="/create-blog"
+                    to="/add-blog"
                     activeclassname="active-account"
                     className="nav-link-account"
                   >
