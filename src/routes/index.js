@@ -66,7 +66,7 @@ export default function App() {
           <Route path="/signin" element={<PageSignIn />} />
 
           <Route path="/categories" element={<Categories />} />
-          <Route path="/book" element={<Book />} />
+          <Route path="/book/:id" element={<Book />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog" element={<Blog />} />
 
@@ -91,17 +91,17 @@ export default function App() {
 
           <Route path="/admin-book-list" element={<AdminBookList />} />
           <Route path="/admin-book-new" element={<AdminBookNew />} />
-          <Route path="/admin-book-edit" element={<AdminBookEdit />} />
+          <Route path="/admin-book-edit/:id" element={<AdminBookEdit />} />
 
           <Route path="/admin-category-list" element={<AdminCategoryList />} />
           <Route path="/admin-category-new" element={<AdminCategoryNew />} />
           <Route path="/admin-category-edit" element={<AdminCategoryEdit />} />
 
-          <Route path='/admin-order' element={<AdminOrderPage/>}/>
-          <Route path='/admin-order/edit' element={<AdminOrderDetailPage/>}/>
-          <Route path='/admin-statistic' element={<AdminStatisticsPage/>}/>
+          <Route path="/admin-order" element={<AdminOrderPage />} />
+          <Route path="/admin-order/edit" element={<AdminOrderDetailPage />} />
+          <Route path="/admin-statistic" element={<AdminStatisticsPage />} />
 
-          <Route path='/notfound' element={<NotFound/>}/>
+          <Route path="/notfound" element={<NotFound />} />
         </Routes>
       </div>
     </Router>

@@ -84,7 +84,17 @@ export const deleteProduct = createAsyncThunk(
 export const productSlice = createSlice({
   name: namespace,
   initialState,
-  reducers: {},
+  reducers: {
+    clearErrorsDeleted: (state, action) => {
+      state.error = null;
+    },
+    resetStateUpdated: (state, action) => {
+      state.isUpdated = false;
+    },
+    resetStateDelete: (state, action) => {
+      state.isDeleted = false;
+    },
+  },
   extraReducers: {
     [updateProduct.pending]: (state, action) => {
       state.loading = true;
@@ -113,5 +123,7 @@ export const productSlice = createSlice({
     },
   },
 });
+export const { clearErrorsDeleted, resetStateUpdated, resetStateDelete } =
+  productSlice.actions;
 
 export default productSlice.reducer;

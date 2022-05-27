@@ -36,7 +36,14 @@ export const createProduct = createAsyncThunk(
 export const newProductSlice = createSlice({
   name: namespace,
   initialState,
-  reducers: {},
+  reducers: {
+    clearErrors: (state, action) => {
+      state.error = null;
+    },
+    resetState: (state, action) => {
+      state.success = false;
+    },
+  },
   extraReducers: {
     //createProduct
     [createProduct.pending]: (state, action) => {
@@ -53,5 +60,6 @@ export const newProductSlice = createSlice({
     },
   },
 });
+export const { clearErrors, resetState } = newProductSlice.actions;
 
 export default newProductSlice.reducer;

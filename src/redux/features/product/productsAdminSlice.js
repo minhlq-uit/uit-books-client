@@ -1,37 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ProductDataService from "../../../services/product";
 
-const namespace = "products";
+const namespace = "productsAdmin";
 
 const initialState = {
   products: [],
 };
 // fix object
-export const getProduct = createAsyncThunk(
-  `${namespace}/getProduct`,
-  async ({
-    keyword = "",
-    currentPage = 1,
-    price = [0, 1000000],
-    category,
-    ratings = 0,
-    author = "",
-    publisher = "",
-  }) => {
+export const getProductsAdmin = createAsyncThunk(
+  `${namespace}/getProductsAdmin`,
+  async () => {
     // const { data } = await axios.get(
     //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}`
     // );
     // console.log(data);
     // return data;
-    const data = await ProductDataService.getAllBook(
-      keyword,
-      currentPage,
-      price,
-      category,
-      ratings,
-      author,
-      publisher
-    )
+    const data = await ProductDataService.getAllBookAdmin()
       .then((res) => {
         console.log(res.data);
         return res.data;
@@ -43,7 +27,7 @@ export const getProduct = createAsyncThunk(
     return data;
   }
 );
-export const productsSlice = createSlice({
+export const productsAdminSlice = createSlice({
   name: namespace,
   initialState,
   reducers: {
@@ -55,22 +39,19 @@ export const productsSlice = createSlice({
     // },
   },
   extraReducers: {
-    [getProduct.pending]: (state, action) => {
+    [getProductsAdmin.pending]: (state, action) => {
       state.loading = true;
     },
-    [getProduct.fulfilled]: (state, action) => {
+    [getProductsAdmin.fulfilled]: (state, action) => {
       state.loading = false;
       state.products = action.payload.books;
-      state.productsCount = action.payload.productsCount;
-      state.resultPerPage = action.payload.resultPerPage;
-      state.filteredProductsCount = action.payload.filteredProductsCount;
       state.error = action.payload.message;
     },
-    [getProduct.rejected]: (state, action) => {
+    [getProductsAdmin.rejected]: (state, action) => {
       state.loading = false;
     },
   },
 });
-export const { clearErrors } = productsSlice.actions;
+export const { clearErrors } = productsAdminSlice.actions;
 
-export default productsSlice.reducer;
+export default productsAdminSlice.reducer;

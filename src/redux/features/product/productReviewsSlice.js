@@ -30,7 +30,14 @@ export const getAllReviews = createAsyncThunk(
 export const productReviewsSlice = createSlice({
   name: namespace,
   initialState,
-  reducers: {},
+  reducers: {
+    clearErrors: (state, action) => {
+      state.error = null;
+    },
+    resetState: (state, action) => {
+      state.success = false;
+    },
+  },
   extraReducers: {
     [getAllReviews.pending]: (state, action) => {
       state.loading = true;
@@ -45,5 +52,6 @@ export const productReviewsSlice = createSlice({
     },
   },
 });
+export const { clearErrors, resetState } = productReviewsSlice.actions;
 
 export default productReviewsSlice.reducer;

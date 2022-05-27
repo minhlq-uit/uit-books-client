@@ -7,19 +7,33 @@ class ProductDataService {
     };
     return axios.post(
       `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/new`,
+      // `http://localhost:5000/api/v2/book/new`,
       productData,
       config
     );
   }
   getAllBook(
-    keyword = "",
-    currentPage = 1,
-    price = [0, 25000],
+    keyword,
+    currentPage,
+    price,
     category,
-    ratings = 0
+    ratings,
+    author,
+    publisher
   ) {
+    if (category) {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&author=${author}&publisher=${publisher}`
+      );
+    } else {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&author=${author}&publisher=${publisher}`
+      );
+    }
+  }
+  getAllBookAdmin() {
     return axios.get(
-      `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}`
+      `https://peaceful-brushlands-80713.herokuapp.com/api/v2/admin/books`
     );
   }
   updateBook(id, info) {

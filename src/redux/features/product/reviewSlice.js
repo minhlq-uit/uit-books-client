@@ -29,7 +29,14 @@ export const deleteReviews = createAsyncThunk(
 export const reviewSlice = createSlice({
   name: namespace,
   initialState,
-  reducers: {},
+  reducers: {
+    clearErrors: (state, action) => {
+      state.error = null;
+    },
+    resetStateDeleted: (state, action) => {
+      state.isDeleted = false;
+    },
+  },
   extraReducers: {
     [deleteReviews.pending]: (state, action) => {
       state.loading = true;
@@ -44,5 +51,6 @@ export const reviewSlice = createSlice({
     },
   },
 });
+export const { clearErrors, resetStateDeleted } = reviewSlice.actions;
 
 export default reviewSlice.reducer;

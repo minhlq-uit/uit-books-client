@@ -29,7 +29,11 @@ export const getProductDetails = createAsyncThunk(
 export const productDetailsSlice = createSlice({
   name: namespace,
   initialState,
-  reducers: {},
+  reducers: {
+    clearErrorsDetails: (state, action) => {
+      state.error = null;
+    },
+  },
   extraReducers: {
     [getProductDetails.pending]: (state, action) => {
       state.loading = true;
@@ -44,5 +48,6 @@ export const productDetailsSlice = createSlice({
     },
   },
 });
+export const { clearErrorsDetails } = productDetailsSlice.actions;
 
 export default productDetailsSlice.reducer;
