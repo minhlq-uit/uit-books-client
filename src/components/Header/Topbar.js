@@ -10,8 +10,6 @@ import {
   Button,
 } from "react-bootstrap";
 import "./topbar.scss";
-// import "./ui.css";
-import "./responsive.css";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -20,7 +18,9 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import GroupsIcon from "@mui/icons-material/Groups";
 import TtyIcon from "@mui/icons-material/Tty";
-
+import Badge from '@mui/material/Badge';
+import IconButton from '@mui/material/IconButton';
+import { styled } from '@mui/material/styles';
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -28,6 +28,13 @@ import { logoutRequest } from "../../redux/features/user/userSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    backgroundColor: "#FF9933",
+    color: "white"
+  },
+}));
 
 export default function Topbar(props) {
   const { isAuthenticated, user, status } = useSelector((state) => {
@@ -68,7 +75,7 @@ export default function Topbar(props) {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-xl-2 col-lg-3 col-md-12">
-              <Navbar.Brand href="#home">
+              <Navbar.Brand as={Link} to="/">
                 <img
                   className="logo"
                   src="/images/header/uitbook-logo.png"
@@ -96,52 +103,26 @@ export default function Topbar(props) {
             <div className="col-xl-4 col-lg-4 col-md-6">
               <div className="widgets-wrap float-md-right">
                 <div className="widget-header mr-3">
-                  <NavDropdown
-                    align="end"
-                    title={
+                  <Nav.Item>
+                    <Nav.Link eventKey="link-2">
                       <div className="d-flex flex-column align-items-center">
                         <NotificationsIcon className="nav-icon" />
-                        Thông báo
+                        {/* Thông báo */}
                       </div>
-                    }
-                    id="basic-nav-dropdown"
-                  >
-                    <NavDropdown.Item href="#action/3.1">
-                      Action
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
-                      Something
-                    </NavDropdown.Item>
-                    {/* <NavDropdown.Divider /> */}
-                    {/* <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>Đăng xuất</NavDropdown.Item> */}
-                  </NavDropdown>
+                    </Nav.Link>
+                  </Nav.Item>
                 </div>
                 <div className="widget-header mr-3">
-                  <NavDropdown
-                    align="end"
-                    title={
-                      <div className="d-flex flex-column align-items-center">
-                        <ShoppingCartIcon className="nav-icon" />
-                        Giỏ hàng
-                      </div>
-                    }
-                    id="basic-nav-dropdown"
-                  >
-                    <NavDropdown.Item href="#action/3.1">
-                      Action
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                      Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
-                      Something
-                    </NavDropdown.Item>
-                    {/* <NavDropdown.Divider /> */}
-                    {/* <NavDropdown.Item href="#action/3.4">Đăng xuất</NavDropdown.Item> */}
-                  </NavDropdown>
+                  <Nav.Link as={Link} to="/my-basket" eventKey="link-2">
+                    <div className="d-flex flex-column align-items-center">
+                      <IconButton aria-label="cart" style={{ padding: "0" }}>
+                        <StyledBadge badgeContent={4}>
+                          <ShoppingCartIcon className="nav-icon" />
+                        </StyledBadge>
+                      </IconButton>
+                      {/* Giỏ hàng */}
+                    </div>
+                  </Nav.Link>
                 </div>
                 <div className="widget-header">
                   <NavDropdown
@@ -152,7 +133,7 @@ export default function Topbar(props) {
                         onClick={handleIsAuthenticated}
                       >
                         <AccountBoxIcon className="nav-icon" />
-                        Tài khoản
+                        {/* Tài khoản */}
                       </div>
                     }
                     className="user-dropdown"
@@ -161,19 +142,21 @@ export default function Topbar(props) {
                     {isAuthenticated ? (
                       <>
                         <NavDropdown.Item
-                          href="#action/3.1"
                           onClick={handleLinkToMe}
                         >
                           Tài khoản
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
+                        <NavDropdown.Item as={Link} to="/my-favorite-book">
                           Sách yêu thích
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">
+                        <NavDropdown.Item as={Link} to="/admin-blog-new">
                           Viết blog
                         </NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="" onClick={handleLogout}>
+                        <NavDropdown.Item as={Link} to="/admin-user-list">
+                          Trang quản lý
+                        </NavDropdown.Item>
+                        <NavDropdown.Item onClick={handleLogout}>
                           Đăng xuất
                         </NavDropdown.Item>
                       </>
@@ -206,17 +189,31 @@ export default function Topbar(props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link href="#home" className="d-flex">
-                <ListAltIcon className="nav-icon" />
-                Danh mục
+              <Nav.Link className="d-flex">
+                <NavDropdown align="start" title={
+                  <div>
+                    <ListAltIcon className="nav-icons" />
+                    Danh mục
+                  </div>
+                } className="category-list">
+                  <NavDropdown.Item as={Link} to="#action/3.1">Văn Học Trong Nước</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">Văn Học Nước Ngoài</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.3">Sách Kinh Tế</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Kĩ Năng Sống</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Tuổi Teen</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Thiếu Nhi</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Chuyên Ngành</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Ngoại Ngữ</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">Thường Thức Đời Sống</NavDropdown.Item>
+                </NavDropdown>
               </Nav.Link>
 
-              <Nav.Link href="#share" className="d-flex">
+              <Nav.Link as={Link} to="/blogs" className="d-flex">
                 <RssFeedIcon className="nav-icon" />
                 Chia sẻ
               </Nav.Link>
 
-              <Nav.Link href="#about" className="d-flex">
+              <Nav.Link as={Link} to="/about-us" className="d-flex">
                 <GroupsIcon className="nav-icon" />
                 Giới thiệu
               </Nav.Link>
