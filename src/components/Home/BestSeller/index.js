@@ -104,7 +104,7 @@ export default function BestSeller() {
               title={item.name}
               author={item.author}
               //   img={item.images[0].url}
-              img="https://res.cloudinary.com/uitbooks/image/upload/v1653631554/books/q8j5fpmaihltkrbm3xjj.jpg"
+              img={item.images.url}
               price={item.price}
               Sold={item.Sold}
             />
