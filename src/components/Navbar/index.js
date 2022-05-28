@@ -6,27 +6,28 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
-// import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
 const Navbar = () => {
-    // const { dispatch } = useContext(DarkModeContext);
 
     return (
         <div className="nav">
             <div className="wrapper">
-                <div class="col-xl-6 col-lg-5 col-md-6">
-                    <form action="#" class="search-header">
-                        <div class="input-group w-100">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm" />
-                            <div class="input-group-append">
+                {/* <div className="col-xl-6 col-lg-5 col-md-6">
+                    <form action="#" className="search-header">
+                        <div className="input-group w-100">
+                            <input type="text" className="form-control" placeholder="Tìm kiếm" />
+                            <div className="input-group-append">
                                 <Button variant="dark">
                                     <SearchIcon />
                                 </Button>
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> */}
+                <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10" className='ad-banner'>
+                    ❤️❤️❤️ <mark> Đây là dòng để cho bớt trống, xin đừng quá quan tâm về nó mà hãy quan tâm những thứ có ích bên dưới. Cám ơn!!! </mark> - <i> From toàn bộ thành viên nhóm 6 With Love </i>  ❤️❤️❤️
+                </marquee>
                 <div className="items">
                     <div className="item">
                         <NotificationsNoneOutlinedIcon className="icon" />

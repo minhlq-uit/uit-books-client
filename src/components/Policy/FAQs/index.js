@@ -1,11 +1,16 @@
 import React from "react";
 import './FAQ.css';
-import { Container } from 'react-bootstrap';
+import { Container, Breadcrumb } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
 
 export default function FAQ() {
     return (
         <Container className='faqs-container' fluid='md'>
+            <Breadcrumb>
+                <Breadcrumb.Item as={Link} to='/'>Trang chủ</Breadcrumb.Item>
+                <Breadcrumb.Item active className='text-capitalize'>Câu hỏi thường gặp</Breadcrumb.Item>
+            </Breadcrumb>
             <div className='faqs-title'>
                 <img src='/images/aboutus/uitbook-logo.png' alt='UITBooks-logo' />
                 <p>

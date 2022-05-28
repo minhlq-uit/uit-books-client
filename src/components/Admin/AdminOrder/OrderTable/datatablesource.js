@@ -3,36 +3,36 @@ export const userColumns = [
   {
     field: "barcode",
     headerName: "Mã đơn hàng",
-    width: 150,
+    width: 180,
   },
   {
     field: "employeeName",
     headerName: "Tên người đặt",
-    width: 230,
+    width: 300,
   },
 
   {
     field: "status",
     headerName: "Tình trạng",
-    width: 160,
+    width: 200,
     renderCell: (params) => {
-      let a ;
-      if(params.row.status ==="canceled"){
+      let a;
+      if (params.row.status === "canceled") {
         a = "Hủy đơn"
-      }else if(params.row.status ==="sold"){
-        a ="Đã bán"
-      }else if(params.row.status ==="pending"){
-        a ="Đang xử lý"
-      }else if(params.row.status ==="shipping"){
-        a ="Đang vận chuyển"
+      } else if (params.row.status === "sold") {
+        a = "Đã bán"
+      } else if (params.row.status === "pending") {
+        a = "Đang xử lý"
+      } else if (params.row.status === "shipping") {
+        a = "Đang vận chuyển"
       }
-      
+
       return (
         <div className={`cellWithStatus ${params.row.status}`}>
           {/* {params.row.status}  */}
           {a}
         </div>
-        
+
       );
     },
   },

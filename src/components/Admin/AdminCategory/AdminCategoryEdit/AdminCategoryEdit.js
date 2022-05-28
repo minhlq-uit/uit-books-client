@@ -40,11 +40,8 @@ function AdminCategoryEdit() {
           ></textarea>
         </div>
 
-        <button type="button" className="btn btn-submit">
-          Gửi
-        </button>
-        <button type="button" className="btn btn-reset">
-          Khôi phục
+        <button type="submit" className="btn btn-primary">
+          Lưu
         </button>
       </form>
     </div>

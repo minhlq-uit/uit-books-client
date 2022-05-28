@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice, {
   registerRequest,
@@ -67,19 +67,19 @@ function SignUp() {
                       alt="Logo trang web"
                       className="logo img-responsive"
                     />
-                    <span className="logo-name">UIT Book</span>
+                    <span className="logo-name">UITBooks</span>
                   </div>
                   <img
                     className="img-responsive img-welcome"
-                    src="/images/account/imgWelcome.png"
-                    alt="welcome to website"
+                    src="https://drive.google.com/uc?id=1DwArxZywMMyNB1-D8ZHrTQ-QosRCf3WR"
+                    alt="signup-img"
                   />
                 </div>
 
                 <div className="container col-lg mt-3">
                   <div className="container-btn-signin">
                     <button type="button" className="btn btn-signup mb-2">
-                      <a href="/signin">Đăng nhập</a>
+                      <Link to="/signin">Đăng nhập</Link>
                     </button>
                   </div>
 

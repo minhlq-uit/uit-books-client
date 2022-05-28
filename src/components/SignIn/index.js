@@ -64,16 +64,16 @@ const SignIn = (props) => {
   };
   const handleSubmitEmail = (e) => {
     handleClose()
-    dispatch(forgotPassword({email}))
+    dispatch(forgotPassword({ email }))
   }
   const handleToRegister = () => {
     navigate('/signup')
   }
   useEffect(() => {
-    if(status) {
+    if (status) {
       toast.success(message);
       dispatch(clearMessage());
-    } 
+    }
     if (status === false) {
       toast.error(message);
       dispatch(clearMessage());
@@ -91,15 +91,15 @@ const SignIn = (props) => {
                 <Col md="6" lg="7" className="signIn__container__left">
                   <div className="title">
                     <img src="/images/basket/logo.png" alt="logo" />
-                    <div className="title__name">BooksUIT</div>
+                    <div className="title__name">UITBooks</div>
                   </div>
                   <div className="image">
-                    <img src="./images/basket/signin.png" alt="" />
+                    <img src="https://drive.google.com/uc?id=1lL3RkPBS6QbJ8r-hz7VFa536y-jvk0B0" alt="login-img" />
                   </div>
                 </Col>
                 <Col md="6" lg="5" className="signIn__container__right">
                   <div className="signIn__container__right__button">
-                    <button onClick={handleToRegister}>Đăng kí</button>
+                    <button onClick={handleToRegister}>Đăng ký</button>
                   </div>
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -119,6 +119,16 @@ const SignIn = (props) => {
                         onChange={handlePassword}
                       />
                     </Form.Group>
+                    <div className="d-flex justify-content-center mt-3">
+                      <Button
+                        type="submit"
+                        className="w-100"
+                        onClick={handleOnSubmit}
+                      >
+                        Đăng nhập
+                      </Button>
+                    </div>
+                    <a href="" onClick={handleShow}>Quên mật khẩu</a>
                     <div className="sigIn__form__separate">
                       <hr />
                       <span> Or</span>
@@ -141,17 +151,6 @@ const SignIn = (props) => {
                       </div>
                       {/* <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} /> */}
                     </div>
-
-                    <div className="d-flex justify-content-center mt-3">
-                      <Button
-                        type="submit"
-                        className="w-100"
-                        onClick={handleOnSubmit}
-                      >
-                        Đăng nhập
-                      </Button>
-                    </div>
-                    <a href="" onClick={handleShow}>Quên mật khẩu</a>
                   </Form>
                 </Col>
               </Row>

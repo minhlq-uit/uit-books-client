@@ -1,5 +1,5 @@
 .img-welcome {
-    width: 100%;
+    width: 80%;
 }
 
 .container-btn-signin {
@@ -14,7 +14,7 @@
         color: #fff;
         opacity: 0.8;
     }
-    
+
 }
 
 .container-logo {
@@ -35,7 +35,7 @@
 .form-signup {
     background-color: #F6F6F6;
 
-    .btn-signup-footer {    
+    .btn-signup-footer {
         background-color: #27A811;
         color: white;
         width: 120px;
@@ -49,24 +49,23 @@
     .container-input {
         margin-right: 20px;
     }
-    
+
     .input-icon {
         background-color: white;
     }
-    
+
     .img-confirm-pass {
         width: 16px;
         height: 16px;
     }
-    
-    .switch-signin  {
+
+    .switch-signin {
         font-size: 14px;
         text-decoration: none;
     }
-    
+
     .switch-signin:hover {
         outline: none;
     }
-    
-}
 
+}

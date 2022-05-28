@@ -6,7 +6,8 @@ import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { FaUserPlus } from "react-icons/fa";
-
+import { Button } from 'react-bootstrap';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 const UserList = () => {
@@ -20,14 +21,14 @@ const UserList = () => {
         {
             field: "action",
             headerName: "Hành động",
-            width: 120,
-            minWidth: 100,
+            width: 100,
+            minWidth: 80,
             maxwidth: 180,
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <Link to="/users/test" style={{ textDecoration: "none" }}>
-                            <div className="editButton"><BiEdit /></div>
+                        <Link to="/admin-user-edit" style={{ textDecoration: "none" }}>
+                            <div className="viewButton"><BiEdit /></div>
                         </Link>
                         <div
                             className="deleteButton"
@@ -42,9 +43,21 @@ const UserList = () => {
     ];
     return (
         <div className="datatable">
+            <div className="col-xl-6 col-lg-5 col-md-6">
+                <form action="#" className="search-header">
+                    <div className="input-group w-100">
+                        <input type="text" className="form-control" placeholder="Tìm kiếm" />
+                        <div className="input-group-append">
+                            <Button variant="dark">
+                                <SearchIcon />
+                            </Button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div className="datatableTitle">
                 Danh sách người dùng
-                <Link to="/users/new" className="link">
+                <Link to="/admin-user-new" className="link">
                     <FaUserPlus className="addUser" />
                     Thêm mới
                 </Link>

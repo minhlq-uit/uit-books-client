@@ -84,6 +84,30 @@ function AdminBookEdit() {
         </div>
 
         <div className="form-group">
+          <label className="form-group-label" htmlFor="pageNumber">
+            Số trang
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="pageNumber-add"
+            placeholder="200"
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-group-label" htmlFor="stock-add">
+            Tồn kho
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="stock-add"
+            placeholder="500"
+          />
+        </div>
+
+        <div className="form-group">
           <label
             className="form-group-label"
             htmlFor="exampleFormControlTextarea1"
@@ -98,11 +122,8 @@ function AdminBookEdit() {
           ></textarea>
         </div>
 
-        <button type="button" className="btn btn-submit">
-          Gửi
-        </button>
-        <button type="button" className="btn btn-reset">
-          Khôi phục
+        <button type="submit" className="btn btn-primary">
+          Lưu
         </button>
       </form>
     </div>

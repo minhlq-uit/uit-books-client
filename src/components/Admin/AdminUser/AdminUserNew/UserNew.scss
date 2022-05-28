@@ -11,5 +11,21 @@
             font-weight: 500;
         }
 
+        .btn {
+            border: none;
+            padding: 6px;
+            color: #fff;
+            min-width: 56px;
+        }
+
+        .btn-submit {
+            background-color: #106CC0;
+            margin-right: 30px;
+        }
+
+        .btn-reset {
+            background-color: #FF9933;
+        }
+
     }
 }

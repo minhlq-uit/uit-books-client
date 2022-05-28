@@ -208,13 +208,13 @@ export default function Topbar(props) {
                 </NavDropdown>
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/blogs" className="d-flex">
-                <RssFeedIcon className="nav-icon" />
+              <Nav.Link as={Link} to="/blogs" className="d-flex nav-link-items">
+                <RssFeedIcon className="nav-icons" />
                 Chia sẻ
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/about-us" className="d-flex">
-                <GroupsIcon className="nav-icon" />
+              <Nav.Link as={Link} to="/about-us" className="d-flex nav-link-items">
+                <GroupsIcon className="nav-icons" />
                 Giới thiệu
               </Nav.Link>
             </Nav>
