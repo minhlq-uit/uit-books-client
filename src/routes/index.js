@@ -107,6 +107,8 @@ export default function App() {
           <Route path="/admin-order/edit" element={<AdminOrderDetailPage />} />
           <Route path="/admin-statistic" element={<AdminStatisticsPage />} />
 
+
+
           <Route path="/notfound" element={<NotFound />} />
         </Routes>
       </div>

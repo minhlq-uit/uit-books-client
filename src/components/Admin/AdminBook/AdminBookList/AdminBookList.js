@@ -8,6 +8,7 @@ import { BiEdit } from "react-icons/bi";
 import { MdDelete, MdMenuBook, MdOutlinePreview } from "react-icons/md";
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { RiDeleteBin2Fill } from "react-icons/ri";
+import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrorsDeleted,
@@ -18,6 +19,7 @@ import {
   getProductsAdmin,
   clearErrors,
 } from "../../../../redux/features/product/productsAdminSlice";
+import { toast } from "react-toastify";
 
 const AdminBookList = () => {
   // const [data, setData] = useState(userRows);
@@ -35,7 +37,7 @@ const AdminBookList = () => {
     e.preventDefault()
     setShow(true)
   };
-  
+
 
   const { error, products } = useSelector((state) => state.productsAdmin);
   const { error: deleteError, isDeleted } = useSelector(
@@ -65,12 +67,28 @@ const AdminBookList = () => {
     // }
 
     if (deleteError && isDeleted) {
-      alert("Book Deleted Successfully");
+      toast.success('Xóa sách thành công! 🎊', {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       dispatch(resetStateDelete());
       dispatch(clearErrorsDeleted());
       dispatch(getProductsAdmin());
     } else if (deleteError != null) {
-      alert(deleteError);
+      toast.error('Thất bại! Vui lòng thử lại 😭', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       dispatch(clearErrorsDeleted());
     }
   }, [dispatch, alert, error, deleteError, isDeleted]);
@@ -138,8 +156,25 @@ const AdminBookList = () => {
         img: "https://res.cloudinary.com/uitbooks/image/upload/v1653576546/books/cnign5w5v4qlelbw9dhq.jpg",
       });
     });
+   
   return (
     <div className="datatable">
+      <div className="col-xl-6 col-lg-5 col-md-6">
+        <form action="#" className="search-header">
+          <div className="input-group w-100">
+            <input 
+            type="text" 
+            className="form-control" 
+            placeholder="Tìm kiếm" 
+            />
+            <div className="input-group-append">
+              <Button variant="dark">
+                <SearchIcon />
+              </Button>
+            </div>
+          </div>
+        </form>
+      </div>
       <div className="datatableTitle">
         Danh sách các quyển sách
         <Link to="/admin-book-new" className="link">
@@ -176,7 +211,7 @@ const AdminBookList = () => {
                       {/* <p>{item.time}</p> */}
                       <p>28/05/2022</p>
                     </div>
-                    <RiDeleteBin2Fill className="book-comment-delete-icon ms-5"/>
+                    <RiDeleteBin2Fill className="book-comment-delete-icon ms-5" />
                   </div>
                   <div className="book-comment-content">
                     {/* <p>{item.comment}</p> */}

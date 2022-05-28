@@ -11,6 +11,7 @@ import {
   updateProduct,
 } from "../../../../redux/features/product/productSlice";
 import "../AdminBookNew/AdminBookNew.scss";
+import { toast } from "react-toastify";
 // import { useState } from 'react'
 
 function AdminBookEdit() {
@@ -59,12 +60,30 @@ function AdminBookEdit() {
     }
 
     if (updateError) {
-      console.log(updateError);
-      alert(updateError);
+      // console.log(updateError);
+      // alert(updateError);
+      toast.error('Thất bại! Vui lòng thử lại 😭', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
       dispatch(clearErrorsDeleted());
     }
     if (isUpdated) {
-      alert("book Updated Successfully");
+      // alert("book Updated Successfully");
+      toast.success('Cập nhật sách thành công! 🎊', {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
       navigate("/admin-book-list");
       dispatch(resetStateUpdated());
     }

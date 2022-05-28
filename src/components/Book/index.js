@@ -12,6 +12,8 @@ import Toast from "react-bootstrap/Toast";
 import { Button, ToastContainer } from "react-bootstrap";
 import BookItem from "../Home/Books/BookItem";
 import Slider from "react-slick";
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -238,6 +240,31 @@ export default function BookDetail() {
     }
     dispatch(getProductDetails(id));
   }, [id, dispatch, error, alert, reviewError, success]);
+  const [Images, setImages] = useState([]);
+
+  useEffect(() => {
+    if (product.images && product.images.length > 0) {
+     let images = [];
+  
+     product.images.map((item, i) => {
+      images.push({
+       original: item.url,
+       thumbnail: item.url,
+      });
+     });
+     setImages(images);
+    }
+   }, [product.images]);
+
+  // let images = [];
+  // product &&
+  //   product.forEach((item) => {
+  //     images.push({
+  //       original: item.url,
+  //       thumbnail: item.url,
+  //     });
+  //   });
+
   return (
     <Fragment>
       {loading ? (
@@ -260,15 +287,30 @@ export default function BookDetail() {
               <Row>
                 <Col xs={6} md={4}>
                   <div className="book-main-img">
-                    {product.images &&
-                      product.images.map((item, i) => (
-                        <img
-                          className="book-img img-thumbnail img-fluid align-middle rounded mx-auto d-block"
-                          key={i}
-                          src={item.url}
-                          alt={`${i} Slide`}
-                        />
-                      ))}
+                    {/* <ImageGallery 
+                      items={[
+                        {
+                          original: "https://picsum.photos/id/1018/1000/600/",
+                          // thumbnail: "https://picsum.photos/id/1018/250/150/"
+                        },
+                        {
+                          original: "https://picsum.photos/id/1015/1000/600/",
+                          // thumbnail: "https://picsum.photos/id/1015/250/150/"
+                        },
+                        {
+                          original: "https://picsum.photos/id/1019/1000/600/",
+                          // thumbnail: "https://picsum.photos/id/1019/250/150/"
+                        }
+                      ]}
+                      /> */}
+                    {/* <ImageGallery
+                      items={product.images &&
+                        product.images.map((prop) => (
+                          {original: prop.url, thumbnail: prop.url}
+                        ))}
+                    /> */}
+                    <ImageGallery
+                      items={Images} />
                   </div>
                 </Col>
                 <Col xs={12} md={8}>

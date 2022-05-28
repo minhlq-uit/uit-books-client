@@ -6,9 +6,7 @@ import {
   createProduct,
   resetState,
 } from "../../../../redux/features/product/newProductSlice";
-// import { toast } from "react-toastify"
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function AdminBookNew() {
   const [name, setName] = useState("");
@@ -34,11 +32,28 @@ function AdminBookNew() {
   // }, [dispatch, loading, error, success]);
   useEffect(() => {
     if (error) {
-      alert(error);
+      toast.error('Thất bại! Vui lòng thử lại 😭', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
       dispatch(clearErrors());
     }
     if (success) {
-      alert("Book created successfully");
+      // alert("Book created successfully");
+      toast.success('Thêm mới sách thành công! 🎊', {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
       setName("");
       setAuthor("");
       setCategory("");
@@ -250,7 +265,7 @@ function AdminBookNew() {
         </div>
 
         <button type="submit" class="btn btn-submit">
-          Gửi
+          Thêm
         </button>
         <button type="button" class="btn btn-reset" onClick={notify}>
           Khôi phục
