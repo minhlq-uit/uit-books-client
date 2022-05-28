@@ -6,11 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginRequest, clear } from "../../redux/features/user/userSlice";
 import { forgotPassword, clearMessage } from "../../redux/features/user/forgotPasswordSlice";
 
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { FaEnvelope } from "react-icons/fa";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BiKey } from "react-icons/bi";
 
 import "./signIn.scss";
 // import * as Yup from "yup";
@@ -99,36 +100,57 @@ const SignIn = (props) => {
                 </Col>
                 <Col md="6" lg="5" className="signIn__container__right">
                   <div className="signIn__container__right__button">
-                    <button onClick={handleToRegister}>Đăng ký</button>
+                    <button type="button" className="mb-2">
+                      <Link to="/" className="btn-home">Quay về Trang chủ</Link>
+                    </button>
                   </div>
-                  <Form>
+                  <Form className="form">
+                    <div className="signIn__title">ĐĂNG NHẬP</div>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Email</Form.Label>
-                      <Form.Control
-                        type="email"
-                        placeholder="Enter email"
-                        onChange={handleEmail}
-                      />
+                      {/* <Form.Label>Email</Form.Label> */}
+                      <div className="sigIn__form__row">
+                        <div className="sigIn__form__row__icon">
+                          <FaEnvelope />
+                        </div>
+
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter email"
+                          onChange={handleEmail}
+                        />
+                      </div>
+
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        onChange={handlePassword}
-                      />
+                      {/* <Form.Label>Password</Form.Label> */}
+                      <div className="sigIn__form__row">
+                        <div className="sigIn__form__row__icon">
+
+                          <BiKey className="signIn__icon" />
+                        </div>
+                        <Form.Control
+                          type="password"
+                          placeholder="Password"
+                          onChange={handlePassword}
+                        />
+                      </div>
+
                     </Form.Group>
-                    <div className="d-flex justify-content-center mt-3">
+                    <div className="d-flex justify-content-center mt-3 signIn__submit">
                       <Button
                         type="submit"
-                        className="w-100"
+                        className="w-100 signIn__button"
                         onClick={handleOnSubmit}
                       >
                         Đăng nhập
                       </Button>
+
                     </div>
-                    <a href="" onClick={handleShow}>Quên mật khẩu</a>
+                    <div className="signin-links">
+                      <Link to="/signup" className="toLogin">Chưa có tài khoản?</Link>
+                      <a href="" className="forgotPassword" onClick={handleShow}>Quên mật khẩu?</a>
+                    </div>
                     <div className="sigIn__form__separate">
                       <hr />
                       <span> Or</span>
@@ -189,10 +211,10 @@ const SignIn = (props) => {
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
-                Close
+                Đóng
               </Button>
               <Button variant="primary" onClick={handleSubmitEmail}>
-                Submit
+                Gửi
               </Button>
             </Modal.Footer>
           </Modal>

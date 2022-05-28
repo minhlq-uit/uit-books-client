@@ -1,8 +1,8 @@
-.ib__container{
+.ib__container {
     margin-top: 25px;
     // padding-left: 100px;
-    
-    .free-delivery{
+
+    .free-delivery {
         // display: inline-block;
         // width: 120%;
         margin-bottom: 25px;
@@ -11,57 +11,68 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        & i{
+
+        & i {
             padding-left: 40px;
             font-size: 1.5rem;
             color: #fff;
             margin-right: 20px;
         }
-        & span{
+
+        & span {
             font-size: 1rem;
             color: #fff;
         }
     }
-    .basket-list{
-        // display: inline-block;
-        border: 1px solid rgba(51, 51, 51, 0.6);
-        // width: 120%;
-        &__item{
+
+    .basket-list {
+
+
+        &__item {
             padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 0.5px solid rgba(51, 51, 51, 0.6);
-            &__image{
+
+            &__image {
                 width: max-content;
-                img{
+
+                img {
                     height: 150px;
                 }
             }
-            &:hover{
+
+            &:hover {
                 background-color: #0d53a318;
             }
-            &__information{
+
+            &__information {
                 width: 300px;
                 line-height: 25px;
-                &__title{
+
+                &__title {
                     color: #0D52A3;
                     font-size: 1.5rem;
                     line-height: 35px;
                 }
-                &__icon{
+
+                &__icon {
                     cursor: pointer;
                     display: flex;
                     align-items: center;
                 }
-                &__icon i{
+
+                &__icon i {
                     font-size: 20px;
                 }
             }
-            &__quantity{
+
+            &__quantity {
                 display: flex;
                 padding: 0 20px;
-                &__btn{
+
+                &__btn {
                     margin: 10px;
                     width: 20px;
                     height: 20px;
@@ -72,88 +83,104 @@
                     align-items: center;
                     cursor: pointer;
                 }
-                &__input{
+
+                &__input {
                     width: max-content;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                 }
             }
-            &__price{
+
+            &__price {
                 font-weight: 500;
             }
         }
     }
-    .order-information{
 
-        &__address{
+    .order-information {
+
+        &__address {
             border-radius: 5px;
             padding: 15px 15px;
             background-color: #F2F2F2;
-            &__title{
+
+            &__title {
                 font-size: 20px;
                 font-weight: 500;
                 margin-bottom: 15px;
             }
-            &__row{
+
+            &__row {
                 display: flex;
                 align-items: center;
                 margin-bottom: 10px;
-                &__icon{
+
+                &__icon {
                     display: flex;
                     align-items: center;
                     font-size: 20px;
                     width: 30px;
                     color: #106CC0;
-                   
+
                 }
-                &__name a{
+
+                &__name a {
                     text-decoration: none;
                     font-size: 20px;
                 }
             }
         }
-        .myOrder{
+
+        .myOrder {
             border-radius: 5px;
             background-color: #F2F2F2;
             padding: 15px 15px;
             margin-top: 20px;
             line-height: 25px;
-            &__title{
+
+            &__title {
                 font-size: 20px;
                 font-weight: 500;
                 margin-bottom: 15px;
-            
-            }
-            &__information{
 
-                &__quantity{
+            }
+
+            &__information {
+
+                &__quantity {
                     color: #106CC0;
                 }
-                &__row{
+
+                &__row {
                     // margin-bottom: 10px;
                     display: flex;
                     justify-content: space-between;
-                    
+
                 }
             }
-            &__bill{
+
+            &__bill {
                 display: flex;
                 justify-content: space-between;
-                &__name{
+
+                &__name {
                     font-weight: 500;
                 }
-                &__value{
+
+                &__value {
                     color: #F90000;
                     font-weight: 600;
                 }
-               
+
             }
-            &__button{
+
+            &__button {
                 display: flex;
                 margin-top: 15px;
                 justify-content: flex-end;
-                .myOrder__btn{
+
+                .myOrder__btn {
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -166,13 +193,14 @@
                     font-size: 15px;
                     width: 100px;
                     height: 40px;
-                    &:hover{
+
+                    &:hover {
                         transform: scale(1.1);
                         opacity: 0.8;
                     }
                 }
             }
-            
+
         }
     }
 }
