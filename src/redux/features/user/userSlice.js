@@ -1,4 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  isRejectedWithValue,
+} from "@reduxjs/toolkit";
 import UserDataService from "../../../services/user";
 
 export const userSlice = createSlice({
@@ -7,8 +11,11 @@ export const userSlice = createSlice({
     user: {},
   },
   reducers: {
-    clearErrors: (state, action) => {
+    clear: (state, action) => {
       state.error = null;
+      state.message = null;
+      state.status = null;
+      state.success = null;
     },
   },
   extraReducers: (builder) => {
@@ -18,20 +25,25 @@ export const userSlice = createSlice({
       })
       .addCase(loginRequest.fulfilled, (state, action) => {
         state.loading = false;
-        state.isAuthenticated = action.payload.success;
+        state.isAuthenticated = true;
         state.user = action.payload.user;
         state.error = action.payload.message;
       })
       .addCase(loginRequest.rejected, (state, action) => {
         state.loading = false;
+        state.isAuthenticated = false;
+        state.error = action.payload.message;
       })
       .addCase(registerRequest.pending, (state, action) => {
         state.loading = true;
       })
       .addCase(registerRequest.fulfilled, (state, action) => {
         state.loading = false;
-        state.isAuthenticated = action.payload.success;
-        state.user = action.payload.user;
+        state.success = action.payload.success
+      })
+      .addCase(registerRequest.rejected, (state, action) => {
+        state.loading = false;
+        state.success = action.payload.success
         state.error = action.payload.message;
       })
       .addCase(logoutRequest.fulfilled, (state, action) => {
@@ -39,65 +51,71 @@ export const userSlice = createSlice({
         state.isAuthenticated = false;
         state.user = null;
         state.status = action.payload.message;
+      })
+      .addCase(loadUser.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(loadUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload.user;
+        state.error = action.payload.message;
       });
   },
 });
 
 export const loginRequest = createAsyncThunk(
   "user/loginRequest",
-  async ({ email, password }) => {
-    const data = await UserDataService.login(email, password)
-      .then((res) => res.data)
-      .catch((err) => err);
-    // const data = await res.json();
-    console.log(data);
-    return data;
+  async ({ email, password }, { rejectWithValue }) => {
+    try {
+      const response = await UserDataService.login(email, password);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 
 export const registerRequest = createAsyncThunk(
   "user/registerUserRequest",
-  async ({ name, email, password }) => {
-    const res = await fetch("http://localhost:5000/api/v2/registration", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-      }),
-    });
-    const data = await res.json();
-    return data;
+  async ({ name, email, password }, { rejectWithValue }) => {
+    try {
+      const response = await UserDataService.registration(
+        name,
+        email,
+        password
+      );
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 
 export const logoutRequest = createAsyncThunk(
   "user/logoutRequest",
   async () => {
-    const res = await fetch("http://localhost:5000/api/v2/logout");
-    const data = await res.json();
-    console.log("logout", data);
+    const data = await UserDataService.logout()
+      .then((res) => res.data)
+      .catch((err) => err);
+
     return data;
   }
 );
 
-// export const updateInfo = createAsyncThunk(
-//   "profileUser/updateInfo",
-//   async ({ userName, email }) => {
-//     const res = await fetch("http://localhost:5000/api/v2/me/update/info", {
-//       method: "PUT",
-//       body: JSON.stringify({
-//         name: userName,
-//         email: email,
-//       }),
-//       headers: { "Content-Type": "multipart/form-data" },
-//     });
-//     const data = await res.json();
-//     console.log("update", data);
-//     return data;
-//   }
-// );
+export const loadUser = createAsyncThunk("user/loadUser", async () => {
+  const data = await UserDataService.getDetails()
+    .then((res) => res.data)
+    .catch((err) => err);
 
-export const { clearErrors } = userSlice.actions;
+  return data;
+});
+
+export const { clear } = userSlice.actions;
 export default userSlice.reducer;

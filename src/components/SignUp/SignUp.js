@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice, {
   registerRequest,
-  clearErrors
+  clear
 } from "../../redux/features/user/userSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
@@ -20,23 +20,26 @@ function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { error, loading, isAuthenticated } = useSelector((state) => {
+  const { error, success, loading } = useSelector((state) => {
     console.log("state user", state.user);
     return state.user;
   });
 
-  const redirect = "/";
+  const redirect = "/signin";
 
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearErrors());
+      dispatch(clear());
     }
-
-    if (isAuthenticated) {
-      navigate(redirect);
+    if (success) {
+      toast.success('Dang ki thanh cong. Vui long dang nhap after 3s.');
+      dispatch(clear());
+      setTimeout(() => {
+        navigate(redirect);
+      }, 3000)
     }
-  }, [dispatch, error, isAuthenticated]);
+  }, [error, success]);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -76,7 +79,7 @@ function SignUp() {
                 <div className="container col-lg mt-3">
                   <div className="container-btn-signin">
                     <button type="button" className="btn btn-signup mb-2">
-                      Đăng nhập
+                      <a href="/signin">Đăng nhập</a>
                     </button>
                   </div>
 
@@ -140,20 +143,6 @@ function SignUp() {
                         />
                       </div>
 
-                      {/* <div className="input-group m-3">
-                    <div className="input-group-text input-icon">
-                      <img
-                        className="img-confirm-pass"
-                        src="/images/account/carbon_password.png"
-                        alt="concfirm password"
-                      />
-                    </div>
-                    <input
-                      type="password"
-                      className="form-control form-input"
-                      placeholder="Xác nhận mật khẩu"
-                    />
-                  </div> */}
                     </div>
 
                     <div className="container text-center">
@@ -180,7 +169,7 @@ function SignUp() {
           </div>
           <ToastContainer
             position="bottom-center"
-            autoClose={5000}
+            autoClose={3000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

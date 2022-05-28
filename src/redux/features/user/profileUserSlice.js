@@ -1,44 +1,65 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import UserDataService from "../../../services/user";
 
-
 export const profileUserSlice = createSlice({
-    name: "profileUser",
-    initialState: {},
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-          .addCase(updateInfo.pending, (state, action) => {
+  name: "profileUser",
+  initialState: {},
+  reducers: {
+    clearIsUpdated: (state, action) => {
+      state.isUpdated = false;
+    },
+    clearErrors: (state, action) => {
+      state.error = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateInfo.pending, (state, action) => {
         state.loading = true;
       })
       .addCase(updateInfo.fulfilled, (state, action) => {
-          state.loading = false;
-          state.isAuthenticated = action.payload.succes;
-          state.user = action.payload.user;
-        });
-    },
-  });
-  
-    
-
+        state.loading = false;
+        state.isUpdated = true;
+      })
+      .addCase(updatePassword.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(updatePassword.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isUpdated = true;
+      })
+      .addCase(updatePassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload.message;
+      })
+  },
+});
 
 export const updateInfo = createAsyncThunk(
   "profileUser/updateInfo",
-  async ({ userName, email }) => {
-    const res = await fetch("http://localhost:5000/api/v2/me/update/info", {
-      method: "PUT",
-      body: JSON.stringify({
-        name: userName,
-        email: email,
-      }),
-      headers: { "Content-Type": "multipart/form-data" },
-    });
-    const data = await res.json();
-    console.log("update", data);
+  async ({ name, email }) => {
+    const data = await UserDataService.updateInfo(name, email)
+      .then((res) => res.data)
+      .catch((err) => err);
     return data;
   }
-  );
-  
-//   export const { clearErrors } = userSlice.actions;
-  export default profileUserSlice.reducer;
-  
+);
+
+export const updatePassword = createAsyncThunk(
+  "profileUser/updatePassword",
+  async ({ oldPassword, newPassword, confirmPassword }, { rejectWithValue }) => {
+    try {
+      const response = await UserDataService.updatePassword(oldPassword, newPassword, confirmPassword)
+      return response.data;
+    } catch (err) {
+      if(!err.response) {
+        throw err
+      }
+      console.log(err.response.data)
+      return rejectWithValue(err.response.data)
+    }
+  }
+);
+
+export const { clearIsUpdated, clearErrors } = profileUserSlice.actions;
+export default profileUserSlice.reducer;

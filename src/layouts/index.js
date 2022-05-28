@@ -1,6 +1,4 @@
-import GuestTopBar from '../components/Header/GuestTopBar/index';
-import UserTopBar from '../components/Header/UserTopBar/index';
-import AdminTopBar from '../components/Header/AdminTopBar/index';
+import Topbar from '../components/Header/Topbar';
 import Footer from '../components/Footer/index';
 
 
@@ -8,7 +6,7 @@ import Footer from '../components/Footer/index';
 export default function MainLayout({ children }) {
     return (
         <>
-            <UserTopBar />
+            <Topbar />
             {children}
             <Footer />
         </>

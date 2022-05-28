@@ -26,6 +26,8 @@ import AddBlog from "../pages/AddBlog";
 import SignUp from "../pages/SignUp";
 import Me from "../components/Me";
 import UpdateInfo from "../components/Me/UpdateInfo";
+import UpdatePassword from "../components/Me/UpdatePassword";
+import ResetPassword from "../components/Me/ResetPassword";
 
 import AdminUserList from "../pages/AdminUserList";
 import AdminUserNew from "../pages/AdminUserNew";
@@ -81,6 +83,10 @@ export default function App() {
 
           <Route path="/me" element={<Me />} />
           <Route path="/me/update/info" element={<UpdateInfo />} />
+          <Route path="/me/update/password" element={<UpdatePassword />} />
+          <Route path="/me/update/password" element={<UpdatePassword />} />
+          <Route path="/password/reset/:token" element={<ResetPassword />} />
+
 
           <Route path="/admin-user-list" element={<AdminUserList />} />
           <Route path="/admin-user-new" element={<AdminUserNew />} />
