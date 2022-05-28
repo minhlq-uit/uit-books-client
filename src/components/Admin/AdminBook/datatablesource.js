@@ -31,12 +31,12 @@ export const userColumns = [
   {
     field: "author",
     headerName: "Tác giả",
-    // width: 160,
+    width: 160,
   },
   {
     field: "publisher",
     headerName: "NXB",
-    // width: 160,
+    width: 120,
   },
   {
     field: "description",
@@ -44,9 +44,19 @@ export const userColumns = [
     width: 250,
   },
   {
+    field: "pageNumber",
+    headerName: "Số trang",
+    width: 70,
+  },
+  {
+    field: "Stock",
+    headerName: "Tồn kho",
+    width: 80,
+  },
+  {
     field: "price",
     headerName: "Giá",
-    // width: 160,
+    width: 90,
   },
 ];
 

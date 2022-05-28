@@ -24,6 +24,7 @@ function AdminBookEdit() {
   const [publisher, setPublisher] = useState("");
   const [author, setAuthor] = useState("");
   const [Stock, setStock] = useState(0);
+  const [pageNumber, setPageNumber] = useState(0);
   const [oldImages, setOldImages] = useState([]);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -47,6 +48,7 @@ function AdminBookEdit() {
       setPrice(product.price);
       setCategory(product.category);
       setStock(product.Stock);
+      setPageNumber(product.pageNumber);
       setOldImages(product.images);
       setAuthor(product.author);
       setPublisher(product.publisher);
@@ -80,6 +82,7 @@ function AdminBookEdit() {
     myForm.set("publisher", publisher);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
+    myForm.set("pageNumber", pageNumber);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -198,15 +201,47 @@ function AdminBookEdit() {
           <div id="createBookFormImage">
             {oldImages &&
               oldImages.map((image, index) => (
-                <img key={index} src={image.url} alt="Old Book Preview" />
+                <div className="img-wrapper">
+                  <img key={index} src={image.url} alt="Old Book Preview" />
+                </div>
               ))}
           </div>
 
           <div id="createBookFormImage">
             {imagesPreview.map((image, index) => (
-              <img key={index} src={image} alt="Book Preview" />
+              <div className="img-wrapper">
+                <img key={index} src={image} alt="Book Preview" />
+              </div>
             ))}
           </div>
+        </div>
+
+        <div className="form-group">
+          <label className="form-group-label" htmlFor="pageNumber-add">
+            Số trang
+          </label>
+          <input
+            value={pageNumber}
+            type="number"
+            className="form-control"
+            id="pageNumber-add"
+            placeholder={pageNumber}
+            onChange={(e) => setPageNumber(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-group-label" htmlFor="Stock-add">
+            Tồn kho
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="Stock-add"
+            placeholder={Stock}
+            value={Stock}
+            onChange={(e) => setStock(e.target.value)}
+          />
         </div>
 
         <div className="form-group">

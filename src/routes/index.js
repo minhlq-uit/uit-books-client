@@ -67,7 +67,7 @@ export default function App() {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/signin" element={<PageSignIn />} />
 
-          <Route path="/categories" element={<Categories />} />
+          <Route path="/books" element={<Categories />} />
           <Route path="/book/:id" element={<Book />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog" element={<Blog />} />
