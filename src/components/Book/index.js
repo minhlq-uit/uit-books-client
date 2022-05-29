@@ -208,19 +208,25 @@ export default function BookDetail() {
   // const submitReviewToggle = () => {
   //   open ? setOpen(false) : setOpen(true);
   // };
+  const { user } = useSelector((state) => state.user);
   const reviewSubmitHandler = () => {
     const myForm = new FormData();
 
     myForm.set("rating", rating);
     myForm.set("comment", comment);
     myForm.set("bookId", id);
-
+    console.log(comment, rating);
+    console.log(myForm);
     dispatch(newReview(myForm));
-
+    // );
+    // console.log(user);
     // setOpen(false);
   };
   // done
   //   console.log(product);
+  useEffect(() => {
+    dispatch(getProductDetails(id));
+  }, [id]);
   useEffect(() => {
     if (error) {
       alert(error);
@@ -229,15 +235,15 @@ export default function BookDetail() {
     if (!success && reviewError) {
       alert(reviewError);
       console.log(reviewError);
-      dispatch(clearErrorsReview);
-    }
-    if (success) {
+      dispatch(clearErrorsReview());
+      dispatch(getProductDetails(id));
+    } else if (success) {
       alert("Review submmited successfully");
       console.log(success);
       dispatch(resetStateReview());
+      dispatch(getProductDetails(id));
     }
-    dispatch(getProductDetails(id));
-  }, [id, dispatch, error, alert, reviewError, success]);
+  }, [dispatch, error, alert, reviewError, success]);
   return (
     <Fragment>
       {loading ? (

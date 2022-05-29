@@ -59,7 +59,7 @@ export default function BookItem(props) {
   };
   return (
     <>
-      <Link to={`book/${props.id}`}>
+      <Link to={`/book/${props.id}`}>
         <li className="book-item">
           <div className="book-item-container">
             {/* <img className='book-item-img'

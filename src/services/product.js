@@ -58,15 +58,9 @@ class ProductDataService {
     );
   }
   createNewReview(reviewData) {
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
-
-    return axios.post(
-      `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/review`,
-      reviewData,
-      config
-    );
+    return axios.post(`http://localhost:5000/api/v2/book/review`, reviewData, {
+      withCredentials: true,
+    });
   }
   getAllReview(id) {
     return axios.get(

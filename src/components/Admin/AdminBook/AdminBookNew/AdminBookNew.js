@@ -70,7 +70,7 @@ function AdminBookNew() {
     myForm.set("publisher", publisher);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
-
+    console.log(myForm);
     images.forEach((image) => {
       myForm.append("images", image);
     });

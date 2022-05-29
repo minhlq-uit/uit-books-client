@@ -28,6 +28,7 @@ export const newReview = createAsyncThunk(
         // console.log(err.response.data);
         return err.response.data;
       });
+    console.log(data);
     return data;
   }
 );
