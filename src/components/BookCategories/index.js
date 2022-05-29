@@ -64,34 +64,42 @@ export default function BookCategories() {
             <div className='categories-breadcrumb ms-5 mt-2 mb-5'>
                 <Breadcrumb>
                     <Breadcrumb.Item href='/'>Trang chủ</Breadcrumb.Item>
-                    <Breadcrumb.Item href='/categories' className='text-capitalize'>
+                    <Breadcrumb.Item href='/books' className='text-capitalize'>
                         Văn học trong nước
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item active className='text-capitalize'>Tiểu thuyết</Breadcrumb.Item>
                 </Breadcrumb>
             </div>
             <div className='categories-main-container m-5 mt-3'>
-                <Tab.Container id='list-group-tabs-example' defaultActiveKey='#first'>
+                <Tab.Container id='list-group-tabs-example' defaultActiveKey='#van-hoc-trong-nuoc'>
                     <Row>
                         <Col sm={3}>
                             <div className='categories-nav-container'>
                                 <div className='categories-nav mb-5'>
                                     <h6 className='categories-nav-title p-3 mb-0 fw-bold rounded'>Danh Mục</h6>
                                     <ListGroup variant='pills' className='categories-nav-main d-flex flex-column text-capitalize'>
-                                        <ListGroup.Item action href='#first' className='category-nav'>
-                                            Tiểu thuyết
+                                        <ListGroup.Item action href='#van-hoc-trong-nuoc' className='category-nav'>
+                                            Văn học trong nước
                                         </ListGroup.Item>
-                                        <ListGroup.Item action href='#second' className='category-nav'>
-                                            Truyện ngắn - Tản văn
+                                        <ListGroup.Item action href='#van-hoc-nuoc-ngoai' className='category-nav'>
+                                            Văn học nước ngoài
                                         </ListGroup.Item>
-                                        <ListGroup.Item action href='#third' className='category-nav'>
-                                            Thơ
+                                        <ListGroup.Item action href='#kinh-te' className='category-nav'>
+                                            Sách kinh tế
                                         </ListGroup.Item>
-                                        <ListGroup.Item action href='#fourth' className='category-nav'>
-                                            Huyền bí - Giả tưởng
+                                        <ListGroup.Item action href='#ky-nang-song' className='category-nav'>
+                                            Sách kỹ năng sống
                                         </ListGroup.Item>
-                                        <ListGroup.Item action href='#fifth' className='category-nav'>
-                                            Phóng sự - Ký sự
+                                        <ListGroup.Item action href='#tuoi-teen' className='category-nav'>
+                                            Sách tuổi teen
+                                        </ListGroup.Item>
+                                        <ListGroup.Item action href='#thieu-nhi' className='category-nav'>
+                                            Sách thiếu nhi
+                                        </ListGroup.Item>
+                                        <ListGroup.Item action href='#chuyen-nganh' className='category-nav'>
+                                            Sách chuyên ngành
+                                        </ListGroup.Item>
+                                        <ListGroup.Item action href='#thuong-thuc-doi-song' className='category-nav'>
+                                            Thường thức đời sống
                                         </ListGroup.Item>
                                     </ListGroup>
                                 </div>
@@ -99,24 +107,32 @@ export default function BookCategories() {
                                     <h6 className='categories-author-title p-3 mb-0 fw-bold rounded'>Tác giả</h6>
                                     <div className='list-group'>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                Nguyễn Nhật Ánh
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Nguyễn Nhật Ánh
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                Nguyễn Ngọc Thạch
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Nguyễn Ngọc Thạch
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                Minh Nhật
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Minh Nhật
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                Phan Việt
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Phan Việt
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                An Khang
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            An Khang
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Nguyễn Ngọc Tư
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Khác
                                         </label>
                                     </div>
                                 </div>
@@ -124,28 +140,61 @@ export default function BookCategories() {
                                     <h6 className='categories-price-title p-3 mb-0 fw-bold rounded'>Giá sản phẩm</h6>
                                     <div className='list-group'>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                0đ - 50.000đ
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            0đ - 50.000đ
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                50.000đ - 100.000đ
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            50.000đ - 100.000đ
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                100.000đ - 150.000đ
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            100.000đ - 150.000đ
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                150.000đ - 200.000đ
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            150.000đ - 200.000đ
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                200.000đ - 500.000đ
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            200.000đ - 500.000đ
                                         </label>
                                         <label className='list-group-item'>
-                                            <input className='form-check-input me-1' type='checkbox' value=''/>
-                                                Trên 500.000đ
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Trên 500.000đ
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className='categories-publisher mb-5'>
+                                    <h6 className='categories-publisher-title p-3 mb-0 fw-bold rounded'>Nhà xuất bản</h6>
+                                    <div className='list-group'>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            NXB Trẻ
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Nhã Nam
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Kim Đồng
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Phương Nam
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Đông Tây
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Thái Hà
+                                        </label>
+                                        <label className='list-group-item'>
+                                            <input className='form-check-input me-1' type='checkbox' value='' />
+                                            Khác
                                         </label>
                                     </div>
                                 </div>
@@ -153,9 +202,9 @@ export default function BookCategories() {
                         </Col>
                         <Col sm={9}>
                             <Tab.Content className='categories-main'>
-                                <Tab.Pane eventKey='#first' className='border rounded'>
-                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Tiểu thuyết</h3>
-                                    <div className='first-books row row-cols-4'>
+                                <Tab.Pane eventKey='#van-hoc-trong-nuoc' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Văn học trong nước</h3>
+                                    <div className='category-books row row-cols-3'>
                                         {Books.map((item, index) => {
                                             return (
                                                 <BookItem
@@ -169,9 +218,9 @@ export default function BookCategories() {
                                         })}
                                     </div>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey='#second' className='border rounded'>
-                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Truyện ngắn - Tản văn</h3>
-                                    <div className='second-books row row-cols-4'>
+                                <Tab.Pane eventKey='#van-hoc-nuoc-ngoai' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Văn học nước ngoài</h3>
+                                    <div className='category-books row row-cols-3'>
                                         {Books.map((item, index) => {
                                             return (
                                                 <BookItem
@@ -185,9 +234,9 @@ export default function BookCategories() {
                                         })}
                                     </div>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey='#third' className='border rounded'>
-                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Thơ</h3>
-                                    <div className='third-books row row-cols-4'>
+                                <Tab.Pane eventKey='#kinh-te' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Sách kinh tế</h3>
+                                    <div className='category-books row row-cols-3'>
                                         {Books.map((item, index) => {
                                             return (
                                                 <BookItem
@@ -201,9 +250,9 @@ export default function BookCategories() {
                                         })}
                                     </div>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey='#fourth' className='border rounded'>
-                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Huyền bí - Giả tưởng</h3>
-                                    <div className='fourth-books row row-cols-4'>
+                                <Tab.Pane eventKey='#ky-nang-song' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Sách kỹ năng sống</h3>
+                                    <div className='category-books row row-cols-3'>
                                         {Books.map((item, index) => {
                                             return (
                                                 <BookItem
@@ -217,9 +266,57 @@ export default function BookCategories() {
                                         })}
                                     </div>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey='#fifth' className='border rounded'>
-                                    <h3 className='categories-main-title p-2 ps-3 text-light'>Phóng sự - Ký sự</h3>
-                                    <div className='fifth-books row row-cols-4'>
+                                <Tab.Pane eventKey='#tuoi-teen' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Sách tuổi teen</h3>
+                                    <div className='category-books row row-cols-3'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey='#thieu-nhi' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Sách thiếu nhi</h3>
+                                    <div className='category-books row row-cols-3'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey='#chuyen-nganh' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Sách chuyên ngành</h3>
+                                    <div className='category-books row row-cols-3'>
+                                        {Books.map((item, index) => {
+                                            return (
+                                                <BookItem
+                                                    key={index}
+                                                    title={item.title}
+                                                    author={item.author}
+                                                    img={item.img}
+                                                    price={item.price}
+                                                />
+                                            )
+                                        })}
+                                    </div>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey='#thuong-thuc-doi-song' className='border rounded'>
+                                    <h3 className='categories-main-title p-2 ps-3 text-light text-capitalize'>Sách thường thức đời sống</h3>
+                                    <div className='category-books row row-cols-3'>
                                         {Books.map((item, index) => {
                                             return (
                                                 <BookItem

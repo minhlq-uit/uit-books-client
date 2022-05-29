@@ -6,9 +6,7 @@ import {
   createProduct,
   resetState,
 } from "../../../../redux/features/product/newProductSlice";
-// import { toast } from "react-toastify"
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function AdminBookNew() {
   const [name, setName] = useState("");
@@ -18,6 +16,7 @@ function AdminBookNew() {
   const [publisher, setPublisher] = useState("");
   const [author, setAuthor] = useState("");
   const [Stock, setStock] = useState(0);
+  const [pageNumber, setPageNumber] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -33,11 +32,28 @@ function AdminBookNew() {
   // }, [dispatch, loading, error, success]);
   useEffect(() => {
     if (error) {
-      alert(error);
+      toast.error("Thất bại! Vui lòng thử lại 😭", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       dispatch(clearErrors());
     }
     if (success) {
-      alert("Book created successfully");
+      // alert("Book created successfully");
+      toast.success("Thêm mới sách thành công! 🎊", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setName("");
       setAuthor("");
       setCategory("");
@@ -47,6 +63,7 @@ function AdminBookNew() {
       setImages([]);
       setImagesPreview([]);
       setStock(0);
+      setPageNumber(0);
       dispatch(resetState());
     }
   }, [dispatch, error, success]);
@@ -71,6 +88,9 @@ function AdminBookNew() {
     myForm.set("category", category);
     myForm.set("Stock", Stock);
     console.log(myForm);
+
+    myForm.set("pageNumber", pageNumber);
+
     images.forEach((image) => {
       myForm.append("images", image);
     });
@@ -181,9 +201,39 @@ function AdminBookNew() {
 
           <div id="createBookFormImage">
             {imagesPreview.map((image, index) => (
-              <img key={index} src={image} alt="Book Preview" />
+              <div className="img-wrapper">
+                <img key={index} src={image} alt="Book Preview" />
+              </div>
             ))}
           </div>
+        </div>
+
+        <div className="form-group">
+          <label className="form-group-label" htmlFor="pageNumber-add">
+            Số trang
+          </label>
+          <input
+            value={pageNumber}
+            type="number"
+            className="form-control"
+            id="pageNumber-add"
+            placeholder=""
+            onChange={(e) => setPageNumber(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-group-label" htmlFor="Stock-add">
+            Tồn kho
+          </label>
+          <input
+            value={Stock}
+            type="number"
+            className="form-control"
+            id="Stock-add"
+            placeholder=""
+            onChange={(e) => setStock(e.target.value)}
+          />
         </div>
 
         <div className="form-group">
@@ -217,7 +267,7 @@ function AdminBookNew() {
         </div>
 
         <button type="submit" class="btn btn-submit">
-          Gửi
+          Thêm
         </button>
         <button type="button" class="btn btn-reset" onClick={notify}>
           Khôi phục
