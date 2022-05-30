@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete, MdNoteAdd } from "react-icons/md";
+import { Button } from 'react-bootstrap';
+import SearchIcon from '@mui/icons-material/Search';
 
 
 
@@ -25,8 +27,8 @@ const BlogList = () => {
             renderCell: (params) => {
                 return (
                     <div className="cellAction">
-                        <Link to="/users/test" style={{ textDecoration: "none" }}>
-                            <div className="editButton"><BiEdit /></div>
+                        <Link to="/admin-blog-edit" style={{ textDecoration: "none" }}>
+                            <div className="viewButton"><BiEdit /></div>
                         </Link>
                         <div
                             className="deleteButton"
@@ -41,9 +43,21 @@ const BlogList = () => {
     ];
     return (
         <div className="datatable">
+            <div className="col-xl-6 col-lg-5 col-md-6">
+                <form action="#" className="search-header">
+                    <div className="input-group w-100">
+                        <input type="text" className="form-control" placeholder="Tìm kiếm" />
+                        <div className="input-group-append">
+                            <Button variant="dark">
+                                <SearchIcon />
+                            </Button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div className="datatableTitle">
                 Danh sách bài blog
-                <Link to="/users/new" className="link">
+                <Link to="/admin-blog-new" className="link">
                     <MdNoteAdd className="addBlog" />
                     Thêm mới
                 </Link>

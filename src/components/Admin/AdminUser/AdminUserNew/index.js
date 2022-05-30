@@ -136,8 +136,11 @@ function UserNew() {
                 </div>
 
                 <div className="col-auto d-flex justify-content-start">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="button" class="btn btn-submit">
                         Tạo mới
+                    </button>
+                    <button type="button" class="btn btn-reset">
+                        Khôi phục
                     </button>
                 </div>
             </form>

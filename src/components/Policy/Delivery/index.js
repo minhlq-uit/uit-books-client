@@ -1,10 +1,15 @@
 import React from "react";
 import './Delivery.css';
-import { Container } from 'react-bootstrap';
+import { Container, Breadcrumb } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 export default function Deli() {
     return (
         <Container className='delivery-container' fluid='md'>
+            <Breadcrumb>
+                <Breadcrumb.Item as={Link} to='/'>Trang chủ</Breadcrumb.Item>
+                <Breadcrumb.Item active className='text-capitalize'>Chính sách giao hàng</Breadcrumb.Item>
+            </Breadcrumb>
             <div className='delivery-title'>
                 <img src='/images/aboutus/uitbook-logo.png' alt='UITBooks-logo' />
                 <p>

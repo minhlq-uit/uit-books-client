@@ -39,7 +39,7 @@ function AdminCategoryNew() {
         </div>
 
         <button type="button" class="btn btn-submit">
-          Gửi
+          Tạo mới
         </button>
         <button type="button" class="btn btn-reset">
           Khôi phục

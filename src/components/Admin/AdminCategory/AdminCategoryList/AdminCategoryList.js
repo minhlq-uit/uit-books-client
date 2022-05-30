@@ -7,6 +7,7 @@ import { BiEdit } from "react-icons/bi";
 import { MdDelete, MdCategory } from "react-icons/md";
 import SearchIcon from '@mui/icons-material/Search';
 import { Form, Button } from "react-bootstrap";
+
 const AdminCategoryList = () => {
   const [data, setData] = useState(userRows);
 
@@ -61,7 +62,7 @@ const AdminCategoryList = () => {
       <div className="datatableTitle">
         Danh sách thể loại
         <Link to="/admin-category-new" className="link">
-          <MdCategory className="icon-category-new"/>
+          <MdCategory className="icon-category-new" />
           Thêm mới
         </Link>
       </div>

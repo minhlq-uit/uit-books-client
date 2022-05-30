@@ -4,6 +4,8 @@ import MainLayout from "../layouts";
 
 export default function Delivery() {
     return (
-        <Deli/>
+        <MainLayout>
+            <Deli />
+        </MainLayout>
     );
 }

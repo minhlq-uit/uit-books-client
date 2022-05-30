@@ -1,16 +1,17 @@
+
 export const userColumns = [
     {
         field: "id",
         headerName: "STT",
-        width: 70,
+        width: 50,
     },
-    {
-        field: "account",
-        headerName: "Tài khoản",
-        width: 150,
-        minWidth: 130,
-        maxwidth: 200,
-    },
+    // {
+    //     field: "account",
+    //     headerName: "Tài khoản",
+    //     width: 150,
+    //     minWidth: 130,
+    //     maxwidth: 200,
+    // },
     {
         field: "name",
         headerName: "Họ tên",
@@ -25,19 +26,17 @@ export const userColumns = [
         minWidth: 200,
         maxwidth: 300,
     },
-    {
-        field: "phoneNumber",
-        headerName: "SĐT",
-        width: 150,
-        minWidth: 100,
-        maxwidth: 200,
-    },
+    // {
+    //     field: "phoneNumber",
+    //     headerName: "SĐT",
+    //     width: 150,
+    //     minWidth: 100,
+    //     maxwidth: 200,
+    // },
     {
         field: "role",
         headerName: "Vai trò",
-        width: 150,
-        minWidth: 120,
-        maxwidth: 200,
+        width: 100,
     },
 ];
 

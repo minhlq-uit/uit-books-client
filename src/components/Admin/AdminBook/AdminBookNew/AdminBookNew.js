@@ -251,6 +251,30 @@ function AdminBookNew() {
         </div>
 
         <div className="form-group">
+          <label className="form-group-label" htmlFor="pageNumber">
+            Số trang
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="pageNumber-add"
+            placeholder=""
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-group-label" htmlFor="stock-add">
+            Tồn kho
+          </label>
+          <input
+            type="number"
+            className="form-control"
+            id="stock-add"
+            placeholder=""
+          />
+        </div>
+
+        <div className="form-group">
           <label
             className="form-group-label"
             htmlFor="exampleFormControlTextarea1"

@@ -2,7 +2,7 @@ export const userColumns = [
   {
     field: "id",
     headerName: "STT",
-    width: 70,
+    width: 40,
   },
   {
     field: "img",
@@ -58,6 +58,16 @@ export const userColumns = [
     headerName: "Giá",
     width: 90,
   },
+  {
+    field: "pageNumber",
+    headerName: "Số trang",
+    width: 80,
+  },
+  {
+    field: "stock",
+    headerName: "Tồn kho",
+    width: 70,
+  },
 ];
 
 //temporary data
@@ -72,6 +82,8 @@ export const userRows = [
     description:
       "Tập thơ và văn xuôi về sự sống còn. Về trải nghiệm bạo lực, lạm dụng, tình yêu, mất mát và nữ tính.",
     price: "150.000đ",
+    pageNumber: "200",
+    stock: "500",
   },
 
   {
@@ -84,6 +96,8 @@ export const userRows = [
     description:
       "Đầu tư tiền bạc, tài chính cá nhân và các quyết định kinh doanh - thường được dạy như một lĩnh vực dựa trên toán học.",
     price: "504.000đ",
+    pageNumber: "200",
+    stock: "500",
   },
 
   {
@@ -96,6 +110,8 @@ export const userRows = [
     description:
       "Company of One là một cách tiếp cận mới mẻ, tập trung vào việc duy trì quy mô nhỏ và tránh tăng trưởng, cho mọi quy mô kinh doanh.",
     price: "450.000đ",
+    pageNumber: "200",
+    stock: "500",
   },
 
   {
@@ -108,5 +124,7 @@ export const userRows = [
     description:
       "Cuốn sách tập hợp các chương trình phát thanh huyền thoại của CS Lewis trong những năm chiến tranh.",
     price: "373.000đ",
+    pageNumber: "200",
+    stock: "500",
   },
 ];

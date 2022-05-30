@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+
 import {
   Navbar,
   Nav,
@@ -45,8 +46,10 @@ export default function Topbar(props) {
 
   const navigate = useNavigate();
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const handleLogout = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     dispatch(logoutRequest());
   };
   // Search
@@ -69,15 +72,18 @@ export default function Topbar(props) {
     }
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (user) {
+      if (user.role === "admin") {
+        setIsAdmin(true);
+      }
+    }
+  }, [user]);
+
   const handleIsAuthenticated = () => {
     if (!isAuthenticated) {
       navigate("/signin");
     }
-  };
-
-  const handleLinkToMe = (e) => {
-    e.preventDefault();
-    navigate("/me");
   };
 
   return (
@@ -154,7 +160,7 @@ export default function Topbar(props) {
                   >
                     {isAuthenticated ? (
                       <>
-                        <NavDropdown.Item onClick={handleLinkToMe}>
+                        <NavDropdown.Item as={Link} to="/me">
                           Tài khoản
                         </NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/my-favorite-book">
@@ -164,9 +170,13 @@ export default function Topbar(props) {
                           Viết blog
                         </NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item as={Link} to="/admin-user-list">
-                          Trang quản lý
-                        </NavDropdown.Item>
+                        {isAdmin ? (
+                          <NavDropdown.Item as={Link} to="/admin-user-list">
+                            Trang quản lý
+                          </NavDropdown.Item>
+                        ) : (
+                          <></>
+                        )}
                         <NavDropdown.Item onClick={handleLogout}>
                           Đăng xuất
                         </NavDropdown.Item>
@@ -241,13 +251,13 @@ export default function Topbar(props) {
                 </NavDropdown>
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/blogs" className="d-flex">
-                <RssFeedIcon className="nav-icon" />
+              <Nav.Link as={Link} to="/blogs" className="d-flex nav-link-items">
+                <RssFeedIcon className="nav-icons" />
                 Chia sẻ
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/about-us" className="d-flex">
-                <GroupsIcon className="nav-icon" />
+              <Nav.Link as={Link} to="/about-us" className="d-flex nav-link-items">
+                <GroupsIcon className="nav-icons" />
                 Giới thiệu
               </Nav.Link>
             </Nav>
