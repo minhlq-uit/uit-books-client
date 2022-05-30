@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Navbar,
   Nav,
@@ -18,9 +18,9 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import GroupsIcon from "@mui/icons-material/Groups";
 import TtyIcon from "@mui/icons-material/Tty";
-import Badge from '@mui/material/Badge';
-import IconButton from '@mui/material/IconButton';
-import { styled } from '@mui/material/styles';
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -30,9 +30,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
+  "& .MuiBadge-badge": {
     backgroundColor: "#FF9933",
-    color: "white"
+    color: "white",
   },
 }));
 
@@ -45,8 +45,10 @@ export default function Topbar(props) {
 
   const navigate = useNavigate();
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
   const handleLogout = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     dispatch(logoutRequest());
   };
   useEffect(() => {
@@ -58,15 +60,18 @@ export default function Topbar(props) {
     }
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (user) {
+      if (user.role === "admin") {
+        setIsAdmin(true);
+      }
+    }
+  }, [user]);
+
   const handleIsAuthenticated = () => {
     if (!isAuthenticated) {
       navigate("/signin");
     }
-  };
-
-  const handleLinkToMe = (e) => {
-    e.preventDefault();
-    navigate("/me");
   };
 
   return (
@@ -141,9 +146,7 @@ export default function Topbar(props) {
                   >
                     {isAuthenticated ? (
                       <>
-                        <NavDropdown.Item
-                          onClick={handleLinkToMe}
-                        >
+                        <NavDropdown.Item as={Link} to="/me">
                           Tài khoản
                         </NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/my-favorite-book">
@@ -153,9 +156,13 @@ export default function Topbar(props) {
                           Viết blog
                         </NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item as={Link} to="/admin-user-list">
-                          Trang quản lý
-                        </NavDropdown.Item>
+                        {isAdmin ? (
+                          <NavDropdown.Item as={Link} to="/admin-user-list">
+                            Trang quản lý
+                          </NavDropdown.Item>
+                        ) : (
+                          <></>
+                        )}
                         <NavDropdown.Item onClick={handleLogout}>
                           Đăng xuất
                         </NavDropdown.Item>
@@ -190,21 +197,43 @@ export default function Topbar(props) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <Nav.Link className="d-flex">
-                <NavDropdown align="start" title={
-                  <div>
-                    <ListAltIcon className="nav-icons" />
-                    Danh mục
-                  </div>
-                } className="category-list">
-                  <NavDropdown.Item as={Link} to="#action/3.1">Văn Học Trong Nước</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Văn Học Nước Ngoài</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.3">Sách Kinh Tế</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Kĩ Năng Sống</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Tuổi Teen</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Thiếu Nhi</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Chuyên Ngành</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Ngoại Ngữ</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Thường Thức Đời Sống</NavDropdown.Item>
+                <NavDropdown
+                  align="start"
+                  title={
+                    <div>
+                      <ListAltIcon className="nav-icons" />
+                      Danh mục
+                    </div>
+                  }
+                  className="category-list"
+                >
+                  <NavDropdown.Item as={Link} to="#action/3.1">
+                    Văn Học Trong Nước
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Văn Học Nước Ngoài
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.3">
+                    Sách Kinh Tế
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Kĩ Năng Sống
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Tuổi Teen
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Thiếu Nhi
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Chuyên Ngành
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Ngoại Ngữ
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Thường Thức Đời Sống
+                  </NavDropdown.Item>
                 </NavDropdown>
               </Nav.Link>
 

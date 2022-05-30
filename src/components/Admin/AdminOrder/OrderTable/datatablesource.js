@@ -17,13 +17,13 @@ export const userColumns = [
     width: 160,
     renderCell: (params) => {
       let a ;
-      if(params.row.status ==="canceled"){
+      if(params.row.status ==="Canceled"){
         a = "Hủy đơn"
-      }else if(params.row.status ==="sold"){
+      }else if(params.row.status ==="Shipped"){
         a ="Đã bán"
-      }else if(params.row.status ==="pending"){
+      }else if(params.row.status ==="Processing"){
         a ="Đang xử lý"
-      }else if(params.row.status ==="shipping"){
+      }else if(params.row.status ==="Shipping"){
         a ="Đang vận chuyển"
       }
       
