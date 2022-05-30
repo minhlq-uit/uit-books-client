@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import {
   Navbar,
   Nav,
@@ -51,6 +52,17 @@ export default function Topbar(props) {
     e.preventDefault();
     dispatch(logoutRequest());
   };
+  // Search
+  const [keyword, setKeyword] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      navigate(`/books/${keyword}`);
+    } else {
+      navigate("/books");
+    }
+  };
+  // done
   useEffect(() => {
     if (isAuthenticated === false) {
       toast.success("Logout success after 3s redirect to page signin");
@@ -95,10 +107,12 @@ export default function Topbar(props) {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Tìm kiếm sách theo tên hoặc tác giả"
+                    placeholder="Tìm kiếm sách theo"
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.target.value)}
                   />
                   <div className="input-group-append">
-                    <Button variant="dark">
+                    <Button variant="dark" onClick={handleSearch}>
                       <SearchIcon /> Tìm kiếm
                     </Button>
                   </div>
