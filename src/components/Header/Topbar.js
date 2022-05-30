@@ -160,7 +160,7 @@ export default function Topbar(props) {
                   >
                     {isAuthenticated ? (
                       <>
-                        <NavDropdown.Item as={Link} to="/me">
+                        <NavDropdown.Item as={Link} to="/my-account">
                           Tài khoản
                         </NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/my-favorite-book">

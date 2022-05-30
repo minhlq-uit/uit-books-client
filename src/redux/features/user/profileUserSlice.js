@@ -6,11 +6,15 @@ export const profileUserSlice = createSlice({
   initialState: {},
   reducers: {
     clearIsUpdated: (state, action) => {
-      state.isUpdated = false;
+      state.isUpdated = null;
     },
     clearErrors: (state, action) => {
       state.error = null;
     },
+    clear: (state, action) => {
+      state.isUpdated = null
+      state.error = null
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -19,7 +23,7 @@ export const profileUserSlice = createSlice({
       })
       .addCase(updateInfo.fulfilled, (state, action) => {
         state.loading = false;
-        state.isUpdated = true;
+        state.isUpdated = action.payload.success;
       })
       .addCase(updatePassword.pending, (state, action) => {
         state.loading = true;
@@ -61,5 +65,5 @@ export const updatePassword = createAsyncThunk(
   }
 );
 
-export const { clearIsUpdated, clearErrors } = profileUserSlice.actions;
+export const { clear, clearIsUpdated, clearErrors } = profileUserSlice.actions;
 export default profileUserSlice.reducer;

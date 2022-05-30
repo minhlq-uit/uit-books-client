@@ -1,11 +1,9 @@
-// import ReactDOM from "react-dom";
 import { NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaFileSignature } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
-
 import "./AccountNav.scss";
 
 function AccountNav() {

@@ -1,47 +1,118 @@
+import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { loadUser } from "../../../redux/features/user/userSlice";
+import {
+  updateInfo,
+  updatePassword,
+  clearIsUpdated,
+  clearErrors,
+  clear,
+} from "../../../redux/features/user/profileUserSlice";
+import Loading from "../../../more/Loader";
+import { ToastContainer, toast } from "react-toastify";
 import "./AccountInfor.scss";
 
 function AccountInfor() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, loading } = useSelector((state) => state.user);
+  const { isUpdated, error } = useSelector((state) => {
+    return state.profileUser;
+  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+  // update info
+  useEffect(() => {
+    setName(user.name);
+    setEmail(user.email);
+  }, [user]);
+  const handleUpdateInfo = (e) => {
+    e.preventDefault();
+    dispatch(updateInfo({ name, email }));
+  };
+  useEffect(() => {
+    if (isUpdated) {
+      toast.success("Udpate success");
+      dispatch(loadUser());
+      setOldPassword('')
+      setNewPassword('')
+      setConfirmPassword('')
+    }
+    if (isUpdated === false) {
+      toast.error("Update unsuccess");
+    }
+    if (error) {
+      toast.error(error);
+    }
+    dispatch(clear());
+  }, [isUpdated, error]);
+  // update password
+  const handleUpdatePassword = (e) => {
+    e.preventDefault();
+    dispatch(updatePassword({ oldPassword, newPassword, confirmPassword }));
+  };
   return (
     <div className="col-lg-8 my-account-form ">
-      <div className="my-account-form-infor">
-        <div className="form-infor-heading">
-          <h4 className="mb-4">Thông tin cá nhân</h4>
-          <hr />
-          <p className="dark-grey-text mt-4" />
-        </div>
-
-        <form className="form-infor-body p-3" action="">
-          <div className="row mb-3">
-            <label
-              htmlFor="form-username-body"
-              className="col-sm-2 col-form-label"
-            >
-              Họ tên
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                id="form-username-body"
-                value="Nguyễn Văn An"
-              />
+      <>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="my-account-form-infor">
+            <div className="form-infor-heading">
+              <h4 className="mb-4">Thông tin cá nhân</h4>
+              <hr />
+              <p className="dark-grey-text mt-4" />
             </div>
-          </div>
-          <div className="row mb-3">
-            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">
-              Email
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="email"
-                className="form-control"
-                id="inputEmail3"
-                value="bookuit@gmail.com"
-              />
-            </div>
-          </div>
 
-          <div className="row mb-3">
+            <form className="form-infor-body p-3" action="">
+              <div className="row mb-3">
+                <label
+                  htmlFor="form-username-body"
+                  className="col-sm-2 col-form-label"
+                >
+                  Họ tên
+                </label>
+                <div className="col-sm-10">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="form-username-body"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <label
+                  htmlFor="inputEmail3"
+                  className="col-sm-2 col-form-label"
+                >
+                  Email
+                </label>
+                <div className="col-sm-10">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="inputEmail3"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              {/* <div className="row mb-3">
             <label
               htmlFor="form-adress-body"
               className="col-sm-2 col-form-label"
@@ -73,15 +144,21 @@ function AccountInfor() {
                 value="0123456789"
               />
             </div>
-          </div>
+          </div> */}
 
-          <div className="col-auto d-flex justify-content-end">
-            <button type="submit" className="btn btn-primary">
-              Chỉnh sửa thông tin
-            </button>
+              <div className="col-auto d-flex justify-content-end">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  onClick={handleUpdateInfo}
+                >
+                  Update
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        )}
+      </>
 
       <div className="my-account-form-password">
         <div className="form-password-heading">
@@ -103,6 +180,8 @@ function AccountInfor() {
                 type="password"
                 className="form-control"
                 id="currentPassword"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
               />
             </div>
           </div>
@@ -116,6 +195,8 @@ function AccountInfor() {
                 type="password"
                 className="form-control"
                 id="newPassword"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
               />
             </div>
           </div>
@@ -132,17 +213,34 @@ function AccountInfor() {
                 type="password"
                 className="form-control"
                 id="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
           </div>
 
           <div className="col-auto d-flex justify-content-end">
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleUpdatePassword}
+            >
               Cập nhật mật khẩu
             </button>
           </div>
         </form>
       </div>
+      {/* <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      /> */}
     </div>
   );
 }

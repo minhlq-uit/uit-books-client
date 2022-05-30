@@ -24,9 +24,6 @@ import MyOrderOrdered from "../pages/MyOrderOrdered";
 import MyOrderCanceled from "../pages/MyOrderCanceled";
 import AddBlog from "../pages/AddBlog";
 import SignUp from "../pages/SignUp";
-import Me from "../components/Me";
-import UpdateInfo from "../components/Me/UpdateInfo";
-import UpdatePassword from "../components/Me/UpdatePassword";
 import ResetPassword from "../components/Me/ResetPassword";
 
 import AdminUserList from "../pages/AdminUserList";
@@ -82,10 +79,6 @@ export default function App() {
           <Route path="/add-blog" element={<AddBlog />} />
           <Route path="/signup" element={<SignUp />} />
 
-          <Route path="/me" element={<Me />} />
-          <Route path="/me/update/info" element={<UpdateInfo />} />
-          <Route path="/me/update/password" element={<UpdatePassword />} />
-          <Route path="/me/update/password" element={<UpdatePassword />} />
           <Route path="/password/reset/:token" element={<ResetPassword />} />
 
           <Route path="/admin-user-list" element={<AdminUserList />} />
