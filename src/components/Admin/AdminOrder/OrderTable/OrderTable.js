@@ -12,6 +12,7 @@ import { userColumns, userRows } from "./datatablesource";
 import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
+import SearchIcon from '@mui/icons-material/Search';
 import { Modal, Button } from "react-bootstrap";
 import moment from "moment";
 
@@ -101,6 +102,18 @@ const OrderTable = () => {
   ];
   return (
     <div className="datatable">
+      <div className="col-xl-6 col-lg-5 col-md-6">
+        <form action="#" className="search-header">
+          <div className="input-group w-100">
+            <input type="text" className="form-control" placeholder="Tìm kiếm" />
+            <div className="input-group-append">
+              <Button variant="dark">
+                <SearchIcon />
+              </Button>
+            </div>
+          </div>
+        </form>
+      </div>
       <div className="datatableTitle">
         Quản lý đơn hàng
         {/* <Link to="/users/new" className="link">

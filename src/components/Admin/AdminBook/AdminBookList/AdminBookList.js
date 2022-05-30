@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete, MdMenuBook } from "react-icons/md";
+import { Button } from 'react-bootstrap';
+import SearchIcon from '@mui/icons-material/Search';
 
 const AdminBookList = () => {
   const [data, setData] = useState(userRows);
@@ -39,11 +41,23 @@ const AdminBookList = () => {
   ];
   return (
     <div className="datatable">
+      <div className="col-xl-6 col-lg-5 col-md-6">
+        <form action="#" className="search-header">
+          <div className="input-group w-100">
+            <input type="text" className="form-control" placeholder="Tìm kiếm" />
+            <div className="input-group-append">
+              <Button variant="dark">
+                <SearchIcon />
+              </Button>
+            </div>
+          </div>
+        </form>
+      </div>
       <div className="datatableTitle">
         Danh sách các quyển sách
         <Link to="/admin-book-new" className="link">
-          <MdMenuBook className="icon-book-new"/>
-           Thêm mới
+          <MdMenuBook className="icon-book-new" />
+          Thêm mới
         </Link>
       </div>
       <DataGrid

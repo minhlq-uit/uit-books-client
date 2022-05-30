@@ -81,16 +81,16 @@ export default function BookItem(props) {
                         <p>{props.price}</p>
                     </div> */}
                     <figure className='book-item-img-wrap'>
-                        <a href='/' >
+                        <Link to='/book' >
                             <img className='book-item-img'
                                 alt='sach-hay'
                                 src={props.img}
                             />
-                        </a>
+                        </Link>
                     </figure>
                     <div className='book-item-info'>
                         <div className='book-item-name'>
-                            <a href='/' className='book-item-title'>{props.title}</a>
+                            <Link to='/book' className='book-item-title'>{props.title}</Link>
                             <h6 className='book-item-author'>{props.author}</h6>
                         </div>
 

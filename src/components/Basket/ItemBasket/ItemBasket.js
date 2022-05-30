@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Col, Row } from "react-bootstrap";
+// import { Col, Row,  Modal } from "react-bootstrap";
+import { Col, Container, Form, Row, Button, Modal } from "react-bootstrap";
 import './itemBasket.scss'
-import { Container } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
+import { BiEnvelope } from "react-icons/bi";
 const ItemBasket = (props) => {
+  const [show, setShow] = useState(false);
+  const handleShow = (e) => {
+    e.preventDefault()
+    setShow(true)
+  };
+  const handleClose = () => setShow(false);
   return (
     <div className="ib__container">
       <Container>
@@ -115,10 +123,10 @@ const ItemBasket = (props) => {
                 </div>
                 <div className="order-information__address__row">
                   <div className="order-information__address__row__icon">
-                    <i className="fa-solid fa-location-dot"></i>
+                    <BiEnvelope />
                   </div>
                   <div className="order-information__address__row__name">
-                    Khu phố 6, Linh Trung, Thủ Đức
+                    example@gmail.com
                   </div>
                 </div>
                 <div className="order-information__address__row">
@@ -126,7 +134,7 @@ const ItemBasket = (props) => {
                     <i className="fa-solid fa-file-pen"></i>
                   </div>
                   <div className="order-information__address__row__name">
-                    <a href="#">Chỉnh sửa</a>
+                    <a href="#" onClick={handleShow}>Chỉnh sửa</a>
                   </div>
                 </div>
               </div>
@@ -166,6 +174,57 @@ const ItemBasket = (props) => {
           </Col>
         </Row>
       </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Chỉnh sửa địa chỉ</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group
+              className="mb-3"
+
+            >
+              <Form.Label>Địa chỉ nhà</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Số nhà, số đường, quận, thành phố"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+
+            >
+              <Form.Label>Số điện thoại</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="012345678"
+                autoFocus
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+
+            >
+              <Form.Label>Gmail</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="example@gmail.com"
+                autoFocus
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Đóng
+          </Button>
+          <Button variant="primary" >
+            Gửi
+          </Button>
+        </Modal.Footer>
+
+      </Modal>
     </div>
   );
 };

@@ -3,7 +3,7 @@ export const userColumns = [
     {
         field: "id",
         headerName: "STT",
-        width: 70,
+        width: 50,
     },
     // {
     //     field: "account",
@@ -36,9 +36,7 @@ export const userColumns = [
     {
         field: "role",
         headerName: "Vai trò",
-        width: 150,
-        minWidth: 120,
-        maxwidth: 200,
+        width: 100,
     },
 ];
 

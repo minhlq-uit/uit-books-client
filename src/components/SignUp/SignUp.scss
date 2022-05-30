@@ -1,5 +1,17 @@
 .img-welcome {
-    width: 100%;
+    width: 70%;
+}
+
+.signup {
+    // height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container-img {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .container-btn-signin {
@@ -8,13 +20,19 @@
     .btn-signup {
         background-color: #106CC0;
         color: white;
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+        }
     }
 
     .btn-signup:hover {
         color: #fff;
         opacity: 0.8;
     }
-    
+
 }
 
 .container-logo {
@@ -22,20 +40,43 @@
 }
 
 .logo {
-    width: 60px;
+    width: 80px;
 }
 
 .logo-name {
     font-weight: bold;
+    font-size: 30px;
     color: #106CC0;
-    font-size: 36px;
+    font-weight: 700;
     margin-left: 20px;
+}
+
+.signUp__form {
+    margin-top: 40px;
+
+    .input-group-text {
+        border: 1px solid rgba(0, 0, 0, 0.568);
+        // color: #fff;
+    }
+
+    .input-group-text-1 {
+        border: 1px solid rgba(0, 0, 0, 0.568);
+        //color: #fff;
+    }
 }
 
 .form-signup {
     background-color: #F6F6F6;
+    width: 600px;
+    margin-top: 20px;
 
-    .btn-signup-footer {    
+    .signUp__title {
+        color: #106CC0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .btn-signup-footer {
         background-color: #27A811;
         color: white;
         width: 120px;
@@ -49,24 +90,23 @@
     .container-input {
         margin-right: 20px;
     }
-    
+
     .input-icon {
         background-color: white;
     }
-    
+
     .img-confirm-pass {
         width: 16px;
         height: 16px;
     }
-    
-    .switch-signin  {
-        font-size: 14px;
+
+    .switch-signin {
         text-decoration: none;
+        font-weight: 500;
     }
-    
+
     .switch-signin:hover {
         outline: none;
     }
-    
-}
 
+}

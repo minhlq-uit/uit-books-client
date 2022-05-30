@@ -1,10 +1,15 @@
 import React from "react";
 import './Terms.css';
-import { Container } from 'react-bootstrap';
+import { Container, Breadcrumb } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 export default function Terms() {
     return (
         <Container className='terms-container' fluid='md'>
+            <Breadcrumb>
+                <Breadcrumb.Item as={Link} to='/'>Trang chủ</Breadcrumb.Item>
+                <Breadcrumb.Item active className='text-capitalize'>Điều khoản sử dụng</Breadcrumb.Item>
+            </Breadcrumb>
             <div className='terms-title'>
                 <img src='/images/aboutus/uitbook-logo.png' alt='UITBooks-logo' />
                 <p>
@@ -13,9 +18,9 @@ export default function Terms() {
             </div>
             <div className='terms-content'>
                 <p>
-                    Chào mừng Quý khách hàng truy cập website <b>UITBooks.vn</b>. <br />
+                    Chào mừng Quý khách hàng truy cập website <b>UITBooks.com</b> <br />
                     Chúng tôi là Công ty TNHH MTV Nhà sách UITBooks - chuyên phân phối các mặt hàng sách trên thị trường với phương châm "Tiếp cận tri thức một cách rẻ nhất". <br />
-                    <b>UITBooks.vn</b> luôn đem lại sự thuận tiện cho khách hàng khi mua sắm trên nền tảng thương mại điện tử. Theo đó nhà sách chúng tôi cần sự chấp thuận của Quý khách hàng với những điều khoản mà UITBooks đưa ra. Cụ thể:
+                    <b>UITBooks.com</b> luôn đem lại sự thuận tiện cho khách hàng khi mua sắm trên nền tảng thương mại điện tử. Theo đó nhà sách chúng tôi cần sự chấp thuận của Quý khách hàng với những điều khoản mà UITBooks đưa ra. Cụ thể:
                 </p>
                 <h4 className='heading-title'>
                     1. Tài khoản của Khách hàng

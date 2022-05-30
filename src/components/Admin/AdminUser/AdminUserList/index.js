@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { FaUserPlus } from "react-icons/fa";
+import SearchIcon from '@mui/icons-material/Search';
 // import { Button } from "@mui/material";
 import { Modal, Button } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
@@ -66,7 +67,6 @@ const UserList = () => {
     setIdDelete(id);
     // setData(data.filter((item) => item.id !== id));
   };
-
   const actionColumn = [
     {
       field: "action",
