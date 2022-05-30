@@ -26,7 +26,6 @@ import {
   deleteReviews,
   resetStateDeletedReview,
 } from "../../../../redux/features/product/reviewSlice";
-import { Button } from 'react-bootstrap';
 
 const AdminBookList = () => {
   const dispatch = useDispatch();
