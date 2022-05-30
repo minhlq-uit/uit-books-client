@@ -308,7 +308,7 @@ export default function BookCategories() {
                             title={item.name}
                             author={item.author}
                             //   img={item.images[0].url}
-                            img={item.images.url}
+                            img={item.images[0].url}
                             price={item.price}
                             Sold={item.Sold}
                           />

@@ -97,6 +97,7 @@ export default function BestSeller() {
       </div>
       <Slider className="best-seller-books" {...settings}>
         {products.map((item, index) => {
+          // console.log(item.images[0].url);
           return (
             <BookItem
               key={index}
@@ -104,7 +105,7 @@ export default function BestSeller() {
               title={item.name}
               author={item.author}
               //   img={item.images[0].url}
-              img={item.images.url}
+              img={item.images[0].url}
               price={item.price}
               Sold={item.Sold}
             />
