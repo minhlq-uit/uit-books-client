@@ -16,15 +16,15 @@ export const userColumns = [
     headerName: "Tình trạng",
     width: 200,
     renderCell: (params) => {
-      let a;
-      if (params.row.status === "canceled") {
+      let a ;
+      if(params.row.status ==="Canceled"){
         a = "Hủy đơn"
-      } else if (params.row.status === "sold") {
-        a = "Đã bán"
-      } else if (params.row.status === "pending") {
-        a = "Đang xử lý"
-      } else if (params.row.status === "shipping") {
-        a = "Đang vận chuyển"
+      }else if(params.row.status ==="Shipped"){
+        a ="Đã bán"
+      }else if(params.row.status ==="Processing"){
+        a ="Đang xử lý"
+      }else if(params.row.status ==="Shipping"){
+        a ="Đang vận chuyển"
       }
 
       return (
