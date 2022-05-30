@@ -6,8 +6,12 @@
                     background-color: rgba(16, 108, 192, 0.1);
                 }
                 .categories-nav-main {
-                    .category-nav {
-                        cursor: pointer;
+                    .list-group-item, .form-check {
+                        .form-check-label {
+                            .form-check-input {
+                                cursor: pointer; 
+                            }
+                        }
                     }
                 }
             }
