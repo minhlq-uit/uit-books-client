@@ -92,6 +92,7 @@ const authorData = [
   "Phan Việt",
   "An Khang",
   "Nguyen",
+  "Nguyenn",
 ];
 export default function BookCategories() {
   const dispatch = useDispatch();
