@@ -21,13 +21,37 @@ class ProductDataService {
     author,
     publisher
   ) {
-    if (category) {
+    if (category && author && publisher) {
       return axios.get(
         `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&author=${author}&publisher=${publisher}`
       );
-    } else {
+    } else if (category && publisher && !author) {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&publisher=${publisher}`
+      );
+    } else if (category && author && !publisher) {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&author=${author}`
+      );
+    } else if (category && !author && !publisher) {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`
+      );
+    } else if (author && publisher) {
       return axios.get(
         `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&author=${author}&publisher=${publisher}`
+      );
+    } else if (author && !publisher) {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&author=${author}`
+      );
+    } else if (publisher) {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&publisher=${publisher}`
+      );
+    } else {
+      return axios.get(
+        `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`
       );
     }
   }
@@ -69,7 +93,10 @@ class ProductDataService {
   }
   deleteReview(reviewId, bookId) {
     return axios.delete(
-      `https://peaceful-brushlands-80713.herokuapp.com/api/v2/reviews?id=${reviewId}&bookId=${bookId}`
+      `http://localhost:5000/api/v2/reviews?id=${reviewId}&bookId=${bookId}`,
+      {
+        withCredentials: true,
+      }
     );
   }
   getNewsBook() {

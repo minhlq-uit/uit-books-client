@@ -67,6 +67,7 @@ export default function App() {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/signin" element={<PageSignIn />} />
 
+          <Route path="/books/:keyword" element={<Categories />} />
           <Route path="/books" element={<Categories />} />
           <Route path="/book/:id" element={<Book />} />
           <Route path="/blogs" element={<Blogs />} />
@@ -87,7 +88,6 @@ export default function App() {
           <Route path="/me/update/password" element={<UpdatePassword />} />
           <Route path="/password/reset/:token" element={<ResetPassword />} />
 
-
           <Route path="/admin-user-list" element={<AdminUserList />} />
           <Route path="/admin-user-new" element={<AdminUserNew />} />
           <Route path="/admin-user-edit" element={<AdminUserEdit />} />
@@ -106,8 +106,6 @@ export default function App() {
           <Route path="/admin-order" element={<AdminOrderPage />} />
           <Route path="/admin-order/edit" element={<AdminOrderDetailPage />} />
           <Route path="/admin-statistic" element={<AdminStatisticsPage />} />
-
-
 
           <Route path="/notfound" element={<NotFound />} />
         </Routes>

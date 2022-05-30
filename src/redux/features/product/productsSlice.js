@@ -9,20 +9,22 @@ const initialState = {
 // fix object
 export const getProduct = createAsyncThunk(
   `${namespace}/getProduct`,
-  async ({
-    keyword = "",
-    currentPage = 1,
-    price = [0, 1000000],
-    category,
-    ratings = 0,
-    author = "",
-    publisher = "",
-  }) => {
+  async (infoData) => {
+    const {
+      keyword,
+      currentPage,
+      price,
+      category,
+      ratings,
+      author,
+      publisher,
+    } = infoData;
     // const { data } = await axios.get(
     //   `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books?keyword=${keyword}&page=${currentPage}`
     // );
     // console.log(data);
     // return data;
+    // console.log(infoData);
     const data = await ProductDataService.getAllBook(
       keyword,
       currentPage,
@@ -33,7 +35,7 @@ export const getProduct = createAsyncThunk(
       publisher
     )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       })
       .catch((err) => {
@@ -61,9 +63,9 @@ export const productsSlice = createSlice({
     [getProduct.fulfilled]: (state, action) => {
       state.loading = false;
       state.products = action.payload.books;
-      state.productsCount = action.payload.productsCount;
+      state.productsCount = action.payload.booksCount;
       state.resultPerPage = action.payload.resultPerPage;
-      state.filteredProductsCount = action.payload.filteredProductsCount;
+      state.filteredProductsCount = action.payload.filteredBooksCount;
       state.error = action.payload.message;
     },
     [getProduct.rejected]: (state, action) => {

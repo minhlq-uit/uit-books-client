@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Navbar,
   Nav,
@@ -18,9 +18,9 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import GroupsIcon from "@mui/icons-material/Groups";
 import TtyIcon from "@mui/icons-material/Tty";
-import Badge from '@mui/material/Badge';
-import IconButton from '@mui/material/IconButton';
-import { styled } from '@mui/material/styles';
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import { styled } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -30,9 +30,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
+  "& .MuiBadge-badge": {
     backgroundColor: "#FF9933",
-    color: "white"
+    color: "white",
   },
 }));
 
@@ -49,6 +49,17 @@ export default function Topbar(props) {
     // e.preventDefault();
     dispatch(logoutRequest());
   };
+  // Search
+  const [keyword, setKeyword] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      navigate(`/books/${keyword}`);
+    } else {
+      navigate("/books");
+    }
+  };
+  // done
   useEffect(() => {
     if (isAuthenticated === false) {
       toast.success("Logout success after 3s redirect to page signin");
@@ -90,10 +101,12 @@ export default function Topbar(props) {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Tìm kiếm sách theo tên hoặc tác giả"
+                    placeholder="Tìm kiếm sách theo"
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.target.value)}
                   />
                   <div className="input-group-append">
-                    <Button variant="dark">
+                    <Button variant="dark" onClick={handleSearch}>
                       <SearchIcon /> Tìm kiếm
                     </Button>
                   </div>
@@ -141,9 +154,7 @@ export default function Topbar(props) {
                   >
                     {isAuthenticated ? (
                       <>
-                        <NavDropdown.Item
-                          onClick={handleLinkToMe}
-                        >
+                        <NavDropdown.Item onClick={handleLinkToMe}>
                           Tài khoản
                         </NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/my-favorite-book">
@@ -190,21 +201,43 @@ export default function Topbar(props) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <Nav.Link className="d-flex">
-                <NavDropdown align="start" title={
-                  <div>
-                    <ListAltIcon className="nav-icons" />
-                    Danh mục
-                  </div>
-                } className="category-list">
-                  <NavDropdown.Item as={Link} to="#action/3.1">Văn Học Trong Nước</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Văn Học Nước Ngoài</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.3">Sách Kinh Tế</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Kĩ Năng Sống</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Tuổi Teen</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Thiếu Nhi</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Chuyên Ngành</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Sách Ngoại Ngữ</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">Thường Thức Đời Sống</NavDropdown.Item>
+                <NavDropdown
+                  align="start"
+                  title={
+                    <div>
+                      <ListAltIcon className="nav-icons" />
+                      Danh mục
+                    </div>
+                  }
+                  className="category-list"
+                >
+                  <NavDropdown.Item as={Link} to="#action/3.1">
+                    Văn Học Trong Nước
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Văn Học Nước Ngoài
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.3">
+                    Sách Kinh Tế
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Kĩ Năng Sống
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Tuổi Teen
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Thiếu Nhi
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Chuyên Ngành
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Sách Ngoại Ngữ
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="#action/3.2">
+                    Thường Thức Đời Sống
+                  </NavDropdown.Item>
                 </NavDropdown>
               </Nav.Link>
 

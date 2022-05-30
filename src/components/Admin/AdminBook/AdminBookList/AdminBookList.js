@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete, MdMenuBook, MdOutlinePreview } from "react-icons/md";
-import { IoPersonCircleSharp } from 'react-icons/io5';
+import { IoPersonCircleSharp } from "react-icons/io5";
 import { RiDeleteBin2Fill } from "react-icons/ri";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrorsDeleted,
@@ -20,33 +20,72 @@ import {
   clearErrors,
 } from "../../../../redux/features/product/productsAdminSlice";
 import { toast } from "react-toastify";
+import { getAllReviews } from "../../../../redux/features/product/productReviewsSlice";
+import {
+  clearErrorsDeleteReview,
+  deleteReviews,
+  resetStateDeletedReview,
+} from "../../../../redux/features/product/reviewSlice";
 
 const AdminBookList = () => {
-  // const [data, setData] = useState(userRows);
-
-  // const handleDelete = (id) => {
-  //   setData(data.filter((item) => item.id !== id));
-  // };
-  // test
-
   const dispatch = useDispatch();
   // Modal comment previews
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = (e) => {
-    e.preventDefault()
-    setShow(true)
-  };
-
+  const [bookId, setBookId] = useState();
 
   const { error, products } = useSelector((state) => state.productsAdmin);
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.product
   );
-
+  const { error: reviewError, reviews } = useSelector(
+    (state) => state.productReviews
+  );
+  const { error: reviewDeleteError, isDeleted: isDeletedReview } = useSelector(
+    (state) => state.review
+  );
+  // console.log(reviewError, reviews);
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
   };
+  const getReviewsHandler = (id) => {
+    dispatch(getAllReviews(id));
+  };
+  const deleteReviewHandler = (id, bookId) => {
+    const idData = {
+      reviewId: id,
+      bookId: bookId,
+    };
+    dispatch(deleteReviews(idData));
+  };
+  useEffect(() => {
+    if (reviewDeleteError && !isDeletedReview) {
+      toast.error(`${reviewDeleteError}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      handleClose();
+      dispatch(clearErrorsDeleteReview());
+    }
+    if (isDeletedReview) {
+      toast.success("Xóa  thành công! 🎊", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      handleClose();
+      dispatch(resetStateDeletedReview());
+    }
+  }, [reviews, reviewDeleteError, alert, isDeletedReview]);
   useEffect(() => {
     dispatch(getProductsAdmin());
   }, []);
@@ -55,19 +94,8 @@ const AdminBookList = () => {
       alert(error);
       dispatch(clearErrors());
     }
-
-    // if (deleteError) {
-    //   alert(deleteError);
-    //   dispatch(clearErrorsDeleted());
-    // }
-
-    // if (isDeleted) {
-    //   alert("Book Deleted Successfully");
-    //   dispatch(resetStateDelete());
-    // }
-
     if (deleteError && isDeleted) {
-      toast.success('Xóa sách thành công! 🎊', {
+      toast.success("Xóa sách thành công! 🎊", {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -80,7 +108,7 @@ const AdminBookList = () => {
       dispatch(clearErrorsDeleted());
       dispatch(getProductsAdmin());
     } else if (deleteError != null) {
-      toast.error('Thất bại! Vui lòng thử lại 😭', {
+      toast.error("Thất bại! Vui lòng thử lại 😭", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -111,7 +139,12 @@ const AdminBookList = () => {
             </Link>
             <div
               className="reviewsButton"
-              onClick={handleShow}
+              onClick={(e) => {
+                e.preventDefault();
+                setShow(true);
+                setBookId(params.getValue(params.id, "id"));
+                getReviewsHandler(params.getValue(params.id, "id"));
+              }}
             >
               <MdOutlinePreview />
             </div>
@@ -124,12 +157,9 @@ const AdminBookList = () => {
             >
               <MdDelete />
             </div>
-            <div
-              className="reviewsButton"
-              onClick={handleShow}
-            >
+            {/* <div className="reviewsButton" onClick={handleShow}>
               <MdOutlinePreview />
-            </div>
+            </div> */}
           </div>
         );
       },
@@ -156,16 +186,16 @@ const AdminBookList = () => {
         img: "https://res.cloudinary.com/uitbooks/image/upload/v1653576546/books/cnign5w5v4qlelbw9dhq.jpg",
       });
     });
-   
+
   return (
     <div className="datatable">
       <div className="col-xl-6 col-lg-5 col-md-6">
         <form action="#" className="search-header">
           <div className="input-group w-100">
-            <input 
-            type="text" 
-            className="form-control" 
-            placeholder="Tìm kiếm" 
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Tìm kiếm"
             />
             <div className="input-group-append">
               <Button variant="dark">
@@ -196,30 +226,39 @@ const AdminBookList = () => {
         </Modal.Header>
         <Modal.Body className="modal-body">
           <Form className="form">
-            <div className="book-comment-others">
-              <div className="book-comment-user d-flex border-top">
-                <div className="book-comment-avatar flex-shrink-0 fs-1">
-                  <IoPersonCircleSharp />
-                </div>
-                <div className="book-comment-container flex-grow-1 ms-3 mt-4">
-                  <div className="book-comment-userinfo d-flex">
-                    <div className="book-comment-name w-100 fw-bold">
-                      {/* <p>{item.name}</p> */}
-                      <p>Nguyễn Văn A</p>
+            {reviews &&
+              reviews.map((item, i) => (
+                <div className="book-comment-others" key={i}>
+                  <div className="book-comment-user d-flex border-top">
+                    <div className="book-comment-avatar flex-shrink-0 fs-1">
+                      <IoPersonCircleSharp />
                     </div>
-                    <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
-                      {/* <p>{item.time}</p> */}
-                      <p>28/05/2022</p>
+                    <div className="book-comment-container flex-grow-1 ms-3 mt-4">
+                      <div className="book-comment-userinfo d-flex">
+                        <div className="book-comment-name w-100 fw-bold">
+                          {/* <p>{item.name}</p> */}
+                          <p>{item.name}</p>
+                        </div>
+                        <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
+                          {/* <p>{item.time}</p> */}
+                          <p>{item.time}</p>
+                        </div>
+                        <RiDeleteBin2Fill
+                          className="book-comment-delete-icon ms-5"
+                          onClick={(e) => {
+                            console.log(item._id, bookId);
+                            deleteReviewHandler(item._id, bookId);
+                          }}
+                        />
+                      </div>
+                      <div className="book-comment-content">
+                        {/* <p>{item.comment}</p> */}
+                        <p>{item.comment}</p>
+                      </div>
                     </div>
-                    <RiDeleteBin2Fill className="book-comment-delete-icon ms-5" />
-                  </div>
-                  <div className="book-comment-content">
-                    {/* <p>{item.comment}</p> */}
-                    <p>Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources. 1. Read and subscribe to The Official Bootstrap Blog. 2. Join the official Slack room. 3. Chat with fellow Bootstrappers in IRC.</p>
                   </div>
                 </div>
-              </div>
-            </div>
+              ))}
           </Form>
         </Modal.Body>
         <Modal.Footer>

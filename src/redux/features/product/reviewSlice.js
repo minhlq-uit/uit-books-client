@@ -30,10 +30,10 @@ export const reviewSlice = createSlice({
   name: namespace,
   initialState,
   reducers: {
-    clearErrors: (state, action) => {
+    clearErrorsDeleteReview: (state, action) => {
       state.error = null;
     },
-    resetStateDeleted: (state, action) => {
+    resetStateDeletedReview: (state, action) => {
       state.isDeleted = false;
     },
   },
@@ -51,6 +51,7 @@ export const reviewSlice = createSlice({
     },
   },
 });
-export const { clearErrors, resetStateDeleted } = reviewSlice.actions;
+export const { clearErrorsDeleteReview, resetStateDeletedReview } =
+  reviewSlice.actions;
 
 export default reviewSlice.reducer;
