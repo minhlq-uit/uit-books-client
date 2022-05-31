@@ -53,8 +53,8 @@ export const getUserDetails = createAsyncThunk(
 
 export const updateUserDetails = createAsyncThunk(
   "userDetails/updateUserDetails",
-  async ({id, name, email, role}) => {
-    const response = await AdminService.updateRoleUser(id, name, email, role)
+  async ({id, name, email, role, avatar}) => {
+    const response = await AdminService.updateInfoUser(id, name, email, role, avatar)
     return response.data
   }
 )

@@ -11,13 +11,14 @@ class AdminService {
       withCredentials: true,
     });
   }
-  updateRoleUser(id, name, email, role) {
+  updateInfoUser(id, name, email, role, avatar) {
     return axios.put(
       `http://localhost:5000/api/v2/admin/user/${id}`,
       {
         name,
         email,
         role,
+        avatar
       },
       {
         withCredentials: true,

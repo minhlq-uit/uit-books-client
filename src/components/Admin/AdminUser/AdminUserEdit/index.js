@@ -20,6 +20,7 @@ function UserEdit() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
     dispatch(getUserDetails({ userId }));
@@ -30,6 +31,9 @@ function UserEdit() {
       setEmail(user.email);
       setName(user.name);
       setRole(user.role);
+      if (user.avatar.url) {
+        setAvatar(user.avatar.url);
+      }
     }
   }, [user]);
 
@@ -46,9 +50,25 @@ function UserEdit() {
     dispatch(clear());
   }, [success]);
 
+  const handleAvatarChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setAvatar(e.target.value);
+    }
+  };
+
   const handleUpdateUserDetails = (e) => {
     e.preventDefault();
-    dispatch(updateUserDetails({ id: userId, name, email, role }));
+    dispatch(updateUserDetails({ id: userId, name, email, role, avatar }));
   };
 
   return (
@@ -181,22 +201,39 @@ function UserEdit() {
                     </select>
                   </div>
                 </div>
-                {/* <div className="row mb-3">
-                            <label
-                                htmlFor="form-avatar-body"
-                                className="col-sm-2 col-form-label edit-user-label"
-                            >
-                                Chọn Avatar
-                            </label>
-                            <div className="col-sm-10">
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="form-control-file"
-                                    id="form-avatar-body"
-                                />
-                            </div>
-                        </div> */}
+                <div className="row mb-3">
+                  <label
+                    htmlFor="form-avatar-body"
+                    className="col-sm-2 col-form-label edit-user-label"
+                  >
+                    Chọn Avatar
+                  </label>
+                  <div className="col-sm-10">
+                    <input
+                      type="file"
+                      name="avatar"
+                      onChange={handleAvatarChange}
+                    />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <label
+                    htmlFor="form-avatar-body"
+                    className="col-sm-2 col-form-label edit-user-label"
+                  >
+                    Avatar preview
+                  </label>
+                  <div className="col-sm-10">
+                    {avatar ? (
+                      <img
+                        src={avatar}
+                        className="avatar"
+                      />
+                    ) : (
+                      "Chua co avatar"
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
 

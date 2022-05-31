@@ -102,7 +102,7 @@ const UserList = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Danh sách người dùng
-        <Link to="/users/new" className="link">
+        <Link to="/admin-user-new" className="link">
           <FaUserPlus className="addUser" />
           Thêm mới
         </Link>

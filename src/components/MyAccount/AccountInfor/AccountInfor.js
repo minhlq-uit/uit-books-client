@@ -23,7 +23,7 @@ function AccountInfor() {
   });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState("")
+  const [avatar, setAvatar] = useState("");
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -37,9 +37,6 @@ function AccountInfor() {
     if (user) {
       setName(user.name);
       setEmail(user.email);
-      // if(user.avatar.url) {
-      //   setAvatar(user.avatar.url)
-      // }
     }
   }, [user]);
   const handleUpdateInfo = (e) => {
@@ -76,12 +73,11 @@ function AccountInfor() {
       };
 
       reader.readAsDataURL(e.target.files[0]);
-    } 
-    else {
-      setAvatar(e.target.value)
+    } else {
+      setAvatar(e.target.value);
     }
-    console.log(avatar)
-  }
+    console.log(avatar);
+  };
   return (
     <div className="col-lg-8 my-account-form ">
       <>
@@ -150,23 +146,23 @@ function AccountInfor() {
               </div>
 
               {/* <div className="row mb-3">
-            <label
-              htmlFor="form-adress-body"
-              className="col-sm-2 col-form-label"
-            >
-              Địa chỉ
-            </label>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                id="form-adress-body"
-                value="Khu phố 6, Linh Trung, Thủ Đức"
-              />
-            </div>
-          </div>
+                <label
+                  htmlFor="form-adress-body"
+                  className="col-sm-2 col-form-label"
+                >
+                  Địa chỉ
+                </label>
+                <div className="col-sm-10">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="form-adress-body"
+                    value="Khu phố 6, Linh Trung, Thủ Đức"
+                  />
+                </div>
+              </div> */}
 
-          <div className="row mb-3">
+              {/* <div className="row mb-3">
             <label
               htmlFor="form-phoneNumber-body"
               className="col-sm-2 col-form-label"
