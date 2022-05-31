@@ -169,8 +169,9 @@ const AdminBookList = () => {
   const rows = [];
 
   products &&
-    products.forEach((item) => {
+    products.forEach((item, index) => {
       rows.push({
+        stt: index + 1,
         id: item._id,
         name: item.name,
         Stock: item.Stock,
@@ -216,8 +217,8 @@ const AdminBookList = () => {
         className="datagrid"
         rows={rows}
         columns={userColumns.concat(actionColumn)}
-        pageSize={12}
-        rowsPerPageOptions={[12]}
+        pageSize={9}
+        rowsPerPageOptions={[9]}
         checkboxSelection
       />
       <Modal show={show} onHide={handleClose} className="modal">
