@@ -100,7 +100,7 @@ export default function BookCategories() {
   // console.log(keyword);
   // console.log(keyword);
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 25000]);
+  const [price, setPrice] = useState([0, 1000000]);
   const [category, setCategory] = useState();
   const [ratings, setRatings] = useState(0);
   const [author, setAuthor] = useState();
