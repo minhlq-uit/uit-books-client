@@ -76,12 +76,12 @@ const publiserData = [
   "Thái Hà",
 ];
 const categoryData = [
-  "Văn học trong nước",
-  "Văn học nước ngoài",
-  "Sách kinh tế",
-  "Sách kỹ năng sống",
-  "Sách tuổi teen",
-  "Sách thiếu nhi",
+  "Kinh tế",
+  "Kỹ năng sống",
+  "Ngôn tình",
+  "Tâm lý",
+  "Tiếng anh",
+  "Tiểu thuyết",
   "Sách chuyên ngành",
   "Sách ngoại ngữ",
   "Thưởng thức đời sống",
@@ -101,7 +101,7 @@ export default function BookCategories() {
   // console.log(keyword);
   // console.log(keyword);
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([0, 25000]);
+  const [price, setPrice] = useState([0, 1000000]);
   const [category, setCategory] = useState();
   const [ratings, setRatings] = useState(0);
   const [author, setAuthor] = useState();

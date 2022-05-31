@@ -1,7 +1,12 @@
 export const userColumns = [
   {
-    field: "id",
+    field: "stt",
     headerName: "STT",
+    width: 40,
+  },
+  {
+    field: "id",
+    headerName: "id",
     width: 40,
   },
   {
@@ -57,11 +62,6 @@ export const userColumns = [
     field: "price",
     headerName: "Giá",
     width: 90,
-  },
-  {
-    field: "pageNumber",
-    headerName: "Số trang",
-    width: 80,
   },
 ];
 

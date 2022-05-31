@@ -12,7 +12,7 @@ function AdminBookNew() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Thơ");
+  const [category, setCategory] = useState("Tâm lý");
   const [publisher, setPublisher] = useState("");
   const [author, setAuthor] = useState("");
   const [Stock, setStock] = useState(0);
@@ -32,7 +32,7 @@ function AdminBookNew() {
   // }, [dispatch, loading, error, success]);
   useEffect(() => {
     if (error) {
-      toast.error("Thất bại! Vui lòng thử lại 😭", {
+      toast.error(`${error}😭`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -147,12 +147,12 @@ function AdminBookNew() {
             id="category-select-add"
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option>Thơ</option>
-            <option>Tâm lý học</option>
-            <option>Kinh doanh vs kinh tế</option>
-            <option>Khoa học viễn tưởng</option>
-            <option>Tiểu thuyết lãng mạn</option>
-            <option>Sách truyền cảm hứng</option>
+            <option>Kinh tế</option>
+            <option>Kỹ năng sống</option>
+            <option>Tâm lý</option>
+            <option>Ngôn tình</option>
+            <option>Tiếng Anh</option>
+            <option>Tiểu thuyết</option>
           </select>
         </div>
 
