@@ -11,7 +11,7 @@ import {
   updateProduct,
 } from "../../../../redux/features/product/productSlice";
 import "../AdminBookNew/AdminBookNew.scss";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 // import { useState } from 'react'
 
 function AdminBookEdit() {
@@ -301,6 +301,17 @@ function AdminBookEdit() {
           Khôi phục
         </button>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
