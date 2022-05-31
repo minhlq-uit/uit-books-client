@@ -9,7 +9,7 @@ import { IoCheckmarkSharp, IoPersonCircleSharp } from "react-icons/io5";
 import { FaGreaterThanEqual } from "react-icons/fa";
 import Table from "react-bootstrap/Table";
 import Toast from "react-bootstrap/Toast";
-import { Button, ToastContainer } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import BookItem from "../Home/Books/BookItem";
 import Slider from "react-slick";
 import ImageGallery from "react-image-gallery";
@@ -26,6 +26,7 @@ import {
   newReview,
   resetStateReview,
 } from "../../redux/features/product/newReviewSlice";
+import { toast, ToastContainer } from "react-toastify";
 
 const Books = [
   {
@@ -235,12 +236,28 @@ export default function BookDetail() {
       dispatch(clearErrorsDetails());
     }
     if (!success && reviewError) {
-      alert(reviewError);
+      toast.error(`${reviewError}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(reviewError);
       dispatch(clearErrorsReview());
       dispatch(getProductDetails(id));
     } else if (success) {
-      alert("Review submmited successfully");
+      toast.success("Thêm review sách thành công! 🎊", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       console.log(success);
       dispatch(resetStateReview());
       dispatch(getProductDetails(id));
@@ -662,6 +679,17 @@ export default function BookDetail() {
               </Button>
             </div>
           </div>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </div>
       )}
     </Fragment>

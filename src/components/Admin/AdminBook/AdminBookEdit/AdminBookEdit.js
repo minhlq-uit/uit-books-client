@@ -62,7 +62,7 @@ function AdminBookEdit() {
     if (updateError) {
       // console.log(updateError);
       // alert(updateError);
-      toast.error("Thất bại! Vui lòng thử lại 😭", {
+      toast.error(`${updateError}`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
