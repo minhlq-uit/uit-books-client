@@ -39,7 +39,10 @@ export const userSlice = createSlice({
       })
       .addCase(registerRequest.fulfilled, (state, action) => {
         state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload.user;
         state.success = action.payload.success
+        state.avatar = action.payload.user.avatar.url
       })
       .addCase(registerRequest.rejected, (state, action) => {
         state.loading = false;
@@ -81,12 +84,13 @@ export const loginRequest = createAsyncThunk(
 
 export const registerRequest = createAsyncThunk(
   "user/registerUserRequest",
-  async ({ name, email, password }, { rejectWithValue }) => {
+  async ({ name, email, password, avatar }, { rejectWithValue }) => {
     try {
       const response = await UserDataService.registration(
         name,
         email,
-        password
+        password,
+        avatar
       );
       return response.data;
     } catch (err) {

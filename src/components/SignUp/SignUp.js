@@ -3,12 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import userSlice, {
   registerRequest,
-  clear
+  clear,
 } from "../../redux/features/user/userSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import "./SignUp.scss";
 // import { FaRegEnvelope } from "react-icons/fa";
 
@@ -16,6 +15,11 @@ function SignUp() {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // avatar
+  const [avatar, setAvatar] = useState("/images/account/avatar.png");
+  const [avatarPreview, setAvatarPreview] = useState(
+    "/images/account/avatar.png"
+  );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +29,26 @@ function SignUp() {
     return state.user;
   });
 
-  const redirect = "/signin";
+  const redirect = "/";
+
+  // avatar 
+  const handleAvatarChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } 
+    else {
+      setAvatar(e.target.value)
+    }
+  }
 
   useEffect(() => {
     if (error) {
@@ -33,11 +56,11 @@ function SignUp() {
       dispatch(clear());
     }
     if (success) {
-      toast.success('Dang ki thanh cong. Vui long dang nhap after 3s.');
+      toast.success("Dang ki thanh cong. Redirect page home after 3s.");
       dispatch(clear());
       setTimeout(() => {
         navigate(redirect);
-      }, 3000)
+      }, 3000);
     }
   }, [error, success]);
 
@@ -48,6 +71,7 @@ function SignUp() {
         name: userName,
         email,
         password,
+        avatar: avatar
       })
     );
   };
@@ -75,12 +99,10 @@ function SignUp() {
                       src="https://drive.google.com/uc?id=1QUzPNaT1qtitlU4vnktUyCGTmxL836Wr"
                       alt="signup-img"
                     />
-
                   </div>
                 </div>
 
                 <div className="container col-lg mt-3">
-
                   <div className="container-btn-signin">
                     <button type="button" className="btn btn-signup mb-2">
                       <Link to="/">Quay về Trang chủ</Link>
@@ -88,7 +110,9 @@ function SignUp() {
                   </div>
                   <div className="signUp__form">
                     <form className="container form-signup p-3" action="">
-                      <h3 className="m-3 text-center signUp__title">ĐĂNG KÝ TÀI KHOẢN</h3>
+                      <h3 className="m-3 text-center signUp__title">
+                        ĐĂNG KÝ TÀI KHOẢN
+                      </h3>
 
                       <div className="mb-3 row container-input">
                         <div className="input-group m-3">
@@ -146,6 +170,17 @@ function SignUp() {
                           />
                         </div>
 
+                        <div className="input-group mb-3">
+                          <input
+                            type="file"
+                            class="form-control-file"
+                            onChange={handleAvatarChange}
+                            name="avatar"
+                          />
+                        </div>
+                        <div className="d-flex justify-content-center">
+                          <img className="img-preview" src={avatarPreview} />
+                        </div>
                       </div>
 
                       <div className="container text-center">
@@ -158,7 +193,9 @@ function SignUp() {
                       </div>
 
                       <div className="container text-center mt-3">
-                        <Link to="/signin" className="switch-signin">Đã có tài khoản?</Link>
+                        <Link to="/signin" className="switch-signin">
+                          Đã có tài khoản?
+                        </Link>
                         {/* <button
                           type="button"
                           className="switch-signin btn btn-link"
@@ -168,8 +205,6 @@ function SignUp() {
                       </div>
                     </form>
                   </div>
-
-
                 </div>
               </div>
             </div>

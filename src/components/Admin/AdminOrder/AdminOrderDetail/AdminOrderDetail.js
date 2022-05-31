@@ -135,7 +135,18 @@ const AdminOrderDetail = (props) => {
               </Col>
             </Row>
             <div className="product">
-              <InformationProduct
+              {
+                orderDetails ? orderDetails.orderItems.map(orderItem => {
+                  return <InformationProduct
+                  image={orderItem.image}
+                  nameBook={orderItem.name}
+                  price={orderItem.price}
+                  quantity={orderItem.quantity}
+                  author="Nguyễn Nhật Ánh"
+                />
+                }) : <></>
+              }
+              {/* <InformationProduct
                 image="https://cdn0.fahasa.com/media/catalog/product/c/o/co_gai_den_tu_hom_qua_1_2018_11_16_11_03_46.JPG"
                 nameBook="Cô gái đến từ hôm qua"
                 price={80000}
@@ -146,12 +157,12 @@ const AdminOrderDetail = (props) => {
                 nameBook="Cô gái đến từ hôm qua"
                 price={80000}
                 author="Nguyễn Nhật Ánh"
-              />
+              /> */}
             </div>
             <InformationBill
-              quantity={2}
-              totalMoney={120000}
-              discount={60000}
+              quantity={1}
+              totalMoney={orderDetails ? orderDetails.totalPrice : 0}
+              discount={0}
             />
           </Container>
           <div ref={overplay} className="overplay close">

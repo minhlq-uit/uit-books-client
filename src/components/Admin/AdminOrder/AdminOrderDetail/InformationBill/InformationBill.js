@@ -23,7 +23,7 @@ const InformationBill = (props) => {
         <hr className="myOrder__line" />
         <div className="myOrder__bill">
           <div className="myOrder__bill__name">Thành tiền:</div>
-          <div className="myOrder__bill__value">120. 000 đ</div>
+          <div className="myOrder__bill__value">{props.totalPrice ? props.totalPrice : 'Dang cap nhat'}</div>
         </div>
        
       </div>

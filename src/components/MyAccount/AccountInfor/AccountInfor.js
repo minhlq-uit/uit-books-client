@@ -6,8 +6,6 @@ import { loadUser } from "../../../redux/features/user/userSlice";
 import {
   updateInfo,
   updatePassword,
-  clearIsUpdated,
-  clearErrors,
   clear,
 } from "../../../redux/features/user/profileUserSlice";
 import Loading from "../../../more/Loader";
@@ -25,6 +23,7 @@ function AccountInfor() {
   });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState("")
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -35,26 +34,29 @@ function AccountInfor() {
   }, []);
   // update info
   useEffect(() => {
-    setName(user.name);
-    setEmail(user.email);
+    if (user) {
+      setName(user.name);
+      setEmail(user.email);
+      // if(user.avatar.url) {
+      //   setAvatar(user.avatar.url)
+      // }
+    }
   }, [user]);
   const handleUpdateInfo = (e) => {
     e.preventDefault();
-    dispatch(updateInfo({ name, email }));
+    dispatch(updateInfo({ name, email, avatar }));
   };
   useEffect(() => {
     if (isUpdated) {
       toast.success("Udpate success");
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
       dispatch(loadUser());
-      setOldPassword('')
-      setNewPassword('')
-      setConfirmPassword('')
-    }
-    if (isUpdated === false) {
-      toast.error("Update unsuccess");
     }
     if (error) {
       toast.error(error);
+      dispatch(loadUser());
     }
     dispatch(clear());
   }, [isUpdated, error]);
@@ -63,6 +65,23 @@ function AccountInfor() {
     e.preventDefault();
     dispatch(updatePassword({ oldPassword, newPassword, confirmPassword }));
   };
+  const handleAvatarChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } 
+    else {
+      setAvatar(e.target.value)
+    }
+    console.log(avatar)
+  }
   return (
     <div className="col-lg-8 my-account-form ">
       <>
@@ -108,6 +127,24 @@ function AccountInfor() {
                     id="inputEmail3"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="row mb-3">
+                <label
+                  htmlFor="inputAvatar"
+                  className="col-sm-2 col-form-label"
+                >
+                  Avatar
+                </label>
+                <div className="col-sm-10">
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="inputAvatar"
+                    name="avatar"
+                    // value={avatar}
+                    onChange={handleAvatarChange}
                   />
                 </div>
               </div>
@@ -230,9 +267,9 @@ function AccountInfor() {
           </div>
         </form>
       </div>
-      {/* <ToastContainer
+      <ToastContainer
         position="bottom-center"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -240,7 +277,7 @@ function AccountInfor() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      /> */}
+      />
     </div>
   );
 }

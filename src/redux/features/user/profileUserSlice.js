@@ -12,9 +12,9 @@ export const profileUserSlice = createSlice({
       state.error = null;
     },
     clear: (state, action) => {
-      state.isUpdated = null
-      state.error = null
-    }
+      state.isUpdated = null;
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -24,6 +24,11 @@ export const profileUserSlice = createSlice({
       .addCase(updateInfo.fulfilled, (state, action) => {
         state.loading = false;
         state.isUpdated = action.payload.success;
+      })
+      .addCase(updateInfo.rejected, (state, action) => {
+        state.loading = false;
+        state.isUpdated = false;
+        state.error = action.payload.message;
       })
       .addCase(updatePassword.pending, (state, action) => {
         state.loading = true;
@@ -35,32 +40,44 @@ export const profileUserSlice = createSlice({
       .addCase(updatePassword.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload.message;
-      })
+      });
   },
 });
 
 export const updateInfo = createAsyncThunk(
   "profileUser/updateInfo",
-  async ({ name, email }) => {
-    const data = await UserDataService.updateInfo(name, email)
-      .then((res) => res.data)
-      .catch((err) => err);
-    return data;
+  async ({ name, email, avatar }, { rejectWithValue }) => {
+    try {
+      const response = await UserDataService.updateInfo(name, email, avatar);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 
 export const updatePassword = createAsyncThunk(
   "profileUser/updatePassword",
-  async ({ oldPassword, newPassword, confirmPassword }, { rejectWithValue }) => {
+  async (
+    { oldPassword, newPassword, confirmPassword },
+    { rejectWithValue }
+  ) => {
     try {
-      const response = await UserDataService.updatePassword(oldPassword, newPassword, confirmPassword)
+      const response = await UserDataService.updatePassword(
+        oldPassword,
+        newPassword,
+        confirmPassword
+      );
       return response.data;
     } catch (err) {
-      if(!err.response) {
-        throw err
+      if (!err.response) {
+        throw err;
       }
-      console.log(err.response.data)
-      return rejectWithValue(err.response.data)
+      console.log(err.response.data);
+      return rejectWithValue(err.response.data);
     }
   }
 );

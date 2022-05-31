@@ -13,12 +13,19 @@ class UserDataService {
       }
     );
   }
-  registration(name, email, password) {
-    return axios.post("http://localhost:5000/api/v2/registration", {
-      name: name,
-      email: email,
-      password: password,
-    });
+  registration(name, email, password, avatar) {
+    return axios.post(
+      "http://localhost:5000/api/v2/registration",
+      {
+        name: name,
+        email: email,
+        password: password,
+        avatar: avatar,
+      },
+      {
+        withCredentials: true,
+      }
+    );
   }
   logout() {
     return axios.get("http://localhost:5000/api/v2/logout");
@@ -29,13 +36,10 @@ class UserDataService {
     });
   }
   resetPassword(password, confirmPassword, token) {
-    return axios.put(
-      `http://localhost:5000/api/v2/password/reset/${token}`,
-      {
-        password: password,
-        confirmPassword: confirmPassword,
-      },
-    );
+    return axios.put(`http://localhost:5000/api/v2/password/reset/${token}`, {
+      password: password,
+      confirmPassword: confirmPassword,
+    });
   }
   getDetails() {
     return axios.get("http://localhost:5000/api/v2/me", {
@@ -43,12 +47,13 @@ class UserDataService {
     });
   }
 
-  updateInfo(name, email) {
+  updateInfo(name, email, avatar) {
     return axios.put(
       "http://localhost:5000/api/v2/me/update/info",
       {
-        name: name,
-        email: email,
+        name,
+        email,
+        avatar
       },
       {
         withCredentials: true,

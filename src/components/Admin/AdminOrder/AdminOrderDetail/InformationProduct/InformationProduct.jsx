@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import "./InformationProduct.scss"
 const InformationProduct = props => {
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(props.quantity)
   const updateQuantity = (opt) =>{
     if(opt === "+"){
       setQuantity(quantity+1)
