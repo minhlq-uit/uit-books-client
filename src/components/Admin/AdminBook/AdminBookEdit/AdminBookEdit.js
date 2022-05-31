@@ -11,7 +11,7 @@ import {
   updateProduct,
 } from "../../../../redux/features/product/productSlice";
 import "../AdminBookNew/AdminBookNew.scss";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 // import { useState } from 'react'
 
 function AdminBookEdit() {
@@ -21,7 +21,7 @@ function AdminBookEdit() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Thơ");
+  const [category, setCategory] = useState("Tâm lý");
   const [publisher, setPublisher] = useState("");
   const [author, setAuthor] = useState("");
   const [Stock, setStock] = useState(0);
@@ -62,7 +62,7 @@ function AdminBookEdit() {
     if (updateError) {
       // console.log(updateError);
       // alert(updateError);
-      toast.error('Thất bại! Vui lòng thử lại 😭', {
+      toast.error(`${updateError}`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -70,12 +70,12 @@ function AdminBookEdit() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
       dispatch(clearErrorsDeleted());
     }
     if (isUpdated) {
       // alert("book Updated Successfully");
-      toast.success('Cập nhật sách thành công! 🎊', {
+      toast.success("Cập nhật sách thành công! 🎊", {
         position: "bottom-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -83,7 +83,7 @@ function AdminBookEdit() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
       navigate("/admin-book-list");
       dispatch(resetStateUpdated());
     }
@@ -166,12 +166,12 @@ function AdminBookEdit() {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option>Khoa học viễn tưởng</option>
-            <option>Thơ</option>
-            <option>Tâm lý học</option>
-            <option>Kinh doanh vs kinh tế</option>
-            <option>Tiểu thuyết lãng mạn</option>
-            <option>Sách truyền cảm hứng</option>
+            <option>Kinh tế</option>
+            <option>Kỹ năng sống</option>
+            <option>Ngôn tình</option>
+            <option>Tâm lý</option>
+            <option>Tiếng Anh</option>
+            <option>Tiểu thuyết</option>
           </select>
         </div>
 
@@ -278,30 +278,6 @@ function AdminBookEdit() {
         </div>
 
         <div className="form-group">
-          <label className="form-group-label" htmlFor="pageNumber">
-            Số trang
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="pageNumber-add"
-            placeholder="200"
-          />
-        </div>
-
-        <div className="form-group">
-          <label className="form-group-label" htmlFor="stock-add">
-            Tồn kho
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="stock-add"
-            placeholder="500"
-          />
-        </div>
-
-        <div className="form-group">
           <label
             className="form-group-label"
             htmlFor="exampleFormControlTextarea1"
@@ -325,6 +301,17 @@ function AdminBookEdit() {
           Khôi phục
         </button>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
