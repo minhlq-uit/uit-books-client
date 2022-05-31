@@ -63,11 +63,6 @@ export const userColumns = [
     headerName: "Số trang",
     width: 80,
   },
-  {
-    field: "stock",
-    headerName: "Tồn kho",
-    width: 70,
-  },
 ];
 
 //temporary data

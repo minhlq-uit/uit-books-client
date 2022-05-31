@@ -19,7 +19,7 @@ import {
   getProductsAdmin,
   clearErrors,
 } from "../../../../redux/features/product/productsAdminSlice";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { getAllReviews } from "../../../../redux/features/product/productReviewsSlice";
 import {
   clearErrorsDeleteReview,
@@ -183,7 +183,7 @@ const AdminBookList = () => {
         // img: item.images[0].url
         //   ? item.images[0].url
         //   : "https://res.cloudinary.com/uitbooks/image/upload/v1653576546/books/cnign5w5v4qlelbw9dhq.jpg",
-        img: "https://res.cloudinary.com/uitbooks/image/upload/v1653576546/books/cnign5w5v4qlelbw9dhq.jpg",
+        img: item.images[0].url,
       });
     });
 
@@ -267,6 +267,17 @@ const AdminBookList = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

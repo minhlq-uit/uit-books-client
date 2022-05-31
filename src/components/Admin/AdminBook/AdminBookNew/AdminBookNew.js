@@ -6,7 +6,7 @@ import {
   createProduct,
   resetState,
 } from "../../../../redux/features/product/newProductSlice";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 function AdminBookNew() {
   const [name, setName] = useState("");
@@ -250,7 +250,7 @@ function AdminBookNew() {
           />
         </div>
 
-        <div className="form-group">
+        {/* <div className="form-group">
           <label className="form-group-label" htmlFor="pageNumber">
             Số trang
           </label>
@@ -272,7 +272,7 @@ function AdminBookNew() {
             id="stock-add"
             placeholder=""
           />
-        </div>
+        </div> */}
 
         <div className="form-group">
           <label
@@ -297,6 +297,17 @@ function AdminBookNew() {
           Khôi phục
         </button>
       </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
