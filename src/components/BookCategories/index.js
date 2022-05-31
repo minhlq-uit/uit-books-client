@@ -88,7 +88,7 @@ const categoryData = [
 ];
 const authorData = [
   "Nguyễn Nhật Ánh",
-  "Nguyễn Ngọc Thạch",
+  "Nguyễn Ngọc Tư",
   "Minh Nhật",
   "Phan Việt",
   "An Khang",
@@ -120,7 +120,7 @@ export default function BookCategories() {
     setPrice([priceData[4], Number(e.target.value)]);
   };
   const reserHandler = (e) => {
-    setPrice([0, 25000]);
+    setPrice([0, 1000000]);
     setCategory();
     setAuthor();
     setPublisher();
@@ -264,7 +264,10 @@ export default function BookCategories() {
                           value={item}
                           onClick={(e) => {
                             if (i === 0) priceData[i - 1] = 0;
-                            setPrice([priceData[i - 1], Number(e.target.value)]);
+                            setPrice([
+                              priceData[i - 1],
+                              Number(e.target.value),
+                            ]);
                           }}
                         />
                         {priceData[i - 1]}đ - {priceData[i]}đ
