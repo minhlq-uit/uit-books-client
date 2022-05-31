@@ -76,12 +76,12 @@ const publiserData = [
   "Thái Hà",
 ];
 const categoryData = [
-  "Văn học trong nước",
-  "Văn học nước ngoài",
-  "Sách kinh tế",
-  "Sách kỹ năng sống",
-  "Sách tuổi teen",
-  "Sách thiếu nhi",
+  "Kinh tế",
+  "Kỹ năng sống",
+  "Ngôn tình",
+  "Tâm lý",
+  "Tiếng anh",
+  "Tiểu thuyết",
   "Sách chuyên ngành",
   "Thưởng thức đời sống",
 ];
