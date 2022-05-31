@@ -83,6 +83,7 @@ const categoryData = [
   "Sách tuổi teen",
   "Sách thiếu nhi",
   "Sách chuyên ngành",
+  "Sách ngoại ngữ",
   "Thưởng thức đời sống",
 ];
 const authorData = [
@@ -183,25 +184,31 @@ export default function BookCategories() {
                     className="categories-nav-main d-flex flex-column text-capitalize"
                   >
                     {categoryData.map((item, i) => (
-                      <label className="list-group-item">
-                        <input
-                          className="category-nav form-check-input me-1 "
-                          type="checkbox"
-                          value={item}
-                          onClick={(e) => setCategory(e.target.value)}
-                        />
-                        {item}
-                      </label>
+                      <div className="list-group-item form-check">
+                        <label className="form-check-label">
+                          <input
+                            className="form-check-input ms-1 me-2"
+                            type="radio"
+                            name="flexRadioDefault"
+                            value={item}
+                            onClick={(e) => setCategory(e.target.value)}
+                          />
+                          {item}
+                        </label>
+                      </div>
                     ))}
-                    <label className="list-group-item">
-                      <input
-                        className="category-nav form-check-input me-1 "
-                        type="checkbox"
-                        value=""
-                        onClick={(e) => setCategory()}
-                      />
-                      Khác
-                    </label>
+                    <div className="list-group-item form-check">
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input ms-1 me-2"
+                          type="radio"
+                          name="flexRadioDefault"
+                          value=""
+                          onClick={(e) => setCategory()}
+                        />
+                        Khác
+                      </label>
+                    </div>
                   </ListGroup>
                 </div>
                 <div className="categories-author mb-5">
@@ -209,25 +216,31 @@ export default function BookCategories() {
                     Tác giả
                   </h6>
                   {authorData.map((item, i) => (
-                    <label className="list-group-item">
-                      <input
-                        className="form-check-input me-1 "
-                        type="checkbox"
-                        value={item}
-                        onClick={(e) => setAuthor(e.target.value)}
-                      />
-                      {item}
-                    </label>
+                    <div className="list-group-item form-check">
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input ms-1 me-2"
+                          type="radio"
+                          name="flexRadioDefault"
+                          value={item}
+                          onClick={(e) => setAuthor(e.target.value)}
+                        />
+                        {item}
+                      </label>
+                    </div>
                   ))}
-                  <label className="list-group-item">
-                    <input
-                      className="form-check-input me-1 "
-                      type="checkbox"
-                      value=""
-                      onClick={(e) => setAuthor()}
-                    />
-                    Khác
-                  </label>
+                  <div className="list-group-item form-check">
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input ms-1 me-2"
+                        type="radio"
+                        name="flexRadioDefault"
+                        value=""
+                        onClick={(e) => setAuthor()}
+                      />
+                      Khác
+                    </label>
+                  </div>
                 </div>
                 <div className="categories-price mb-5">
                   <h6 className="categories-price-title p-3 mb-0 fw-bold rounded">
@@ -242,50 +255,69 @@ export default function BookCategories() {
                     max={1000000}
                   />
                   {priceData.map((item, i) => (
-                    <label className="list-group-item">
-                      <input
-                        className="form-check-input me-1"
-                        type="checkbox"
-                        value={item}
-                        onClick={(e) => {
-                          if (i === 0) priceData[i - 1] = 0;
-                          setPrice([priceData[i - 1], Number(e.target.value)]);
-                        }}
-                      />
-                      {priceData[i - 1]}đ - {priceData[i]}đ
-                    </label>
+                    <div className="list-group-item form-check">
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input ms-1 me-2"
+                          type="radio"
+                          name="flexRadioDefault"
+                          value={item}
+                          onClick={(e) => {
+                            if (i === 0) priceData[i - 1] = 0;
+                            setPrice([priceData[i - 1], Number(e.target.value)]);
+                          }}
+                        />
+                        {priceData[i - 1]}đ - {priceData[i]}đ
+                      </label>
+                    </div>
                   ))}
-                  <label className="list-group-item">
-                    <input
-                      className="form-check-input me-1"
-                      type="checkbox"
-                      value="1000000"
-                      onClick={priceHandlerClick}
-                    />
-                    Trên 500 000đ
-                  </label>
+                  <div className="list-group-item form-check">
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input ms-1 me-2"
+                        type="radio"
+                        name="flexRadioDefault"
+                        value=""
+                        onClick={priceHandlerClick}
+                      />
+                      Trên 500000đ
+                    </label>
+                  </div>
                 </div>
                 <div className="categories-publisher mb-5">
                   <h6 className="categories-publisher-title p-3 mb-0 fw-bold rounded">
                     Nhà xuất bản
                   </h6>
                   {publiserData.map((item, i) => (
-                    <label className="list-group-item">
-                      <input
-                        className="form-check-input me-1"
-                        type="checkbox"
-                        value={item}
-                        onClick={(e) => {
-                          setPublisher(e.target.value);
-                        }}
-                      />
-                      {item}
-                    </label>
+                    <div className="list-group-item form-check">
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input ms-1 me-2"
+                          type="radio"
+                          name="flexRadioDefault"
+                          value={item}
+                          onClick={(e) => setPublisher(e.target.value)}
+                        />
+                        {item}
+                      </label>
+                    </div>
                   ))}
-                  <Button variant="outline-primary" onClick={reserHandler}>
-                    Khoi phuc
-                  </Button>
+                  <div className="list-group-item form-check">
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input ms-1 me-2"
+                        type="radio"
+                        name="flexRadioDefault"
+                        value=""
+                        onClick={(e) => setPublisher()}
+                      />
+                      Khác
+                    </label>
+                  </div>
                 </div>
+                <Button variant="outline-primary" onClick={reserHandler}>
+                  Khôi phục
+                </Button>
               </div>
             </Col>
             <Col sm={9}>
