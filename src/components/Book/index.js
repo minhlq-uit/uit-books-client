@@ -27,6 +27,7 @@ import {
   resetStateReview,
 } from "../../redux/features/product/newReviewSlice";
 import { toast, ToastContainer } from "react-toastify";
+import { Rating } from "@material-ui/lab";
 
 const Books = [
   {
@@ -194,7 +195,7 @@ export default function BookDetail() {
   //   add review
   // const [quantity, setQuantity] = useState(1);
   // const [open, setOpen] = useState(false);
-  const [rating, setRating] = useState(4);
+  const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   // const increaseQuantity = () => {
   //   if (product.Stock <= quantity) return;
@@ -357,7 +358,7 @@ export default function BookDetail() {
                         </div>
                       </div>
                       <div className="book-rating border-bottom pb-2">
-                        <i className="book-item-rating text-warning me-1">
+                        {/* <i className="book-item-rating text-warning me-1">
                           <BsFillStarFill />
                         </i>
                         <i className="book-item-rating text-warning me-1">
@@ -371,9 +372,10 @@ export default function BookDetail() {
                         </i>
                         <i className="book-item-rating text-warning me-1">
                           <BsFillStarFill />
-                        </i>
+                        </i> */}
+                        <Rating value={product.ratings} size="large" readOnly />
                         <p className="d-inline ms-2 align-middle">
-                          <i>4 đánh giá</i>
+                          <i>{product.numOfReviews} đánh giá</i>
                         </p>
                       </div>
                     </div>
@@ -526,7 +528,7 @@ export default function BookDetail() {
               Đánh giá
             </h4>
             <div className="book-comment-rating">
-              <i className="book-item-rating text-warning me-1">
+              {/* <i className="book-item-rating text-warning me-1">
                 <BsFillStarFill />
               </i>
               <i className="book-item-rating text-warning me-1">
@@ -543,10 +545,16 @@ export default function BookDetail() {
               </i>
               <p className="d-inline ms-2 align-middle">
                 5.0 <i>(4 đánh giá)</i>
-              </p>
+              </p> */}
+              <Rating
+                onChange={(e) => setRating(e.target.value)}
+                value={rating}
+                size="large"
+                className="book-item-rating"
+              />
             </div>
             <p className="book-comment-number mt-2">
-              {product.numOfReview} bình luận
+              {product.numOfReviews} bình luận
             </p>
             <form>
               <div className="book-comment-write d-flex">
@@ -608,6 +616,7 @@ export default function BookDetail() {
                         <div className="book-comment-name w-100 fw-bold">
                           <p>{item.name}</p>
                         </div>
+                        <Rating value={item.rating} size="large" readOnly />
                         <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
                           <p>{item.time}</p>
                         </div>
