@@ -28,6 +28,8 @@ import {
 } from "../../redux/features/product/newReviewSlice";
 import { toast, ToastContainer } from "react-toastify";
 import { Rating } from "@material-ui/lab";
+import { addItemsToCart } from "../../redux/features/cart/cartSlice";
+import { addItemsToFavourite } from "../../redux/features/favourite/favouriteSlice";
 
 const Books = [
   {
@@ -83,6 +85,11 @@ const Books = [
 export default function BookDetail() {
   function AddButton() {
     const [show, setShow] = useState(false);
+    const addToCart = (id) => {
+      dispatch(addItemsToCart(id, 1));
+      setShow(true);
+      console.log(show);
+    };
 
     return (
       <div>
@@ -103,13 +110,13 @@ export default function BookDetail() {
               {/* <small>11 mins ago</small> */}
             </Toast.Header>
             <Toast.Body>
-              Sách Cô gái đến từ hôm qua đã được thêm vào giỏ hàng thành công!
+              {`Sách ${product.name} đã được thêm vào giỏ hàng thành công!`}
             </Toast.Body>
           </Toast>
         </ToastContainer>
         <button
           type="button"
-          onClick={() => setShow(true)}
+          onClick={() => addToCart(product._id)}
           className="book-add-btn btn border rounded text-center fs-6 text-uppercase p-3 ps-4 pe-4 fw-bold"
         >
           Thêm vào giỏ hàng
@@ -120,6 +127,10 @@ export default function BookDetail() {
 
   function AddFavorite() {
     const [show, setShow] = useState(false);
+    const addToFavourite = (id) => {
+      dispatch(addItemsToFavourite(id));
+      setShow(true);
+    };
 
     return (
       <div>
@@ -140,13 +151,13 @@ export default function BookDetail() {
               {/* <small>11 mins ago</small> */}
             </Toast.Header>
             <Toast.Body>
-              Sách Cô gái đến từ hôm qua đã được thêm vào yêu thích thành công!
+              {`Sách ${product.name} đã được thêm vào yêu thích thành công!`}
             </Toast.Body>
           </Toast>
         </ToastContainer>
         <button
           type="button"
-          onClick={() => setShow(true)}
+          onClick={() => addToFavourite(product._id)}
           className="book-like-btn border border-2 rounded text-center align-middle p-1 ps-3 pe-3"
         >
           <i className="book-like-icon text-danger fs-6">

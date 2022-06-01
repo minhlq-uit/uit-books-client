@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import UserDataService from "../../../services/user";
+// import { persistor } from "../../store";
 
 export const userSlice = createSlice({
   name: "user",
@@ -50,6 +51,7 @@ export const userSlice = createSlice({
         state.isAuthenticated = false;
         state.user = null;
         state.status = action.payload.success;
+        // persistor.purge();
       })
       .addCase(logoutRequest.rejected, (state, action) => {
         state.status = action.payload.success;
@@ -105,10 +107,10 @@ export const logoutRequest = createAsyncThunk(
   "user/logoutRequest",
   async () => {
     const data = await UserDataService.logout()
-      .then(res => res.data)
-      .catch(err => err)
+      .then((res) => res.data)
+      .catch((err) => err);
 
-    return data
+    return data;
   }
 );
 

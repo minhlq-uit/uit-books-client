@@ -23,6 +23,7 @@ import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
+import { PURGE } from "redux-persist";
 
 import { useDispatch, useSelector } from "react-redux";
 import { logoutRequest, clear } from "../../redux/features/user/userSlice";
@@ -50,6 +51,13 @@ export default function Topbar(props) {
 
   const handleLogout = (e) => {
     e.preventDefault();
+    dispatch({
+      type: PURGE,
+      key: "root", // Whatever you chose for the "key" value when initialising redux-persist in the **persistCombineReducers** method - e.g. "root"
+      result: () => null, // Func expected on the submitted action.
+    });
+    localStorage.removeItem("persist:root");
+
     dispatch(logoutRequest());
   };
   // Search
@@ -69,7 +77,7 @@ export default function Topbar(props) {
       setTimeout(() => {
         navigate("/signin");
       }, 3000);
-      dispatch(clear())
+      dispatch(clear());
     }
   }, [isAuthenticated]);
 
@@ -86,6 +94,8 @@ export default function Topbar(props) {
       navigate("/signin");
     }
   };
+
+  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <header id="section-header">
@@ -136,7 +146,7 @@ export default function Topbar(props) {
                   <Nav.Link as={Link} to="/my-basket" eventKey="link-2">
                     <div className="d-flex flex-column align-items-center">
                       <IconButton aria-label="cart" style={{ padding: "0" }}>
-                        <StyledBadge badgeContent={4}>
+                        <StyledBadge badgeContent={cartItems.length}>
                           <ShoppingCartIcon className="nav-icon" />
                         </StyledBadge>
                       </IconButton>
@@ -211,7 +221,7 @@ export default function Topbar(props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link className="d-flex">
+              <Nav className="d-flex">
                 <NavDropdown
                   align="start"
                   title={
@@ -250,14 +260,18 @@ export default function Topbar(props) {
                     Thường Thức Đời Sống
                   </NavDropdown.Item>
                 </NavDropdown>
-              </Nav.Link>
+              </Nav>
 
               <Nav.Link as={Link} to="/blogs" className="d-flex nav-link-items">
                 <RssFeedIcon className="nav-icons" />
                 Chia sẻ
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/about-us" className="d-flex nav-link-items">
+              <Nav.Link
+                as={Link}
+                to="/about-us"
+                className="d-flex nav-link-items"
+              >
                 <GroupsIcon className="nav-icons" />
                 Giới thiệu
               </Nav.Link>
