@@ -25,7 +25,7 @@ import { styled } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { logoutRequest } from "../../redux/features/user/userSlice";
+import { logoutRequest, clear } from "../../redux/features/user/userSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -64,11 +64,12 @@ export default function Topbar(props) {
   };
   // done
   useEffect(() => {
-    if (isAuthenticated === false) {
+    if (isAuthenticated === false && user === null && status === true) {
       toast.success("Logout success after 3s redirect to page signin");
       setTimeout(() => {
         navigate("/signin");
       }, 3000);
+      dispatch(clear())
     }
   }, [isAuthenticated]);
 
