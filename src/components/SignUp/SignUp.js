@@ -10,7 +10,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SignUp.scss";
 import { MdDriveFolderUpload } from "react-icons/md";
-// import { FaRegEnvelope } from "react-icons/fa";
 import { FcHome } from "react-icons/fc";
 
 function SignUp() {
@@ -58,7 +57,7 @@ function SignUp() {
       dispatch(clear());
     }
     if (success) {
-      toast.success("Đăng ký thành công. Bạn sẽ được chuyển đến trang chủ sau 3s.");
+      toast.success("Đăng ký thành công. Bạn sẽ được chuyển đến trang chủ sau 3s. 🎊");
       dispatch(clear());
       setTimeout(() => {
         navigate(redirect);

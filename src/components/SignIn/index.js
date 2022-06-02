@@ -102,7 +102,7 @@ const SignIn = (props) => {
                   <div className="signIn__container__right__button">
                     <button type="button" className="mb-2">
                       <Link to="/" className="btn-home">
-                        <FcHome className="btn-home-icon mb-1 me-1"/> 
+                        <FcHome className="btn-home-icon mb-1 me-1" />
                         Trang chủ
                       </Link>
                     </button>
@@ -156,7 +156,7 @@ const SignIn = (props) => {
                     </div>
                     <div className="sigIn__form__separate">
                       <hr />
-                      <span> Hoặc</span>
+                      <span> Hoặc </span>
                       <hr />
                     </div>
                     <div className="sigIn__form__row withFacebook">

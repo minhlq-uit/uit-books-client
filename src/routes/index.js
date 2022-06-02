@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { React, useLayoutEffect } from "react";
+import { useLocation, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../pages/HomePage";
 import AboutUs from "../pages/AboutUs";
 import Delivery from "../pages/Delivery";
@@ -46,10 +46,18 @@ import AdminStatisticsPage from "../pages/AdminStatisticsPage";
 
 import NotFound from "../pages/404";
 
+const Wrapper = ({ children }) => {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+  return children
+}
+
 export default function App() {
   return (
     <Router>
-      <div>
+      <Wrapper>
         <Routes>
           <Route exact path="/" element={<Home />} />
 
@@ -102,7 +110,7 @@ export default function App() {
 
           <Route path="/notfound" element={<NotFound />} />
         </Routes>
-      </div>
+      </Wrapper>
     </Router>
   );
 }

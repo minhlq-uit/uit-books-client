@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import BookItem from "../Home/Books/BookItem";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Loading from "../../more/Loader";
@@ -141,8 +141,8 @@ export default function BookCategories() {
     <div className="categories-container container-fluid">
       <div className="categories-breadcrumb ms-5 mt-2 mb-5">
         <Breadcrumb>
-          <Breadcrumb.Item href="/">Trang chủ</Breadcrumb.Item>
-          <Breadcrumb.Item href="/books" className="text-capitalize" active>
+          <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Trang chủ</Breadcrumb.Item>
+          <Breadcrumb.Item className="text-capitalize" active>
             Danh mục sách
           </Breadcrumb.Item>
         </Breadcrumb>
@@ -318,7 +318,7 @@ export default function BookCategories() {
                   ) : (
                     <div>
                       <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
-                        Sách của UITBooks nà nha 😎
+                        Sách của UITBooks nà nha
                       </h3>
                       <div className="category-books row row-cols-3">
                         {products &&
@@ -338,32 +338,32 @@ export default function BookCategories() {
                             );
                           })}
                       </div>
+                      <div
+                        className="pagination__box"
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          margin: "6vmax",
+                        }}
+                      >
+                        <Pagination
+                          activePage={currentPage}
+                          itemsCountPerPage={resultPerPage}
+                          totalItemsCount={productsCount}
+                          onChange={setCurrentPageNo}
+                          nextPageText="Tiếp"
+                          prevPageText="Trước"
+                          firstPageText="Đầu"
+                          lastPageText="Cuối"
+                          itemClass="page-item"
+                          linkClass="page-link"
+                          activeClass="pageItemActive"
+                          activeLinkClass="pageLinkActive"
+                        />
+                      </div>
                     </div>
                   )}
-                  <div
-                    className="pagination__box"
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      margin: "6vmax",
-                    }}
-                  >
-                    <Pagination
-                      activePage={currentPage}
-                      itemsCountPerPage={resultPerPage}
-                      totalItemsCount={productsCount}
-                      onChange={setCurrentPageNo}
-                      nextPageText="Next"
-                      prevPageText="Prev"
-                      firstPageText="First"
-                      lastPageText="Last"
-                      itemClass="page-item"
-                      linkClass="page-link"
-                      activeClass="pageItemActive"
-                      activeLinkClass="pageLinkActive"
-                    />
-                  </div>
                 </div>
               )}
             </Col>

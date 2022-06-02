@@ -14,7 +14,7 @@ import BookItem from "../Home/Books/BookItem";
 import Slider from "react-slick";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrorsDetails,
@@ -31,55 +31,57 @@ import { Rating } from "@material-ui/lab";
 import { addItemsToCart } from "../../redux/features/cart/cartSlice";
 import { addItemsToFavourite } from "../../redux/features/favourite/favouriteSlice";
 import { numberWithCommas } from "../../more/FormatNumber";
+import moment from "moment";
+import { loadUser } from "../../redux/features/user/userSlice";
 
 const Books = [
   {
     title: "Ra Bờ Suối Ngắm Hoa Kèn Hồng",
     author: "Nguyễn Nhật Ánh",
     img: "https://drive.google.com/uc?id=1evMkN-8Yzk2FL51iREJZXawvg1-CpMVc",
-    price: "100.500 đ",
+    price: 100500,
   },
   {
     title: "Làm Bạn Với Bầu Trời",
     author: "Nguyễn Nhật Ánh",
     img: "https://drive.google.com/uc?id=1f81BHRFLAE1yEddPLdRUJO3jXJ2_SQPS",
-    price: "150.500 đ",
+    price: 150500,
   },
   {
     title: "Chúc Một Ngày Tốt Lành",
     author: "Nguyễn Nhật Ánh",
     img: "https://drive.google.com/uc?id=1qiStbESBEiBavZGEgTvcvoI7UHW9MKEy",
-    price: "90.500 đ",
+    price: 90500,
   },
   {
     title: "Ngày Xưa Có Một Chuyện Tình",
     author: "Nguyễn Nhật Ánh",
     img: "https://drive.google.com/uc?id=1iljqkkb1hT_FPSzkZJc0y5XtwNfzNL1K",
-    price: "111.500 đ",
+    price: 55400,
   },
   {
     title: "Tàn Lửa",
     author: "Shizukui Shusuke",
     img: "https://drive.google.com/uc?id=1SNwfEQMgarJBqvFH2ECYpEIxPGdGR1FG",
-    price: "111.500 đ",
+    price: 80500,
   },
   {
     title: "Cảm Ơn Người Lớn",
     author: "Nguyễn Nhật Ánh",
     img: "https://drive.google.com/uc?id=1SFgK4XIgGATHp0hauLyMf_Ccbs-sDuEj",
-    price: "111.500 đ",
+    price: 121500,
   },
   {
     title: "Chuyện Kể Rằng Có Nàng Và Tôi",
     author: "Nhiều tác giả",
     img: "https://drive.google.com/uc?id=15eeAUNLISuTCIDK_YRiSQwCWglfJbHZW",
-    price: "111.500 đ",
+    price: 75800,
   },
   {
     title: "Cố Định Một Đám Mây",
     author: "Nguyễn Ngọc Tư",
     img: "https://drive.google.com/uc?id=1DRQUMkxDzs4ldQwJ0X746gDL9boMVW_Q",
-    price: "111.500 đ",
+    price: 95000,
   },
 ];
 
@@ -92,7 +94,7 @@ export default function BookDetail() {
     const addToCart = (id) => {
       dispatch(addItemsToCart(id, 1));
       toast.success(
-        `Sách ${product.name} đã được thêm vào giỏ hàng thành công!`,
+        `Sách ${product.name} đã được thêm vào giỏ hàng! 🛒`,
         {
           position: "bottom-center",
           autoClose: 5000,
@@ -216,6 +218,7 @@ export default function BookDetail() {
     console.log(comment, rating);
     console.log(myForm);
     dispatch(newReview(myForm));
+    setComment("");
     // );
     // console.log(user);
     // setOpen(false);
@@ -293,8 +296,8 @@ export default function BookDetail() {
         product && <div className="book-container container-fluid">
           <div className="book-breadcrumb ms-5 mt-2">
             <Breadcrumb>
-              <Breadcrumb.Item href="/">Trang chủ</Breadcrumb.Item>
-              <Breadcrumb.Item href="/books" className="text-capitalize">
+              <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Trang chủ</Breadcrumb.Item>
+              <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/books" }} className="text-capitalize">
                 Danh mục sách
               </Breadcrumb.Item>
               <Breadcrumb.Item active className="text-capitalize">
@@ -568,7 +571,7 @@ export default function BookDetail() {
                     placeholder="Viết bình luận của bạn"
                     rows={3}
                     value={comment}
-                    onChange={(e) => setComment(e.target.value)}
+                    onChange={(e) => { setComment(e.target.value) }}
                   ></textarea>
                   <div className="book-comment-button mt-2 mb-4">
                     <Button
@@ -617,7 +620,7 @@ export default function BookDetail() {
                         </div>
                         <Rating value={item.rating} size="large" readOnly className="book-comment-rating me-3" />
                         <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
-                          <p>{getFormattedDate(item.time)}</p>
+                          <p>{moment(item.time).format("DD/MM/YYYY")}</p>
                         </div>
                       </div>
                       <div className="book-comment-content">
@@ -700,7 +703,8 @@ export default function BookDetail() {
             pauseOnHover
           />
         </div>
-      )}
-    </Fragment>
+      )
+      }
+    </Fragment >
   );
 }

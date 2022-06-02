@@ -24,7 +24,7 @@ export default function FAQ() {
                 <div className='FAQ-answer'>
                     <QuestionAnswerOutlinedIcon />
                     <p>
-                        Rất tiếc rằng UITBooks hiện chỉ cung cấp dịch vụ mua hàng qua kênh thương mại điện tử là website chính thức của <b>UITBooks</b>. Chúng tôi hiện chưa có cho mình cửa hàng offline để Quý khách hàng có thể đến trực tiếp để dễ dàng chọn lựa sản phẩm.
+                        Rất tiếc rằng <b>UITBooks</b> hiện chỉ cung cấp dịch vụ mua hàng qua kênh thương mại điện tử là website <b>UITBooks</b>. Chúng tôi hiện chưa có cho mình cửa hàng offline để Quý khách hàng có thể đến trực tiếp để dễ dàng chọn lựa sản phẩm.
                         <br /> Tuy nhiên, chúng tôi sẽ hỗ trợ và tư vấn nhiệt tình qua các kênh liên hệ nhằm giúp bạn lựa chọn chính xác cho mình những quyển sách mong muốn và giao hàng tận nơi, hoàn toàn tiện lợi.
                     </p>
                 </div>
@@ -65,7 +65,7 @@ export default function FAQ() {
                 <div className='FAQ-answer'>
                     <QuestionAnswerOutlinedIcon />
                     <p>
-                        Quý khách chỉ có thể hủy đơn hàng khi đơn hàng chưa được gọi xác nhận từ bộ phận chăm sóc khách hàng của UITBooks. Nếu không có nhu cầu nhận hàng, quý khách vui lòng tham khảo thêm chính sách đổi &amp; trả hàng của chúng tôi.
+                        Quý khách chỉ có thể hủy đơn hàng khi đơn hàng chưa được gọi xác nhận từ bộ phận chăm sóc khách hàng của <b>UITBooks</b>. Nếu không có nhu cầu nhận hàng, quý khách vui lòng tham khảo thêm chính sách đổi &amp; trả hàng của chúng tôi.
                     </p>
                 </div>
                 <h4 className='heading-title'>

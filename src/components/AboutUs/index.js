@@ -33,7 +33,7 @@ export default function About() {
                         Sản phẩm mới được cập nhật thường xuyên.
                     </li>
                     <li>
-                        Sản phẩm đến tay khách hàng luôn đúng với những thông tin mô tả trên website UITBooks
+                        Sản phẩm đến tay khách hàng luôn đúng với những thông tin mô tả trên website <b>UITBooks</b>
                     </li>
                 </ul>
                 <h3 className='heading-title'>
@@ -41,7 +41,7 @@ export default function About() {
                 </h3>
                 <ul>
                     <li>
-                        Giá bán luôn thấp hơn hoặc bằng với giá bìa. UITBooks luôn có những chương trình giảm giá từ 10 – 30% cho những sản phẩm mới.
+                        Giá bán luôn thấp hơn hoặc bằng với giá bìa. <b>UITBooks</b> luôn có những chương trình giảm giá từ 10 – 30% cho những sản phẩm mới.
                     </li>
                 </ul>
                 <h3 className='heading-title'>
@@ -58,7 +58,8 @@ export default function About() {
                         Giao hàng thu tiền tận nơi
                     </li>
                     <li>
-                        Giao hàng nhanh từ 1 – 2 ngày trên toàn quốc. Miễn phí vận chuyển với những đơn hàng ≥ 80.000đ (Tham khảo thêm Bảng giá phí vận chuyển tại UITBooks).
+                        Giao hàng nhanh từ 1 – 2 ngày trên toàn quốc. Miễn phí vận chuyển với những đơn hàng ≥ 80.000đ (Tham khảo thêm Bảng giá phí vận chuyển tại <b>UITBooks</b>).
+
                     </li>
                     <li>
                         Đặt hàng theo yêu cầu của Quý khách.
@@ -68,7 +69,7 @@ export default function About() {
                     </li>
                 </ul>
                 <p>
-                    Khi cần sự giúp đỡ hoặc góp ý về chất lượng và dịch vụ của UITBooks, Quý khách có thể liên hệ với chúng tôi theo những địa chỉ sau để được giải đáp trong thời gian nhanh nhất:
+                    Khi cần sự giúp đỡ hoặc góp ý về chất lượng và dịch vụ của <b>UITBooks</b>, Quý khách có thể liên hệ với chúng tôi theo những địa chỉ sau để được giải đáp trong thời gian nhanh nhất:
                 </p>
             </div>
             <address className='about-us-contact'>
@@ -86,7 +87,7 @@ export default function About() {
                 </div>
                 <div className='website'>
                     <img src='/images/aboutus/website.png' alt='Website' />
-                    Website: <a href="UITBooks.com">UITBooks.com</a>
+                    Website: <a href="UITBooks.com">UITBooks</a>
                 </div>
             </address>
         </Container >

@@ -103,7 +103,7 @@ export default function BookItem(props) {
                   <BsIcons.BsStar className="star-unfilled" />
                   <BsIcons.BsStar className="star-unfilled" />
                 </div> */}
-                <Rating value={props.ratings} size="large" readOnly />
+                <Rating value={props.ratings} size="small" readOnly />
 
                 <div className="line"></div>
                 <span className="sold">Đã bán {props.Sold}</span>

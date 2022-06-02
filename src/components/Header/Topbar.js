@@ -22,7 +22,7 @@ import TtyIcon from "@mui/icons-material/Tty";
 import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { PURGE } from "redux-persist";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -73,7 +73,7 @@ export default function Topbar(props) {
   };
   // done
   useEffect(() => {
-    if (isAuthenticated === false) {
+    if (isAuthenticated === false && user === null && status === true) {
       toast.success("Đăng xuất thành công, vui lòng chờ trong 3s để quay lại trang Đăng nhập nhé 🥺");
       setTimeout(() => {
         navigate("/signin");
@@ -97,20 +97,19 @@ export default function Topbar(props) {
   };
 
   const { cartItems } = useSelector((state) => state.cart);
-
+  const { pathname } = useLocation();
   return (
     <header id="section-header">
       <section className="header-main border-bottom">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-xl-2 col-lg-3 col-md-12">
+            <div className="col-xl-3 col-lg-3 col-md-12">
               <Navbar.Brand as={Link} to="/">
                 <img
                   className="logo"
-                  src="/images/header/uitbook-logo.png"
+                  src="https://drive.google.com/uc?id=11dvknjzd0PYAK4D__KHpwxldlwahSi1g"
                   alt="UITBook-logo"
                 />
-                UITBooks
               </Navbar.Brand>
             </div>
             <div className="col-xl-6 col-lg-5 col-md-6">
@@ -131,7 +130,7 @@ export default function Topbar(props) {
                 </div>
               </form>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-6">
+            <div className="col-xl-3 col-lg-4 col-md-6">
               <div className="widgets-wrap float-md-right">
                 <div className="widget-header mr-3">
                   <Nav.Item>
@@ -222,50 +221,14 @@ export default function Topbar(props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link as={Link} to="/books" className="d-flex">
+              {/* <Nav className="d-flex"> */}
+              <Nav.Link as={Link} to="/books" className={`d-flex ${pathname === "/books" ? "active" : ""}`}>
                 <ListAltIcon className="nav-icons" />
                 Danh mục
-                {/* <NavDropdown
-                  align="start"
-                  title={
-                    <div>
-                      <ListAltIcon className="nav-icons" />
-                      
-                    </div>
-                  }
-                  className="category-list" 
-                >
-                  <NavDropdown.Item as={Link} to="#action/3.1">
-                    Văn Học Trong Nước
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">
-                    Văn Học Nước Ngoài
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.3">
-                    Sách Kinh Tế
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">
-                    Sách Kĩ Năng Sống
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">
-                    Sách Tuổi Teen
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">
-                    Sách Thiếu Nhi
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">
-                    Sách Chuyên Ngành
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">
-                    Sách Ngoại Ngữ
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="#action/3.2">
-                    Thường Thức Đời Sống
-                  </NavDropdown.Item>
-                </NavDropdown> */}
               </Nav.Link>
+              {/* </Nav> */}
 
-              <Nav.Link as={Link} to="/blogs" className="d-flex nav-link-items">
+              <Nav.Link as={Link} to="/blogs" className={`d-flex nav-link-items ${pathname === "/blogs" ? "active" : ""}`}>
                 <RssFeedIcon className="nav-icons" />
                 Chia sẻ
               </Nav.Link>
@@ -273,7 +236,7 @@ export default function Topbar(props) {
               <Nav.Link
                 as={Link}
                 to="/about-us"
-                className="d-flex nav-link-items"
+                className={`d-flex nav-link-items ${pathname === "/about-us" ? "active" : ""}`}
               >
                 <GroupsIcon className="nav-icons" />
                 Giới thiệu

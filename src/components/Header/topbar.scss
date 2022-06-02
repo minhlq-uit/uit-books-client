@@ -1,12 +1,12 @@
 #section-header {
     background-color: #106CC0;
     -webkit-box-shadow: 0 0 3px rgba(51, 51, 51, 0.15);
-    box-shadow: 0 0 3px rgba(51, 51, 51, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
     .header-main {
         position: relative;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
 
         .container {
             div {
@@ -15,7 +15,7 @@
                     color: white;
 
                     .logo {
-                        width: 3rem;
+                        width: 12rem;
                         margin-right: 1rem;
                     }
                 }
@@ -124,6 +124,13 @@
 
     #basic-navbar-nav {
 
+        .active {
+            color: #106cc0;
+            font-weight: 600;
+            border-bottom: 2.5px solid #106cc0;
+            transition: all 0.3s ease-out;
+        }
+
         .dropdown-toggle::after {
             content: none;
         }
@@ -214,6 +221,8 @@
         }
     }
 }
+
+
 
 @media screen and (max-width: 992px) {
     .navbar-brand {
