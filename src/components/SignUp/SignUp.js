@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  registerRequest,
-  clear,
-} from "../../redux/features/user/userSlice";
+import { registerRequest, clear } from "../../redux/features/user/userSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,7 +29,7 @@ function SignUp() {
 
   const redirect = "/";
 
-  // avatar 
+  // avatar
   const handleAvatarChange = (e) => {
     if (e.target.name === "avatar") {
       const reader = new FileReader();
@@ -45,11 +42,10 @@ function SignUp() {
       };
 
       reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setAvatar(e.target.value);
     }
-    else {
-      setAvatar(e.target.value)
-    }
-  }
+  };
 
   useEffect(() => {
     if (error) {
@@ -57,7 +53,9 @@ function SignUp() {
       dispatch(clear());
     }
     if (success) {
-      toast.success("Đăng ký thành công. Bạn sẽ được chuyển đến trang chủ sau 3s. 🎊");
+      toast.success(
+        "Đăng ký thành công. Bạn sẽ được chuyển đến trang chủ sau 3s. 🎊"
+      );
       dispatch(clear());
       setTimeout(() => {
         navigate(redirect);
@@ -72,7 +70,7 @@ function SignUp() {
         name: userName,
         email,
         password,
-        avatar: avatar
+        avatar: avatar,
       })
     );
   };
@@ -85,7 +83,7 @@ function SignUp() {
           <div id="signup" className="signup">
             <div className="container">
               <div className="row">
-                <div className="container col-lg-8 mt-3">
+                <div className="container col-lg-6 mt-3">
                   <div className="container container-logo">
                     <img
                       src="/images/account/logo_book.png"
@@ -103,7 +101,7 @@ function SignUp() {
                   </div>
                 </div>
 
-                <div className="container col-lg mt-3">
+                <div className="container col-lg-4 mt-3">
                   <div className="container-btn-signup">
                     <button type="button" className="btn btn-signup mb-2">
                       <Link to="/" className="btn-signup">
@@ -118,8 +116,8 @@ function SignUp() {
                         ĐĂNG KÝ TÀI KHOẢN
                       </h3>
 
-                      <div className="mb-3 row container-input">
-                        <div className="input-group m-3">
+                      <div className="mb-2 row container-input">
+                        <div className="input-group m-2">
                           <div className="input-group-text input-icon">
                             <img
                               className="img-confirm-pass"
@@ -135,7 +133,7 @@ function SignUp() {
                           />
                         </div>
 
-                        <div className="input-group m-3">
+                        <div className="input-group m-2">
                           <div className="input-group-text input-icon">
                             {/* <FaRegEnvelope /> */}
                             <svg
@@ -158,7 +156,7 @@ function SignUp() {
                           />
                         </div>
 
-                        <div className="input-group m-3">
+                        <div className="input-group m-2">
                           <div className="input-group-text input-icon">
                             <img
                               className="img-confirm-pass"
@@ -178,13 +176,16 @@ function SignUp() {
                             <img className="img-preview" src={avatarPreview} />
                           </div>
                           <div className="input-group">
-                            <label htmlFor="avatar-files" className="input-image-file">
+                            <label
+                              htmlFor="avatar-files"
+                              className="input-image-file"
+                            >
                               <MdDriveFolderUpload className="input-image-icon me-1 mb-1" />
                               Chọn avatar của bạn nè 😎
                             </label>
                             <input
                               id="avatar-files"
-                              style={{ visibility: "hidden" }}
+                              style={{ visibility: "hidden", height: "1px" }}
                               type="file"
                               className="form-control-file"
                               onChange={handleAvatarChange}
