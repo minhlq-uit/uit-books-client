@@ -56,7 +56,8 @@ export default function Topbar(props) {
       key: "root", // Whatever you chose for the "key" value when initialising redux-persist in the **persistCombineReducers** method - e.g. "root"
       result: () => null, // Func expected on the submitted action.
     });
-    localStorage.removeItem("persist:root");
+    // localStorage.removeItem("persist:root");
+    window.localStorage.removeItem("persist:root");
 
     dispatch(logoutRequest());
   };

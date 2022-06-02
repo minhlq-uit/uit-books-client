@@ -26,3 +26,5 @@ export const authorData = [
   "Nguyen",
   "Nguyenn",
 ];
+
+export const priceData = [50000, 100000, 150000, 200000, 500000];
