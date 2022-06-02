@@ -50,7 +50,7 @@ const OrderTable = () => {
             barcode: order._id,
             // employeeName: order.user.name,
             status: order.orderStatus,
-            date: moment(order.createdAt).format("MMMM Do YYYY"),
+            date: moment(order.createdAt).format("DD/MM/YYYY"),
           };
         });
       });

@@ -47,11 +47,11 @@ const UserList = () => {
     }
   }, [users]);
   useEffect(() => {
-    if(success) {
+    if (success) {
       toast.success(message)
       dispatch(getAllUsers())
     }
-    if(success === false) {
+    if (success === false) {
       toast.error(message)
     }
     dispatch(clear())
@@ -117,15 +117,15 @@ const UserList = () => {
       />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>DELETE USER</Modal.Title>
+          <Modal.Title>Xoá Người Dùng</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Bạn có thực sự muốn xóa người dùng này!!!</Modal.Body>
+        <Modal.Body>Bạn có thực sự muốn xóa người dùng này?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Huỷ
           </Button>
           <Button variant="danger" onClick={handleDeleteUser}>
-            Delete
+            Xoá
           </Button>
         </Modal.Footer>
       </Modal>

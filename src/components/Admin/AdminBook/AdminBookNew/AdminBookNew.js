@@ -8,6 +8,7 @@ import {
 } from "../../../../redux/features/product/newProductSlice";
 import { toast, ToastContainer } from "react-toastify";
 import { categoryData, authorData, publiserData } from "../../../../more/data";
+import { useNavigate } from "react-router-dom";
 function AdminBookNew() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -21,6 +22,7 @@ function AdminBookNew() {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   // useEffect(() => {
   //   if (success) {
@@ -33,8 +35,8 @@ function AdminBookNew() {
   useEffect(() => {
     if (error) {
       toast.error(`${error}😭`, {
-        position: "top-center",
-        autoClose: 5000,
+        position: "bottom-center",
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -47,7 +49,7 @@ function AdminBookNew() {
       // alert("Book created successfully");
       toast.success("Thêm mới sách thành công! 🎊", {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -65,16 +67,19 @@ function AdminBookNew() {
       setStock(0);
       setPageNumber(0);
       dispatch(resetState());
+      setTimeout(() => {
+        navigate("/admin-book-list")
+      }, 3000);
     }
   }, [dispatch, error, success]);
-  const notify = () => {
-    console.log("call notify");
-    toast.success("This is a test success", {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: 2000,
-      hideProgressBar: true,
-    });
-  };
+  // const notify = () => {
+  //   console.log("call notify");
+  //   toast.success("This is a test success", {
+  //     position: toast.POSITION.TOP_CENTER,
+  //     autoClose: 2000,
+  //     hideProgressBar: true,
+  //   });
+  // };
   const createBookSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -290,13 +295,13 @@ function AdminBookNew() {
         <button type="submit" class="btn btn-submit">
           Thêm
         </button>
-        <button type="button" class="btn btn-reset" onClick={notify}>
+        <button type="button" class="btn btn-reset">
           Khôi phục
         </button>
       </form>
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

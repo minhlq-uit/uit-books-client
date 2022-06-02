@@ -66,8 +66,8 @@ const AdminBookList = () => {
   useEffect(() => {
     if (reviewDeleteError && !isDeletedReview) {
       toast.error(`${reviewDeleteError}`, {
-        position: "top-center",
-        autoClose: 5000,
+        position: "bottom-center",
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -80,7 +80,7 @@ const AdminBookList = () => {
     if (isDeletedReview) {
       toast.success("Xóa  thành công! 🎊", {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -102,7 +102,7 @@ const AdminBookList = () => {
     if (deleteError && isDeleted) {
       toast.success("Xóa sách thành công! 🎊", {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -114,8 +114,8 @@ const AdminBookList = () => {
       dispatch(getProductsAdmin());
     } else if (deleteError != null) {
       toast.error("Thất bại! Vui lòng thử lại 😭", {
-        position: "top-center",
-        autoClose: 5000,
+        position: "bottom-center",
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -192,6 +192,22 @@ const AdminBookList = () => {
         img: item.images[0].url,
       });
     });
+  // const [data, setFilteredData] = useState(rows);
+  // const [search, setSearch] = useState("");
+  // const filter = (e) => {
+  //   const key = e.target.value;
+  //   if (key !== "") {
+  //     const filteredData = rows.filter((item) => {
+  //       return item.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D')
+  //         .includes(key.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D'));
+  //     });
+  //     setFilteredData(filteredData);
+  //   } else {
+  //     setFilteredData(rows);
+  //     setSearch("");
+  //   }
+  //   setSearch(key);
+  // };
 
   return (
     <div className="datatable">
@@ -200,6 +216,8 @@ const AdminBookList = () => {
           <div className="input-group w-100">
             <input
               type="text"
+              // value={search}
+              // onChange={filter}
               className="form-control"
               placeholder="Tìm kiếm"
             />
@@ -274,8 +292,8 @@ const AdminBookList = () => {
         </Modal.Footer>
       </Modal>
       <ToastContainer
-        position="top-center"
-        autoClose={5000}
+        position="bottom-center"
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

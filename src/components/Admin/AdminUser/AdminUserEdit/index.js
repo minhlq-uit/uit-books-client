@@ -230,7 +230,7 @@ function UserEdit() {
                         className="avatar"
                       />
                     ) : (
-                      "Chua co avatar"
+                      "Chưa có Avatar"
                     )}
                   </div>
                 </div>
