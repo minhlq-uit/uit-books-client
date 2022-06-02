@@ -221,6 +221,8 @@ export default function BookDetail() {
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [id]);
+  }, [dispatch]);
+
   useEffect(() => {
     if (error) {
       alert(error);
@@ -373,7 +375,7 @@ export default function BookDetail() {
                       <div className="book-price-container flex-grow-1">
                         <div className="book-price-current">
                           <span className="book-current fs-1">
-                            {numberWithCommas(product.price)}{" "}
+                            {/* {numberWithCommas(product.price)}{" "} */}
                             <sup>
                               <u>đ</u>
                             </sup>
