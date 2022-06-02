@@ -4,9 +4,9 @@ import Navbar from "../components/Navbar/index";
 import AdminOrderDetail from "../components/Admin/AdminOrder/AdminOrderDetail/AdminOrderDetail";
 import ProtectedRoute from "../routes/PrivateRoute";
 
-const AdminOrderDetailPage = ({isAdmin}) => {
+const AdminOrderDetailPage = () => {
   return (
-    <ProtectedRoute isAdmin={isAdmin}>
+    <ProtectedRoute isAdmin={true}>
       <div>
         <div style={{ display: "flex", width: "100%" }}>
           <Sidebar />

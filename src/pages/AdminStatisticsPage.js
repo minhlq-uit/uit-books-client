@@ -6,9 +6,9 @@ import Navbar from '../components/Navbar/index';
 // import AdminStatistics from '../components/Admin/AdminStatistics/index'
 import AdminStatistics from "../components/Admin/AdminStatistics/index"
 import ProtectedRoute from '../routes/PrivateRoute';
-const AdminStatisticsPage = ({isAdmin}) => {
+const AdminStatisticsPage = () => {
   return (
-    <ProtectedRoute isAdmin={isAdmin}>
+    <ProtectedRoute isAdmin={true}>
       <div className='AdminStatistics__container'>
         <div style={{ display: "flex", width: "100%" }} >
               <Sidebar />
