@@ -86,25 +86,22 @@ const Books = [
 ];
 
 function getFormattedDate(date) {
-  return new Date(date).toLocaleDateString('en-GB');
+  return new Date(date).toLocaleDateString("en-GB");
 }
 
 export default function BookDetail() {
   function AddButton() {
     const addToCart = (id) => {
       dispatch(addItemsToCart(id, 1));
-      toast.success(
-        `Sách ${product.name} đã được thêm vào giỏ hàng! 🛒`,
-        {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        }
-      );
+      toast.success(`Sách ${product.name} đã được thêm vào giỏ hàng! 🛒`, {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     };
 
     return (
@@ -227,7 +224,7 @@ export default function BookDetail() {
   //   console.log(product);
   useEffect(() => {
     dispatch(getProductDetails(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   useEffect(() => {
     if (error) {
@@ -269,7 +266,7 @@ export default function BookDetail() {
     if (product.images && product.images.length > 0) {
       let images = [];
 
-      product.images.map((item, i) => {
+      product.images.forEach((item, i) => {
         images.push({
           original: item.url,
           thumbnail: item.url,
@@ -277,7 +274,7 @@ export default function BookDetail() {
       });
       setImages(images);
     }
-  }, [product.images]);
+  }, [product]);
 
   // let images = [];
   // product &&
@@ -287,30 +284,37 @@ export default function BookDetail() {
   //       thumbnail: item.url,
   //     });
   //   });
-
+  console.log({ product });
   return (
     <Fragment>
       {loading ? (
         <Loading />
       ) : (
-        product && <div className="book-container container-fluid">
-          <div className="book-breadcrumb ms-5 mt-2">
-            <Breadcrumb>
-              <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Trang chủ</Breadcrumb.Item>
-              <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/books" }} className="text-capitalize">
-                Danh mục sách
-              </Breadcrumb.Item>
-              <Breadcrumb.Item active className="text-capitalize">
-                {product.name}
-              </Breadcrumb.Item>
-            </Breadcrumb>
-          </div>
-          <div className="book-main-container pb-5">
-            <Container>
-              <Row>
-                <Col xs={6} md={4}>
-                  <div className="book-main-img">
-                    {/* <ImageGallery 
+        product && (
+          <div className="book-container container-fluid">
+            <div className="book-breadcrumb ms-5 mt-2">
+              <Breadcrumb>
+                <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
+                  Trang chủ
+                </Breadcrumb.Item>
+                <Breadcrumb.Item
+                  linkAs={Link}
+                  linkProps={{ to: "/books" }}
+                  className="text-capitalize"
+                >
+                  Danh mục sách
+                </Breadcrumb.Item>
+                <Breadcrumb.Item active className="text-capitalize">
+                  {product.name}
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            </div>
+            <div className="book-main-container pb-5">
+              <Container>
+                <Row>
+                  <Col xs={6} md={4}>
+                    <div className="book-main-img">
+                      {/* <ImageGallery
                       items={[
                         {
                           original: "https://picsum.photos/id/1018/1000/600/",
@@ -326,37 +330,37 @@ export default function BookDetail() {
                         }
                       ]}
                       /> */}
-                    {/* <ImageGallery
+                      {/* <ImageGallery
                       items={product.images &&
                         product.images.map((prop) => (
                           {original: prop.url, thumbnail: prop.url}
                         ))}
                     /> */}
-                    <ImageGallery items={Images} />
-                  </div>
-                </Col>
-                <Col xs={12} md={8}>
-                  <div className="book-main-intro ms-5">
-                    <div className="book-main-title">
-                      <h3 className="book-title text-capitalize">
-                        {product.name}
-                      </h3>
-                      <div className="book-author-container d-flex">
-                        <div className="book-author me-5 mb-2">
-                          <span>Tác giả:</span>
-                          <span className="book-author-name ms-1 me-2">
-                            {product.author}
-                          </span>
+                      <ImageGallery items={Images} />
+                    </div>
+                  </Col>
+                  <Col xs={12} md={8}>
+                    <div className="book-main-intro ms-5">
+                      <div className="book-main-title">
+                        <h3 className="book-title text-capitalize">
+                          {product.name}
+                        </h3>
+                        <div className="book-author-container d-flex">
+                          <div className="book-author me-5 mb-2">
+                            <span>Tác giả:</span>
+                            <span className="book-author-name ms-1 me-2">
+                              {product.author}
+                            </span>
+                          </div>
+                          <div className="book-publish">
+                            <span>Phát hành:</span>
+                            <span className="book-publish-name ms-1 me-2">
+                              {product.publisher}
+                            </span>
+                          </div>
                         </div>
-                        <div className="book-publish">
-                          <span>Phát hành:</span>
-                          <span className="book-publish-name ms-1 me-2">
-                            {product.publisher}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="book-rating d-flex border-bottom">
-                        {/* <i className="book-item-rating text-warning me-1">
+                        <div className="book-rating d-flex border-bottom">
+                          {/* <i className="book-item-rating text-warning me-1">
                           <BsFillStarFill />
                         </i>
                         <i className="book-item-rating text-warning me-1">
@@ -371,107 +375,108 @@ export default function BookDetail() {
                         <i className="book-item-rating text-warning me-1">
                           <BsFillStarFill />
                         </i> */}
-                        {/* <Rating value={product.ratings} size="large" readOnly />
+                          {/* <Rating value={product.ratings} size="large" readOnly />
                         <p className="d-inline ms-2 align-start">
                           <i>{product.numOfReviews} đánh giá</i>
                         </p> */}
-                        <Rating value={product.ratings} readOnly />
-                        <p className="d-inline ms-2 align-items-start">
-                          {product.numOfReviews} đánh giá từ độc giả
-                        </p>
-                      </div>
-                    </div>
-                    <div className="book-main-price mt-2 d-flex align-items-center border-bottom pb-2">
-                      <div className="book-price-container flex-grow-1">
-                        <div className="book-price-current">
-                          <span className="book-current fs-1">
-                            {numberWithCommas(product.price)}{" "}
-                            <sup>
-                              <u>đ</u>
-                            </sup>
-                          </span>
+                          <Rating value={product.ratings} readOnly />
+                          <p className="d-inline ms-2 align-items-start">
+                            {product.numOfReviews} đánh giá từ độc giả
+                          </p>
                         </div>
-                        <div className="book-price-cover-container d-flex">
-                          <div className="book-price-cover">
-                            <span>Giá bìa:</span>
-                            <span className="book-cover ms-2">
-                              80.000{" "}
+                      </div>
+                      <div className="book-main-price mt-2 d-flex align-items-center border-bottom pb-2">
+                        <div className="book-price-container flex-grow-1">
+                          <div className="book-price-current">
+                            <span className="book-current fs-1">
+                              {numberWithCommas(product.price)}{" "}
                               <sup>
                                 <u>đ</u>
                               </sup>
                             </span>
                           </div>
-                          <div className="book-price-sale">
-                            <span className="book-sale-name ms-5">
-                              Tiết kiệm:
-                            </span>
-                            <span className="book-sale ms-2 fw-bold">
-                              12.000{" "}
-                              <sup>
-                                <u>đ</u>
-                              </sup>{" "}
-                              (-15%)
-                            </span>
+                          <div className="book-price-cover-container d-flex">
+                            <div className="book-price-cover">
+                              <span>Giá bìa:</span>
+                              <span className="book-cover ms-2">
+                                80.000{" "}
+                                <sup>
+                                  <u>đ</u>
+                                </sup>
+                              </span>
+                            </div>
+                            <div className="book-price-sale">
+                              <span className="book-sale-name ms-5">
+                                Tiết kiệm:
+                              </span>
+                              <span className="book-sale ms-2 fw-bold">
+                                12.000{" "}
+                                <sup>
+                                  <u>đ</u>
+                                </sup>{" "}
+                                (-15%)
+                              </span>
+                            </div>
                           </div>
                         </div>
+                        <div className="book-add-button flex-shrink-0 d-grid gap-2 d-md-flex justify-content-md-end col-4">
+                          <AddButton />
+                        </div>
                       </div>
-                      <div className="book-add-button flex-shrink-0 d-grid gap-2 d-md-flex justify-content-md-end col-4">
-                        <AddButton />
+                      <div className="book-main-check mt-3">
+                        <p className="book-check">
+                          <i className="book-check-icon text-success">
+                            <IoCheckmarkSharp />{" "}
+                          </i>
+                          Bọc plastic miễn phí
+                        </p>
+                        <p className="book-check">
+                          <i className="book-check-icon text-success">
+                            <IoCheckmarkSharp />{" "}
+                          </i>
+                          Giao hàng miễn phí trong nội thành TP. HCM với đơn
+                          hàng
+                          <i className="book-compare-icon text-success fs-6">
+                            {" "}
+                            <FaGreaterThanEqual />{" "}
+                          </i>
+                          <span className="text-success fw-bold">150.000đ</span>
+                        </p>
+                        <p className="book-check">
+                          <i className="book-check-icon text-success">
+                            <IoCheckmarkSharp />{" "}
+                          </i>
+                          Giao hàng miễn phí toàn quốc với đơn hàng
+                          <i className="book-compare-icon text-success fs-6">
+                            {" "}
+                            <FaGreaterThanEqual />{" "}
+                          </i>
+                          <span className="text-success fw-bold">250.000đ</span>
+                        </p>
+                        <div className="book-like-button">
+                          <AddFavorite />
+                        </div>
                       </div>
                     </div>
-                    <div className="book-main-check mt-3">
-                      <p className="book-check">
-                        <i className="book-check-icon text-success">
-                          <IoCheckmarkSharp />{" "}
-                        </i>
-                        Bọc plastic miễn phí
-                      </p>
-                      <p className="book-check">
-                        <i className="book-check-icon text-success">
-                          <IoCheckmarkSharp />{" "}
-                        </i>
-                        Giao hàng miễn phí trong nội thành TP. HCM với đơn hàng
-                        <i className="book-compare-icon text-success fs-6">
-                          {" "}
-                          <FaGreaterThanEqual />{" "}
-                        </i>
-                        <span className="text-success fw-bold">150.000đ</span>
-                      </p>
-                      <p className="book-check">
-                        <i className="book-check-icon text-success">
-                          <IoCheckmarkSharp />{" "}
-                        </i>
-                        Giao hàng miễn phí toàn quốc với đơn hàng
-                        <i className="book-compare-icon text-success fs-6">
-                          {" "}
-                          <FaGreaterThanEqual />{" "}
-                        </i>
-                        <span className="text-success fw-bold">250.000đ</span>
-                      </p>
-                      <div className="book-like-button">
-                        <AddFavorite />
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-          </div>
-          <div className="book-intro ms-5 me-5">
-            <h4 className="book-intro-title text-capitalize pb-2">
-              Giới thiệu sách
-            </h4>
-            <h5 className="book-name-title text-capitalize pt-2">
-              {product.name}
-            </h5>
-            <p className="book-intro-content">{product.description}</p>
-          </div>
-          <div className="book-detail ms-5 me-5 pt-3">
-            <h4 className="book-detail-title text-capitalize pb-2">
-              Thông tin chi tiết
-            </h4>
-            <Table striped bordered hover responsive>
-              {/* <thead>
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+            <div className="book-intro ms-5 me-5">
+              <h4 className="book-intro-title text-capitalize pb-2">
+                Giới thiệu sách
+              </h4>
+              <h5 className="book-name-title text-capitalize pt-2">
+                {product.name}
+              </h5>
+              <p className="book-intro-content">{product.description}</p>
+            </div>
+            <div className="book-detail ms-5 me-5 pt-3">
+              <h4 className="book-detail-title text-capitalize pb-2">
+                Thông tin chi tiết
+              </h4>
+              <Table striped bordered hover responsive>
+                {/* <thead>
                     <tr>
                         <th>#</th>
                         <th>Table heading</th>
@@ -482,55 +487,55 @@ export default function BookDetail() {
                         <th>Table heading</th>
                     </tr>
                     </thead> */}
-              <tbody>
-                <tr>
-                  <td>Tác giả</td>
-                  <td>{product.author}</td>
-                </tr>
-                <tr>
-                  <td>Công ty phát hành</td>
-                  <td>{product.publisher}</td>
-                </tr>
-                <tr>
-                  <td>Loại bìa</td>
-                  <td>Bìa mềm</td>
-                </tr>
-                <tr>
-                  <td>Số trang</td>
-                  <td>{product.pageNumber}</td>
-                </tr>
-                <tr>
-                  <td>Kích thước</td>
-                  <td>12 x 20 cm</td>
-                </tr>
-                <tr>
-                  <td>Trọng lượng</td>
-                  <td>210 gram</td>
-                </tr>
-                <tr>
-                  <td>Đã bán</td>
-                  <td>{product.Sold}</td>
-                </tr>
-                <tr>
-                  <td>Ngày phát hành</td>
-                  <td>01/06/2017</td>
-                </tr>
-                <tr>
-                  <td>Danh mục</td>
-                  <td>{product.category}</td>
-                </tr>
-              </tbody>
-            </Table>
-            <div className="book-add-button text-center">
-              <AddButton />
+                <tbody>
+                  <tr>
+                    <td>Tác giả</td>
+                    <td>{product.author}</td>
+                  </tr>
+                  <tr>
+                    <td>Công ty phát hành</td>
+                    <td>{product.publisher}</td>
+                  </tr>
+                  <tr>
+                    <td>Loại bìa</td>
+                    <td>Bìa mềm</td>
+                  </tr>
+                  <tr>
+                    <td>Số trang</td>
+                    <td>{product.pageNumber}</td>
+                  </tr>
+                  <tr>
+                    <td>Kích thước</td>
+                    <td>12 x 20 cm</td>
+                  </tr>
+                  <tr>
+                    <td>Trọng lượng</td>
+                    <td>210 gram</td>
+                  </tr>
+                  <tr>
+                    <td>Đã bán</td>
+                    <td>{product.Sold}</td>
+                  </tr>
+                  <tr>
+                    <td>Ngày phát hành</td>
+                    <td>01/06/2017</td>
+                  </tr>
+                  <tr>
+                    <td>Danh mục</td>
+                    <td>{product.category}</td>
+                  </tr>
+                </tbody>
+              </Table>
+              <div className="book-add-button text-center">
+                <AddButton />
+              </div>
             </div>
-          </div>
-          <div className="book-comment ms-5 me-5">
-            <h4 className="book-comment-title text-capitalize pb-2 mt-5">
-              Đánh giá
-            </h4>
-            <div className="book-comment-rating d-flex mb-2">
-              {/* <i className="book-item-rating text-warning me-1">
+            <div className="book-comment ms-5 me-5">
+              <h4 className="book-comment-title text-capitalize pb-2 mt-5">
+                Đánh giá
+              </h4>
+              <div className="book-comment-rating d-flex mb-2">
+                {/* <i className="book-item-rating text-warning me-1">
                 <BsFillStarFill />
               </i>
               <i className="book-item-rating text-warning me-1">
@@ -548,45 +553,47 @@ export default function BookDetail() {
               <p className="d-inline ms-2 align-middle">
                 5.0 <i>(4 đánh giá)</i>
               </p> */}
-              <Rating
-                onChange={(e) => setRating(e.target.value)}
-                value={rating}
-                className="book-item-rating"
-                name="rating"
-              />
-              <p className="book-comment-number mt-1 ms-2">
-                {product.numOfReviews} đánh giá từ độc giả
-              </p>
-            </div>
-            <form>
-              <div className="book-comment-write d-flex">
-                <div className="book-comment-avatar flex-shrink-0 fs-1">
-                  <IoPersonCircleSharp />
-                </div>
-                <div className="book-comment-field flex-grow-1 ms-3 d-flex align-items-end flex-column">
-                  <textarea
-                    id="book-cmt-field"
-                    className="w-100 ps-2"
-                    name="comment"
-                    placeholder="Viết bình luận của bạn"
-                    rows={3}
-                    value={comment}
-                    onChange={(e) => { setComment(e.target.value) }}
-                  ></textarea>
-                  <div className="book-comment-button mt-2 mb-4">
-                    <Button
-                      //   type="submit"
-                      className="book-cmt-btn border rounded text-center fs-6"
-                      onClick={reviewSubmitHandler}
-                    >
-                      Đăng
-                    </Button>
+                <Rating
+                  onChange={(e) => setRating(e.target.value)}
+                  value={rating}
+                  className="book-item-rating"
+                  name="rating"
+                />
+                <p className="book-comment-number mt-1 ms-2">
+                  {product.numOfReviews} đánh giá từ độc giả
+                </p>
+              </div>
+              <form>
+                <div className="book-comment-write d-flex">
+                  <div className="book-comment-avatar flex-shrink-0 fs-1">
+                    <IoPersonCircleSharp />
+                  </div>
+                  <div className="book-comment-field flex-grow-1 ms-3 d-flex align-items-end flex-column">
+                    <textarea
+                      id="book-cmt-field"
+                      className="w-100 ps-2"
+                      name="comment"
+                      placeholder="Viết bình luận của bạn"
+                      rows={3}
+                      value={comment}
+                      onChange={(e) => {
+                        setComment(e.target.value);
+                      }}
+                    ></textarea>
+                    <div className="book-comment-button mt-2 mb-4">
+                      <Button
+                        //   type="submit"
+                        className="book-cmt-btn border rounded text-center fs-6"
+                        onClick={reviewSubmitHandler}
+                      >
+                        Đăng
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
-            <div className="book-comment-others">
-              {/* {product.reviews &&
+              </form>
+              <div className="book-comment-others">
+                {/* {product.reviews &&
                 product.reviews.map((item, i) => {
                   <div className="book-comment-user d-flex border-top">
                     <div className="book-comment-avatar flex-shrink-0 fs-1">
@@ -607,29 +614,40 @@ export default function BookDetail() {
                     </div>
                   </div>;
                 })} */}
-              {product.reviews &&
-                product.reviews.map((item, i) => (
-                  <div className="book-comment-user d-flex border-top" key={i}>
-                    <div className="book-comment-avatar flex-shrink-0 fs-1">
-                      <IoPersonCircleSharp />
-                    </div>
-                    <div className="book-comment-container flex-grow-1 ms-3 mt-4">
-                      <div className="book-comment-userinfo d-flex">
-                        <div className="book-comment-name w-100 fw-bold">
-                          <p>{item.name} <i className="fw-normal">muốn nhắn nhủ:</i></p>
+                {product.reviews &&
+                  product.reviews.map((item, i) => (
+                    <div
+                      className="book-comment-user d-flex border-top"
+                      key={i}
+                    >
+                      <div className="book-comment-avatar flex-shrink-0 fs-1">
+                        <IoPersonCircleSharp />
+                      </div>
+                      <div className="book-comment-container flex-grow-1 ms-3 mt-4">
+                        <div className="book-comment-userinfo d-flex">
+                          <div className="book-comment-name w-100 fw-bold">
+                            <p>
+                              {item.name}{" "}
+                              <i className="fw-normal">muốn nhắn nhủ:</i>
+                            </p>
+                          </div>
+                          <Rating
+                            value={item.rating}
+                            size="large"
+                            readOnly
+                            className="book-comment-rating me-3"
+                          />
+                          <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
+                            <p>{moment(item.time).format("DD/MM/YYYY")}</p>
+                          </div>
                         </div>
-                        <Rating value={item.rating} size="large" readOnly className="book-comment-rating me-3" />
-                        <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
-                          <p>{moment(item.time).format("DD/MM/YYYY")}</p>
+                        <div className="book-comment-content">
+                          <p>{item.comment}</p>
                         </div>
                       </div>
-                      <div className="book-comment-content">
-                        <p>{item.comment}</p>
-                      </div>
                     </div>
-                  </div>
-                ))}
-              {/* <div className="book-comment-user d-flex border-top">
+                  ))}
+                {/* <div className="book-comment-user d-flex border-top">
                 <div className="book-comment-avatar flex-shrink-0 fs-1">
                   <IoPersonCircleSharp />
                 </div>
@@ -665,46 +683,22 @@ export default function BookDetail() {
                   </div>
                 </div>
               </div> */}
+              </div>
             </div>
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </div>
-          <div className="book-other ms-5 me-5 pt-3">
-            <h4 className="book-other-title text-capitalize pb-2 mt-5">
-              Sách cùng danh mục
-            </h4>
-            <Slider className="first-books" {...settings}>
-              {Books.map((item, index) => {
-                return (
-                  <BookItem
-                    key={index}
-                    title={item.title}
-                    author={item.author}
-                    img={item.img}
-                    price={item.price}
-                  />
-                );
-              })}
-            </Slider>
-            <div className="book-see-more text-center mt-0">
-              <Button className="book-see-more-button" variant="primary">
-                Xem thêm &rarr;
-              </Button>
-            </div>
-          </div>
-
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </div>
-      )
-      }
-    </Fragment >
+        )
+      )}
+    </Fragment>
   );
 }
