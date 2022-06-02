@@ -94,6 +94,12 @@
             border-bottom: #106cc0 2px solid;
         }
 
+        .book-comment-rating {
+            .book-item-rating {
+                font-size: 30px;
+            }
+        }
+
         .book-comment-write {
             .book-comment-avatar {
                 color: #106cc0;
@@ -123,6 +129,12 @@
                 }
 
                 .book-comment-container {
+                    .book-comment-userinfo {
+                        .book-comment-rating {
+                            font-size: 24px;
+                        }
+                    }
+
                     .book-comment-content {
                         text-align: justify;
                     }
@@ -135,11 +147,13 @@
         .book-other-title {
             border-bottom: #106cc0 2px solid;
         }
+
         // .book-see-more {
         //     margin-top: -40px !important;
         // }
     }
 }
+
 // .book-main-img {
 //     width: 500px;
 // }
@@ -147,16 +161,35 @@
 //     width: 40%;
 //     height: auto;
 // }
+.image-gallery-thumbnail-image {
+    height: 120px !important;
+    // width: auto;
+}
 
-// .image-gallery-slide img {
-//     width: 100%;
-//     height: auto;
-//     max-height: 80vh;
-//     object-fit: cover;
-//     overflow: hidden;
-//     object-position: center center;
-// }
 
-// .fullscreen .image-gallery-slide img {
-//     max-height: 100vh;
-// }
+.image-gallery-thumbnail {
+    width: initial;
+}
+
+.image-gallery-slide img {
+    width: auto;
+    height: 50vh;
+    // max-height: 80vh;
+    object-fit: cover;
+    overflow: hidden;
+    object-position: center center;
+}
+
+.image-gallery-left-nav .image-gallery-svg,
+.image-gallery-right-nav .image-gallery-svg {
+    height: 60px !important;
+    width: 60px;
+}
+
+.image-gallery-slide {
+    margin-bottom: 20px;
+}
+
+.fullscreen .image-gallery-slide img {
+    height: 82vh !important;
+}

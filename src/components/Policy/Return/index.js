@@ -18,7 +18,7 @@ export default function ReturnBack() {
             </div>
             <div className='return-content'>
                 <p>
-                    Để nâng cao chất lượng dịch vụ và trải nghiệm mua sắm của khách hàng, Cửa hàng nhà sách UITBooks chúng tôi có những chính sách phù hợp khi khách hàng có nhu cầu đổi/ trả/ hoàn tiền sản phẩm.
+                    Để nâng cao chất lượng dịch vụ và trải nghiệm mua sắm của khách hàng, Cửa hàng nhà sách <b>UITBooks</b> chúng tôi có những chính sách phù hợp khi khách hàng có nhu cầu đổi/ trả/ hoàn tiền sản phẩm.
                     <br />Chúng tôi luôn coi trọng và bảo vệ quyền lợi của người tiêu dùng với mong muốn mang đến cho quý khách chất lượng phục vụ tốt nhất
                 </p>
                 <h4 className='heading-title'>
@@ -60,7 +60,7 @@ export default function ReturnBack() {
                     - Bước 3: Khi yêu cầu đổi trả được giải quyết, quý khách vui lòng gửi sản phẩm như hiện trạng khi nhận hàng ban đầu về địa chỉ cửa hàng nhà sách UITBooks bao gồm sản phẩm và đầy đủ phụ kiện, giấy tờ chứng từ kèm theo (nếu có)
                 </p>
                 <p className='conclusion'>
-                    UITBooks.com sẽ giao sản phẩm thay thế hoặc tiến hành hoàn tiền (trường hợp trả hàng) trong vòng 5-7 ngày tùy khu vực kể từ ngày xác nhận việc đổi/ trả hàng.
+                    <b>UITBooks</b> sẽ giao sản phẩm thay thế hoặc tiến hành hoàn tiền (trường hợp trả hàng) trong vòng 5-7 ngày tùy khu vực kể từ ngày xác nhận việc đổi/ trả hàng.
                 </p>
             </div>
         </Container>

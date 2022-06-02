@@ -37,17 +37,17 @@ export default function Footer(props) {
                                 <Link to="/">UITBooks.com</Link> nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả hệ thống UITBooks trên toàn quốc.
                             </div>
                             <div className="social-icons">
-                                <a href='https://www.facebook.com/' title='Facebook'>
-                                    <img src='/images/footer/facebook.png' />
+                                <a href='https://www.facebook.com/UITBookStore' target="_blank" title='Facebook'>
+                                    <img src='https://drive.google.com/uc?id=1hKFmUYEn44aNhc7AUivTnqAJ-cLCiXIg' />
                                 </a>
-                                <a href='https://www.instagram.com/' title='Instagram'>
-                                    <img src='/images/footer/instagram.png' />
+                                <a href='https://www.instagram.com/hachat_macaron/' target="_blank" title='Instagram'>
+                                    <img src='https://drive.google.com/uc?id=1EyW6CxiAiKq1QeWk1hPgkYyuwx_4FaSl' />
                                 </a>
-                                <a href='https://youtube.com/' title='Youtube' >
-                                    <img src='/images/footer/youtube.png' />
+                                <a href='https://www.youtube.com/channel/UC_jlqruaC97N8ohRRuUpi0Q' target="_blank" title='Youtube' >
+                                    <img src='https://drive.google.com/uc?id=1g3ktW0qJ0H3Ym-tAzDHFElKoVo3lQmia' />
                                 </a>
-                                <a href='https://tumblr.com/' title='Tumblr' >
-                                    <img src='/images/footer/tumblr.png' />
+                                <a href='https://twitter.com/HachatMacaron' target="_blank" title='Twitter' >
+                                    <img src='https://drive.google.com/uc?id=1Gol-wJK29brj_e6TdWs9X5Tda-am1iac' />
                                 </a>
                             </div>
                             <div className="download">
@@ -66,7 +66,7 @@ export default function Footer(props) {
                             <div className='footer-link-items'>
                                 <h2>Liên Kết</h2>
                                 <Link to='/' > Trang chủ </Link>
-                                <Link to='/categories' > Danh mục sách </Link>
+                                <Link to='/books' > Danh mục sách </Link>
                                 <Link to='/blogs' > Chia sẻ </Link>
                                 <Link to='/about-us' > Giới thiệu </Link>
                             </div>

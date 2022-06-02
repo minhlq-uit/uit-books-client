@@ -26,6 +26,7 @@ import {
   deleteReviews,
   resetStateDeletedReview,
 } from "../../../../redux/features/product/reviewSlice";
+import moment from "moment";
 
 const AdminBookList = () => {
   const dispatch = useDispatch();
@@ -242,7 +243,7 @@ const AdminBookList = () => {
                         </div>
                         <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
                           {/* <p>{item.time}</p> */}
-                          <p>{item.time}</p>
+                          <p>{moment(item.time).format("DD/MM/YYYY")}</p>
                         </div>
                         <RiDeleteBin2Fill
                           className="book-comment-delete-icon ms-5"

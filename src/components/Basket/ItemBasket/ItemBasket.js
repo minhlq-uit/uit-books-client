@@ -23,7 +23,7 @@ const ItemBasket = (props) => {
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
     if (newQty > stock) {
-      toast.error("Product Stock Limited");
+      toast.error("Số lượng sản phẩm trong kho không đủ! ☹️");
       return;
     }
     dispatch(addItemsToCart(id, newQty));
@@ -134,7 +134,12 @@ const ItemBasket = (props) => {
                   {/* <FontAwesomeIcon icon="fa-solid fa-car-side" /> */}
                   <i className="fa-solid fa-car-side"></i>
                   <span>
-                    Đơn hàng của bạn đủ điều kiện được miễn phí vận chuyển
+                    Giao hàng miễn phí toàn quốc với đơn hàng
+                    <b>≥ 250.000
+                      <sup>
+                        <u>đ</u>
+                      </sup>
+                    </b>
                   </span>
                 </div>
 

@@ -172,6 +172,10 @@ function AdminBookEdit() {
             <option>Tâm lý</option>
             <option>Tiếng Anh</option>
             <option>Tiểu thuyết</option>
+            <option>Chuyên ngành</option>
+            <option>Ngoại ngữ</option>
+            <option>Thường thức đời sống</option>
+            <option>Khác</option>
           </select>
         </div>
 

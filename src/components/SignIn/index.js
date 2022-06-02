@@ -5,7 +5,7 @@ import { Col, Container, Form, Row, Button, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest, clear } from "../../redux/features/user/userSlice";
 import { forgotPassword, clearMessage } from "../../redux/features/user/forgotPasswordSlice";
-
+import { FcHome } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope } from "react-icons/fa";
 import Loading from "../../more/Loader";
@@ -101,7 +101,10 @@ const SignIn = (props) => {
                 <Col md="6" lg="5" className="signIn__container__right">
                   <div className="signIn__container__right__button">
                     <button type="button" className="mb-2">
-                      <Link to="/" className="btn-home">Quay về Trang chủ</Link>
+                      <Link to="/" className="btn-home">
+                        <FcHome className="btn-home-icon mb-1 me-1" />
+                        Trang chủ
+                      </Link>
                     </button>
                   </div>
                   <Form className="form">
@@ -115,7 +118,7 @@ const SignIn = (props) => {
 
                         <Form.Control
                           type="email"
-                          placeholder="Enter email"
+                          placeholder="Nhập email của bạn"
                           onChange={handleEmail}
                         />
                       </div>
@@ -131,7 +134,7 @@ const SignIn = (props) => {
                         </div>
                         <Form.Control
                           type="password"
-                          placeholder="Password"
+                          placeholder="Nhập mật khẩu"
                           onChange={handlePassword}
                         />
                       </div>
@@ -153,7 +156,7 @@ const SignIn = (props) => {
                     </div>
                     <div className="sigIn__form__separate">
                       <hr />
-                      <span> Or</span>
+                      <span> Hoặc </span>
                       <hr />
                     </div>
                     <div className="sigIn__form__row withFacebook">

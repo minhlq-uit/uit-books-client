@@ -7,6 +7,7 @@ import { Button, Container } from "react-bootstrap";
 import "./Interest.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getRatedProducts } from "../../../redux/features/product/ratedProductsSlice";
+import { Link } from "react-router-dom";
 
 const Books = [
   {
@@ -114,9 +115,11 @@ export default function Interest() {
           })}
       </Slider>
       <div className="text-center mt-0">
-        <Button className="see-more" variant="primary">
-          Xem thêm &rarr;
-        </Button>
+        <Link to="/books">
+          <Button className="see-more" variant="primary">
+            Xem thêm &rarr;
+          </Button>
+        </Link>
       </div>
     </Container>
   );
