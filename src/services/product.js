@@ -109,6 +109,12 @@ class ProductDataService {
       `https://peaceful-brushlands-80713.herokuapp.com/api/v2/books/popular`
     );
   }
+  getRatedBook() {
+    return axios.get(`http://localhost:5000/api/v2/books/rated`);
+  }
+  getMostReviewProducts() {
+    return axios.get(`http://localhost:5000/api/v2/books/most-review`);
+  }
 }
 
 export default new ProductDataService();

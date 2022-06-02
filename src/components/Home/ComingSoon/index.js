@@ -88,29 +88,31 @@ export default function ComingSoon() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getNewsProducts());
-  }, []);
+  }, [dispatch]);
   return (
     <Container className="coming-soon-container">
       <div className="coming-soon-title">
-        <h3>Sắp ra mắt</h3>
+        <h3>Mới nhất</h3>
         <img src="https://drive.google.com/uc?id=19KnqBhGINLa8yoIvJZAIRZ3GvP7rpjIp" />
       </div>
       <Slider className="best-seller-books" {...settings}>
-        {products.map((item, index) => {
-          //   console.log(item.images);
-          return (
-            <BookItem
-              key={index}
-              id={item._id}
-              title={item.name}
-              author={item.author}
-              //   img={item.images[0].url}
-              img={item.images[0].url}
-              price={item.price}
-              Sold={item.Sold}
-            />
-          );
-        })}
+        {products &&
+          products.map((item, index) => {
+            //   console.log(item.images);
+            return (
+              <BookItem
+                key={index}
+                id={item._id}
+                title={item.name}
+                author={item.author}
+                //   img={item.images[0].url}
+                img={item.images[0].url}
+                price={item.price}
+                Sold={item.Sold}
+                ratings={item.ratings}
+              />
+            );
+          })}
       </Slider>
       <div className="text-center mt-0">
         <Link to="/books">

@@ -23,9 +23,10 @@ import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
+import { PURGE } from "redux-persist";
 
 import { useDispatch, useSelector } from "react-redux";
-import { logoutRequest } from "../../redux/features/user/userSlice";
+import { logoutRequest, clear } from "../../redux/features/user/userSlice";
 import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -50,6 +51,14 @@ export default function Topbar(props) {
 
   const handleLogout = (e) => {
     e.preventDefault();
+    dispatch({
+      type: PURGE,
+      key: "root", // Whatever you chose for the "key" value when initialising redux-persist in the **persistCombineReducers** method - e.g. "root"
+      result: () => null, // Func expected on the submitted action.
+    });
+    // localStorage.removeItem("persist:root");
+    window.localStorage.removeItem("persist:root");
+
     dispatch(logoutRequest());
   };
   // Search
@@ -69,6 +78,7 @@ export default function Topbar(props) {
       setTimeout(() => {
         navigate("/signin");
       }, 3000);
+      dispatch(clear());
     }
   }, [isAuthenticated]);
 
@@ -85,6 +95,8 @@ export default function Topbar(props) {
       navigate("/signin");
     }
   };
+
+  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <header id="section-header">
@@ -135,7 +147,7 @@ export default function Topbar(props) {
                   <Nav.Link as={Link} to="/my-basket" eventKey="link-2">
                     <div className="d-flex flex-column align-items-center">
                       <IconButton aria-label="cart" style={{ padding: "0" }}>
-                        <StyledBadge badgeContent={4}>
+                        <StyledBadge badgeContent={cartItems ? cartItems.length : 0}>
                           <ShoppingCartIcon className="nav-icon" />
                         </StyledBadge>
                       </IconButton>
@@ -258,7 +270,11 @@ export default function Topbar(props) {
                 Chia sẻ
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/about-us" className="d-flex nav-link-items">
+              <Nav.Link
+                as={Link}
+                to="/about-us"
+                className="d-flex nav-link-items"
+              >
                 <GroupsIcon className="nav-icons" />
                 Giới thiệu
               </Nav.Link>

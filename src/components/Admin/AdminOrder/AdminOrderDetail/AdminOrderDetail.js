@@ -41,9 +41,11 @@ const AdminOrderDetail = (props) => {
       setAddress(
         order.shippingInfo.address +
           ", " +
-          order.shippingInfo.city +
+          order.shippingInfo.ward +
           ", " +
-          order.shippingInfo.country
+          order.shippingInfo.district +
+          ", " +
+          order.shippingInfo.city
       );
     }
   }, [order]);
@@ -127,25 +129,29 @@ const AdminOrderDetail = (props) => {
                 <InformationAddress
                   address={orderDetails ? address : ""}
                   numberPhone={
-                    orderDetails ? orderDetails.shippingInfo.phoneNo : ""
+                    orderDetails ? orderDetails.shippingInfo.phone : ""
                   }
-                  gmail={orderDetails ? orderDetails.user.email : ""}
+                  gmail={orderDetails ? orderDetails.shippingInfo.email : ""}
                   showEdit={showEdit}
                 />
               </Col>
             </Row>
             <div className="product">
-              {
-                orderDetails ? orderDetails.orderItems.map(orderItem => {
-                  return <InformationProduct
-                  image={orderItem.image}
-                  nameBook={orderItem.name}
-                  price={orderItem.price}
-                  quantity={orderItem.quantity}
-                  author="Nguyễn Nhật Ánh"
-                />
-                }) : <></>
-              }
+              {orderDetails ? (
+                orderDetails.orderItems.map((orderItem, index) => {
+                  return (
+                    <InformationProduct
+                      key={index}
+                      image={orderItem.image}
+                      nameBook={orderItem.name}
+                      price={orderItem.price}
+                      quantity={orderItem.quantity}
+                    />
+                  );
+                })
+              ) : (
+                <></>
+              )}
               {/* <InformationProduct
                 image="https://cdn0.fahasa.com/media/catalog/product/c/o/co_gai_den_tu_hom_qua_1_2018_11_16_11_03_46.JPG"
                 nameBook="Cô gái đến từ hôm qua"
@@ -173,7 +179,6 @@ const AdminOrderDetail = (props) => {
                   <input
                     type="text"
                     placeholder="Phường 6, Linh trung, Thủ Đức"
-                    // onChange={(e) => setDdataUpdated({...dataUpdated, address:})}
                   />
                 </div>
                 <div className="form__group">

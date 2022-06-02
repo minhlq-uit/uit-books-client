@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as BsIcons from "react-icons/bs";
 import "./BookItem.css";
+import { Rating } from "@material-ui/lab";
+import { numberWithCommas } from "../../../more/FormatNumber";
 
 export default function BookItem(props) {
   const ratingStars = () => {
@@ -57,6 +59,7 @@ export default function BookItem(props) {
       );
     }
   };
+  const priceDiscount = props.price + 15000;
   return (
     <>
       <Link to={`/book/${props.id}`}>
@@ -82,33 +85,33 @@ export default function BookItem(props) {
                         <p>{props.price}</p>
                     </div> */}
             <figure className="book-item-img-wrap">
-              <a href="/">
-                <img className="book-item-img" alt="sach-hay" src={props.img} />
-              </a>
+              <img className="book-item-img" alt="sach-hay" src={props.img} />
             </figure>
             <div className="book-item-info">
               <div className="book-item-name">
-                <a href="/" className="book-item-title">
+                <p href="/" className="book-item-title">
                   {props.title}
-                </a>
+                </p>
                 <h6 className="book-item-author">{props.author}</h6>
               </div>
 
               <div className="book-item-rate-stock">
-                <div className="rating-container">
+                {/* <div className="rating-container">
                   <BsIcons.BsStarFill className="star-filled" />
                   <BsIcons.BsStarFill className="star-filled" />
                   <BsIcons.BsStarFill className="star-filled" />
                   <BsIcons.BsStar className="star-unfilled" />
                   <BsIcons.BsStar className="star-unfilled" />
-                </div>
+                </div> */}
+                <Rating value={props.ratings} size="large" readOnly />
+
                 <div className="line"></div>
                 <span className="sold">Đã bán {props.Sold}</span>
               </div>
 
               <div className="book-item-prices">
-                <p>105.500 đ</p>
-                <p>{props.price}</p>
+                <p>{numberWithCommas(priceDiscount)} đ</p>
+                <p>{numberWithCommas(props.price)} đ</p>
               </div>
             </div>
           </div>

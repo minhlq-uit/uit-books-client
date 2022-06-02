@@ -1,12 +1,14 @@
-import React from 'react';
-import AddBlogComponent from '../components/Blogs/AddBlog';
-import MainLayout from '../layouts/';
-
+import React from "react";
+import AddBlogComponent from "../components/Blogs/AddBlog";
+import MainLayout from "../layouts/";
+import ProtectedRoute from "../routes/PrivateRoute";
 function AddBlog() {
   return (
-    <MainLayout>
-      <AddBlogComponent />
-    </MainLayout>
+    <ProtectedRoute>
+      <MainLayout>
+        <AddBlogComponent />
+      </MainLayout>
+    </ProtectedRoute>
   );
 }
 

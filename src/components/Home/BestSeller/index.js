@@ -65,7 +65,7 @@ export default function BestSeller() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPopularProducts());
-  }, []);
+  }, [dispatch]);
   let settings = {
     infinite: false,
     speed: 1000,
@@ -97,21 +97,23 @@ export default function BestSeller() {
         <img src="https://drive.google.com/uc?id=1ixJdLtQ9ZoQQ7b6kINOma4fX015al0Oh" />
       </div>
       <Slider className="best-seller-books" {...settings}>
-        {products.map((item, index) => {
-          // console.log(item.images[0].url);
-          return (
-            <BookItem
-              key={index}
-              id={item._id}
-              title={item.name}
-              author={item.author}
-              //   img={item.images[0].url}
-              img={item.images[0].url}
-              price={item.price}
-              Sold={item.Sold}
-            />
-          );
-        })}
+        {products &&
+          products.map((item, index) => {
+            // console.log(item.images[0].url);
+            return (
+              <BookItem
+                key={index}
+                id={item._id}
+                title={item.name}
+                author={item.author}
+                //   img={item.images[0].url}
+                img={item.images[0].url}
+                price={item.price}
+                Sold={item.Sold}
+                ratings={item.ratings}
+              />
+            );
+          })}
       </Slider>
       <div className="text-center mt-0">
         <Link to="/books">

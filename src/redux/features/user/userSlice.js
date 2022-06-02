@@ -1,9 +1,6 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  isRejectedWithValue,
-} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import UserDataService from "../../../services/user";
+// import { persistor } from "../../store";
 
 export const userSlice = createSlice({
   name: "user",
@@ -41,19 +38,23 @@ export const userSlice = createSlice({
         state.loading = false;
         state.isAuthenticated = true;
         state.user = action.payload.user;
-        state.success = action.payload.success
-        state.avatar = action.payload.user.avatar.url
+        state.success = action.payload.success;
+        state.avatar = action.payload.user.avatar.url;
       })
       .addCase(registerRequest.rejected, (state, action) => {
         state.loading = false;
-        state.success = action.payload.success
+        state.success = action.payload.success;
         state.error = action.payload.message;
       })
       .addCase(logoutRequest.fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = false;
         state.user = null;
-        state.status = action.payload.message;
+        state.status = action.payload.success;
+        // persistor.purge();
+      })
+      .addCase(logoutRequest.rejected, (state, action) => {
+        state.status = action.payload.success;
       })
       .addCase(loadUser.pending, (state, action) => {
         state.loading = true;

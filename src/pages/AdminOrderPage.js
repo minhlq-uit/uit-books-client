@@ -6,18 +6,19 @@ import OrderTable from "../components/Admin/AdminOrder/OrderTable/OrderTable"
 // import AdminOrder from '../components/AdminOrder/AdminOrder';
 // import AdminOrderDetail from '../components/Admin/AdminOrder/AdminOrderDetail/AdminOrderDetail';
 // import AdminOrderDetail from '../components/Admin/AdminOrder/AdminOrderDetail/AdminOrderDetail';
+import ProtectedRoute from "../routes/PrivateRoute";
 const AdminOrderPage = () => {
   return (
     <>
-      <div style={{ display: "flex", width: "100%" }}>
-        <Sidebar />
-        <div style={{ flex: "4" }}>
-          <Navbar />
-          <OrderTable />
+      <ProtectedRoute isAdmin={true}>
+        <div style={{ display: "flex", width: "100%" }}>
+          <Sidebar />
+          <div style={{ flex: "4" }}>
+            <Navbar />
+            <OrderTable />
+          </div>
         </div>
-      </div>
-
-      
+      </ProtectedRoute>
     </>
   );
 };

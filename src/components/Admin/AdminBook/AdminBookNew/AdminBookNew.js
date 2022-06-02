@@ -7,7 +7,7 @@ import {
   resetState,
 } from "../../../../redux/features/product/newProductSlice";
 import { toast, ToastContainer } from "react-toastify";
-
+import { categoryData, authorData, publiserData } from "../../../../more/data";
 function AdminBookNew() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -146,17 +146,10 @@ function AdminBookNew() {
             className="form-control form-select"
             id="category-select-add"
             onChange={(e) => setCategory(e.target.value)}
-          > 
-            <option>Kinh tế</option>
-            <option>Kỹ năng sống</option>
-            <option>Ngôn tình</option>
-            <option>Tâm lý</option>
-            <option>Tiếng Anh</option>
-            <option>Tiểu thuyết</option>
-            <option>Chuyên ngành</option>
-            <option>Ngoại ngữ</option>
-            <option>Thường thức đời sống</option>
-            <option>Khác</option>
+          >
+            {categoryData.map((item, index) => (
+              <option key={index}>{item}</option>
+            ))}
           </select>
         </div>
 
