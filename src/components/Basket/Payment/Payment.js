@@ -65,7 +65,7 @@ const Payment = (props) => {
     if (method === "COD") {
       console.log(order);
       dispatch(createOrder(order));
-      navigate("/confirm-payment");
+      navigate("/confirm-order");
     } else {
       const config = {
         headers: {

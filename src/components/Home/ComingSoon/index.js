@@ -91,7 +91,7 @@ export default function ComingSoon() {
   return (
     <Container className="coming-soon-container">
       <div className="coming-soon-title">
-        <h3>Sắp ra mắt</h3>
+        <h3>Mới nhất</h3>
         <img src="https://drive.google.com/uc?id=19KnqBhGINLa8yoIvJZAIRZ3GvP7rpjIp" />
       </div>
       <Slider className="best-seller-books" {...settings}>
@@ -107,6 +107,7 @@ export default function ComingSoon() {
               img={item.images[0].url}
               price={item.price}
               Sold={item.Sold}
+              ratings={item.ratings}
             />
           );
         })}

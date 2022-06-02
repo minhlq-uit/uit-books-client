@@ -108,6 +108,7 @@ export default function BestSeller() {
               img={item.images[0].url}
               price={item.price}
               Sold={item.Sold}
+              ratings={item.ratings}
             />
           );
         })}

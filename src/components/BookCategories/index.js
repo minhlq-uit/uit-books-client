@@ -10,6 +10,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
+import Loading from "../../more/Loader";
+import {
+  publiserData,
+  priceData,
+  categoryData,
+  authorData,
+} from "../../more/data";
+
 import {
   clearErrors,
   getProduct,
@@ -66,35 +74,7 @@ const Books = [
     price: "111.500 đ",
   },
 ];
-const priceData = [50000, 100000, 150000, 200000, 500000];
-const publiserData = [
-  "NXB Trẻ",
-  "Nhã Nam",
-  "Kim Đồng",
-  "Phương Tây",
-  "Đông Tây",
-  "Thái Hà",
-];
-const categoryData = [
-  "Kinh tế",
-  "Kỹ năng sống",
-  "Ngôn tình",
-  "Tâm lý",
-  "Tiếng anh",
-  "Tiểu thuyết",
-  "Sách chuyên ngành",
-  "Sách ngoại ngữ",
-  "Thưởng thức đời sống",
-];
-const authorData = [
-  "Nguyễn Nhật Ánh",
-  "Nguyễn Ngọc Thạch",
-  "Minh Nhật",
-  "Phan Việt",
-  "An Khang",
-  "Nguyen",
-  "Nguyenn",
-];
+
 export default function BookCategories() {
   const dispatch = useDispatch();
   let { keyword } = useParams();
@@ -120,7 +100,7 @@ export default function BookCategories() {
     setPrice([priceData[4], Number(e.target.value)]);
   };
   const reserHandler = (e) => {
-    setPrice([0, 25000]);
+    setPrice([0, 1000000]);
     setCategory();
     setAuthor();
     setPublisher();
@@ -223,7 +203,10 @@ export default function BookCategories() {
                           type="radio"
                           name="flexRadioDefault"
                           value={item}
-                          onClick={(e) => setAuthor(e.target.value)}
+                          onClick={(e) => {
+                            reserHandler();
+                            setAuthor(e.target.value);
+                          }}
                         />
                         {item}
                       </label>
@@ -264,7 +247,10 @@ export default function BookCategories() {
                           value={item}
                           onClick={(e) => {
                             if (i === 0) priceData[i - 1] = 0;
-                            setPrice([priceData[i - 1], Number(e.target.value)]);
+                            setPrice([
+                              priceData[i - 1],
+                              Number(e.target.value),
+                            ]);
                           }}
                         />
                         {priceData[i - 1]}đ - {priceData[i]}đ
@@ -321,59 +307,63 @@ export default function BookCategories() {
               </div>
             </Col>
             <Col sm={9}>
-              <div className="categories-main">
-                {products.length === 0 ? (
-                  <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
-                    Không tìm thấy
-                  </h3>
-                ) : (
-                  <div>
+              {loading ? (
+                <Loading />
+              ) : (
+                <div className="categories-main">
+                  {products.length === 0 ? (
                     <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
-                      Kết quả tìm kiếm
+                      Không tìm thấy
                     </h3>
-                    <div className="category-books row row-cols-3">
-                      {products.map((item, index) => {
-                        return (
-                          <BookItem
-                            key={index}
-                            id={item._id}
-                            title={item.name}
-                            author={item.author}
-                            //   img={item.images[0].url}
-                            img={item.images[0].url}
-                            price={item.price}
-                            Sold={item.Sold}
-                          />
-                        );
-                      })}
+                  ) : (
+                    <div>
+                      <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
+                        Kết quả tìm kiếm
+                      </h3>
+                      <div className="category-books row row-cols-3">
+                        {products.map((item, index) => {
+                          return (
+                            <BookItem
+                              key={index}
+                              id={item._id}
+                              title={item.name}
+                              author={item.author}
+                              //   img={item.images[0].url}
+                              img={item.images[0].url}
+                              price={item.price}
+                              Sold={item.Sold}
+                            />
+                          );
+                        })}
+                      </div>
                     </div>
+                  )}
+                  <div
+                    className="pagination__box"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "6vmax",
+                    }}
+                  >
+                    <Pagination
+                      activePage={currentPage}
+                      itemsCountPerPage={resultPerPage}
+                      totalItemsCount={productsCount}
+                      onChange={setCurrentPageNo}
+                      nextPageText="Next"
+                      prevPageText="Prev"
+                      firstPageText="First"
+                      lastPageText="Last"
+                      itemClass="page-item"
+                      linkClass="page-link"
+                      activeClass="pageItemActive"
+                      activeLinkClass="pageLinkActive"
+                    />
                   </div>
-                )}
-                <div
-                  className="pagination__box"
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    margin: "6vmax",
-                  }}
-                >
-                  <Pagination
-                    activePage={currentPage}
-                    itemsCountPerPage={resultPerPage}
-                    totalItemsCount={productsCount}
-                    onChange={setCurrentPageNo}
-                    nextPageText="Next"
-                    prevPageText="Prev"
-                    firstPageText="First"
-                    lastPageText="Last"
-                    itemClass="page-item"
-                    linkClass="page-link"
-                    activeClass="pageItemActive"
-                    activeLinkClass="pageLinkActive"
-                  />
                 </div>
-              </div>
+              )}
             </Col>
           </Row>
         </Tab.Container>

@@ -32,6 +32,8 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import ratedProductsSlice from "./features/product/ratedProductsSlice";
+import mostReviewProductsSlice from "./features/product/mostReviewProductsSlice";
 
 const persistConfig = {
   key: "root",
@@ -51,6 +53,8 @@ const reducer = combineReducers({
   newProduct: newProductSlice,
   newsProducts: newsProductsSlice,
   popularProducts: popularProductsSlice,
+  ratedProducts: ratedProductsSlice,
+  mostReviewProducts: mostReviewProductsSlice,
   productDetails: productDetailsSlice,
   newReview: newReviewSlice,
   productReviews: productReviewsSlice,
