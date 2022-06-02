@@ -38,7 +38,6 @@ function AdminBookEdit() {
     isUpdated,
   } = useSelector((state) => state.product);
   const navigate = useNavigate();
-  // setdata
 
   useEffect(() => {
     if (product && product._id !== id) {
@@ -84,8 +83,9 @@ function AdminBookEdit() {
         draggable: true,
         progress: undefined,
       });
-      navigate("/admin-book-list");
+      dispatch(getProductDetails(id));
       dispatch(resetStateUpdated());
+      navigate("/admin-book-list");
     }
   }, [dispatch, alert, error, isUpdated, id, product, updateError]);
   // handler
