@@ -87,7 +87,7 @@ export default function RecentReview() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMostReviewProducts());
-  }, []);
+  }, [dispatch]);
   return (
     <Container className="recent-review-container">
       <div className="recent-review-title">
@@ -95,22 +95,23 @@ export default function RecentReview() {
         <img src="https://drive.google.com/uc?id=1yl28QQopUuRlpVpAu6lmyNMufidhNlZH" />
       </div>
       <Slider className="recent-review-books" {...settings}>
-        {products.map((item, index) => {
-          //   console.log(item.images);
-          return (
-            <BookItem
-              key={index}
-              id={item._id}
-              title={item.name}
-              author={item.author}
-              //   img={item.images[0].url}
-              img={item.images[0].url}
-              price={item.price}
-              Sold={item.Sold}
-              ratings={item.ratings}
-            />
-          );
-        })}
+        {products &&
+          products.map((item, index) => {
+            //   console.log(item.images);
+            return (
+              <BookItem
+                key={index}
+                id={item._id}
+                title={item.name}
+                author={item.author}
+                //   img={item.images[0].url}
+                img={item.images[0].url}
+                price={item.price}
+                Sold={item.Sold}
+                ratings={item.ratings}
+              />
+            );
+          })}
       </Slider>
       <div className="text-center mt-0">
         <Button className="see-more" variant="primary">
