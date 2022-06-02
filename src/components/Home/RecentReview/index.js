@@ -87,7 +87,7 @@ export default function RecentReview() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMostReviewProducts());
-  }, []);
+  }, [dispatch]);
   return (
     <Container className="recent-review-container">
       <div className="recent-review-title">

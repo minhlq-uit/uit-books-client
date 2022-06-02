@@ -64,7 +64,7 @@ export default function BestSeller() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPopularProducts());
-  }, []);
+  }, [dispatch]);
   let settings = {
     infinite: false,
     speed: 1000,

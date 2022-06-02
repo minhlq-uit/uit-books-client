@@ -332,6 +332,7 @@ export default function BookCategories() {
                               img={item.images[0].url}
                               price={item.price}
                               Sold={item.Sold}
+                              ratings={item.ratings}
                             />
                           );
                         })}

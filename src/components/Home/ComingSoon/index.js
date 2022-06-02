@@ -87,7 +87,7 @@ export default function ComingSoon() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getNewsProducts());
-  }, []);
+  }, [dispatch]);
   return (
     <Container className="coming-soon-container">
       <div className="coming-soon-title">

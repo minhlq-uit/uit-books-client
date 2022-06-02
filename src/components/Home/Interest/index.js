@@ -63,7 +63,7 @@ export default function Interest() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRatedProducts());
-  }, []);
+  }, [dispatch]);
   let settings = {
     infinite: false,
     speed: 1000,

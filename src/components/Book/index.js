@@ -220,7 +220,6 @@ export default function BookDetail() {
   //   console.log(product);
   useEffect(() => {
     dispatch(getProductDetails(id));
-  }, [id]);
   }, [dispatch]);
 
   useEffect(() => {
