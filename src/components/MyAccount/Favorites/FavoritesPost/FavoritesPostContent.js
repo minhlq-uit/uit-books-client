@@ -1,5 +1,5 @@
 import BookItem from "../../../Home/Books/BookItem";
-
+import "./FavoritesPostContent.scss";
 function FavoritesPostContent() {
   const Books = [
     {
@@ -18,17 +18,16 @@ function FavoritesPostContent() {
 
   return (
     <div className="favorite-post" style={{ textAlign: "center" }}>
-      {Books.map((item, index) => {
-        return (
-          <BookItem
-            key={index}
-            title={item.title}
-            author={item.author}
-            img={item.img}
-            price={item.price}
-          />
-        );
-      })}
+      <div>
+        <img
+          className="empty-wrapper-post"
+          src="https://drive.google.com/uc?id=1uyd61DglezvYQWuyUYyCFdv3hCgWaRsB"
+          alt="no item favorites"
+        />
+        <p>
+          <b>Thông cảm cho tụi mình tín năng này đang phát triển nha</b>
+        </p>
+      </div>
     </div>
   );
 }

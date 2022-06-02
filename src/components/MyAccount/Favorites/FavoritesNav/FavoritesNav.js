@@ -21,6 +21,7 @@ function AccountFavoritesNav() {
           to="/my-favorite-post"
           activeclassname="active"
           className="col"
+          // style={{ pointerEvents: "none", opacity: "0.5" }}
         >
           Bài viết (0)
         </NavLink>

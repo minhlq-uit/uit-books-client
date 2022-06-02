@@ -14,6 +14,7 @@ import Select from "react-select";
 import { saveShippingInfo } from "../../../redux/features/cart/cartSlice";
 import { Link } from "react-router-dom";
 import { numberWithCommas } from "../../../more/FormatNumber";
+import { BsBook } from "react-icons/bs";
 
 const ItemBasket = (props) => {
   const dispatch = useDispatch();
@@ -125,7 +126,25 @@ const ItemBasket = (props) => {
     <div className="ib__container">
       <Container>
         {cartItems.length === 0 ? (
-          <p>no item</p>
+          <div className="empty-wrapper-basket">
+            <div className="col-lg-8 col-md-7 col-12 basket-no-item">
+              <img
+                src="https://drive.google.com/uc?id=1Ky_4cmR8ijDH0L_HRQJklFwd_GSVm7uR"
+                alt="no item"
+              />
+            </div>
+            <div className="col-lg-8 col-md-7 col-12">
+              <p>
+                😱 <b>Bạn ơi chưa có sách trong giỏ hàng đâu</b> 😱
+              </p>
+              <button type="button" className="mb-2 btn-seeBook">
+                <Link to="/books" className="btn-seeBook">
+                  <BsBook className="btn-seeBook-icon mb-1 me-1" />
+                  <span>Xem sách</span>
+                </Link>
+              </button>
+            </div>
+          </div>
         ) : (
           <Row>
             <Col xs="12" md="7" lg="8">
@@ -133,9 +152,12 @@ const ItemBasket = (props) => {
                 <div className="free-delivery">
                   {/* <FontAwesomeIcon icon="fa-solid fa-car-side" /> */}
                   <i className="fa-solid fa-car-side"></i>
+
                   <span>
                     Giao hàng miễn phí toàn quốc với đơn hàng
-                    <b>≥ 250.000
+                    <b>
+                      {" "}
+                      ≥ 250.000
                       <sup>
                         <u>đ</u>
                       </sup>
