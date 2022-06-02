@@ -15,12 +15,16 @@ function AdminCategoryNew() {
             Thể loại
           </label>
           <select className="form-control form-select" id="category-select-add">
-            <option>Thơ</option>
-            <option>Tâm lý học</option>
-            <option>Kinh doanh vs kinh tế</option>
-            <option>Khoa học viễn tưởng</option>
-            <option>Tiểu thuyết lãng mạn</option>
-            <option>Sách truyền cảm hứng</option>
+            <option>Kinh tế</option>
+            <option>Kỹ năng sống</option>
+            <option>Ngôn tình</option>
+            <option>Tâm lý</option>
+            <option>Tiếng Anh</option>
+            <option>Tiểu thuyết</option>
+            <option>Chuyên ngành</option>
+            <option>Ngoại ngữ</option>
+            <option>Thường thức đời sống</option>
+            <option>Khác</option>
           </select>
         </div>
 

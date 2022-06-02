@@ -65,7 +65,7 @@ export default function Topbar(props) {
   // done
   useEffect(() => {
     if (isAuthenticated === false) {
-      toast.success("Logout success after 3s redirect to page signin");
+      toast.success("Đăng xuất thành công, vui lòng chờ trong 3s để quay lại trang Đăng nhập nhé 🥺");
       setTimeout(() => {
         navigate("/signin");
       }, 3000);
@@ -210,16 +210,18 @@ export default function Topbar(props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link className="d-flex">
-                <NavDropdown
+              <Nav.Link as={Link} to="/books" className="d-flex">
+                <ListAltIcon className="nav-icons" />
+                Danh mục
+                {/* <NavDropdown
                   align="start"
                   title={
                     <div>
                       <ListAltIcon className="nav-icons" />
-                      Danh mục
+                      
                     </div>
                   }
-                  className="category-list"
+                  className="category-list" 
                 >
                   <NavDropdown.Item as={Link} to="#action/3.1">
                     Văn Học Trong Nước
@@ -248,7 +250,7 @@ export default function Topbar(props) {
                   <NavDropdown.Item as={Link} to="#action/3.2">
                     Thường Thức Đời Sống
                   </NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
               </Nav.Link>
 
               <Nav.Link as={Link} to="/blogs" className="d-flex nav-link-items">

@@ -71,9 +71,9 @@ const publiserData = [
   "NXB Trẻ",
   "Nhã Nam",
   "Kim Đồng",
-  "Phương Tây",
-  "Đông Tây",
-  "Thái Hà",
+  "NXB Phụ Nữ Việt",
+  "NXB Lao Động",
+  "NXB Hội Nhà Văn",
 ];
 const categoryData = [
   "Kinh tế",
@@ -89,11 +89,10 @@ const categoryData = [
 const authorData = [
   "Nguyễn Nhật Ánh",
   "Nguyễn Ngọc Thạch",
-  "Minh Nhật",
-  "Phan Việt",
-  "An Khang",
-  "Nguyen",
-  "Nguyenn",
+  "Nguyễn Ngọc Tư",
+  "Vũ Ngọc Tư",
+  "Hạ Vũ",
+  "Trí",
 ];
 export default function BookCategories() {
   const dispatch = useDispatch();
@@ -120,7 +119,7 @@ export default function BookCategories() {
     setPrice([priceData[4], Number(e.target.value)]);
   };
   const reserHandler = (e) => {
-    setPrice([0, 25000]);
+    setPrice([0, 500000]); 
     setCategory();
     setAuthor();
     setPublisher();
@@ -162,8 +161,8 @@ export default function BookCategories() {
       <div className="categories-breadcrumb ms-5 mt-2 mb-5">
         <Breadcrumb>
           <Breadcrumb.Item href="/">Trang chủ</Breadcrumb.Item>
-          <Breadcrumb.Item href="/books" className="text-capitalize">
-            Văn học trong nước
+          <Breadcrumb.Item href="/books" className="text-capitalize" active>
+            Danh mục sách
           </Breadcrumb.Item>
         </Breadcrumb>
       </div>
@@ -324,12 +323,12 @@ export default function BookCategories() {
               <div className="categories-main">
                 {products.length === 0 ? (
                   <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
-                    Không tìm thấy
+                    Buồn quá 😭 Không có sách bạn muốn tìm đâu nha!!!
                   </h3>
                 ) : (
                   <div>
                     <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
-                      Kết quả tìm kiếm
+                      Sách của UITBooks nà nha 😎
                     </h3>
                     <div className="category-books row row-cols-3">
                       {products.map((item, index) => {

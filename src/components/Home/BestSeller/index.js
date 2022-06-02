@@ -9,6 +9,7 @@ import "./BestSeller.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPopularProducts } from "../../../redux/features/product/popularProductsSlice";
+import { Link } from "react-router-dom";
 // const Books = [
 //     {
 //         title: 'Ra Bờ Suối Ngắm Hoa Kèn Hồng',
@@ -113,9 +114,11 @@ export default function BestSeller() {
         })}
       </Slider>
       <div className="text-center mt-0">
-        <Button className="see-more" variant="primary">
-          Xem thêm &rarr;
-        </Button>
+        <Link to="/books">
+          <Button className="see-more" variant="primary">
+            Xem thêm &rarr;
+          </Button>
+        </Link>
       </div>
     </Container>
   );

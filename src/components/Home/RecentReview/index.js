@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import BookItem from '../Books/BookItem';
 import { Button, Container } from 'react-bootstrap';
 import './RecentReview.css';
+import { Link } from "react-router-dom";
 
 const Books = [
     {
@@ -101,7 +102,11 @@ export default function RecentReview() {
                 })}
             </Slider>
             <div className='text-center mt-0'>
-                <Button className='see-more' variant="primary">Xem thêm &rarr;</Button>
+                <Link to="/books">
+                    <Button className="see-more" variant="primary">
+                        Xem thêm &rarr;
+                    </Button>
+                </Link>
             </div>
         </Container>
     )

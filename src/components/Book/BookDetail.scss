@@ -94,6 +94,12 @@
             border-bottom: #106cc0 2px solid;
         }
 
+        .book-comment-rating {
+            .book-item-rating {
+                font-size: 30px;
+            }
+        }
+
         .book-comment-write {
             .book-comment-avatar {
                 color: #106cc0;
@@ -123,6 +129,11 @@
                 }
 
                 .book-comment-container {
+                    .book-comment-userinfo{
+                        .book-comment-rating {
+                            font-size: 24px;
+                        }
+                    }
                     .book-comment-content {
                         text-align: justify;
                     }

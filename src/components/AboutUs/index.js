@@ -18,9 +18,9 @@ export default function About() {
             </div>
             <div className='about-us-content'>
                 <p>
-                    Nhà sách trên mạng <b>UITBooks.com</b> là nơi mà Quý khách có thể dễ dàng lựa chọn cho mình những quyển sách hay, có giá trị đích thực với giá cả phải chăng. <br />
+                    Nhà sách trên mạng <b>UITBooks</b> là nơi mà Quý khách có thể dễ dàng lựa chọn cho mình những quyển sách hay, có giá trị đích thực với giá cả phải chăng. <br />
                     Quý khách hoàn toàn có thể yên tâm về chất lượng của từng sản phẩm mà chúng tôi cung cấp. Với đội ngũ nhân viên thân thiện, nhiệt tình, có trình độ chuyên môn về lĩnh vực Kinh doanh xuất bản phẩm, chúng tôi hi vọng sẽ mang lại cho quý khách nhiều sự lựa chọn trong việc tìm kiếm và thưởng thức những cuốn sách hay, có giá trị. <br />
-                    <b>UITBooks.com</b> cam kết sẽ không ngừng cải tiến và nâng cao chất lượng dịch vụ nhằm thỏa mãn tối đa nhu cầu của khách hàng. Cụ thể:
+                    <b>UITBooks</b> cam kết sẽ không ngừng cải tiến và nâng cao chất lượng dịch vụ nhằm thỏa mãn tối đa nhu cầu của khách hàng. Cụ thể:
                 </p>
                 <h3 className='heading-title'>
                     1. Về hàng hóa:
@@ -33,7 +33,7 @@ export default function About() {
                         Sản phẩm mới được cập nhật thường xuyên.
                     </li>
                     <li>
-                        Sản phẩm đến tay khách hàng luôn đúng với những thông tin mô tả trên website UITBooks.com
+                        Sản phẩm đến tay khách hàng luôn đúng với những thông tin mô tả trên website UITBooks
                     </li>
                 </ul>
                 <h3 className='heading-title'>
@@ -41,7 +41,7 @@ export default function About() {
                 </h3>
                 <ul>
                     <li>
-                        Giá bán luôn thấp hơn hoặc bằng với giá bìa. Nobita.vn luôn có những chương trình giảm giá từ 10 – 30% cho những sản phẩm mới.
+                        Giá bán luôn thấp hơn hoặc bằng với giá bìa. UITBooks luôn có những chương trình giảm giá từ 10 – 30% cho những sản phẩm mới.
                     </li>
                 </ul>
                 <h3 className='heading-title'>
@@ -58,7 +58,7 @@ export default function About() {
                         Giao hàng thu tiền tận nơi
                     </li>
                     <li>
-                        Giao hàng nhanh từ 1 – 2 ngày trên toàn quốc. Miễn phí vận chuyển với những đơn hàng ≥ 80.000đ (Tham khảo thêm Bảng giá phí vận chuyển tại UITBooks.vn).
+                        Giao hàng nhanh từ 1 – 2 ngày trên toàn quốc. Miễn phí vận chuyển với những đơn hàng ≥ 80.000đ (Tham khảo thêm Bảng giá phí vận chuyển tại UITBooks).
                     </li>
                     <li>
                         Đặt hàng theo yêu cầu của Quý khách.
@@ -68,7 +68,7 @@ export default function About() {
                     </li>
                 </ul>
                 <p>
-                    Khi cần sự giúp đỡ hoặc góp ý về chất lượng và dịch vụ của BookUIT.vn, Quý khách có thể liên hệ với chúng tôi theo những địa chỉ sau để được giải đáp trong thời gian nhanh nhất:
+                    Khi cần sự giúp đỡ hoặc góp ý về chất lượng và dịch vụ của UITBooks, Quý khách có thể liên hệ với chúng tôi theo những địa chỉ sau để được giải đáp trong thời gian nhanh nhất:
                 </p>
             </div>
             <address className='about-us-contact'>

@@ -146,13 +146,17 @@ function AdminBookNew() {
             className="form-control form-select"
             id="category-select-add"
             onChange={(e) => setCategory(e.target.value)}
-          >
+          > 
             <option>Kinh tế</option>
             <option>Kỹ năng sống</option>
-            <option>Tâm lý</option>
             <option>Ngôn tình</option>
+            <option>Tâm lý</option>
             <option>Tiếng Anh</option>
             <option>Tiểu thuyết</option>
+            <option>Chuyên ngành</option>
+            <option>Ngoại ngữ</option>
+            <option>Thường thức đời sống</option>
+            <option>Khác</option>
           </select>
         </div>
 

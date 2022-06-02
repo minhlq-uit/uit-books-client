@@ -66,7 +66,7 @@ export default function Footer(props) {
                             <div className='footer-link-items'>
                                 <h2>Liên Kết</h2>
                                 <Link to='/' > Trang chủ </Link>
-                                <Link to='/categories' > Danh mục sách </Link>
+                                <Link to='/books' > Danh mục sách </Link>
                                 <Link to='/blogs' > Chia sẻ </Link>
                                 <Link to='/about-us' > Giới thiệu </Link>
                             </div>
