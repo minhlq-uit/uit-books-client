@@ -142,8 +142,8 @@ export default function BookCategories() {
       <div className="categories-breadcrumb ms-5 mt-2 mb-5">
         <Breadcrumb>
           <Breadcrumb.Item href="/">Trang chủ</Breadcrumb.Item>
-          <Breadcrumb.Item href="/books" className="text-capitalize">
-            Văn học trong nước
+          <Breadcrumb.Item href="/books" className="text-capitalize" active>
+            Danh mục sách
           </Breadcrumb.Item>
         </Breadcrumb>
       </div>
@@ -313,12 +313,12 @@ export default function BookCategories() {
                 <div className="categories-main">
                   {products.length === 0 ? (
                     <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
-                      Không tìm thấy
+                      Buồn quá 😭 Không có sách bạn muốn tìm đâu nha!!!
                     </h3>
                   ) : (
                     <div>
                       <h3 className="categories-main-title p-2 ps-3 text-light text-capitalize">
-                        Kết quả tìm kiếm
+                        Sách của UITBooks nà nha 😎
                       </h3>
                       <div className="category-books row row-cols-3">
                         {products &&

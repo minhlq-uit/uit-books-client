@@ -18,10 +18,10 @@ export default function Deli() {
             </div>
             <div className='delivery-content'>
                 <p>
-                    Với đa phần đơn hàng, <b>UITBooks.com</b> cần vài giờ làm việc để kiểm tra thông tin và đóng gói hàng. Nếu các sản phẩm đều có sẵn hàng, <b>UITBooks.com</b> sẽ nhanh chóng bàn giao cho đối tác vận chuyển. Nếu đơn hàng có sản phẩm sắp phát hành, cửa hàng nhà sách UITBooks sẽ ưu tiên giao những sản phẩm có hàng trước cho Quý khách hàng.
+                    Với đa phần đơn hàng, <b>UITBooks</b> cần vài giờ làm việc để kiểm tra thông tin và đóng gói hàng. Nếu các sản phẩm đều có sẵn hàng, <b>UITBooks</b> sẽ nhanh chóng bàn giao cho đối tác vận chuyển. Nếu đơn hàng có sản phẩm sắp phát hành, cửa hàng nhà sách UITBooks sẽ ưu tiên giao những sản phẩm có hàng trước cho Quý khách hàng.
                 </p>
                 <p>
-                    Trong một số trường hợp, hàng nằm không có sẵn tại kho gần nhất, thời gian giao hàng có thể chậm hơn so với dự kiến do điều hàng. Các phí vận chuyển phát sinh, <b>UITBooks.com</b> sẽ hỗ trợ hoàn toàn.
+                    Trong một số trường hợp, hàng nằm không có sẵn tại kho gần nhất, thời gian giao hàng có thể chậm hơn so với dự kiến do điều hàng. Các phí vận chuyển phát sinh, <b>UITBooks</b> sẽ hỗ trợ hoàn toàn.
                 </p>
                 <p>
                     Thời gian giao hàng không tính thứ 7, Chủ nhật, các ngày Lễ, Tết và không bao gồm tuyến huyện đảo xa.

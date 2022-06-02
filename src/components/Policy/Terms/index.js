@@ -18,18 +18,18 @@ export default function Terms() {
             </div>
             <div className='terms-content'>
                 <p>
-                    Chào mừng Quý khách hàng truy cập website <b>UITBooks.com</b> <br />
+                    Chào mừng Quý khách hàng truy cập website của <b>UITBooks</b> <br />
                     Chúng tôi là Công ty TNHH MTV Nhà sách UITBooks - chuyên phân phối các mặt hàng sách trên thị trường với phương châm "Tiếp cận tri thức một cách rẻ nhất". <br />
-                    <b>UITBooks.com</b> luôn đem lại sự thuận tiện cho khách hàng khi mua sắm trên nền tảng thương mại điện tử. Theo đó nhà sách chúng tôi cần sự chấp thuận của Quý khách hàng với những điều khoản mà UITBooks đưa ra. Cụ thể:
+                    <b>UITBooks</b> luôn đem lại sự thuận tiện cho khách hàng khi mua sắm trên nền tảng thương mại điện tử. Theo đó nhà sách chúng tôi cần sự chấp thuận của Quý khách hàng với những điều khoản mà UITBooks đưa ra. Cụ thể:
                 </p>
                 <h4 className='heading-title'>
                     1. Tài khoản của Khách hàng
                 </h4>
                 <p>
-                    Khi đăng ký sử dụng tài khoản trên UITBooks.com, quý khách cần cung cấp cho website các thông tin cá nhân chính xác và đầy đủ nhất. Khi chọn mật khẩu cho tài khoản truy cập, hãy chọn mật khẩu theo cách mà không ai có thể dễ dàng đoán được.
+                    Khi đăng ký sử dụng tài khoản trên UITBooks, quý khách cần cung cấp cho website các thông tin cá nhân chính xác và đầy đủ nhất. Khi chọn mật khẩu cho tài khoản truy cập, hãy chọn mật khẩu theo cách mà không ai có thể dễ dàng đoán được.
                 </p>
                 <p>
-                    Sau khi đăng ký, quý khách chịu trách nhiệm bảo quản mật khẩu và không nên tiết lộ mật khẩu cho bất cứ ai hoặc ủy quyền, cho phép bất cứ người nào sử dụng vào bất cứ mục đích nào. Nhasachphuongnam.com sẽ luôn coi việc truy cập và sử dụng các dịch vụ trên trang web bằng tên truy cập và mật khẩu của một người nào đó như là việc truy cập và sử dụng các dịch vụ bởi chính khách hàng đó, bất kể tên truy cập và mật khẩu có thể được sử dụng bởi người khác mà chủ sở hữu không biết hoặc không cho phép.
+                    Sau khi đăng ký, quý khách chịu trách nhiệm bảo quản mật khẩu và không nên tiết lộ mật khẩu cho bất cứ ai hoặc ủy quyền, cho phép bất cứ người nào sử dụng vào bất cứ mục đích nào. UITBooks sẽ luôn coi việc truy cập và sử dụng các dịch vụ trên trang web bằng tên truy cập và mật khẩu của một người nào đó như là việc truy cập và sử dụng các dịch vụ bởi chính khách hàng đó, bất kể tên truy cập và mật khẩu có thể được sử dụng bởi người khác mà chủ sở hữu không biết hoặc không cho phép.
                 </p>
                 <p>
                     Nếu phát hiện bất cứ người nào biết mật khẩu hoặc sử dụng mật khẩu của mình để truy cập và sử dụng các dịch vụ trên trang web, quý khách cần thông báo ngay lập tức cho chúng tôi và thay đổi mật khẩu hoặc yêu cầu website hỗ trợ cài đặt mật khẩu mới.
@@ -38,7 +38,7 @@ export default function Terms() {
                     2. Quyền bảo lưu và sử dụng thông tin
                 </h4>
                 <p>
-                    Khi truy cập và sử dụng trang web, UITBooks.com có thể bảo lưu các thông tin như các số liệu thống kê quá trình truy cập, các thông tin cá nhân cung cấp cho phuongnam.com khi đăng ký… Các thông tin cá nhân bao gồm họ tên, số điện thoại, địa chỉ email, địa chỉ chỗ ở… Chúng tôi có thể sử dụng các thông tin này vào việc lập kế hoạch, nghiên cứu, thiết kế và tuyên truyền các dịch vụ hoặc cung cấp thông tin cho các cơ quan pháp luật theo yêu cầu của Luật pháp hoặc của Toà án.
+                    Khi truy cập và sử dụng trang web, UITBooks có thể bảo lưu các thông tin như các số liệu thống kê quá trình truy cập, các thông tin cá nhân cung cấp cho UITBooks khi đăng ký,… Các thông tin cá nhân bao gồm họ tên, số điện thoại, địa chỉ email, địa chỉ chỗ ở… Chúng tôi có thể sử dụng các thông tin này vào việc lập kế hoạch, nghiên cứu, thiết kế và tuyên truyền các dịch vụ hoặc cung cấp thông tin cho các cơ quan pháp luật theo yêu cầu của Luật pháp hoặc của Toà án.
                 </p>
                 <h4 className='heading-title'>
                     3. Quyền lợi bảo mật thông tin của Khách hàng
@@ -59,7 +59,7 @@ export default function Terms() {
                     Quý khách không được phép gửi hoặc truyền bất kỳ thông điệp nào mang tính quảng cáo, mời gọi, thư dây chuyền, cơ hội đầu tư hay bất kỳ dạng liên lạc có mục đích thương mại nào mà người dùng không mong muốn.
                 </p>
                 <p>
-                    Chúng tôi có toàn quyền, vào mọi lúc, cấm hoặc từ chối truy cập của bạn vào UITBooks.com hoặc bất kỳ phần nào của website ngay lập tức mà không cần báo trước nếu chúng tôi cho rằng bạn đã vi phạm bất kỳ điều khoản nào trong bản Quy định này, hoặc việc cấm truy cập xuất phát từ nhận định của chúng tôi, khi chúng tôi cho rằng từ chối đó phù hợp và cần thiết trong thẩm quyền của chúng tôi.
+                    Chúng tôi có toàn quyền, vào mọi lúc, cấm hoặc từ chối truy cập của bạn vào UITBooks hoặc bất kỳ phần nào của website ngay lập tức mà không cần báo trước nếu chúng tôi cho rằng bạn đã vi phạm bất kỳ điều khoản nào trong bản Quy định này, hoặc việc cấm truy cập xuất phát từ nhận định của chúng tôi, khi chúng tôi cho rằng từ chối đó phù hợp và cần thiết trong thẩm quyền của chúng tôi.
                 </p>
                 <h4 className='heading-title'>
                     5. Đơn hàng và giá cả

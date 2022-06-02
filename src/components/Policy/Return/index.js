@@ -25,7 +25,7 @@ export default function ReturnBack() {
                     1. Các trường hợp được đổi trả
                 </h4>
                 <p>
-                    - Giao nhầm sản phẩm: tựa sách, hình thức bìa, giá bìa, v.v…,
+                    - Giao nhầm sản phẩm: tựa sách, hình thức bìa, giá bìa,...
                 </p>
                 <p>
                     - Hàng hoá không đúng như mô tả trên website (màu sắc, kiểu dáng, chức năng) hoặc hàng hóa bị hư hỏng trong quá trình giao hàng.
@@ -60,7 +60,7 @@ export default function ReturnBack() {
                     - Bước 3: Khi yêu cầu đổi trả được giải quyết, quý khách vui lòng gửi sản phẩm như hiện trạng khi nhận hàng ban đầu về địa chỉ cửa hàng nhà sách UITBooks bao gồm sản phẩm và đầy đủ phụ kiện, giấy tờ chứng từ kèm theo (nếu có)
                 </p>
                 <p className='conclusion'>
-                    UITBooks.com sẽ giao sản phẩm thay thế hoặc tiến hành hoàn tiền (trường hợp trả hàng) trong vòng 5-7 ngày tùy khu vực kể từ ngày xác nhận việc đổi/ trả hàng.
+                    UITBooks sẽ giao sản phẩm thay thế hoặc tiến hành hoàn tiền (trường hợp trả hàng) trong vòng 5-7 ngày tùy khu vực kể từ ngày xác nhận việc đổi/ trả hàng.
                 </p>
             </div>
         </Container>

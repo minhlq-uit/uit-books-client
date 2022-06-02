@@ -9,7 +9,9 @@ import Loading from "../../more/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SignUp.scss";
+import { MdDriveFolderUpload } from "react-icons/md";
 // import { FaRegEnvelope } from "react-icons/fa";
+import { FcHome } from "react-icons/fc";
 
 function SignUp() {
   const [userName, setUsername] = useState("");
@@ -44,7 +46,7 @@ function SignUp() {
       };
 
       reader.readAsDataURL(e.target.files[0]);
-    } 
+    }
     else {
       setAvatar(e.target.value)
     }
@@ -56,7 +58,7 @@ function SignUp() {
       dispatch(clear());
     }
     if (success) {
-      toast.success("Dang ki thanh cong. Redirect page home after 3s.");
+      toast.success("Đăng ký thành công. Bạn sẽ được chuyển đến trang chủ sau 3s.");
       dispatch(clear());
       setTimeout(() => {
         navigate(redirect);
@@ -103,9 +105,12 @@ function SignUp() {
                 </div>
 
                 <div className="container col-lg mt-3">
-                  <div className="container-btn-signin">
+                  <div className="container-btn-signup">
                     <button type="button" className="btn btn-signup mb-2">
-                      <Link to="/">Quay về Trang chủ</Link>
+                      <Link to="/" className="btn-signup">
+                        <FcHome className="btn-signup-icon mb-1 me-1" />
+                        Trang chủ
+                      </Link>
                     </button>
                   </div>
                   <div className="signUp__form">
@@ -169,17 +174,24 @@ function SignUp() {
                             onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
-
-                        <div className="input-group mb-3">
-                          <input
-                            type="file"
-                            class="form-control-file"
-                            onChange={handleAvatarChange}
-                            name="avatar"
-                          />
-                        </div>
-                        <div className="d-flex justify-content-center">
-                          <img className="img-preview" src={avatarPreview} />
+                        <div className="input-text ms-3 mb-2 mt-2">
+                          <div className="d-flex justify-content-center mb-2">
+                            <img className="img-preview" src={avatarPreview} />
+                          </div>
+                          <div className="input-group">
+                            <label htmlFor="avatar-files" className="input-image-file">
+                              <MdDriveFolderUpload className="input-image-icon me-1 mb-1" />
+                              Chọn avatar của bạn nè 😎
+                            </label>
+                            <input
+                              id="avatar-files"
+                              style={{ visibility: "hidden" }}
+                              type="file"
+                              className="form-control-file"
+                              onChange={handleAvatarChange}
+                              name="avatar"
+                            />
+                          </div>
                         </div>
                       </div>
 

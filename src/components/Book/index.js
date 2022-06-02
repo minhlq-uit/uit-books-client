@@ -83,6 +83,10 @@ const Books = [
   },
 ];
 
+function getFormattedDate(date) {
+  return new Date(date).toLocaleDateString('en-GB');
+}
+
 export default function BookDetail() {
   function AddButton() {
     const addToCart = (id) => {
@@ -290,7 +294,7 @@ export default function BookDetail() {
           <div className="book-breadcrumb ms-5 mt-2">
             <Breadcrumb>
               <Breadcrumb.Item href="/">Trang chủ</Breadcrumb.Item>
-              <Breadcrumb.Item href="/categories" className="text-capitalize">
+              <Breadcrumb.Item href="/books" className="text-capitalize">
                 Danh mục sách
               </Breadcrumb.Item>
               <Breadcrumb.Item active className="text-capitalize">
@@ -348,7 +352,7 @@ export default function BookDetail() {
                           </span>
                         </div>
                       </div>
-                      <div className="book-rating border-bottom pb-2">
+                      <div className="book-rating d-flex border-bottom">
                         {/* <i className="book-item-rating text-warning me-1">
                           <BsFillStarFill />
                         </i>
@@ -364,9 +368,13 @@ export default function BookDetail() {
                         <i className="book-item-rating text-warning me-1">
                           <BsFillStarFill />
                         </i> */}
-                        <Rating value={product.ratings} size="large" readOnly />
-                        <p className="d-inline ms-2 align-middle">
+                        {/* <Rating value={product.ratings} size="large" readOnly />
+                        <p className="d-inline ms-2 align-start">
                           <i>{product.numOfReviews} đánh giá</i>
+                        </p> */}
+                        <Rating value={product.ratings} readOnly />
+                        <p className="d-inline ms-2 align-items-start">
+                          {product.numOfReviews} đánh giá từ độc giả
                         </p>
                       </div>
                     </div>
@@ -518,7 +526,7 @@ export default function BookDetail() {
             <h4 className="book-comment-title text-capitalize pb-2 mt-5">
               Đánh giá
             </h4>
-            <div className="book-comment-rating">
+            <div className="book-comment-rating d-flex mb-2">
               {/* <i className="book-item-rating text-warning me-1">
                 <BsFillStarFill />
               </i>
@@ -540,14 +548,13 @@ export default function BookDetail() {
               <Rating
                 onChange={(e) => setRating(e.target.value)}
                 value={rating}
-                size="large"
                 className="book-item-rating"
                 name="rating"
               />
+              <p className="book-comment-number mt-1 ms-2">
+                {product.numOfReviews} đánh giá từ độc giả
+              </p>
             </div>
-            <p className="book-comment-number mt-2">
-              {product.numOfReviews} bình luận
-            </p>
             <form>
               <div className="book-comment-write d-flex">
                 <div className="book-comment-avatar flex-shrink-0 fs-1">
@@ -606,11 +613,11 @@ export default function BookDetail() {
                     <div className="book-comment-container flex-grow-1 ms-3 mt-4">
                       <div className="book-comment-userinfo d-flex">
                         <div className="book-comment-name w-100 fw-bold">
-                          <p>{item.name}</p>
+                          <p>{item.name} <i className="fw-normal">muốn nhắn nhủ:</i></p>
                         </div>
-                        <Rating value={item.rating} size="large" readOnly />
+                        <Rating value={item.rating} size="large" readOnly className="book-comment-rating me-3" />
                         <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
-                          <p>{item.time}</p>
+                          <p>{getFormattedDate(item.time)}</p>
                         </div>
                       </div>
                       <div className="book-comment-content">
