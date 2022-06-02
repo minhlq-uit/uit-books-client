@@ -5,19 +5,21 @@ import Navbar from '../components/Navbar/index';
 
 // import AdminStatistics from '../components/Admin/AdminStatistics/index'
 import AdminStatistics from "../components/Admin/AdminStatistics/index"
-const AdminStatisticsPage = props => {
+import ProtectedRoute from '../routes/PrivateRoute';
+const AdminStatisticsPage = ({isAdmin}) => {
   return (
-    <div className='AdminStatistics__container'>
-      <div style={{ display: "flex", width: "100%" }} >
-            <Sidebar />
-            <div style={{ flex: "4" }}>
-                <Navbar />
-                <AdminStatistics/>
-                {/* <UserEdit /> */}
-            </div>
-        </div>
-        
-    </div>
+    <ProtectedRoute isAdmin={isAdmin}>
+      <div className='AdminStatistics__container'>
+        <div style={{ display: "flex", width: "100%" }} >
+              <Sidebar />
+              <div style={{ flex: "4" }}>
+                  <Navbar />
+                  <AdminStatistics/>
+                  {/* <UserEdit /> */}
+              </div>
+          </div>
+      </div>
+    </ProtectedRoute>
   )
 }
 

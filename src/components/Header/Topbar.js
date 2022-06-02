@@ -147,7 +147,7 @@ export default function Topbar(props) {
                   <Nav.Link as={Link} to="/my-basket" eventKey="link-2">
                     <div className="d-flex flex-column align-items-center">
                       <IconButton aria-label="cart" style={{ padding: "0" }}>
-                        <StyledBadge badgeContent={cartItems.length}>
+                        <StyledBadge badgeContent={cartItems ? cartItems.length : 0}>
                           <ShoppingCartIcon className="nav-icon" />
                         </StyledBadge>
                       </IconButton>

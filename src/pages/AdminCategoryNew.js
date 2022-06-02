@@ -2,12 +2,14 @@ import React from "react";
 import AdminLayout from "../layouts/AdminLayout";
 // import BlogList from "../components/Admin/AdminBlog/AdminBlogList/index";
 import AdminCategoryNewComponent from "../components/Admin/AdminCategory/AdminCategoryNew/AdminCategoryNew";
-
-export default function AdminCategoryNew() {
+import ProtectedRoute from "../routes/PrivateRoute";
+export default function AdminCategoryNew({isAdmin}) {
   return (
-    <AdminLayout>
-      {/* <BlogList /> */}
-      <AdminCategoryNewComponent />
-    </AdminLayout>
+    <ProtectedRoute isAdmin={isAdmin}>
+      <AdminLayout>
+        {/* <BlogList /> */}
+        <AdminCategoryNewComponent />
+      </AdminLayout>
+    </ProtectedRoute>
   );
 }

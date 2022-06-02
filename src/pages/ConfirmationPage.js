@@ -4,14 +4,17 @@ import MainLayout from "../layouts";
 // import Confirmation from "../components/Basket/ComponentBasket/Confirmation";
 import BasketHeader from "../components/Basket/BasketHeader/BasketHeader";
 import Confirmation from "../components/Basket/Confirmation/Confirmation";
+import ProtectedRoute from '../routes/PrivateRoute';
 const ConfirmationPage = () => {
   return (
-    <div>
-        <MainLayout>
-            <BasketHeader/>
-            <Confirmation/>
-        </MainLayout>
-    </div>
+    <ProtectedRoute>
+      <div>
+          <MainLayout>
+              <BasketHeader/>
+              <Confirmation/>
+          </MainLayout>
+      </div>
+    </ProtectedRoute>
   )
 }
 

@@ -2,12 +2,14 @@ import React from "react";
 import AdminLayout from "../layouts/AdminLayout";
 // import BlogList from "../components/Admin/AdminBlog/AdminBlogList/index";
 import AdminBookEditComponent from "../components/Admin/AdminBook/AdminBookEdit/AdminBookEdit";
-
-export default function AdminBookEdit() {
+import ProtectedRoute from "../routes/PrivateRoute";
+export default function AdminBookEdit({ isAdmin }) {
   return (
-    <AdminLayout>
-      {/* <BlogList /> */}
-      <AdminBookEditComponent />
-    </AdminLayout>
+    <ProtectedRoute isAdmin={isAdmin}>
+      <AdminLayout>
+        {/* <BlogList /> */}
+        <AdminBookEditComponent />
+      </AdminLayout>
+    </ProtectedRoute>
   );
 }
