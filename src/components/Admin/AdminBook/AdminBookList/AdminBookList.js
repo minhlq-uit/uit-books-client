@@ -28,6 +28,10 @@ import {
 } from "../../../../redux/features/product/reviewSlice";
 import moment from "moment";
 
+function getFormattedDate(date) {
+  return new Date(date).toLocaleDateString('en-GB');
+}
+
 const AdminBookList = () => {
   const dispatch = useDispatch();
   // Modal comment previews

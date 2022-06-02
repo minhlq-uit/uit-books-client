@@ -25,7 +25,7 @@ export default function ReturnBack() {
                     1. Các trường hợp được đổi trả
                 </h4>
                 <p>
-                    - Giao nhầm sản phẩm: tựa sách, hình thức bìa, giá bìa, v.v…,
+                    - Giao nhầm sản phẩm: tựa sách, hình thức bìa, giá bìa,...
                 </p>
                 <p>
                     - Hàng hoá không đúng như mô tả trên website (màu sắc, kiểu dáng, chức năng) hoặc hàng hóa bị hư hỏng trong quá trình giao hàng.

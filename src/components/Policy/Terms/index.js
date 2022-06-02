@@ -26,6 +26,7 @@ export default function Terms() {
                     1. Tài khoản của Khách hàng
                 </h4>
                 <p>
+
                     Khi đăng ký sử dụng tài khoản trên <b>UITBooks</b>, quý khách cần cung cấp cho website các thông tin cá nhân chính xác và đầy đủ nhất. Khi chọn mật khẩu cho tài khoản truy cập, hãy chọn mật khẩu theo cách mà không ai có thể dễ dàng đoán được.
                 </p>
                 <p>

@@ -59,6 +59,7 @@ export default function About() {
                     </li>
                     <li>
                         Giao hàng nhanh từ 1 – 2 ngày trên toàn quốc. Miễn phí vận chuyển với những đơn hàng ≥ 80.000đ (Tham khảo thêm Bảng giá phí vận chuyển tại <b>UITBooks</b>).
+
                     </li>
                     <li>
                         Đặt hàng theo yêu cầu của Quý khách.

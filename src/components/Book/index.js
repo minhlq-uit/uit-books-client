@@ -85,6 +85,10 @@ const Books = [
   },
 ];
 
+function getFormattedDate(date) {
+  return new Date(date).toLocaleDateString('en-GB');
+}
+
 export default function BookDetail() {
   function AddButton() {
     const addToCart = (id) => {
@@ -289,7 +293,7 @@ export default function BookDetail() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="book-container container-fluid">
+        product && <div className="book-container container-fluid">
           <div className="book-breadcrumb ms-5 mt-2">
             <Breadcrumb>
               <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Trang chủ</Breadcrumb.Item>
@@ -381,7 +385,7 @@ export default function BookDetail() {
                       <div className="book-price-container flex-grow-1">
                         <div className="book-price-current">
                           <span className="book-current fs-1">
-                            {/* {numberWithCommas(product.price)}{" "} */}
+                            {numberWithCommas(product.price)}{" "}
                             <sup>
                               <u>đ</u>
                             </sup>

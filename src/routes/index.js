@@ -89,24 +89,24 @@ export default function App() {
 
           <Route path="/password/reset/:token" element={<ResetPassword />} />
 
-          <Route isAdmin={true} path="/admin-user-list" element={<AdminUserList />} />
-          <Route isAdmin={true} path="/admin-user-new" element={<AdminUserNew />} />
-          <Route isAdmin={true} path="/admin-user-edit" element={<AdminUserEdit />} />
-          <Route isAdmin={true} path="/admin-blog-list" element={<AdminBlogList />} />
-          <Route isAdmin={true} path="/admin-blog-new" element={<AdminBlogNew />} />
-          <Route isAdmin={true} path="/admin-blog-edit" element={<AdminBlogEdit />} />
+          <Route path="/admin-user-list" element={<AdminUserList />} />
+          <Route path="/admin-user-new" element={<AdminUserNew />} />
+          <Route path="/admin-user-edit" element={<AdminUserEdit />} />
+          <Route path="/admin-blog-list" element={<AdminBlogList />} />
+          <Route path="/admin-blog-new" element={<AdminBlogNew />} />
+          <Route path="/admin-blog-edit" element={<AdminBlogEdit />} />
 
-          <Route isAdmin={true} path="/admin-book-list" element={<AdminBookList />} />
-          <Route isAdmin={true} path="/admin-book-new" element={<AdminBookNew />} />
-          <Route isAdmin={true} path="/admin-book-edit/:id" element={<AdminBookEdit />} />
+          <Route path="/admin-book-list" element={<AdminBookList />} />
+          <Route path="/admin-book-new" element={<AdminBookNew />} />
+          <Route path="/admin-book-edit/:id" element={<AdminBookEdit />} />
 
-          <Route isAdmin={true} path="/admin-category-list" element={<AdminCategoryList />} />
-          <Route isAdmin={true} path="/admin-category-new" element={<AdminCategoryNew />} />
-          <Route isAdmin={true} path="/admin-category-edit" element={<AdminCategoryEdit />} />
+          <Route path="/admin-category-list" element={<AdminCategoryList />} />
+          <Route path="/admin-category-new" element={<AdminCategoryNew />} />
+          <Route path="/admin-category-edit" element={<AdminCategoryEdit />} />
 
-          <Route isAdmin={true} path="/admin-order" element={<AdminOrderPage />} />
-          <Route isAdmin={true} path="/admin-order/edit" element={<AdminOrderDetailPage />} />
-          <Route isAdmin={true} path="/admin-statistic" element={<AdminStatisticsPage />} />
+          <Route path="/admin-order" element={<AdminOrderPage />} />
+          <Route path="/admin-order/edit" element={<AdminOrderDetailPage />} />
+          <Route path="/admin-statistic" element={<AdminStatisticsPage />} />
 
           <Route path="/notfound" element={<NotFound />} />
         </Routes>

@@ -2,23 +2,23 @@ import axios from "axios";
 
 class AdminService {
   getAllUsers() {
-    return axios.get("http://localhost:5000/api/v2/admin/users", {
+    return axios.get("/api/v2/admin/users", {
       withCredentials: true,
     });
   }
   getUserDetails(id) {
-    return axios.get(`http://localhost:5000/api/v2/admin/user/${id}`, {
+    return axios.get(`/api/v2/admin/user/${id}`, {
       withCredentials: true,
     });
   }
   updateInfoUser(id, name, email, role, avatar) {
     return axios.put(
-      `http://localhost:5000/api/v2/admin/user/${id}`,
+      `/api/v2/admin/user/${id}`,
       {
         name,
         email,
         role,
-        avatar
+        avatar,
       },
       {
         withCredentials: true,
@@ -26,24 +26,24 @@ class AdminService {
     );
   }
   deleteUser(id) {
-    return axios.delete(`http://localhost:5000/api/v2/admin/user/${id}`, {
+    return axios.delete(`/api/v2/admin/user/${id}`, {
       withCredentials: true,
     });
   }
   // ORDER
   getAllOrders() {
-    return axios.get("http://localhost:5000/api/v2/admin/orders", {
+    return axios.get("/api/v2/admin/orders", {
       withCredentials: true,
     });
   }
   getOrder(id) {
-    return axios.get(`http://localhost:5000/api/v2/order/${id}`, {
+    return axios.get(`/api/v2/order/${id}`, {
       withCredentials: true,
     });
   }
   updateOrder(id, orderStatus) {
     return axios.put(
-      `http://localhost:5000/api/v2/admin/order/${id}`,
+      `/api/v2/admin/order/${id}`,
       {
         status: orderStatus,
       },
@@ -53,7 +53,7 @@ class AdminService {
     );
   }
   deleteOrder(id) {
-    return axios.delete(`http://localhost:5000/api/v2/admin/order/${id}`, {
+    return axios.delete(`/api/v2/admin/order/${id}`, {
       withCredentials: true,
     });
   }

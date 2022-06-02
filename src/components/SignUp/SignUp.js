@@ -173,7 +173,6 @@ function SignUp() {
                             onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
-
                         <div className="input-text ms-3 mb-2 mt-2">
                           <div className="d-flex justify-content-center mb-2">
                             <img className="img-preview" src={avatarPreview} />
