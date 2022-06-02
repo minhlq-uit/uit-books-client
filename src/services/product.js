@@ -110,10 +110,10 @@ class ProductDataService {
     );
   }
   getRatedBook() {
-    return axios.get(`http://localhost:5000/api/v2/books/rated`);
+    return axios.get(`https://peaceful-brushlands-80713.herokuapp.com/api/v2/books/rated`);
   }
   getMostReviewProducts() {
-    return axios.get(`http://localhost:5000/api/v2/books/most-review`);
+    return axios.get(`https://peaceful-brushlands-80713.herokuapp.com/api/v2/books/most-review`);
   }
 }
 
