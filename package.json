@@ -68,5 +68,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://peaceful-brushlands-80713.herokuapp.com"
 }
