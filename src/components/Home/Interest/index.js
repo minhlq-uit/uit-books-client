@@ -95,22 +95,23 @@ export default function Interest() {
         <img src="https://drive.google.com/uc?id=1pvmTXhO04IWkhIDuhiZtoQ240Nr4esGR" />
       </div>
       <Slider className="interest-books" {...settings}>
-        {products.map((item, index) => {
-          // console.log(item.images[0].url);
-          return (
-            <BookItem
-              key={index}
-              id={item._id}
-              title={item.name}
-              author={item.author}
-              //   img={item.images[0].url}
-              img={item.images[0].url}
-              price={item.price}
-              Sold={item.Sold}
-              ratings={item.ratings}
-            />
-          );
-        })}
+        {products &&
+          products.map((item, index) => {
+            // console.log(item.images[0].url);
+            return (
+              <BookItem
+                key={index}
+                id={item._id}
+                title={item.name}
+                author={item.author}
+                //   img={item.images[0].url}
+                img={item.images[0].url}
+                price={item.price}
+                Sold={item.Sold}
+                ratings={item.ratings}
+              />
+            );
+          })}
       </Slider>
       <div className="text-center mt-0">
         <Button className="see-more" variant="primary">

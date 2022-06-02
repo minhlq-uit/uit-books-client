@@ -321,21 +321,22 @@ export default function BookCategories() {
                         Kết quả tìm kiếm
                       </h3>
                       <div className="category-books row row-cols-3">
-                        {products.map((item, index) => {
-                          return (
-                            <BookItem
-                              key={index}
-                              id={item._id}
-                              title={item.name}
-                              author={item.author}
-                              //   img={item.images[0].url}
-                              img={item.images[0].url}
-                              price={item.price}
-                              Sold={item.Sold}
-                              ratings={item.ratings}
-                            />
-                          );
-                        })}
+                        {products &&
+                          products.map((item, index) => {
+                            return (
+                              <BookItem
+                                key={index}
+                                id={item._id}
+                                title={item.name}
+                                author={item.author}
+                                //   img={item.images[0].url}
+                                img={item.images[0].url}
+                                price={item.price}
+                                Sold={item.Sold}
+                                ratings={item.ratings}
+                              />
+                            );
+                          })}
                       </div>
                     </div>
                   )}
