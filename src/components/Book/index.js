@@ -20,7 +20,7 @@ import {
   clearErrorsDetails,
   getProductDetails,
 } from "../../redux/features/product/productDetailsSlice";
-import NotFound from "../404";
+import Loading from "../../more/Loader";
 import {
   clearErrorsReview,
   newReview,
@@ -28,6 +28,9 @@ import {
 } from "../../redux/features/product/newReviewSlice";
 import { toast, ToastContainer } from "react-toastify";
 import { Rating } from "@material-ui/lab";
+import { addItemsToCart } from "../../redux/features/cart/cartSlice";
+import { addItemsToFavourite } from "../../redux/features/favourite/favouriteSlice";
+import { numberWithCommas } from "../../more/FormatNumber";
 
 const Books = [
   {
@@ -82,34 +85,27 @@ const Books = [
 
 export default function BookDetail() {
   function AddButton() {
-    const [show, setShow] = useState(false);
+    const addToCart = (id) => {
+      dispatch(addItemsToCart(id, 1));
+      toast.success(
+        `Sách ${product.name} đã được thêm vào giỏ hàng thành công!`,
+        {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    };
 
     return (
       <div>
-        <ToastContainer position="bottom-end" className="p-3 position-fixed">
-          <Toast
-            onClose={() => setShow(false)}
-            show={show}
-            delay={3000}
-            autohide
-          >
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
-              <strong className="me-auto">Thông báo</strong>
-              {/* <small>11 mins ago</small> */}
-            </Toast.Header>
-            <Toast.Body>
-              Sách Cô gái đến từ hôm qua đã được thêm vào giỏ hàng thành công!
-            </Toast.Body>
-          </Toast>
-        </ToastContainer>
         <button
           type="button"
-          onClick={() => setShow(true)}
+          onClick={() => addToCart(product._id)}
           className="book-add-btn btn border rounded text-center fs-6 text-uppercase p-3 ps-4 pe-4 fw-bold"
         >
           Thêm vào giỏ hàng
@@ -120,33 +116,27 @@ export default function BookDetail() {
 
   function AddFavorite() {
     const [show, setShow] = useState(false);
+    const addToFavourite = (id) => {
+      dispatch(addItemsToFavourite(id));
+      toast.success(
+        `Sách ${product.name} đã được thêm vào yêu thích thành công!`,
+        {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
+    };
 
     return (
       <div>
-        <ToastContainer position="bottom-end" className="p-3 position-fixed">
-          <Toast
-            onClose={() => setShow(false)}
-            show={show}
-            delay={3000}
-            autohide
-          >
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
-              <strong className="me-auto">Thông báo</strong>
-              {/* <small>11 mins ago</small> */}
-            </Toast.Header>
-            <Toast.Body>
-              Sách Cô gái đến từ hôm qua đã được thêm vào yêu thích thành công!
-            </Toast.Body>
-          </Toast>
-        </ToastContainer>
         <button
           type="button"
-          onClick={() => setShow(true)}
+          onClick={() => addToFavourite(product._id)}
           className="book-like-btn border border-2 rounded text-center align-middle p-1 ps-3 pe-3"
         >
           <i className="book-like-icon text-danger fs-6">
@@ -293,7 +283,7 @@ export default function BookDetail() {
   return (
     <Fragment>
       {loading ? (
-        <NotFound />
+        <Loading />
       ) : (
         <div className="book-container container-fluid">
           <div className="book-breadcrumb ms-5 mt-2">
@@ -383,7 +373,7 @@ export default function BookDetail() {
                       <div className="book-price-container flex-grow-1">
                         <div className="book-price-current">
                           <span className="book-current fs-1">
-                            {product.price}{" "}
+                            {numberWithCommas(product.price)}{" "}
                             <sup>
                               <u>đ</u>
                             </sup>
@@ -551,6 +541,7 @@ export default function BookDetail() {
                 value={rating}
                 size="large"
                 className="book-item-rating"
+                name="rating"
               />
             </div>
             <p className="book-comment-number mt-2">
@@ -688,6 +679,7 @@ export default function BookDetail() {
               </Button>
             </div>
           </div>
+
           <ToastContainer
             position="top-center"
             autoClose={5000}

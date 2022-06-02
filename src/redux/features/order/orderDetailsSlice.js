@@ -28,13 +28,13 @@ export const orderDetailsSlice = createSlice({
         state.message = action.payload.message;
       })
       .addCase(deleteOrder.pending, (state, action) => {
-          state.loading = true
+        state.loading = true;
       })
       .addCase(deleteOrder.fulfilled, (state, action) => {
-          state.loading = false
-          state.success = action.payload.success
-          state.message = action.payload.message
-      })
+        state.loading = false;
+        state.success = action.payload.success;
+        state.message = action.payload.message;
+      });
   },
 });
 
@@ -42,7 +42,7 @@ export const getOrder = createAsyncThunk(
   "orderDetails/getOrder",
   async ({ id }) => {
     const response = await AdminService.getOrder(id);
-    console.log("order detail", response);
+    // console.log("order detail", response);
     return response.data;
   }
 );
@@ -50,17 +50,17 @@ export const updateStatusOrder = createAsyncThunk(
   "orderDetails/updateStatusOrder",
   async ({ id, orderStatus }) => {
     const response = await AdminService.updateOrder(id, orderStatus);
-    console.log("update status", response);
+    // console.log("update status", response);
     return response.data;
   }
 );
 export const deleteOrder = createAsyncThunk(
-    "orderDetails/deleteOrder",
-    async ({id}) => {
-        const response = await AdminService.deleteOrder(id)
-        return response.data
-    }
-)
+  "orderDetails/deleteOrder",
+  async ({ id }) => {
+    const response = await AdminService.deleteOrder(id);
+    return response.data;
+  }
+);
 
 export const { clear } = orderDetailsSlice.actions;
 export default orderDetailsSlice.reducer;

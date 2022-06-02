@@ -25,7 +25,7 @@ const Navbar = () => {
                         </div>
                     </form>
                 </div> */}
-                <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10" className='ad-banner'>
+                <marquee onMouseOver="this.stop()" onMouseOut="this.start()" scrollamount="10" className='ad-banner'>
                     ❤️❤️❤️ <mark> Đây là dòng để cho bớt trống, xin đừng quá quan tâm về nó mà hãy quan tâm những thứ có ích bên dưới. Cám ơn!!! </mark> - <i> From toàn bộ thành viên nhóm 6 With Love </i>  ❤️❤️❤️
                 </marquee>
                 <div className="items">

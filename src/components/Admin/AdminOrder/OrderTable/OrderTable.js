@@ -12,7 +12,7 @@ import { userColumns, userRows } from "./datatablesource";
 import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import { Form, Modal, Button } from "react-bootstrap";
 import moment from "moment";
 
@@ -48,7 +48,7 @@ const OrderTable = () => {
           return {
             id: index + 1,
             barcode: order._id,
-            employeeName: order.user.name,
+            // employeeName: order.user.name,
             status: order.orderStatus,
             date: moment(order.createdAt).format("MMMM Do YYYY"),
           };
