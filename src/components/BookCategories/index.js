@@ -74,34 +74,7 @@ const Books = [
     price: "111.500 đ",
   },
 ];
-const priceData = [50000, 100000, 150000, 200000, 500000];
-const publiserData = [
-  "NXB Trẻ",
-  "Nhã Nam",
-  "Kim Đồng",
-  "NXB Phụ Nữ Việt",
-  "NXB Lao Động",
-  "NXB Hội Nhà Văn",
-];
-const categoryData = [
-  "Kinh tế",
-  "Kỹ năng sống",
-  "Ngôn tình",
-  "Tâm lý",
-  "Tiếng anh",
-  "Tiểu thuyết",
-  "Sách chuyên ngành",
-  "Sách ngoại ngữ",
-  "Thưởng thức đời sống",
-];
-const authorData = [
-  "Nguyễn Nhật Ánh",
-  "Nguyễn Ngọc Thạch",
-  "Nguyễn Ngọc Tư",
-  "Vũ Ngọc Tư",
-  "Hạ Vũ",
-  "Trí",
-];
+
 export default function BookCategories() {
   const dispatch = useDispatch();
   let { keyword } = useParams();
