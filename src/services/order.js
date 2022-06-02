@@ -2,7 +2,7 @@ import axios from "axios";
 
 class OrderDataService {
   getAllOrders() {
-    return axios.get("http://localhost:5000/api/v2/orders/me", {
+    return axios.get("https://peaceful-brushlands-80713.herokuapp.com/api/v2/orders/me", {
       withCredentials: true,
     });
   }

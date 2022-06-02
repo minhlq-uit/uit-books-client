@@ -7,10 +7,10 @@ import OrderTable from "../components/Admin/AdminOrder/OrderTable/OrderTable"
 // import AdminOrderDetail from '../components/Admin/AdminOrder/AdminOrderDetail/AdminOrderDetail';
 // import AdminOrderDetail from '../components/Admin/AdminOrder/AdminOrderDetail/AdminOrderDetail';
 import ProtectedRoute from "../routes/PrivateRoute";
-const AdminOrderPage = ({isAdmin}) => {
+const AdminOrderPage = () => {
   return (
     <>
-      <ProtectedRoute isAdmin={isAdmin}>
+      <ProtectedRoute isAdmin={true}>
         <div style={{ display: "flex", width: "100%" }}>
           <Sidebar />
           <div style={{ flex: "4" }}>

@@ -4,9 +4,9 @@ import Navbar from '../components/Navbar/index';
 import BlogNew from '../components/Admin/AdminBlog/AdminBlogNew/index';
 import ProtectedRoute from '../routes/PrivateRoute';
 
-export default function AdminBlogNew({isAdmin}) {
+export default function AdminBlogNew() {
     return (
-        <ProtectedRoute isAdmin={isAdmin}>
+        <ProtectedRoute isAdmin={true}>
             <div style={{ display: "flex", width: "100%" }} >
                 <Sidebar />
                 <div style={{ flex: "4" }}>
