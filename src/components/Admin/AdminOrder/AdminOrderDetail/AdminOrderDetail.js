@@ -40,12 +40,12 @@ const AdminOrderDetail = (props) => {
       setOrderDetails(order);
       setAddress(
         order.shippingInfo.address +
-          ", " +
-          order.shippingInfo.ward +
-          ", " +
-          order.shippingInfo.district +
-          ", " +
-          order.shippingInfo.city
+        ", " +
+        order.shippingInfo.ward +
+        ", " +
+        order.shippingInfo.district +
+        ", " +
+        order.shippingInfo.city
       );
     }
   }, [order]);
@@ -93,7 +93,7 @@ const AdminOrderDetail = (props) => {
                     <div className="orderRow__value order__date__value">
                       {moment(
                         orderDetails ? orderDetails.createdAt : ""
-                      ).format("MMMM Do YYYY")}
+                      ).format("DD/MM/YYYY")}
                     </div>
                   </div>
                 </FormGroup>

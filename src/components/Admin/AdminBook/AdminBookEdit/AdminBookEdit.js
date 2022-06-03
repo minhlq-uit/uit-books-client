@@ -62,8 +62,8 @@ function AdminBookEdit() {
       // console.log(updateError);
       // alert(updateError);
       toast.error(`${updateError}`, {
-        position: "top-center",
-        autoClose: 5000,
+        position: "bottom-center",
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -74,9 +74,9 @@ function AdminBookEdit() {
     }
     if (isUpdated) {
       // alert("book Updated Successfully");
-      toast.success("Cập nhật sách thành công! 🎊", {
+      toast.success('Cập nhật sách thành công! 🎊', {
         position: "bottom-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -85,7 +85,10 @@ function AdminBookEdit() {
       });
       dispatch(getProductDetails(id));
       dispatch(resetStateUpdated());
-      navigate("/admin-book-list");
+      setTimeout(() => {
+        navigate("/admin-book-list")
+      }, 3000);
+      // navigate("/admin-book-list");
     }
   }, [dispatch, alert, error, isUpdated, id, product, updateError]);
   // handler
@@ -306,8 +309,8 @@ function AdminBookEdit() {
         </button>
       </form>
       <ToastContainer
-        position="top-center"
-        autoClose={5000}
+        position="bottom-center"
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
