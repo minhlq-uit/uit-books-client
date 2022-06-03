@@ -7,17 +7,27 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-const data = [
-  { name: "January", Total: 1200 },
-  { name: "February", Total: 2100 },
-  { name: "March", Total: 800 },
-  { name: "April", Total: 1600 },
-  { name: "May", Total: 900 },
-  { name: "June", Total: 1700 },
-];
+import { useEffect, useState } from "react";
+import AdminService from "../../../../services/admin";
 
 const Chart = ({ aspect, title }) => {
+  const [monthlyIcome, setMonthlyIcome] = useState([]);
+
+  useEffect(() => {
+    const getIncomeData = async () => {
+      const { data } = await AdminService.getIncome();
+      setMonthlyIcome(data);
+    };
+    getIncomeData();
+  }, []);
+  monthlyIcome.sort((a, b) => {
+    return a._id - b._id;
+  });
+
+  const test = monthlyIcome.map((month) => {
+    return { name: month._id, Total: month.Total };
+  });
+
   return (
     <div className="chart">
       <div className="title">{title}</div>
@@ -25,7 +35,7 @@ const Chart = ({ aspect, title }) => {
         <AreaChart
           width={730}
           height={250}
-          data={data}
+          data={test}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <defs>

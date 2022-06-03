@@ -31,6 +31,12 @@ class AdminService {
     });
   }
   // ORDER
+  getIncome() {
+    return axios.get("http://localhost:5000/api/v2/admin/income", {
+      withCredentials: true,
+    });
+  }
+
   getAllOrders() {
     return axios.get("/api/v2/admin/orders", {
       withCredentials: true,

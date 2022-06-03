@@ -7,8 +7,11 @@ import {
 import "./stripeCheckOutForm.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { createOrder } from "../../../redux/features/order/newOrderSlice";
+import { clearCart } from "../../../redux/features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function StripeCheckOutForm(props) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
@@ -60,9 +63,7 @@ export default function StripeCheckOutForm(props) {
     const result = await stripe.confirmPayment({
       elements,
       // redirect: "if_required",
-      confirmParams: {
-        return_url: "http://localhost:3000/confirm-order",
-      },
+      redirect: "if_required",
     });
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
@@ -93,6 +94,8 @@ export default function StripeCheckOutForm(props) {
         };
 
         dispatch(createOrder(order));
+        dispatch(clearCart());
+        navigate("/confirm-order");
       }
     }
     setIsLoading(false);

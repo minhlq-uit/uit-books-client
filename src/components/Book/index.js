@@ -87,7 +87,11 @@ const Books = [
 
 export default function BookDetail() {
   function AddButton() {
-    const addToCart = (id) => {
+    const addToCart = (id, stock) => {
+      if (stock < 1) {
+        toast.error("Số lượng sản phẩm trong kho không đủ! ☹️");
+        return;
+      }
       dispatch(addItemsToCart(id, 1));
       toast.success(`Sách ${product.name} đã được thêm vào giỏ hàng! 🛒`, {
         position: "bottom-center",
@@ -104,7 +108,7 @@ export default function BookDetail() {
       <div>
         <button
           type="button"
-          onClick={() => addToCart(product._id)}
+          onClick={() => addToCart(product._id, product.Stock)}
           className="book-add-btn btn border rounded text-center fs-6 text-uppercase p-3 ps-4 pe-4 fw-bold"
         >
           Thêm vào giỏ hàng

@@ -37,6 +37,9 @@ export const saveShippingInfo = (data) => async (dispatch) => {
   });
   // localStorage.setItem("shippingInfo", JSON.stringify(data));
 };
+export const clearCart = () => async (dispatch) => {
+  dispatch({ type: "CLEAR_CART_ITEM" });
+};
 
 let initialState = {
   // cartItems: localStorage.getItem("cartItems")
@@ -85,6 +88,11 @@ export default function cartSlice(state = initialState, action) {
       return {
         ...state,
         shippingInfo: action.payload,
+      };
+    case "CLEAR_CART_ITEM":
+      return {
+        ...state,
+        cartItems: [],
       };
 
     default:
