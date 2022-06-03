@@ -2,7 +2,7 @@ import "./AdminBookList.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../datatablesource";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete, MdMenuBook, MdOutlinePreview } from "react-icons/md";
@@ -27,9 +27,10 @@ import {
   resetStateDeletedReview,
 } from "../../../../redux/features/product/reviewSlice";
 import moment from "moment";
+import Loading from "../../../../more/Loader";
 
 function getFormattedDate(date) {
-  return new Date(date).toLocaleDateString('en-GB');
+  return new Date(date).toLocaleDateString("en-GB");
 }
 
 const AdminBookList = () => {
@@ -39,7 +40,9 @@ const AdminBookList = () => {
   const handleClose = () => setShow(false);
   const [bookId, setBookId] = useState();
 
-  const { error, products } = useSelector((state) => state.productsAdmin);
+  const { loading, error, products } = useSelector(
+    (state) => state.productsAdmin
+  );
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.product
   );
@@ -210,99 +213,105 @@ const AdminBookList = () => {
   // };
 
   return (
-    <div className="datatable">
-      <div className="col-xl-6 col-lg-5 col-md-6">
-        <form action="#" className="search-header">
-          <div className="input-group w-100">
-            <input
-              type="text"
-              // value={search}
-              // onChange={filter}
-              className="form-control"
-              placeholder="Tìm kiếm"
-            />
-            <div className="input-group-append">
-              <Button variant="dark">
-                <SearchIcon />
-              </Button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div className="datatableTitle">
-        Danh sách các quyển sách
-        <Link to="/admin-book-new" className="link">
-          <MdMenuBook className="icon-book-new" />
-          Thêm mới
-        </Link>
-      </div>
-      <DataGrid
-        className="datagrid"
-        rows={rows}
-        columns={userColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-      />
-      <Modal show={show} onHide={handleClose} className="modal">
-        <Modal.Header closeButton>
-          <Modal.Title>Danh Sách Bình Luận</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="modal-body">
-          <Form className="form">
-            {reviews &&
-              reviews.map((item, i) => (
-                <div className="book-comment-others" key={i}>
-                  <div className="book-comment-user d-flex border-top">
-                    <div className="book-comment-avatar flex-shrink-0 fs-1">
-                      <IoPersonCircleSharp />
-                    </div>
-                    <div className="book-comment-container flex-grow-1 ms-3 mt-4">
-                      <div className="book-comment-userinfo d-flex">
-                        <div className="book-comment-name w-100 fw-bold">
-                          {/* <p>{item.name}</p> */}
-                          <p>{item.name}</p>
-                        </div>
-                        <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
-                          {/* <p>{item.time}</p> */}
-                          <p>{moment(item.time).format("DD/MM/YYYY")}</p>
-                        </div>
-                        <RiDeleteBin2Fill
-                          className="book-comment-delete-icon ms-5"
-                          onClick={(e) => {
-                            console.log(item._id, bookId);
-                            deleteReviewHandler(item._id, bookId);
-                          }}
-                        />
-                      </div>
-                      <div className="book-comment-content">
-                        {/* <p>{item.comment}</p> */}
-                        <p>{item.comment}</p>
-                      </div>
-                    </div>
-                  </div>
+    <Fragment>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="datatable">
+          <div className="col-xl-6 col-lg-5 col-md-6">
+            <form action="#" className="search-header">
+              <div className="input-group w-100">
+                <input
+                  type="text"
+                  // value={search}
+                  // onChange={filter}
+                  className="form-control"
+                  placeholder="Tìm kiếm"
+                />
+                <div className="input-group-append">
+                  <Button variant="dark">
+                    <SearchIcon />
+                  </Button>
                 </div>
-              ))}
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Đóng
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <ToastContainer
-        position="bottom-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </div>
+              </div>
+            </form>
+          </div>
+          <div className="datatableTitle">
+            Danh sách các quyển sách
+            <Link to="/admin-book-new" className="link">
+              <MdMenuBook className="icon-book-new" />
+              Thêm mới
+            </Link>
+          </div>
+          <DataGrid
+            className="datagrid"
+            rows={rows}
+            columns={userColumns.concat(actionColumn)}
+            pageSize={9}
+            rowsPerPageOptions={[9]}
+            checkboxSelection
+          />
+          <Modal show={show} onHide={handleClose} className="modal">
+            <Modal.Header closeButton>
+              <Modal.Title>Danh Sách Bình Luận</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="modal-body">
+              <Form className="form">
+                {reviews &&
+                  reviews.map((item, i) => (
+                    <div className="book-comment-others" key={i}>
+                      <div className="book-comment-user d-flex border-top">
+                        <div className="book-comment-avatar flex-shrink-0 fs-1">
+                          <IoPersonCircleSharp />
+                        </div>
+                        <div className="book-comment-container flex-grow-1 ms-3 mt-4">
+                          <div className="book-comment-userinfo d-flex">
+                            <div className="book-comment-name w-100 fw-bold">
+                              {/* <p>{item.name}</p> */}
+                              <p>{item.name}</p>
+                            </div>
+                            <div className="book-comment-date flex-shrink-1 text-secondary fs-6">
+                              {/* <p>{item.time}</p> */}
+                              <p>{moment(item.time).format("DD/MM/YYYY")}</p>
+                            </div>
+                            <RiDeleteBin2Fill
+                              className="book-comment-delete-icon ms-5"
+                              onClick={(e) => {
+                                console.log(item._id, bookId);
+                                deleteReviewHandler(item._id, bookId);
+                              }}
+                            />
+                          </div>
+                          <div className="book-comment-content">
+                            {/* <p>{item.comment}</p> */}
+                            <p>{item.comment}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Đóng
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <ToastContainer
+            position="bottom-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        </div>
+      )}
+    </Fragment>
   );
 };
 

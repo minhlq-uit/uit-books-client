@@ -104,6 +104,7 @@ export default function BookCategories() {
     setCategory();
     setAuthor();
     setPublisher();
+    setCurrentPage(1);
   };
   useEffect(() => {
     if (error) {
@@ -141,7 +142,9 @@ export default function BookCategories() {
     <div className="categories-container container-fluid">
       <div className="categories-breadcrumb ms-5 mt-2 mb-5">
         <Breadcrumb>
-          <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>Trang chủ</Breadcrumb.Item>
+          <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
+            Trang chủ
+          </Breadcrumb.Item>
           <Breadcrumb.Item className="text-capitalize" active>
             Danh mục sách
           </Breadcrumb.Item>
@@ -171,7 +174,10 @@ export default function BookCategories() {
                             type="radio"
                             name="flexRadioDefault"
                             value={item}
-                            onClick={(e) => setCategory(e.target.value)}
+                            onClick={(e) => {
+                              reserHandler();
+                              setCategory(e.target.value);
+                            }}
                           />
                           {item}
                         </label>
@@ -184,7 +190,10 @@ export default function BookCategories() {
                           type="radio"
                           name="flexRadioDefault"
                           value=""
-                          onClick={(e) => setCategory()}
+                          onClick={(e) => {
+                            reserHandler();
+                            setCategory();
+                          }}
                         />
                         Khác
                       </label>
