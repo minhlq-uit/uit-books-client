@@ -9,6 +9,7 @@ export const forgotPasswordSlice = createSlice({
   reducers: {
     clearMessage: (state, action) => {
       state.message = null;
+      state.status = null;
     },
   },
   extraReducers: (builder) => {

@@ -30,11 +30,7 @@ export default function ResetPassword() {
     if (status) {
       toast.success("Cập nhật mật khẩu thành công!");
       dispatch(clearMessage());
-      setTimeout(() => {
-        window.opener = null;
-        window.open("", "_self");
-        window.close();
-      }, 5000);
+      navigate('/signin')
     }
     console.log(status);
     if (status === false) {

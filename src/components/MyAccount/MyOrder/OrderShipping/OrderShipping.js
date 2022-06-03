@@ -11,11 +11,11 @@ function OrderShipping() {
   }, [dispatch]);
 
   const { orders } = useSelector((state) => state.myOrders);
-  const data = orders.filter((order) => order.orderStatus === "Shipping");
+  const data = orders && orders.filter((order) => order.orderStatus === "Shipping");
 
   return (
     <div className="order-infor">
-      {data.length === 0 ? (
+      {!data ? (
         <div className="container-canceled-empty">
           <div>
             <img
