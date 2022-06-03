@@ -16,7 +16,18 @@ function OrderOrdered() {
   return (
     <div className="order-infor">
       {data.length === 0 ? (
-        <p>no order</p>
+        <div className="container-canceled-empty">
+          <div>
+            <img
+              className="img-cancled-empty"
+              src="https://drive.google.com/uc?id=1Ky_4cmR8ijDH0L_HRQJklFwd_GSVm7uR"
+              alt="no item"
+            />
+          </div>
+          <p>
+            😱 <b>Bạn ơi chưa đơn hàng nào đã giao đâu nha</b> 😱
+          </p>
+        </div>
       ) : (
         <>
           {data.map((order, index) => (

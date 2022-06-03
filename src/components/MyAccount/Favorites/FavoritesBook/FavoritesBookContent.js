@@ -6,6 +6,8 @@ const FavoritesBook = () => {
   let { favouriteItems } = useSelector((state) => state.favourite);
   console.log(favouriteItems);
 
+  // console.log(item.title);
+
   return (
     <div style={{ textAlign: "center" }}>
       {favouriteItems.length === 0 ? (
@@ -20,17 +22,20 @@ const FavoritesBook = () => {
           </p>
         </div>
       ) : (
-        favouriteItems.map((item, index) => {
-          return (
-            <BookItem
-              key={index}
-              title={item.title}
-              author={item.author}
-              img={item.image}
-              price={item.price}
-            />
-          );
-        })
+        <div className="category-books row row-cols-3 ">
+          {favouriteItems.map((item, index) => {
+            return (
+              <BookItem
+                key={index}
+                id={item.book}
+                title={item.name}
+                author={item.author}
+                img={item.image}
+                price={item.price}
+              />
+            );
+          })}
+        </div>
       )}
       {/* {favouriteItems.map((item, index) => {
         return (
