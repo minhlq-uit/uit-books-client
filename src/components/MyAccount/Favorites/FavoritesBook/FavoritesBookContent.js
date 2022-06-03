@@ -8,7 +8,31 @@ const FavoritesBook = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      {favouriteItems.map((item, index) => {
+      {favouriteItems.length === 0 ? (
+        <div>
+          <img
+            className="empty-wrapper"
+            src="https://drive.google.com/uc?id=1k2nXiRoCsJ2gKuRmL9FoFwkTgSpW_4n_"
+            alt="no item favorites"
+          />
+          <p>
+            <b>Không có cuốn sách nào trong mục này </b>
+          </p>
+        </div>
+      ) : (
+        favouriteItems.map((item, index) => {
+          return (
+            <BookItem
+              key={index}
+              title={item.title}
+              author={item.author}
+              img={item.image}
+              price={item.price}
+            />
+          );
+        })
+      )}
+      {/* {favouriteItems.map((item, index) => {
         return (
           <BookItem
             key={index}
@@ -18,7 +42,7 @@ const FavoritesBook = () => {
             price={item.price}
           />
         );
-      })}
+      })} */}
     </div>
   );
 };

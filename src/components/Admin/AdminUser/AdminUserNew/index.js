@@ -63,9 +63,11 @@ function UserNew() {
       dispatch(clear());
     }
     if (success) {
-      toast.success("Dang ki thanh cong");
+      toast.success("Thêm mới người dùng thành công! 🎊");
       dispatch(clear());
-      navigate(-1);
+      setTimeout(() => {
+        navigate("/admin-user-list");
+      }, 3000);
     }
   }, [error, success]);
 

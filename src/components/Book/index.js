@@ -434,13 +434,14 @@ export default function BookDetail() {
                           <i className="book-check-icon text-success">
                             <IoCheckmarkSharp />{" "}
                           </i>
-                          Giao hàng miễn phí trong nội thành TP. HCM với đơn
+                          Giao hàng miễn phí trong nội thành TP. HCM
+                          {/* Giao hàng miễn phí trong nội thành TP. HCM với đơn
                           hàng
                           <i className="book-compare-icon text-success fs-6">
                             {" "}
                             <FaGreaterThanEqual />{" "}
                           </i>
-                          <span className="text-success fw-bold">150.000đ</span>
+                          <span className="text-success fw-bold">150.000đ</span> */}
                         </p>
                         <p className="book-check">
                           <i className="book-check-icon text-success">
@@ -451,7 +452,7 @@ export default function BookDetail() {
                             {" "}
                             <FaGreaterThanEqual />{" "}
                           </i>
-                          <span className="text-success fw-bold">250.000đ</span>
+                          <span className="text-success fw-bold">100.000đ</span>
                         </p>
                         <div className="book-like-button">
                           <AddFavorite />
