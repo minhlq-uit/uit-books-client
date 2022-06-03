@@ -33,6 +33,7 @@ import { addItemsToFavourite } from "../../redux/features/favourite/favouriteSli
 import { numberWithCommas } from "../../more/FormatNumber";
 import moment from "moment";
 import { loadUser } from "../../redux/features/user/userSlice";
+import BestSeller from "../Home/BestSeller";
 
 const Books = [
   {
@@ -434,7 +435,8 @@ export default function BookDetail() {
                           <i className="book-check-icon text-success">
                             <IoCheckmarkSharp />{" "}
                           </i>
-                          Bảo hành 1 đổi 1 nếu sách hư hỏng trong quá trình vận chuyển
+                          Bảo hành 1 đổi 1 nếu sách hư hỏng trong quá trình vận
+                          chuyển
                           {/* Giao hàng miễn phí trong nội thành TP. HCM với đơn
                           hàng
                           <i className="book-compare-icon text-success fs-6">
@@ -686,6 +688,7 @@ export default function BookDetail() {
               </div> */}
               </div>
             </div>
+            <BestSeller />
             <ToastContainer
               position="top-center"
               autoClose={5000}
