@@ -85,10 +85,6 @@ const Books = [
   },
 ];
 
-function getFormattedDate(date) {
-  return new Date(date).toLocaleDateString("en-GB");
-}
-
 export default function BookDetail() {
   function AddButton() {
     const addToCart = (id) => {
@@ -399,7 +395,8 @@ export default function BookDetail() {
                             <div className="book-price-cover">
                               <span>Giá bìa:</span>
                               <span className="book-cover ms-2">
-                                80.000{" "}
+                                {/* 80.000{" "} */}
+                                {numberWithCommas(product.price + 15000)}{" "}
                                 <sup>
                                   <u>đ</u>
                                 </sup>
@@ -410,11 +407,10 @@ export default function BookDetail() {
                                 Tiết kiệm:
                               </span>
                               <span className="book-sale ms-2 fw-bold">
-                                12.000{" "}
+                                15.000{" "}
                                 <sup>
                                   <u>đ</u>
-                                </sup>{" "}
-                                (-15%)
+                                </sup>
                               </span>
                             </div>
                           </div>
@@ -434,7 +430,7 @@ export default function BookDetail() {
                           <i className="book-check-icon text-success">
                             <IoCheckmarkSharp />{" "}
                           </i>
-                          Giao hàng miễn phí trong nội thành TP. HCM
+                          Bảo hành 1 đổi 1 nếu sách hư hỏng trong quá trình vận chuyển
                           {/* Giao hàng miễn phí trong nội thành TP. HCM với đơn
                           hàng
                           <i className="book-compare-icon text-success fs-6">
@@ -452,7 +448,7 @@ export default function BookDetail() {
                             {" "}
                             <FaGreaterThanEqual />{" "}
                           </i>
-                          <span className="text-success fw-bold">100.000đ</span>
+                          <span className="text-success fw-bold">250.000đ</span>
                         </p>
                         <div className="book-like-button">
                           <AddFavorite />

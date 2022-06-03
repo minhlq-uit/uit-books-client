@@ -41,7 +41,7 @@ const Payment = (props) => {
     (acc, item) => acc + item.quantity * item.price,
     0
   );
-  let shippingCharges = productPrice > 80000 ? 0 : 50000;
+  let shippingCharges = productPrice > 250000 ? 0 : 30000;
 
   let totalPrice = productPrice + shippingCharges;
 

@@ -5,6 +5,7 @@ import "./confirmation.scss";
 import { useSelector } from "react-redux";
 import { numberWithCommas } from "../../../more/FormatNumber";
 import { useState } from "react";
+import moment from "moment";
 
 const Confirmation = (props) => {
   const { user } = useSelector((state) => state.user);
@@ -85,7 +86,7 @@ const Confirmation = (props) => {
 
                   <hr />
                   <div className="confirm__information__block__content__methodPayment">
-                    Phương thức thanh toán: thanh toán khi nhận hàng
+                    Phương thức thanh toán: Thanh toán khi nhận hàng
                   </div>
                   <hr />
                 </div>
@@ -95,7 +96,7 @@ const Confirmation = (props) => {
                 <i className="fa-solid fa-location-dot"></i>
                 <div className="confirm__information__block__content">
                   <div className="confirm__information__block__content__title">
-                    Địa chỉ gia hàng
+                    Địa chỉ giao hàng
                   </div>
                   <div className="confirm__information__block__content__description">
                     <div className="name">
@@ -118,20 +119,20 @@ const Confirmation = (props) => {
                 <i className="fa-solid fa-shield-heart"></i>
                 <div className="confirm__information__block__content">
                   <div className="confirm__information__block__content__title">
-                    Địa chỉ gia hàng
+                    Địa chỉ giao hàng
                   </div>
                   <div className="confirm__information__block__content__description">
                     <div className="description__row">
                       <div className="description__row__name">Mã đơn hàng:</div>
                       <div className="description__row__value">
-                        2333000wwwqqsee
+                        2203297MSTW2WD
                       </div>
                     </div>
                     <div className="description__row">
                       <div className="description__row__name">
                         Thời gian đặt hàng:
                       </div>
-                      <div className="description__row__value">3/17/2021</div>
+                      <div className="description__row__value">{moment().format("LTS DD/MM/YYYY")}</div>
                     </div>
                   </div>
                 </div>
