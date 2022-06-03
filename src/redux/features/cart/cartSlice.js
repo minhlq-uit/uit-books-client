@@ -2,9 +2,7 @@ import axios from "axios";
 
 // Add to Cart
 export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
-  const { data } = await axios.get(
-    `https://peaceful-brushlands-80713.herokuapp.com/api/v2/book/${id}`
-  );
+  const { data } = await axios.get(`/api/v2/book/${id}`);
   dispatch({
     type: "ADD_TO_CART",
     payload: {
@@ -36,6 +34,9 @@ export const saveShippingInfo = (data) => async (dispatch) => {
     payload: data,
   });
   // localStorage.setItem("shippingInfo", JSON.stringify(data));
+};
+export const clearCart = () => async (dispatch) => {
+  dispatch({ type: "CLEAR_CART_ITEM" });
 };
 
 let initialState = {
@@ -85,6 +86,11 @@ export default function cartSlice(state = initialState, action) {
       return {
         ...state,
         shippingInfo: action.payload,
+      };
+    case "CLEAR_CART_ITEM":
+      return {
+        ...state,
+        cartItems: [],
       };
 
     default:

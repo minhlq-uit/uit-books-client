@@ -4,23 +4,20 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./confirmation.scss";
 import { useSelector } from "react-redux";
 import { numberWithCommas } from "../../../more/FormatNumber";
-import { useState } from "react";
 
 const Confirmation = (props) => {
   const { user } = useSelector((state) => state.user);
 
-  const [method, setMethod] = useState("COD");
-
-  const { cartItems, shippingInfo } = useSelector((state) => state.cart);
+  const { order } = useSelector((state) => state.newOrder);
 
   function getFullAddress(houseAddress, ward, district, city) {
     return houseAddress + ", " + ward + ", " + district + ", " + city;
   }
-  let Price = cartItems.reduce(
+  let Price = order.orderItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
   );
-  console.log(user);
+
   return (
     <div>
       <Container>
@@ -58,9 +55,9 @@ const Confirmation = (props) => {
                   <div className="confirm__information__block__content__title">
                     Thông tin sản phẩm
                   </div>
-                  {cartItems.map((item, index) => {
+                  {order.orderItems.map((item, index) => {
                     return (
-                      <div className="info-order__product">
+                      <div className="info-order__product" key={index}>
                         <img src={item.image} alt="" />
                         <div className="info-order__product__information">
                           <div className="info-order__product__information__name">
@@ -85,7 +82,10 @@ const Confirmation = (props) => {
 
                   <hr />
                   <div className="confirm__information__block__content__methodPayment">
-                    Phương thức thanh toán: thanh toán khi nhận hàng
+                    Phương thức thanh toán:
+                    {order.paymentInfo.method === "COD"
+                      ? " thanh toán khi nhận hàng"
+                      : " Đã thanh toán qua ngân hàng"}
                   </div>
                   <hr />
                 </div>
@@ -95,20 +95,20 @@ const Confirmation = (props) => {
                 <i className="fa-solid fa-location-dot"></i>
                 <div className="confirm__information__block__content">
                   <div className="confirm__information__block__content__title">
-                    Địa chỉ gia hàng
+                    Địa chỉ giao hàng
                   </div>
                   <div className="confirm__information__block__content__description">
                     <div className="name">
                       {user.name ? user.name : "Defaut User"}
                     </div>
-                    <div className="phone">{shippingInfo.phone}</div>
+                    <div className="phone">{order.shippingInfo.phone}</div>
                     <div className="address">
                       {" "}
                       {getFullAddress(
-                        shippingInfo.address,
-                        shippingInfo.ward,
-                        shippingInfo.district,
-                        shippingInfo.city
+                        order.shippingInfo.address,
+                        order.shippingInfo.ward,
+                        order.shippingInfo.district,
+                        order.shippingInfo.city
                       )}
                     </div>
                   </div>
@@ -118,20 +118,20 @@ const Confirmation = (props) => {
                 <i className="fa-solid fa-shield-heart"></i>
                 <div className="confirm__information__block__content">
                   <div className="confirm__information__block__content__title">
-                    Địa chỉ gia hàng
+                    Địa chỉ giao hàng
                   </div>
                   <div className="confirm__information__block__content__description">
                     <div className="description__row">
                       <div className="description__row__name">Mã đơn hàng:</div>
-                      <div className="description__row__value">
-                        2333000wwwqqsee
-                      </div>
+                      <div className="description__row__value">{order._id}</div>
                     </div>
                     <div className="description__row">
                       <div className="description__row__name">
                         Thời gian đặt hàng:
                       </div>
-                      <div className="description__row__value">3/17/2021</div>
+                      <div className="description__row__value">
+                        {new Date(order.createdAt).toLocaleDateString("en-GB")}
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import "./itemBasket.scss";
 import { BiEnvelope } from "react-icons/bi";
 import { useSelector, useDispatch } from "react-redux";
 
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import {
   addItemsToCart,
   removeItemsFromCart,
@@ -12,7 +12,7 @@ import {
 import useLocationForm from "../../../more/Location";
 import Select from "react-select";
 import { saveShippingInfo } from "../../../redux/features/cart/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { numberWithCommas } from "../../../more/FormatNumber";
 import { BsBook } from "react-icons/bs";
 
@@ -51,7 +51,7 @@ const ItemBasket = (props) => {
       ? cartItems.reduce((acc, item) => acc + item.quantity, 0)
       : 0;
 
-  let shippingCharges = Price > 80000 ? 0 : 50000;
+  let shippingCharges = Price > 250000 ? 0 : 30000;
 
   let totalPrice = Price + shippingCharges;
   let totalQuantity = Quantity;
@@ -97,8 +97,27 @@ const ItemBasket = (props) => {
 
   const [newPhone, setNewPhone] = useState("");
   const [newEmail, setNewEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmitForm = () => {
+    if (
+      address === "" ||
+      !state.selectedCity ||
+      !state.selectedDistrict ||
+      !state.selectedWard ||
+      newEmail === ""
+    ) {
+      toast.error("Xin vui lòng điền đầy đủ thông tin", {
+        position: "top-center",
+      });
+      return;
+    }
+    if (newPhone.length < 10) {
+      toast.error("Số điện thoại không hợp lệ", {
+        position: "top-center",
+      });
+      return;
+    }
     setFullAddress(
       getFullAddress(
         address,
@@ -121,6 +140,15 @@ const ItemBasket = (props) => {
       })
     );
     console.log(shippingInfo);
+  };
+  const handleToCheckout = () => {
+    if (fullAddress === "") {
+      toast.error("Thất bại! Vui lòng điền đầy đủ thông tin giao hàng 😭", {
+        position: "top-center",
+      });
+      return;
+    }
+    navigate("/payment");
   };
   return (
     <div className="ib__container">
@@ -296,11 +324,9 @@ const ItemBasket = (props) => {
                     </div>
                   </div>
                   <div className="myOrder__button">
-                    <Link to="/payment" style={{ textDecoration: "none" }}>
-                      <button className="myOrder__btn" href="/payment">
-                        Đặt hàng
-                      </button>
-                    </Link>
+                    <button className="myOrder__btn" onClick={handleToCheckout}>
+                      Đặt hàng
+                    </button>
                   </div>
                 </div>
               </div>
@@ -387,6 +413,14 @@ const ItemBasket = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        draggable
+      />
     </div>
   );
 };

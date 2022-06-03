@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import "./InformationProduct.scss"
 const InformationProduct = props => {
-  const [quantity, setQuantity] = useState(props.quantity)
-  const updateQuantity = (opt) =>{
-    if(opt === "+"){
-      setQuantity(quantity+1)
-    }
-    if(opt ==="-"){
-      setQuantity(quantity-1 ===0 ? 1: quantity-1)
-    }
-  }
+  // const [quantity, setQuantity] = useState(props.quantity)
+  // const updateQuantity = (opt) =>{
+  //   if(opt === "+"){
+  //     setQuantity(quantity+1)
+  //   }
+  //   if(opt ==="-"){
+  //     setQuantity(quantity-1 ===0 ? 1: quantity-1)
+  //   }
+  // }
   return (
     <div>
          <div className="basket-list">
@@ -36,16 +36,16 @@ const InformationProduct = props => {
                     </div>
                   </div>
                   <div className="basket-list__item__quantity">
-                    <div className="basket-list__item__quantity__btn" onClick={()=>{updateQuantity("-")}}>
+                    {/* <div className="basket-list__item__quantity__btn" onClick={()=>{updateQuantity("-")}}>
                       <i className="bx bx-minus"></i>
-                    </div>
-                    <div className="basket-list__item__quantity__input">{quantity}</div>
-                    <div className="basket-list__item__quantity__btn" onClick={()=>{updateQuantity("+")}}>
+                    </div> */}
+                    <div className="basket-list__item__quantity__input">{props.quantity}</div>
+                    {/* <div className="basket-list__item__quantity__btn" onClick={()=>{updateQuantity("+")}}>
                       <i className="bx bx-plus"></i>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="basket-list__item__price">
-                    {props.price}
+                    {props.price * props.quantity}
                     <span>đ</span>
                   </div>
                 </div>

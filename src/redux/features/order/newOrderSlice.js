@@ -21,7 +21,7 @@ export const createOrder = createAsyncThunk(
         withCredentials: true,
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/v2/order/new",
+        "/api/v2/order/new",
         order,
         config
       );

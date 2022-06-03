@@ -11,22 +11,21 @@ import "./payment.scss";
 import axios from "axios";
 import StripeCheckOutForm from "./StripeCheckOutForm";
 import { createOrder } from "../../../redux/features/order/newOrderSlice";
+import { clearCart } from "../../../redux/features/cart/cartSlice";
 
 const Payment = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [method, setMethod] = useState("COD");
   const [stripeApiKey, setStripeApiKey] = useState("");
-  async function getStripeApiKey() {
-    const { data } = await axios.get(
-      "http://localhost:5000/api/v2/stripeapikey",
-      {
-        withCredentials: true,
-      }
-    );
-    setStripeApiKey(data.stripeApiKey);
-  }
+
   useEffect(() => {
+    async function getStripeApiKey() {
+      const { data } = await axios.get("/api/v2/stripeapikey", {
+        withCredentials: true,
+      });
+      setStripeApiKey(data.stripeApiKey);
+    }
     getStripeApiKey();
   }, []);
 
@@ -41,7 +40,7 @@ const Payment = (props) => {
     (acc, item) => acc + item.quantity * item.price,
     0
   );
-  let shippingCharges = productPrice > 80000 ? 0 : 50000;
+  let shippingCharges = productPrice > 250000 ? 0 : 30000;
 
   let totalPrice = productPrice + shippingCharges;
 
@@ -65,6 +64,7 @@ const Payment = (props) => {
     if (method === "COD") {
       console.log(order);
       dispatch(createOrder(order));
+      dispatch(clearCart());
       navigate("/confirm-order");
     } else {
       const config = {
@@ -74,7 +74,7 @@ const Payment = (props) => {
         withCredentials: true,
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/v2/payment/process",
+        "/api/v2/payment/process",
         { items: cartItems },
         config
       );
