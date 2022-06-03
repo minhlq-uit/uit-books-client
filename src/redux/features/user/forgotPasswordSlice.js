@@ -9,6 +9,7 @@ export const forgotPasswordSlice = createSlice({
   reducers: {
     clearMessage: (state, action) => {
       state.message = null;
+      state.status = null;
     },
   },
   extraReducers: (builder) => {
@@ -50,7 +51,6 @@ export const forgotPassword = createAsyncThunk(
       if(!err.response) {
         throw err
       }
-      console.log(err.response.data)
       return rejectWithValue(err.response.data)
     }
   }
@@ -60,7 +60,6 @@ export const resetPassword = createAsyncThunk(
   "forgotPassword/resetPassword",
   async ({ password, confirmPassword, token }, { rejectWithValue }) => {
     try {
-      console.log('reset', password, confirmPassword, token)
       const response = await UserDataService.resetPassword(password, confirmPassword, token)
       return response.data
     } catch(err) {
