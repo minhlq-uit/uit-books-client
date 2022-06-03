@@ -51,7 +51,7 @@ const ItemBasket = (props) => {
       ? cartItems.reduce((acc, item) => acc + item.quantity, 0)
       : 0;
 
-  let shippingCharges = Price > 80000 ? 0 : 50000;
+  let shippingCharges = Price > 250000 ? 0 : 30000;
 
   let totalPrice = Price + shippingCharges;
   let totalQuantity = Quantity;
