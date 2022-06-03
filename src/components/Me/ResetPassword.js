@@ -30,13 +30,16 @@ export default function ResetPassword() {
     if (status) {
       toast.success("Cập nhật mật khẩu thành công!");
       dispatch(clearMessage());
-      navigate('/signin')
+      setTimeout(() => {
+        navigate("/signin");
+      }, 3000);
     }
-    console.log(status);
     if (status === false) {
       toast.error("Reset password unsuccess!!");
       dispatch(clearMessage());
-      // navigate('/')
+      setTimeout(() => {
+        navigate("/signin");
+      }, 3000);
     }
   }, [status]);
   return (
@@ -67,7 +70,7 @@ export default function ResetPassword() {
       </Form>
       <ToastContainer
         position="bottom-center"
-        autoClose={5000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
