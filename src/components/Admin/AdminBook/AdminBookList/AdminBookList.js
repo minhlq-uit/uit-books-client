@@ -29,7 +29,7 @@ import {
 import moment from "moment";
 
 function getFormattedDate(date) {
-  return new Date(date).toLocaleDateString('en-GB');
+  return new Date(date).toLocaleDateString("en-GB");
 }
 
 const AdminBookList = () => {
@@ -131,6 +131,8 @@ const AdminBookList = () => {
       field: "action",
       headerName: "Hành động",
       width: 150,
+      headerAlign: "center",
+      align: "center",
       renderCell: (params) => {
         return (
           <div className="cellAction">

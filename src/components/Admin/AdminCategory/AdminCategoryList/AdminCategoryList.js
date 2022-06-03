@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete, MdCategory } from "react-icons/md";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import { Form, Button } from "react-bootstrap";
 
 const AdminCategoryList = () => {
@@ -22,6 +22,8 @@ const AdminCategoryList = () => {
       width: 200,
       minWidth: 200,
       maxwidth: 400,
+      headerAlign: "center",
+      align: "center",
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -46,10 +48,10 @@ const AdminCategoryList = () => {
       <div className="col-xl-6 col-lg-5 col-md-6">
         <form action="#" className="search-header">
           <div className="input-group w-100">
-            <input 
-            type="text" 
-            className="form-control" 
-            placeholder="Tìm kiếm" 
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Tìm kiếm"
             />
             <div className="input-group-append">
               <Button variant="dark">

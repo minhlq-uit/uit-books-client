@@ -2,7 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../../../redux/features/user/allUsersSlice";
-import { deleteUser, clear } from "../../../../redux/features/user/userDetailsSlice";
+import {
+  deleteUser,
+  clear,
+} from "../../../../redux/features/user/userDetailsSlice";
 import "./UserList.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "./UserData";
@@ -10,7 +13,7 @@ import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import { FaUserPlus } from "react-icons/fa";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 // import { Button } from "@mui/material";
 import { Form, Modal, Button } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
@@ -48,15 +51,14 @@ const UserList = () => {
   }, [users]);
   useEffect(() => {
     if (success) {
-      toast.success(message)
-      dispatch(getAllUsers())
+      toast.success(message);
+      dispatch(getAllUsers());
     }
     if (success === false) {
-      toast.error(message)
+      toast.error(message);
     }
-    dispatch(clear())
-  }, [success])
-
+    dispatch(clear());
+  }, [success]);
 
   const handleDeleteUser = () => {
     dispatch(deleteUser({ id: idDelete }));
@@ -64,7 +66,7 @@ const UserList = () => {
   };
   const handleDelete = (id) => {
     handleShow();
-    console.log('id delete', id)
+    console.log("id delete", id);
     setIdDelete(id);
     // setData(data.filter((item) => item.id !== id));
   };
@@ -73,6 +75,8 @@ const UserList = () => {
       field: "action",
       headerName: "Hành động",
       width: 120,
+      headerAlign: "center",
+      align: "center",
       minWidth: 100,
       maxwidth: 180,
       renderCell: (params) => {

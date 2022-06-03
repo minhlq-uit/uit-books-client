@@ -3,6 +3,8 @@ export const userColumns = [
     field: "id",
     headerName: "STT",
     width: 70,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "categoryName",
@@ -10,13 +12,16 @@ export const userColumns = [
     width: 230,
     minWidth: 200,
     maxwidth: 300,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "description",
     headerName: "Mô tả thể loại",
-    width: 600,
-    minWidth: 500,
-    maxwidth: 800,
+    width: 400,
+    // Width: 400,
+    // maxwidth: 600,
+    headerAlign: "center",
   },
 ];
 
@@ -24,30 +29,56 @@ export const userColumns = [
 export const userRows = [
   {
     id: 1,
-    categoryName: "Sách thiếu nhi",
+    categoryName: "Kinh tế",
     description:
-      "Sách nói về những câu chuyện ngày xửa ngày xưa, tạp chí và những bài thơ dành cho trẻ em...",
+      "Sách kinh tế mang lại nhiều kiến thức, giá trị về kinh tế. Đọc sách kinh tế sẽ giúp chúng ta hiểu được cách vận hành của nền kinh tế.",
   },
   {
     id: 2,
-    categoryName: "Tiểu thuyết lãng mạn",
-    description: "Các ấn phẩm lãng mạn huyền bí và lãng mạn mang tính lịch sử.",
+    categoryName: "Kỹ năng sống",
+    description:
+      "Những cuốn sách kỹ năng sống sẽ giúp bạn trau dồi được kĩ năng mềm, khám phá những khía cạnh mới của bản thân. ",
   },
   {
     id: 3,
-    categoryName: "Khoa học viễn tưởng",
+    categoryName: "Ngôn tình",
     description:
-      "Sách diễn ra trong khoảng thời gian khác với thời gian hiện tại của chúng ta. Chúng thường có các sinh vật huyền bí, pháp sư, phù thủy, thây ma không có thật...",
+      "Sách ngôn tình là thể loại tiểu thuyết về tình yêu hoặc những câu chuyện trong đời sống thường ngày.",
   },
   {
     id: 4,
-    categoryName: "Kinh dị, giật gân",
-    description: "Sách có yếu tố ly kì, kinh dị, tạo nên sự hồi hộp...",
+    categoryName: "Tâm lý",
+    description:
+      "Sách tâm lý học nói chung mang đến rất nhiều lợi ích cho đời sống con người. Trước tiên giúp người đọc nhận diện được triệu chứng mình đang gặp phải. Sau đó là gợi ý, chỉ dẫn, cung cấp những giải pháp thiết thực nhất. ",
   },
   {
     id: 5,
-    categoryName: "Sách truyền cảm hứng",
+    categoryName: "Tiếng anh",
     description:
-      "Sách liên quan đến bài học thành công, các trải nghiệm thực tế, bí quyết kinh doanh...",
+      "Đọc những cuốn sách tiếng Anh hay có thể mở mang tâm trí của bạn đến những thế giới mới rực rỡ và đưa bạn đến một cấp độ mới của việc học tiếng Anh.",
+  },
+  {
+    id: 6,
+    categoryName: "Tiểu thuyết",
+    description:
+      "Tiểu thuyết là một tác phẩm dài kể chuyện hư cấu với một số chủ nghĩa hiện thực. Thường ở dạng văn xuôi và được xuất bản thành một cuốn sách.",
+  },
+  {
+    id: 7,
+    categoryName: "Sách chuyên ngành",
+    description:
+      "Sách chuyên ngành tiếng anh là những cuốn sách bằng tiếng anh về các chuyên ngành khác nhau như tài chính, luật, công nghệ thông tin, xây dựng, du lịch, y dược, điều dưỡng bằng tiếng anh và thường được nhập khẩu về Việt Nam",
+  },
+  {
+    id: 8,
+    categoryName: "Sách ngoại ngữ",
+    description:
+      "Trên thị trường, nên đọc Sách ngoại ngữ là gì là một trong những kệ sách treo tường sản phẩm hot, cha giàu cha nghèo đang được nhiều người tìm mua Sách kinh doanh sử dụng.",
+  },
+  {
+    id: 9,
+    categoryName: "Thường thức đời sống",
+    description:
+      "Sách chứa đựng mọi thứ: kiến thức, kinh nghiệm sống và cảm xúc con người, là những viên gạch xây nên những thành tựu của con người. Sách là một món ăn tinh thần, đem lại sự thư giãn, thoái mái, truyền cảm hứng cho người đọc, giúp họ cảm thấy thoải mái hơn sau những bộn bề, áp lực của cuộc sống.",
   },
 ];
