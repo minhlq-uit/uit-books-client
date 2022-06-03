@@ -19,7 +19,7 @@ const Payment = (props) => {
   const [stripeApiKey, setStripeApiKey] = useState("");
   async function getStripeApiKey() {
     const { data } = await axios.get(
-      "http://localhost:5000/api/v2/stripeapikey",
+      "/api/v2/stripeapikey",
       {
         withCredentials: true,
       }
@@ -74,7 +74,7 @@ const Payment = (props) => {
         withCredentials: true,
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/v2/payment/process",
+        "/api/v2/payment/process",
         { items: cartItems },
         config
       );

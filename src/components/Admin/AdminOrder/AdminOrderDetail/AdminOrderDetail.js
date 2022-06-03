@@ -22,8 +22,9 @@ import { ToastContainer, toast } from "react-toastify";
 const AdminOrderDetail = (props) => {
   const [orderDetails, setOrderDetails] = useState();
   const [address, setAddress] = useState("");
-  const [dataUpdate, setDataUpdate] = useState({});
   const [orderStatus, setOrderStatus] = useState("");
+  let totalQuantity = 0
+  let totalPrice = 0
   const location = useLocation();
   const dispatch = useDispatch();
   const orderId = location.state.orderId;
@@ -40,12 +41,12 @@ const AdminOrderDetail = (props) => {
       setOrderDetails(order);
       setAddress(
         order.shippingInfo.address +
-        ", " +
-        order.shippingInfo.ward +
-        ", " +
-        order.shippingInfo.district +
-        ", " +
-        order.shippingInfo.city
+          ", " +
+          order.shippingInfo.ward +
+          ", " +
+          order.shippingInfo.district +
+          ", " +
+          order.shippingInfo.city
       );
     }
   }, [order]);
@@ -101,11 +102,6 @@ const AdminOrderDetail = (props) => {
                   <div className="orderRow">
                     <label className="orderRow__label ">Tình trạng:</label>
                     <div className="order__state ">
-                      {/* <select>
-                    {optionState.map((value, index) => {
-                      return <option key={index}>{value}</option>;
-                    })}
-                  </select> */}
                       <select
                         value={orderDetails ? orderDetails.orderStatus : ""}
                         onChange={(e) => setOrderStatus(e.target.value)}
@@ -139,6 +135,8 @@ const AdminOrderDetail = (props) => {
             <div className="product">
               {orderDetails ? (
                 orderDetails.orderItems.map((orderItem, index) => {
+                  totalQuantity += orderItem.quantity
+                  totalPrice += orderItem.price * orderItem.quantity
                   return (
                     <InformationProduct
                       key={index}
@@ -152,22 +150,10 @@ const AdminOrderDetail = (props) => {
               ) : (
                 <></>
               )}
-              {/* <InformationProduct
-                image="https://cdn0.fahasa.com/media/catalog/product/c/o/co_gai_den_tu_hom_qua_1_2018_11_16_11_03_46.JPG"
-                nameBook="Cô gái đến từ hôm qua"
-                price={80000}
-                author="Nguyễn Nhật Ánh"
-              />
-              <InformationProduct
-                image="https://cdn0.fahasa.com/media/catalog/product/c/o/co_gai_den_tu_hom_qua_1_2018_11_16_11_03_46.JPG"
-                nameBook="Cô gái đến từ hôm qua"
-                price={80000}
-                author="Nguyễn Nhật Ánh"
-              /> */}
             </div>
             <InformationBill
-              quantity={1}
-              totalMoney={orderDetails ? orderDetails.totalPrice : 0}
+              quantity={totalQuantity}
+              totalMoney={totalPrice}
               discount={0}
             />
           </Container>
