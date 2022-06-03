@@ -3,15 +3,21 @@ export const userColumns = [
     field: "stt",
     headerName: "STT",
     width: 40,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "id",
     headerName: "id",
     width: 40,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "img",
     headerName: "Hình ảnh",
+    headerAlign: "center",
+    align: "center",
     // width: 230,
     renderCell: (params) => {
       return (
@@ -26,42 +32,58 @@ export const userColumns = [
     field: "name",
     headerName: "Tên sách",
     width: 180,
+    headerAlign: "center",
+    align: "center",
   },
 
   {
     field: "category",
     headerName: "Thể loại",
     width: 120,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "author",
     headerName: "Tác giả",
     width: 160,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "publisher",
     headerName: "NXB",
     width: 120,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "description",
     headerName: "Mô tả",
     width: 250,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "pageNumber",
     headerName: "Số trang",
     width: 70,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "Stock",
     headerName: "Tồn kho",
     width: 80,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "price",
     headerName: "Giá",
     width: 90,
+    headerAlign: "center",
+    align: "center",
   },
 ];
 

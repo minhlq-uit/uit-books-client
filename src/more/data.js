@@ -11,7 +11,7 @@ export const categoryData = [
   "Kỹ năng sống",
   "Ngôn tình",
   "Tâm lý",
-  "Tiếng anh",
+  "Tiếng Anh",
   "Tiểu thuyết",
   "Sách chuyên ngành",
   "Sách ngoại ngữ",

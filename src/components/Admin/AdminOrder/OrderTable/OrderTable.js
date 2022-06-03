@@ -76,6 +76,7 @@ const OrderTable = () => {
     {
       field: "action",
       headerName: "Action",
+      headerAlign: "center",
       width: 100,
       renderCell: (params) => {
         return (
@@ -145,17 +146,17 @@ const OrderTable = () => {
       />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Delete order</Modal.Title>
+          <Modal.Title>Xóa đơn hàng</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Bạn chấc chắn muốn xóa order {idOrderDelete} này!!?
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Đóng
           </Button>
           <Button variant="danger" onClick={handleDeleteOrder}>
-            Delete
+            Xóa
           </Button>
         </Modal.Footer>
       </Modal>

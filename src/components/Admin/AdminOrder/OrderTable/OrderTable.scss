@@ -23,28 +23,57 @@
     }
   }
 
+  .css-1jbbcbn-MuiDataGrid-columnHeaderTitle {
+    color: #106CC0;
+    font-weight: 700;
+    text-align: right !important;
+  }
+
   .cellWithStatus {
     padding: 5px;
     border-radius: 5px;
+    // border: 1px solid #5b718694;
+    text-align: center;
 
-    &.sold {
-      background-color: rgba(0, 128, 0, 0.05);
+
+    &.Shipped {
+      background-color: rgba(0, 128, 0, 0.1);
       color: green;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
     }
 
-    &.pending {
-      background-color: rgba(255, 217, 0, 0.05);
+    &.Processing {
+      background-color: rgba(255, 217, 0, 0.1);
       color: goldenrod;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
     }
 
-    &.canceled {
-      background-color: rgba(255, 0, 0, 0.05);
+    &.Canceled {
+      background-color: rgba(255, 0, 0, 0.1);
       color: crimson;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
     }
 
-    &.shipping {
-      background-color: rgba(255, 0, 0, 0.05);
+    &.Shipping {
+      background-color: rgba(255, 0, 0, 0.1);
       color: #106CC0;
+      // width: 125px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-right: 10px;
+      padding-left: 10px;
     }
   }
 

@@ -1,6 +1,11 @@
 import "./AdminCategoryNew.scss";
+import { categoryData } from "../../../../more/data";
+import { useState } from "react";
 
 function AdminCategoryNew() {
+  // console.log(categoryData);
+  // const [dataCategory, setDatacategory] = useState(categoryData)
+
   return (
     <div className="wrapper">
       <form className="form-wrapper">
@@ -11,6 +16,11 @@ function AdminCategoryNew() {
         </div>
 
         <div className="form-group">
+          {/* <label className="form-group-label" htmlFor="category-select-add">
+            Thể loại
+          </label>
+          <input  type="text" className="form-control" /> */}
+
           <label className="form-group-label" htmlFor="category-select-add">
             Thể loại
           </label>
