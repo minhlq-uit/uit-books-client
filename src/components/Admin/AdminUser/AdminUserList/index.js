@@ -30,7 +30,7 @@ const UserList = () => {
   const dispatch = useDispatch();
   const { loading, users } = useSelector((state) => state.allUsers);
   const { success, message } = useSelector((state) => state.userDetails);
-
+  const { registerSuccess, user } = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(getAllUsers());
   }, []);
@@ -52,7 +52,6 @@ const UserList = () => {
   useEffect(() => {
     if (success) {
       toast.success(message);
-      dispatch(getAllUsers());
     }
     if (success === false) {
       toast.error(message);
