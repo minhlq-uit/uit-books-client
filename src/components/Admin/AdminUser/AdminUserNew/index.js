@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  registerRequest,
+  adminRegisterRequest,
   clear,
 } from "../../../../redux/features/user/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -49,7 +49,7 @@ function UserNew() {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      registerRequest({
+      adminRegisterRequest({
         name: userName,
         email,
         password,
